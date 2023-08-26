@@ -11,7 +11,11 @@ class users extends Model
 
     public $table="users";
     public$primarykey="id";
-    
+    protected $fillable=[
+        'username',
+       
+        'images',
+    ];
     public function Users(){
         return $this->hasOne(Users::class,'id','name');
     }

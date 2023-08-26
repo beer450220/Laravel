@@ -10,9 +10,9 @@
       </form>
       <ul class="nav">
         <li class="nav-item">
-          <a class="nav-link text-muted my-2" href="#" id="modeSwitcher" data-mode="light">
+          {{-- <a class="nav-link text-muted my-2" href="#" id="modeSwitcher" data-mode="light">
             <i class="fe fe-sun fe-16"></i>
-          </a>
+          </a> --}}
         </li>
       
         <li class="nav-item nav-notif">
@@ -24,7 +24,9 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-muted pr-0" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <span class="avatar avatar-sm mt-2">
-              <img src="./assets/avatars/face-1.jpg" alt="..." class="avatar-img rounded-circle">
+              <img src="/รูปโปรไฟล์/{{ Auth::user()->images }}" alt="..." class="avatar-img rounded-circle">
+              {{-- <img src="" class="img-responsive" style="max-height: 100px; max-width: 100px;" alt="" srcset=""> --}}
+           
             </span>
           </a>
           <div class="dropdown-menu dropdown-menu-right " aria-labelledby="navbarDropdownMenuLink">

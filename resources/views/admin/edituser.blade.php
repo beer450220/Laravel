@@ -1,4 +1,4 @@
-@extends('layouts.adminmin')
+@extends('layouts.adminmin1')
 <title>admin</title>
 @section('content')  
 
@@ -53,129 +53,8 @@
 </div>
 <div class="col-sm-4">
                                 <input type="text" class="form-control  " 
-                                name="txt_StudentID" value="" pattern="[0-9]{1,}" maxlength="11"  placeholder="รหัสนักศึกษา">
-                            </div>
-                        <div class="col-4  " >
-                    
-                                    <select class="form-select form-control "  name="txt_pname"
-                                     >
-                            <option selected>กรุณาเลือกคำนำหน้าชื่อ</option>
-  
-  <option value="นาย">นาย</option>
-  <option value="นาง">นาง</option>
-  <option value="นางสาว">นางสาว</option>
-</select>
-                            </div>
-                             <div class="col-sm-4  ">
-                                <input type="text" class=" form-control   "  
-                                aria-hidden="true" name="name"value="{{$users->name}}" placeholder="ชื่อ">
-                            </div>
-                           
-
-                            <div class="col-sm-4">
-                            
-                            </div>
-                            
-                           
-
-                        </div> 
-
-                        
-<div class="form-group row">
-<div class="col-sm-4 mb-">
-    <input type="text" class="form-control "
-        id="exampleInputPassword" name="txt_lastname" value=""  placeholder="นามสกุล">
-</div>
-<div class="col-sm-4">
-<select class="form-select form-control "  name="txt_major"
-                                     >
-                            <option selected>กรุณาเลือกวิชาเอก</option>
-  <option value="ชีววิทยา">ชีววิทยา</option>
-  <option value="วิทยาการคอมพิวเตอร์">วิทยาการคอมพิวเตอร์</option>
-  <option value="เทคโนโลยีสารสนเทศ">เทคโนโลยีสารสนเทศ</option>
-  <option value="คณิตศาสตร์ประยุกต์">คณิตศาสตร์ประยุกต์</option>
-  <option value="เคมี">เคมี</option>
-  <option value="วิทยาศาสตร์การกีฬาและการออกกำลังกาย">วิทยาศาสตร์การกีฬาและการออกกำลังกาย</option>
-  <option value="สิ่งแวดล้อม">สิ่งแวดล้อม</option>
-  <option value="วิทยาการข้อมูล">วิทยาการข้อมูล</option>
-  <option value="สาธารณสุขศาสตร์">สาธารณสุขศาสตร์</option>
-  <option value="อาหารและโภชนาการ">อาหารและโภชนาการ</option>
-  
-</select>
-</div>
-<div class="col-sm-4 mb-">
-<select class="form-select form-control " name="txt_faculty"
-                                     >
-                            <option selected>กรุณาเลือกคณะ</option>
-  <option value="คณะวิทยาศาสตร์และเทคโนโลยี" >คณะวิทยาศาสตร์และเทคโนโลยี</option>
- 
-</select>
-</div>
-
-</div>
-
-
-
-
-                
-
-
-               
-
-                        
-                        <div class="form-group row  ">
-                      
-                                   
-                                    <div class="col-sm-4">
-                                <input type="text" name="txt_phone" value=""name="Number"id="number"pattern="[0-9]{1,}" maxlength="10 "class="form-control  "
-                                    placeholder="เบอร์โทรศัพท์">
-                            </div>  
-                            <div class="col-sm-4">
-                                <input type="email" class="form-control  " 
-                                name="email"value="{{$users->email}}"   placeholder="อีเมล์">
-                            </div>
-                            <div class="col-sm-4">
-                            <select class="form-select form-control " name="role" 
-                                     >
-                            <option selected>กรุณาเลือกสถานะ</option>
-  <option value="admin"@if($users->role=="admin") selected @endif>ผู้ดูแล</option>
-  <option value="student"@if($users->role=="student") selected @endif>นักศึกษา</option>
-  <option value="teacher"@if($users->role=="teacher") selected @endif>อาจารย์</option>
-  <option value="officer"@if($users->role=="officer") selected @endif>เจ้าหน้าที่</option>
-</select>
-                            </div>
-
-
-
-                            
-</div>
-                        <div class="form-group">
-
-
-
-                            <input type="text" class="form-control " value="" name="txt_address" id="exampleInputEmail"
-                                placeholder="ที่อยู่">
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-sm-6 mb-3 mb-sm-0">
-                                <input type="text" class="form-control "
-                                name="username"value="{{$users->username}}" id="exampleInputPassword" placeholder="ชื่อผู้ใช้งาน">
-                            </div>
-                            <div class="col-sm-6">
-                                <input type="text" class="form-control "
-                                name="txt_password" value=""   id="exampleRepeatPassword"maxlength="11" placeholder=" รหัสผ่าน">
-                            </div>
-                        </div><div class="form-group">
-
-
-
-
-<input type="file" class="form-control " 
-    placeholder="รูปภาพ" name="txt_file" 
-    value="">
-</div> <p class="text-center">
-                    <img src="../../upload/" height="100" width="100" alt="">
-                </p>
+                                name="txt_StudentID" value="{{$users->username}}" pattern="[0-9]{1,}" maxlength="11"  placeholder="รหัสนักศึกษา">
+        
 <div class="form-group row">
     <div class="col-sm-6 mb-3 mb-sm-0">
 <input type="submit" name="btn_update" class="btn btn-primary  btn-block " value="แก้ไขข้อมูล">
@@ -183,8 +62,75 @@
 
 
 <a href="../index.php?page=user" class="btn btn-primary  btn-block">ยกเลิก</a>
+
                        </div><br>
                         <hr>
          </div>
                     </form> 
+                </div>
+            </div>
+
+                    <main role="main" class="">
+                        <div class="container-fluid">
+                          <div class="row justify-content-center">
+                            <div class="col-12">
+                              <h2 class="page-title">Form elements</h2>
+                             
+                              <div class="card shadow mb-4">
+                                <div class="card-header">
+                                  <strong class="card-title">Form controls</strong>
+                                </div>
+                                <div class="card-body">
+                                  <div class="row">
+                                    <div class="col-md-6">
+                                        <form method="POST" action="{{url('/user/updateuser/'.$users->id)}}" enctype="multipart/form-data">
+                                            @csrf
+                                            <div class="form-group mb-3">
+                                        <label for="simpleinput">username</label>
+                                        <input type="text" id="simpleinput" name="username" value="{{$users->username}}" class="form-control">
+                                      </div>
+                                      <div class="form-group mb-3">
+                                        <label for="example-email">Email</label>
+                                        <input type="email" value="{{$users->email}}" id="example-email" name="example-email" class="form-control" placeholder="Email">
+                                      </div>
+                                      <div class="form-group mb-3">
+                                        <label for="example-password">Password</label>
+                                        <input type="password" value="" id="example-password" class="form-control" >
+                                      </div>
+                                      <div class="form-group mb-3">
+                                        <label for="example-palaceholder">role</label>
+                                        <input type="text" value="{{$users->role}}"disabled="" id="example-palaceholder" class="form-control" placeholder="placeholder">
+                                      </div>
+                                    </div> <!-- /.col -->
+                                    <div class="col-md-6">
+                                      <div class="form-group mb-3">
+                                        <label for="example-helping">รูป</label>
+                                        <input type="file" id="example-helping" name="images"value="{{$users->images}}" class="form-control" placeholder="Input with helping text">
+                                       
+                                      </div>
+                                      <div class="form-group mb-3">
+                                        <label for="example-readonly">Readonly</label>
+                                        <input type="text" id="example-readonly" class="form-control" readonly="" value="Readonly value">
+                                      </div>
+                                      <div class="form-group mb-3">
+                                        <label for="example-disable">Disabled</label>
+                                        <input type="text" class="form-control" id="example-disable" disabled="" value="Disabled value">
+                                      </div>
+                                      <div class="form-group mb-3">
+                                        <label for="example-static">Static control</label>
+                                        <input type="text" readonly="" class="form-control-plaintext" id="example-static" value="j@example.com">
+                                      </div>
+                                      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                        <button class="btn btn-outline-success me-md-2 delete-btn"  type="submit">อัพเดทข้อมูล</button>
+                                        &nbsp;&nbsp;
+                                        <button  class="btn btn-outline-warning fe fe-edit fe-16" type="reset">ยกเลิก</button>
+                                        <a href="/user" class="btn btn-primary  btn-block">ย้อนกลับ</a> 
+                                    </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div> <!-- / .card -->
+                            </div>
+                          </div>
+                        </form >
                     @endsection

@@ -61,7 +61,9 @@ Auth::routes();
 Route::middleware(['auth','user-role:student'])->group(function()
 {
     Route::get("/studenthome",[HomeController::class,'studentHome'])->name('student.studenthome');
-    
+    Route::get("/studenthome/edituser1/{id}",[EditController::class,'edituser1'])->name('edituser1');
+        
+
      Route::get("/studenthome/test",[HomeController::class,'test'])->name('test');
      Route::post("/studenthome/test",[HomeController::class,'test2'])->name('test2');
 
@@ -261,8 +263,10 @@ Route::middleware(['auth','user-role:admin'])->group(function()
     Route::get("/user",[HomeController::class,'user'])->name('admin.user');
     Route::get("/user/adduser",[registerController::class,'index2'])->name('adduser2');
     Route::post("/user/add",[registerController::class,'adduser'])->name('adduser');
+  
     Route::get("/user/edituser/{id}",[HomeController::class,'edituser'])->name('admin.edituser');
-
+    Route::post("/user/updateuser/{id}",[EditController::class,'updateuser'])->name('updateuser');
+    
     Route::get("/user1",[HomeController::class,'changeStatus'])->name('changeStatus');
    // Route::get('/status/update', [HomeController::class, 'updateStatus'])->name('update.status');
 });

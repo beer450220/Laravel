@@ -123,12 +123,12 @@
                                             
                                             {{-- <th ><i class="" aria-hidden="true"></i>เบอร์โทร</th> --}}
                                             
-                                          
+                                            <th><i class="" aria-hidden="true"></i>โปรไฟล์ </th>
                                             <th><i class="" aria-hidden="true"></i>สถานะ</th>
                                              {{-- <th ><i class="" aria-hidden="true"></i>จังหวัด</th> --}}
                                              <th><i class="" aria-hidden="true"></i>เริ่มใช้งานระบบ</th>
                                             <th>ระงับใช้งาน</th>
-                                       
+                                            <th>แก้ไขข้อมูล</th>
                                             <th>จัดเก็บข้อมูล</th>
                                         </tr>
                                     </thead>
@@ -150,7 +150,7 @@
                                             <td>{{$row->email}}</td> 
                                         
                                             {{-- <td></td> --}}
-                                            
+                                            <td><img src="/รูปโปรไฟล์/{{ $row->images }}" class="img-responsive" style="max-height: 100px; max-width: 100px;" alt="" srcset=""></td>
                                             <td>{{$row->role}}</td>
                                          
                                             <td>{{Carbon\Carbon::parse($row->created_at)->diffForHumans()}}</td>
@@ -163,7 +163,7 @@
                                                 <input class="form-check-input "for="flexSwitchCheckChecked" type="checkbox" role="switch" id="flexSwitchCheckChecked"id="switchOne"wire:model="isActive" checked></div> </td> --}}
                                              
                                            
-                                            {{-- <td> <a href="/edituser/{{$row->id}}" class="fa fa-pencil btn btn-warning text-center " aria-hidden="true"></a></td> --}}
+                                            <td> <a href="/user/edituser/{{$row->id}}" class="fa fa-pencil btn btn-warning text-center " aria-hidden="true"></a></td>
                                             {{-- <td> <a href="/edituser/{{$row->id}}" class="fa fa-pencil btn btn-warning text-center " aria-hidden="true"></a></td> --}}
                                             <!-- <php echo isset($_GET['pasge']) && $_GET['page'] =='user'?'active':''?>"href="?page=edit?update_id=" -->
                                             <td> <a href="../Admin/Del.php?delete1_id=" class="fa fa-window-close btn btn-danger text-center"onclick="return confirm('ยืนยันการลบข้อมูล !!');" aria-hidden="true"></a></td>

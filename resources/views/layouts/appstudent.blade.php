@@ -27,7 +27,7 @@
      <link rel="stylesheet" href="../student/css/app-light.css" id="lightTheme">
      <link rel="stylesheet" href="../student/css/app-dark.css" id="darkTheme" disabled>
     
-
+<script src="../admin/vendor/jquery/jquery.min.js"></script>
      
      
 

@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
-
+//use Illuminate\Support\Facades\Hash;
+    use Hash;
+    use App\Models\Users;
 class LoginController extends Controller
 {
     /*
@@ -48,14 +50,24 @@ class LoginController extends Controller
     {
         $input = $request->all();
         // dd($request->password);
-        // dd($request);
+         //dd($request);
         $this->validate($request,[
             // 'username'=>'required|email',
             'username'=>'required',
-            'password'=>'required|min:5',
+             'password'=> ('required|min:5'),
+           
             // 'password' => Hash::make($request->password)
-        ]);
-        if(auth()->attempt(['username'=>$input["username"], 'password'=> ($input['password'])]))
+        ]); 
+        // $passwordToCheck = $input['password']; // รหัสผ่านจากผู้ใช้
+        // $hashedPasswordFromDatabase = Users::where('username', $input['username'])->first()->password; // รหัสผ่านที่เก็บในฐานข้อมูล
+        
+        // if (Hash::check($passwordToCheck, $hashedPasswordFromDatabase)){
+
+
+        if(auth()->attempt(['username'=>$input["username"], 'password'=>
+        ($input['password'])]))
+
+        //   if(!Hash::check(['username'=>$input["username"], 'password'=>($input['password'])]))
         {
             if(auth()->user()->role == 'admin')
             {
@@ -82,8 +94,8 @@ class LoginController extends Controller
             ->with('error','ไม่ถูกต้อง username หรือ password');
         }
     }
-    
 }
+//}
 ?>
 
 

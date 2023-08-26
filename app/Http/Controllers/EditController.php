@@ -1259,4 +1259,75 @@ public function editreport($report_id) {
     //  return view('officer.editestablishmentuser1',compact('establishments'));
      return redirect()->back()->with('success1', 'ลบข้อมูลสำเร็จ.');
  }
+
+ public function   updateuser(Request $request,$id) {
+    //ตรวจสอบข้อมูล 
+    
+    //dd($request);
+   
+    $request->validate([
+        // 'images' => ['required','mimes:jpg,jpeg,png'],
+        // 'name' => ['required','min:5'],
+        // 'filess' => 'required|mimes:pdf',
+        // 'establishment' => 'required',
+    ],[
+            //'establishment.required' => "กรุณา",
+
+        ]
+    );
+   
+   //dd($request->Status);
+   $post=users::findOrFail($id);
+  
+   if($request->hasFile("images")){
+       if (File::exists("รูปโปรไฟล์/".$post->images)) {
+           File::delete("รูปโปรไฟล์/".$post->images);
+       } 
+       $file=$request->file("images");
+        $post->images=time()."_".$file->getClientOriginalName();
+        $file->move(\public_path("/รูปโปรไฟล์"),$post->images);
+        $request['images']=$post->images;
+     // dd($post);
+   }
+    $post->update
+    ([
+       "username" =>$request->username,
+        //"establishment"=>$request->establishment,
+       //  "term"=>$request->term,
+       // "annotation"=>$request->annotation,
+         "images"=>$post->images
+        // "presentation"=>$post->presentation,
+        // "appointmenttime"=>$post->appointmenttime,
+       // "Status_acceptance"=>$request->Status_acceptance,
+       // "projects" =>$imageName,
+       // "presentation" =>$image,
+      //  "poster" =>$images,
+       // "projectsummary" =>$images1,
+    ]);
+    
+    
+    return redirect('/user')->with('success', 'แก้ไขข้อมูลสำเร็จ.');
+ }
+
+
+ public function edituser1($id) {
+    //ตรวจสอบข้อมูล 
+    //$users=DB::table('users')
+      //->where('role',"student")
+      //->join('establishment','establishment.id',"=",'users.id')
+      //->select('users.*','establishment.*')
+      //->get();
+     $Evaluationdocuments=users::find($id);
+   // $acceptances=DB::table('acceptance')->first();
+    //$establishment=DB::table('establishment')
+    // ->join('supervision','supervision.supervision_id')
+     //->join('supervision', 'establishments.id', '=', 'supervision.id')
+    // ->select('supervision.*','establishment.*')
+   // ->get();
+    //dd($acceptances);
+      dd($Evaluationdocuments);
+     return view('student.Edit.edituser1',compact('Evaluationdocuments'));
+     
+ }
+
 }
