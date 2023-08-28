@@ -225,7 +225,48 @@ p {
     object-fit: cover
 }
 </style>
+     
+<button id="btn">Button</button>
 
+<script src="index.js">
+
+
+    
+</script>
+<script>
+
+const btn = document.getElementById('btn');
+
+btn.addEventListener('click', function onClick(event) {
+  // 👇️ change background color
+  document.body.style.backgroundColor = 'salmon';
+
+  // 👇️ optionally change text color
+  // document.body.style.color = 'white';
+});
+</script>
+ <div class="col-md-4 mb-4">
+                  <div class="card shadow">
+                    <div class="card-body">
+                      <ul class="nav nav-pills nav-fill mb-3" id="pills-tab" role="tablist">
+                        <li class="nav-item">
+                          <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Pill Home</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Profile</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</a>
+                        </li>
+                      </ul>
+                      <div class="tab-content mb-1" id="pills-tabContent">
+                        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab"> Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. </div>
+                        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab"> Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. </div>
+                        <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab"> Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 <div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-12 col-lg-8 col-xl-6 text-center p-0 mt-3 mb-2">
@@ -236,9 +277,10 @@ p {
                 <form id="msform">
                     <!-- progressbar -->
                     <ul id="progressbar">
-                        <li class="active" id="account"><strong>ข้อมูลส่วนตัว</strong></li>
-                        <li id="personal"><strong>สถานประกอบการ</strong></li>
-                        <li id="payment"><strong>ลงทะเบียน</strong></li>
+                       
+                        <a  href="/"> <li class="active" id="account"><strong>ข้อมูลส่วนตัว</strong></li></a>
+                        <li id="personal"><strong>สถานประกอบการ</strong></li></a>
+                        <li id="payment"><strong>ลงทะเบียน</strong></li></a>
                         <li id="confirm"><strong>รายงานสถานะการเข้าปฏิบัติงาน</strong></li>
                         <li id="confirm"><strong>นิเทศงาน</strong></li>
                         <li id="payment"><strong>รายงานผลการปฏิบัติงาน</strong></li>
@@ -271,67 +313,13 @@ p {
                                     </div>
                                   </div>
                                 </div>
-                                <div class="accordion-item">
-                                  <h2 class="accordion-header" id="headingTwo">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                     สถานประกอบการ
-                                    </button>
-                                  </h2>
-                                  <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                      <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="accordion-item">
-                                  <h2 class="accordion-header" id="headingThree">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                      ลงทะเบียน
-                                    </button>
-                                  </h2>
-                                  <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                      <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                                    </div>
-                                  </div>
-                                </div>
+                              
+                            
                               </div>
-                              <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingTwo4">
-                                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo4" aria-expanded="false" aria-controls="collapseTwo">
-                                    รายงานสถานะการเข้าปฏิบัติงาน
-                                  </button>
-                                </h2>
-                                <div id="collapseTwo4" class="accordion-collapse collapse" aria-labelledby="headingTwo4" data-bs-parent="#accordionExample">
-                                  <div class="accordion-body">
-                                    <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                                  </div>
-                                </div>
-                              </div>
-                             <div class="accordion-item">
-                              <h2 class="accordion-header" id="headingTwo5">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo5" aria-expanded="false" aria-controls="collapseTwo">
-                                    นิเทศงาน
-                                </button>
-                              </h2>
-                              <div id="collapseTwo5" class="accordion-collapse collapse" aria-labelledby="headingTwo5" data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                  <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                                </div>
-                              </div>
-                            </div>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingTwo6">
-                                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo6" aria-expanded="false" aria-controls="collapseTwo6">
-                                    รายงานผลการปฏิบัติงาน
-                                  </button>
-                                </h2>
-                                <div id="collapseTwo6" class="accordion-collapse collapse" aria-labelledby="headingTwo6" data-bs-parent="#accordionExample">
-                                  <div class="accordion-body">
-                                    <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                                  </div>
-                                </div>
-                              </div>
+                              
+                             
+                            
+                         
 
                             {{-- <label class="fieldlabels">Email: *</label>
                              <input type="email" name="email" placeholder="Email Id" /> 
@@ -456,8 +444,53 @@ p {
             </div>
         </div>
     </div>
-</div>
-<script>
+   
+</div>{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" ></script>
+
+<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script> --}}
+
+{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" ></script>
+   
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script> --}}
+
+    
+
+   
+
+
+
+     {{-- @foreach ($establishments as $row)<td>
+        <input data-id="{{$row->id}}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="ON" data-off="OFF" {{ $row->role ? 'checked' : '' }}>   
+   
+  <form method="POST" action=" {{url('/test5')}}">
+    @csrf
+  <button type="submit" class="btn btn-{{ $row->role  ? 'success' : 'danger' }}">
+    {{ $row->role  ? 'Active' : 'Inactive' }}
+</button></form>
+  @endforeach  --}}
+
+{{-- <script>
+     $(function() {
+                      $('.toggle-class').change(function() {
+                          var roles = $(this).prop('checked') === true ? 1 : 0; 
+                          var id = $(this).data('id'); 
+                           
+                          $.ajax({
+                              type: "GET",
+                              dataType: "json",
+                              url: '/test5',
+                              data: {'role': roles, 'id': id},
+                              success: function(data){
+                                console.log(data.success)
+                              }
+                          });
+                      })
+                    })
+  </script> --}}
+
+{{-- <script>
 
 $(document).ready(function(){
 
@@ -536,4 +569,6 @@ return false;
 
 });
 
-</script>
+</script> --}}
+
+

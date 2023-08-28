@@ -270,13 +270,14 @@
                   <p>Fill all form field to go to next step</p> --}}
                   <form id="msform">
                       <!-- progressbar -->
+                      
                       <ul id="progressbar">
-                          <li class="active" id="account"><strong>ข้อมูลส่วนตัว</strong></li>
-                          <li id="personal"><strong>สถานประกอบการ</strong></li>
-                          <li id="payment"><strong>ลงทะเบียน</strong></li>
-                          <li id="confirm"><strong>รายงานสถานะการเข้าปฏิบัติงาน</strong></li>
-                          <li id="confirm"><strong>นิเทศงาน</strong></li>
-                          <li id="payment"><strong>รายงานผลการปฏิบัติงาน</strong></li>
+                        <a  href="/studenthome"><li class="active" id="account"><strong>ข้อมูลส่วนตัว</strong></li></a>
+                        <a  href="/studenthome">  <li id="personal"><strong>สถานประกอบการ</strong></li></a>
+                          <a  href="/studenthome">  <li id="payment"><strong>ลงทะเบียน</strong></li></a>
+                            <a  href="/studenthome"> <li id="confirm"><strong>รายงานสถานะการเข้าปฏิบัติงาน</strong></li></a>
+                              <a  href="/studenthome"> <li id="confirm"><strong>นิเทศงาน</strong></li></a>
+                                <a  href="/studenthome"> <li id="payment"><strong>รายงานผลการปฏิบัติงาน</strong></li></a>
                       </ul>
                       <div class="progress">
                           <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
@@ -295,7 +296,13 @@
                                   <div class="accordion-item">
                                     <h2 class="accordion-header" id="headingOne">
                                       <div class="col-8">
-                                        <h2 class="steps">ตรวจสอบข้อมูลและทำการยืนยันข้อมูล</h2>
+                                              <h2 class="steps">ตรวจสอบข้อมูลและทำการยืนยันข้อมูล
+                                                @if(session("success"))
+                                            <div class="alert alert-success col-4">{{session('success')}}
+                                @endif
+                                   
+                                        </h2>
+                                      
                                     </div>
                                     </h2>
                                     {{-- <div id="collapseOne"  aria-labelledby="headingOne" data-bs-parent="#accordionExample">
@@ -319,70 +326,115 @@
                                     <main role="main" class="">
                                       <div class="container-fluid">
                                         <div class="row justify-content-center">
-                                          <div class="col-6">
-                                            <h2 class="page-title">Form elements</h2>
-                                           
+                                          <div class="col-7">
+                                            {{-- <h2 class="page-title">Form elements</h2> --}}
+                                      
                                             <div class="card shadow mb-4">
                                               <div class="card-header">
-                                                <strong class="card-title">Form controls</strong>
+                                                <strong class="card-title">ข้อมูลรายละเอียดบุคคล</strong>
                                               </div>
+                                            
                                               <div class="card-body">
                                                 <div class="row">
                                                   <div class="col-md-6">
-                                                    <div class="form-group mb-3">
-                                                      <label for="simpleinput">ผู้ใข้งาน</label>
-                                                      <input type="text"value="{{ Auth::user()->username }}" disabled="" id="simpleinput" class="form-control">
+                                                    <div class="form-group mb-3"> 
+                                              {{-- <form method="POST" action="{{url('/studenthome/updateuser2/'.Auth::user()->id)}}" enctype="multipart/form-data">
+                                                @csrf --}}
+                                                      <label for="simpleinput">รหัสนักศึกษา</label>
+                                                      <input type="text"value="{{ Auth::user()->Student_ID }}" disabled="" id="simpleinput" class="form-control">
                                                     </div>
                                                     <div class="form-group mb-3">
                                                       <label for="example-email">Email</label>
-                                                      <input type="email" id="example-email" name="example-email" class="form-control" placeholder="Email">
+                                                      <input type="email" id="example-email"value="{{ Auth::user()->email }}" disabled="" name="example-email" class="form-control" placeholder="Email">
                                                     </div>
                                                     <div class="form-group mb-3">
                                                       <label for="example-password">Password</label>
                                                       <input type="password" id="example-password" class="form-control" value="password">
                                                     </div>
                                                     <div class="form-group mb-3">
-                                                      <label for="example-palaceholder">Placeholder</label>
-                                                      <input type="text" id="example-palaceholder" class="form-control" placeholder="placeholder">
+                                                      <label for="example-palaceholder">ผู้ใช้งาน</label>
+                                                      <input type="text" id="example-palaceholder"value="{{ Auth::user()->username }}" disabled="" class="form-control" placeholder="placeholder">
                                                     </div>
+                                                    <div class="form-group mb-3">
+                                                      <label for="example-palaceholder">เกรดเฉลี่ย(GPA)	</label>
+                                                      <input type="text" id="example-palaceholder"value="{{ Auth::user()->GPA }}" disabled="" class="form-control" placeholder="placeholder">
+                                                    </div> 
+                                                    
+                                                    <input type="text" readonly=""value="{{ Auth::user()->status}}" disabled="" class="form-control" id="example-static" placeholder="Input with helping text" >
                                                   </div> <!-- /.col -->
                                                   <div class="col-md-6">
                                                     <div class="form-group mb-3">
-                                                      <label for="example-helping">Helping text</label>
-                                                      <input type="text" id="example-helping" class="form-control" placeholder="Input with helping text">
+                                                      <label for="example-helping">ที่อยู่</label>
+                                                      <input type="text" id="example-helping"value="{{ Auth::user()->address }}" disabled="" class="form-control" placeholder="Input with helping text">
                                                      
                                                     </div>
                                                     <div class="form-group mb-3">
-                                                      <label for="example-readonly">Readonly</label>
-                                                      <input type="text" id="example-readonly" class="form-control" readonly="" value="Readonly value">
+                                                      <label for="example-readonly">	รหัสไปรษณีย์	</label>
+                                                      <input type="text" id="example-readonly"value="{{ Auth::user()->postcode}}" disabled="" class="form-control" readonly="" value="Readonly value">
                                                     </div>
                                                     <div class="form-group mb-3">
-                                                      <label for="example-disable">Disabled</label>
-                                                      <input type="text" class="form-control" id="example-disable" disabled="" value="Disabled value">
+                                                      <label for="example-disable">คณะ</label>
+                                                      <input type="text" class="form-control"value="{{ Auth::user()->faculty}}" disabled="" id="example-disable" disabled="" value="Disabled value">
                                                     </div>
                                                     <div class="form-group mb-3">
-                                                      <label for="example-static">Static control</label>
-                                                      <input type="text" readonly="" class="form-control-plaintext" id="example-static" value="j@example.com">
+                                                      <label for="example-static">หลักสูตร</label>
+                                                      <input type="text" readonly=""value="{{ Auth::user()->course}}" disabled="" class="form-control" id="example-static" >
                                                     </div>
-                                                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                                      <a href="" class="btn btn-outline-success me-md-2 delete-btn"  type="button">ยืนยันข้อมูล</a>
+                                                    <div class="form-group mb-3">
+                                                      <label for="example-static">เบอร์โทรศัพท์</label>
+                                                      <input type="text" readonly=""value="{{ Auth::user()->telephonenumber}}" disabled="" class="form-control" id="example-static" >
+                                                    </div>
+                                                  
+{{-- /studenthome/updateuser2/{{Auth::user()->id}} --}}
+                                                   
+                                                  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                                    
+                                                      <a href="/studenthome/updateuser2/{{Auth::user()->id}}"name="next" class="btn btn-outline-success me-md-2 success btn2" onclick="return confirm('แน่ใจจะยืนยันตัวตน?')"  type="button">ยืนยันข้อมูล</a>
                                                       &nbsp;&nbsp;
+                                                      {{-- <a href="/studenthome/updateuser2/{{Auth::user()->id}}" class="btn btn-outline-success me-md-2 success edit_employee_form "   type="button">ยืนยันข้อมูล</a> --}}
+                                                      
+                                                    {{-- <a href="/studenthome/updateuser2/{{Auth::user()->id}}" class="btn btn-outline-success me-md-2 success show-alert-delete-box"   type="button">ยืนยันข้อมูล</a> --}}
                                                       <a href="/studenthome/edituser1/{{Auth::user()->id}}"  class="btn btn-outline-warning fe fe-edit fe-16" type="button">แก้ไขข้อมูล</a>
-                                                    </div>
-                                                  </div>
+                                              {{-- </form> --}}
+
+                                              
+                                                  {{-- <button id="btn">Button</button> --}}
+
+                                                      {{-- <script src="index.js"></script> --}}
+                                               
+                                              
+                                               
+                                            </div>  </div>
                                                 </div>
                                               </div>
                                             </div> <!-- / .card -->
                                           </div>
                                         </div>
-                                     
-                                      </div>
+                                    
+                                      </div> 
                                       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-                              <script>
+                                      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+                                      <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+                            
+                                      <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
+                                      <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/js/bootstrap.bundle.min.js'></script>
+                                      <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.10.25/datatables.min.js"></script>
+                                      <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                            
+                            <script type="text/javascript">
+
+// const btn = document.getElementById('btn');
+
+// btn.addEventListener('click', function onClick() {
+//   document.body.style.backgroundColor = 'salmon';
+// });
+
+
+
  $(".delete-btn").click(function(e) {
-            var userId = $(this).data('id');
+             var userId = $(this).data('id');
             e.preventDefault();
-            deleteConfirm(userId);
+             deleteConfirm(userId);
         })
 
         function deleteConfirm(userId) {
@@ -396,28 +448,148 @@
                 showLoaderOnConfirm: true,
                 preConfirm: function() {
                     return new Promise(function(resolve) {
-                        $.ajax({
-                                url: 'index.php',
-                                type: 'GET',
-                                data: 'delete=' + userId,
-                            })
-                            .done(function() {
-                                Swal.fire({
-                                    title: 'success',
-                                    text: 'ยืนยันข้อมูลส่วนตัวสำเร็จ',
-                                    icon: 'success',
-                                }).then(() => {
-                                    document.location.href = '/studenthome';
-                                })
-                            })
-                            .fail(function() {
-                                Swal.fire( 'เกิดความผิดพลาด')
-                                window.location.reload();
-                            });
+                        // $.ajax({
+                        //         // url: '',
+                        //         // type: 'get',
+                        //         // data: 'delete=' + userId,
+                        //     })
+                        //     .done(function() {
+                        //         Swal.fire({
+                        //             title: 'success',
+                        //             text: 'ยืนยันข้อมูลส่วนตัวสำเร็จ',
+                        //             icon: 'success',
+                        //         }).then(() => {
+                        //             document.location.href = '/studenthome';
+                        //         })
+                        //     })
+                        //     .fail(function() {
+                        //         Swal.fire( 'เกิดความผิดพลาด')
+                        //         window.location.reload();
+                        //     });
+                        // $.ajax({
+                        //       type: "GET",
+                        //       dataType: "json",
+                        //       url: '/studenthome/updateuser2',
+                        //       data: {'status': status, 'id': id+ userId},
+                        //       success: function(data){
+                        //         console.log(data.success)
+                        //       }
+                        //   });
                     });
                 },
             });
           }
+          $(function() {
+                      $('.toggle-class').change(function() {
+                          var roles = $(this).prop('checked') == true ? 'student' : 0; 
+                          var id = $(this).data('id'); 
+                           
+                          $.ajax({
+                              type: "GET",
+                              dataType: "json",
+                              url: '/user1',
+                              data: {'role': roles, 'id': id},
+                              success: function(data){
+                                console.log(data.success)
+                              }
+                          });
+                      })
+                    })
+
+
+        
+                    $('.show-alert-delete-box').click(function(event){
+        var form =  $(this).closest("form");
+        var name = $(this).data("name");
+        event.preventDefault();
+        swal({
+            title: "Are you sure you want to delete this record?",
+            text: "If you delete this, it will be gone forever.",
+            icon: "warning",
+            type: "warning",
+            buttons: ["Cancel","Yes!"],
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((willDelete) => {
+            if (willDelete) {
+                form.submit();
+            }
+        });
+    });
+
+
+
+    $(document).on('click', '.deleteIcon', function(e) {
+        e.preventDefault();
+        let id = $(this).attr('id');
+        let csrf = '{{ csrf_token() }}';
+        Swal.fire({
+          title: 'Are you sure?',
+          text: "You won't be able to revert this!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            $.ajax({
+              url: '',
+              method: 'post',
+              data: {
+                id: id,
+                _token: csrf
+              },
+              success: function(response) {
+                console.log(response);
+                Swal.fire(
+                  'Deleted!',
+                  'Your file has been deleted.',
+                  'success'
+                )
+                fetchAllEmployees();
+              }
+            });
+          }
+        })
+      });
+
+
+// update employee ajax request
+$("#edit_employee_form").submit(function(e) {
+        e.preventDefault();
+        const fd = new FormData(this);
+        
+        $("#edit_employee_btn").text('Updating...');
+        $.ajax({
+          url: '',
+          method: 'get',
+          data: fd,
+          cache: false,
+          showCancelButton: true,
+          contentType: false,
+          processData: false,
+          dataType: 'json',
+          success: function(response) {
+            if (response.status == 200) {
+              Swal.fire(
+                'Updated!',
+                'Employee Updated Successfully!',
+                'success'
+              )
+              fetchAllEmployees();
+            }
+            $("#edit_employee_btn").text('Update Employee');
+            $("#edit_employee_form")[0].reset();
+            $("#editEmployeeModal").modal('hide');
+          }
+        });
+      });
+
+
+
+
 
                               </script>
                                   </div>
@@ -591,7 +763,7 @@
                               </div> <br><br>
                               <h2 class="purple-text text-center"><strong>SUCCESS !</strong></h2> <br>
                               <div class="row justify-content-center">
-                                  <div class="col-3"> <img src="https://i.imgur.com/GwStPmg.png" class="fit-image"> </div>
+                                  <div class="col-3"> <img src="" class="fit-image"> </div>
                               </div> <br><br>
                               <div class="row justify-content-center">
                                   <div class="col-7 text-center">
@@ -601,12 +773,12 @@
                           </div>
                       </fieldset>
   
-  
-                  </form>
+                    </form>
               </div>
           </div>
       </div>
   </div>
+ 
   <script>
   
   $(document).ready(function(){

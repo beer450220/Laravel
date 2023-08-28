@@ -12,6 +12,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\registerController;
 use Illuminate\Support\Facades\File;
+use App\Models\test;
 
 class HomeController extends Controller
 {
@@ -819,6 +820,33 @@ $users = registers::select(DB::raw("COUNT(*) as count"), DB::raw("YEAR(created_a
          // $users=DB::table('users')->get();
          
         return view('cooperative.establishment',compact('establishments'));
+        
+    }
+
+
+    public function changeStatus2(Request $request)
+    {
+     // dd();
+        $user = test::find($request->id);
+        $user->role = $request->role;
+        $user->save();
+  
+        return response()->json(['success'=>'Status change successfully.']);
+    }
+
+    public function changeStatus1()
+    {
+        $establishments=DB::table('test')->get();
+        
+        return view('test4',compact('establishments'));
+        
+    }
+
+    public function test6()
+    {
+        $establishments=DB::table('test')->get();
+        
+        return view('test6',compact('establishments'));
         
     }
 }

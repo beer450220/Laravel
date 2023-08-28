@@ -13,8 +13,9 @@ class users extends Model
     public$primarykey="id";
     protected $fillable=[
         'username',
-       
+        'GPA',
         'images',
+        'Status'
     ];
     public function Users(){
         return $this->hasOne(Users::class,'id','name');

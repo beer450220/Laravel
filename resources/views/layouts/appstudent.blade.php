@@ -1,6 +1,6 @@
    
    
-     <!DOCTYPE html>
+
 <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -89,6 +89,7 @@
       <script src='../student/js/dropzone.min.js'></script>
       <script src='../student/js/uppy.min.js'></script>
       <script src='../student/js/quill.min.js'></script>
+      @include('sweetalert::alert')
 
 
       <script>

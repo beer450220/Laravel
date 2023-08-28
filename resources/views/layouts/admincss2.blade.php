@@ -14,15 +14,15 @@
         rel="stylesheet"> --}}
     
    
-    {{-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="font6/css/all.css"> --}}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="font6/css/all.css">
     
     
     
-    {{-- <link href="../admin/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="../admin/css/sb-admin-2.min.css" rel="stylesheet">
     
     <link href="../admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    --}}
+   
     
    
     
@@ -31,8 +31,8 @@
 
     {{-- <script src="../admin/vendor/jquery-easing/jquery.easing.min.js"></script> --}}
     {{-- <script src="../admin/js/sb-admin-2.min.js"></script> --}}
-    {{-- <script src="../admin/vendor/jquery/jquery.min.js"></script> --}}
-    {{-- <script src="../admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script> --}}
+    <script src="../admin/vendor/jquery/jquery.min.js"></script> 
+     <script src="../admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script> 
     
 
   

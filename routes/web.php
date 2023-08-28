@@ -33,9 +33,10 @@ Route::post('/register1/add', [registerController::class,'register2'])->name('re
 Route::get('/establishment', [HomeController::class,'establishment'])->name('establishment');
 Route::get('/cooperative', [HomeController::class,'cooperative'])->name('cooperative');
 
-Route::get('/test4', function () {
-    return view('test4');
-});
+Route::get('/test4', [HomeController::class,'changeStatus1'])->name('changeStatus1') ;
+Route::POST("/test5",[HomeController::class,'changeStatus2'])->name('changeStatus2');
+
+Route::get('/test6', [HomeController::class,'test6'])->name('test6') ;
 
 // Route::resource('register1', registerController::class);
 // {
@@ -49,12 +50,12 @@ Route::get('/test4', function () {
 //     Route::get("/studenthome",[HomeController::class,'userHome'])->name('student.studenthome');
 // });
 /** set active sidebar */
-function set_active($route) {
-    if (is_array($route)) {
-        return in_array(Request::path(), $route) ? 'active' : '';
-    }
-    return Request::path() == $route ? 'active' : '';
-}
+// function set_active($route) {
+//     if (is_array($route)) {
+//         return in_array(Request::path(), $route) ? 'active' : '';
+//     }
+//     return Request::path() == $route ? 'active' : '';
+// }
 
 Auth::routes();
 // student Route
@@ -62,7 +63,11 @@ Route::middleware(['auth','user-role:student'])->group(function()
 {
     Route::get("/studenthome",[HomeController::class,'studentHome'])->name('student.studenthome');
     Route::get("/studenthome/edituser1/{id}",[EditController::class,'edituser1'])->name('edituser1');
-        
+
+    Route::post("/studenthome/updateuser1/{id}",[EditController::class,'updateuser1'])->name('updateuser1');
+
+    Route::get("/studenthome/updateuser2/{id}",[EditController::class,'updateuser2'])->name('updateuser2');
+
 
      Route::get("/studenthome/test",[HomeController::class,'test'])->name('test');
      Route::post("/studenthome/test",[HomeController::class,'test2'])->name('test2');

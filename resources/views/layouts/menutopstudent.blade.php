@@ -23,7 +23,9 @@
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-muted pr-0" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <span class="avatar avatar-sm mt-2">
+           {{ Auth::user()->Student_ID }} 
+           
+           <span class="avatar avatar-sm mt-2">
               <img src="/รูปโปรไฟล์/{{ Auth::user()->images }}" alt="..." class="avatar-img rounded-circle">
               {{-- <img src="" class="img-responsive" style="max-height: 100px; max-width: 100px;" alt="" srcset=""> --}}
            
@@ -36,6 +38,7 @@
                                 {{ session('status') }}
                             </div>
                         @endif
+                        <a class="dropdown-item " href="">{{ Auth::user()->Student_ID }}</a>
                         <a class="dropdown-item " href="">{{ Auth::user()->name }}</a>
             {{-- <a class="dropdown-item" href="#">Profile</a>
             <a class="dropdown-item" href="#">Settings</a>

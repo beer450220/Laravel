@@ -17,6 +17,7 @@ use App\Models\Evaluationdocument;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use RealRashid\SweetAlert\Facades\Alert;
 class EditController extends Controller
 {
    
@@ -1317,7 +1318,7 @@ public function editreport($report_id) {
       //->join('establishment','establishment.id',"=",'users.id')
       //->select('users.*','establishment.*')
       //->get();
-     $Evaluationdocuments=users::find($id);
+     $users=users::find($id);
    // $acceptances=DB::table('acceptance')->first();
     //$establishment=DB::table('establishment')
     // ->join('supervision','supervision.supervision_id')
@@ -1325,9 +1326,99 @@ public function editreport($report_id) {
     // ->select('supervision.*','establishment.*')
    // ->get();
     //dd($acceptances);
-      dd($Evaluationdocuments);
-     return view('student.Edit.edituser1',compact('Evaluationdocuments'));
+     // dd($Evaluationdocuments);
+     return view('student.Edit.edituser1',compact('users'));
      
  }
 
+
+
+ public function   updateuser1(Request $request,$id) {
+    //ตรวจสอบข้อมูล 
+    
+   // dd($request);
+   
+    $request->validate([
+        // 'images' => ['required','mimes:jpg,jpeg,png'],
+        // 'name' => ['required','min:5'],
+        // 'filess' => 'required|mimes:pdf',
+        // 'establishment' => 'required',
+    ],[
+            //'establishment.required' => "กรุณา",
+
+        ]
+    );
+   
+   //dd($request->Status);
+   $post=users::findOrFail($id);
+  
+   if($request->hasFile("images")){
+       if (File::exists("รูปโปรไฟล์/".$post->images)) {
+           File::delete("รูปโปรไฟล์/".$post->images);
+       } 
+       $file=$request->file("images");
+        $post->images=time()."_".$file->getClientOriginalName();
+        $file->move(\public_path("/รูปโปรไฟล์"),$post->images);
+        $request['images']=$post->images;
+     // dd($post);
+   }
+    $post->update
+    ([
+       "GPA" =>$request->GPA,
+        //"establishment"=>$request->establishment,
+       //  "term"=>$request->term,
+       // "annotation"=>$request->annotation,
+         "images"=>$post->images
+        // "presentation"=>$post->presentation,
+        // "appointmenttime"=>$post->appointmenttime,
+       // "Status_acceptance"=>$request->Status_acceptance,
+       // "projects" =>$imageName,
+       // "presentation" =>$image,
+      //  "poster" =>$images,
+       // "projectsummary" =>$images1,
+    ]);
+    
+    
+    return redirect('/studenthome')->with('success', 'แก้ไขข้อมูลสำเร็จ.');
+ }
+
+ public function   updateuser2(Request $request,$id) {
+    //ตรวจสอบข้อมูล 
+    
+   //dd($request);
+   
+    $request->validate([
+        // 'images' => ['required','mimes:jpg,jpeg,png'],
+        // 'name' => ['required','min:5'],
+        // 'filess' => 'required|mimes:pdf',
+        // 'establishment' => 'required',
+    ],[
+            //'establishment.required' => "กรุณา",
+
+        ]
+    );
+   
+   //dd($request->Status);
+   $post=users::findOrFail($id);
+  
+//    if($request->hasFile("images")){
+//        if (File::exists("รูปโปรไฟล์/".$post->images)) {
+//            File::delete("รูปโปรไฟล์/".$post->images);
+//        } 
+//        $file=$request->file("images");
+//         $post->images=time()."_".$file->getClientOriginalName();
+//         $file->move(\public_path("/รูปโปรไฟล์"),$post->images);
+//         $request['images']=$post->images;
+//      // dd($post);
+//    }
+    $post->Status ="ยืนยันตัวตนแล้ว";
+    $post->update
+    ([
+    //    "status" =>$request->"",
+      
+    ]);
+    
+    
+    return redirect('/studenthome')->with('success', 'ยืนยันตัวตนสำเร็จ.');
+ }
 }
