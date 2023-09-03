@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 //use Illuminate\Support\Facades\Hash;
     use Hash;
-    use App\Models\Users;
+    //use App\Models\Users;
 class LoginController extends Controller
 {
     /*
@@ -50,22 +50,22 @@ class LoginController extends Controller
     {
         $input = $request->all();
         // dd($request->password);
-         //dd($request);
+        // dd($request);
         $this->validate($request,[
             // 'username'=>'required|email',
             'username'=>'required',
              'password'=> ('required|min:5'),
-           
+
             // 'password' => Hash::make($request->password)
-        ]); 
+        ]);
         // $passwordToCheck = $input['password']; // รหัสผ่านจากผู้ใช้
         // $hashedPasswordFromDatabase = Users::where('username', $input['username'])->first()->password; // รหัสผ่านที่เก็บในฐานข้อมูล
-        
-        // if (Hash::check($passwordToCheck, $hashedPasswordFromDatabase)){
 
+        // if (Hash::check($passwordToCheck, $hashedPasswordFromDatabase)){
 
         if(auth()->attempt(['username'=>$input["username"], 'password'=>
         ($input['password'])]))
+
 
         //   if(!Hash::check(['username'=>$input["username"], 'password'=>($input['password'])]))
         {
@@ -85,7 +85,7 @@ class LoginController extends Controller
             {
                 return redirect()->route('student.studenthome');
             }
-            
+
         }
         else
         {
@@ -93,6 +93,7 @@ class LoginController extends Controller
             // ->route("login")
             ->with('error','ไม่ถูกต้อง username หรือ password');
         }
+
     }
 }
 //}

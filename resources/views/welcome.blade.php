@@ -23,7 +23,7 @@
         </style>
     </head>
 
-    
+
     <body class="antialiased">
 
 
@@ -33,7 +33,7 @@
                 <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
                   <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
                 </a>
-        
+
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                   <li><a href="/" class="nav-link px-2 text-secondary">หน้าแรก</a></li>
                   <li><a href="/establishment" class="nav-link px-2 text-white">สถานประกอบการ</a></li>
@@ -44,11 +44,11 @@
                   {{-- <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
                   <li><a href="#" class="nav-link px-2 text-white">About</a></li> --}}
                 </ul>
-        
+
                 {{-- <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
                   <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
                 </form> --}}
-        
+
                 <div class="text-end">
                   {{-- <a type="button" href="{{ route('login') }}" class="btn btn-outline-light me-2">Login</a> --}}
                   {{-- <a type="button" href="" class="btn btn-outline-light me-2"data-bs-toggle="modal" data-bs-target="#exampleModal">Login</a> --}}
@@ -76,7 +76,7 @@
                 </div>
             @endif --}}
 
-           
+
 
 
 
@@ -89,12 +89,12 @@
                   </div>
                   <div class="modal-body">
                     <div class="card-body p-5 menu-bar2">
-                            
+
                       <h1 class="fs-4 card-title fw-bold mb-4 text-center">ระบบสหกิจ</h1>
                       <br> <form method="POST" action="{{ route('login') }}"> @csrf
                         <div class=" input-group mb-3">
-                         
-                           
+
+
                           <label class="mb-2 input-group" for="email">ผู้ใช้งาน</label> <br>
                                             <span class="input-group-text bg-warning"><i class="bi bi-person"></i></span>
                                             <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username">
@@ -104,15 +104,15 @@
                                                     <strong>{{ $message }}</strong>
                                                 </span>
                                             @enderror
-                          
+
                         </div>
-        
-                        
-        
+
+
+
                                         <div class=" input-group mb-3">
                           <label class="mb-2 input-group" for="email">รหัสผ่าน</label> <br>
                                             <span class="input-group-text bg-warning"><i class=" bi bi-lock"></i></span>
-                                      
+
                                             <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 
                                             @error('password')
@@ -120,7 +120,7 @@
                                                     <strong>{{ $message }}</strong>
                                                 </span>
                                             @enderror
-                 
+
                             <div class="invalid-feedback">
                               Password is required
                             </div>
@@ -133,28 +133,28 @@
                                 {{ __('Remember Me') }}
                             </label>
                           </div>
-                                            
-                                            
+
+
                           <button type="submit" name="submit" class="btn btn-primary ms-auto text-white bg-dark">
                                             เข้าสู่ระบบ
                           </button>
                         </div>
                                         <div class="d-flex align-items-center">
-                          
+
                                           @if (Route::has('password.request'))
                                           <a class="btn btn-link" href="{{ route('password.request') }}">
                                               {{ __('Forgot Your Password?') }}
                                           </a>
                                       @endif
                           </div>
-        
-        
-                                            
+
+
+
                       </form>
                     </div>
                   </div>
                   <div class="modal-footer">
-                    
+
                   </div>
                 </div>
               </div>
@@ -168,22 +168,23 @@
 
 
 
-    
-        
+
+
               <div class="container h-100 ">
                 <div class="row justify-content-sm-center h-100 ">
                   <div class="col-xxl-5 col-xl-5 col-lg-5 col-md-7 col-sm-9">
                     <div class="text-center my-5">
-                      
+
                     </div>
                     <div class="card shadow-lg">
                               <div class="card-footer py-2 border-0 menu-bartop3">
-                        
+
                                       </div>
                                       <div class="card-body p-5 menu-bar2">
-                            
+
                                         <h1 class="fs-4 card-title fw-bold mb-4 text-center">ระบบสารสนเทศสหกิจศึกษา</h1>
-                                        <br> <form method="POST" action="{{ route('login') }}"> @csrf
+                                        <br>
+                                         <form method="POST" action="{{ route('login') }}"> @csrf
                                           <div class=" input-group mb-3">
                                             @if ($message = Session::get('success'))
                                             <div class="alert alert-success">
@@ -191,9 +192,9 @@
                                             </div>
                                             @endif
                                             @if ($message = Session::get('error'))
-                  
+
                                             <div class=" alert alert-danger alert-dismissible fade show "  role="alert">
-                                              
+
                                               <p>{{ $message }}</p>
                                               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                             </div>
@@ -201,7 +202,7 @@
                                             <label class="mb-2 input-group" for="email">ผู้ใช้งาน</label> <br>
                                                               <span class="input-group-text bg-warning"><i class="bi bi-person"></i></span>
                                                               <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username">
-                  
+
                                                               @error('username')
                                                                   <span class="invalid-feedback" role="alert">
                                                                       <strong>{{ $message }}</strong>
@@ -211,23 +212,23 @@
                                               Email is invalid
                                             </div> -->
                                           </div>
-                          
-                                          
 
-                                          
-                          
+
+
+
+
                                                           <div class=" input-group mb-3">
                                             <label class="mb-2 input-group" for="email">รหัสผ่าน</label> <br>
                                                               <span class="input-group-text bg-warning"><i class=" bi bi-lock"></i></span>
-                                                        
+
                                                               <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" value="{{ old('password') }}" required autocomplete="current-password">
-                  
+
                                                               @error('password')
                                                                   <span class="invalid-feedback" role="alert">
                                                                       <strong>{{ $message }}</strong>
                                                                   </span>
                                                               @enderror
-                                   
+
                                               <div class="invalid-feedback">
                                                 Password is required
                                               </div>
@@ -235,28 +236,29 @@
                                           <div class="d-flex align-items-center">
                                             <div class="form-check">
                                               {{-- <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-                  
+
                                               <label class="form-check-label" for="remember">
                                                   {{ __('Remember Me') }}
                                               </label> --}}
                                             </div>
-                                                              
-                                                              
-                                            <button type="submit" name="submit" class="btn btn-primary ms-auto text-white bg-dark">
+
+
+                                            <button type="submit"  class="btn btn-primary ms-auto text-white bg-dark">
                                                               เข้าสู่ระบบ
                                             </button>
+                                            {{-- name="submit" --}}
                                           </div>
                                                           {{-- <div class="d-flex align-items-center">
-                                            
+
                                                             @if (Route::has('password.request'))
                                                             <a class="btn btn-link" href="{{ route('password.request') }}">
                                                                 {{ __('Forgot Your Password?') }}
                                                             </a>
                                                         @endif
                                             </div> --}}
-                          
-                          
-                                                              
+
+
+
                                         </form>
                                       </div>
                     </div>
@@ -268,9 +270,9 @@
               <div class=" col-sm-8 "> </div>
         <div class="text-end col-4 ">
                                       @if ($message = Session::get('error'))
-                  
+
                                       <div class=" alert alert-danger alert-dismissible fade show "  role="alert">
-                                        
+
                                         <p>{{ $message }}</p>
                                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                       </div>
@@ -279,6 +281,6 @@
                                       @endif
               </div> --}}
 
-                                     
+
     </body>
 </html>
