@@ -62,6 +62,9 @@ Auth::routes();
 Route::middleware(['auth','user-role:student'])->group(function()
 {
     Route::get("/studenthome",[HomeController::class,'studentHome'])->name('student.studenthome');
+
+    Route::get("/personal",[HomeController::class,'personal'])->name('personal');
+
     Route::get("/studenthome/edituser1/{id}",[EditController::class,'edituser1'])->name('edituser1');
 
     Route::post("/studenthome/updateuser1/{id}",[EditController::class,'updateuser1'])->name('updateuser1');
@@ -83,7 +86,7 @@ Route::middleware(['auth','user-role:student'])->group(function()
     Route::post("/studenthome/addregisteruser",[AddController::class,'addregisteruser'])->name('addregisteruser');
 
     Route::post("/studenthome/register",[AddController::class,'sregister2'])->name('sregister2');
-    
+
 
     Route::post('/register1/add', [AddController::class,'register2'])->name('register2');
     Route::get("/studenthome/timeline",[HomeController::class,'timeline'])->name('student.timeline');
@@ -98,7 +101,7 @@ Route::middleware(['auth','user-role:student'])->group(function()
 
 
     Route::get("/studenthome/record",[HomeController::class,'record'])->name('student.record');
-    
+
     Route::get("/studenthome/report",[HomeController::class,'report'])->name('student.report');
     Route::post("/studenthome/addreport",[AddController::class,'addreport'])->name('addreport');
     Route::get("/studenthome/editreport/{report_id}",[EditController::class,'editreport'])->name('editreport');
@@ -107,7 +110,7 @@ Route::middleware(['auth','user-role:student'])->group(function()
 
 
     Route::get("/studenthome/listofteachers",[HomeController::class,'listofteachers'])->name('student.listofteachers');
-    
+
     Route::get("/studenthome/calendar2",[HomeController::class,'calendar2'])->name('student.calendar2');
     Route::get("/studenthome/calendar2confirm",[HomeController::class,'calendar2confirm'])->name('calendar2confirm');
     Route::get("/studenthome/calendar2confirmedit/{id}",[EditController::class,'calendar2confirmedit'])->name('calendar2confirmedit');
@@ -127,7 +130,7 @@ Route::middleware(['auth','user-role:officer'])->group(function()
     Route::get("/officer/establishmentuser1",[HomeController::class,'establishmentuser1'])->name('officer.establishmentuser1');
     Route::post('/officer/establishmentuser1', [AddController::class,'addestablishment'])->name('addestablishment');
     Route::get('/officer/establishmentuser1/{id}', [EditController::class,'editestablishment'])->name('editestablishment');
- // Route::post('/officer/update/{id}', [EditController::class,'updateestablishment'])->name('updateestablishment');   
+ // Route::post('/officer/update/{id}', [EditController::class,'updateestablishment'])->name('updateestablishment');
     Route::post('/officer/update/{id}', [EditController::class,'updateestablishment'])->name('updateestablishment');
     Route::get('/officer/delete/{id}', [EditController::class,'delestablishment'])->name('delestablishment');
     Route::delete('/deleteimage/{id}',[EditController::class,'deleteimage'])->name('deleteimage');
@@ -155,14 +158,14 @@ Route::middleware(['auth','user-role:officer'])->group(function()
     Route::get("/officer/informdetails2",[HomeController::class,'informdetails2']);
     Route::get("/officer/editinformdetails2/{informdetails_id}",[EditController::class,'editinformdetails2'])->name('editinformdetails2');
     Route::post("/officer/updateinformdetails2/{informdetails_id}",[EditController::class,'updateinformdetails2'])->name('updateinformdetails2');
-    
+
     Route::get("/officer/record2",[HomeController::class,'record2']);
 
     Route::get("/officer/experiencereport2",[HomeController::class,'experiencereport2']);
     Route::get("/teacher/editexperiencereport2/{report_id}",[EditController::class,'editexperiencereport2'])->name('editexperiencereport2');
     Route::post("/teacher/updateexperiencereport2/{report_id}",[EditController::class,'updateexperiencereport2'])->name('updateexperiencereport2');
-   
-   
+
+
     Route::get("/officer/assessmentreport2",[HomeController::class,'assessmentreport2']);
     Route::get("/officer/advisor2",[HomeController::class,'advisor2']);
     Route::get("/officer/practice",[HomeController::class,'practice']);
@@ -171,9 +174,9 @@ Route::middleware(['auth','user-role:officer'])->group(function()
     Route::get("/officer/Evaluate",[HomeController::class,'Evaluate']);
     Route::get("/officer/editEvaluate/{supervision_id}",[EditController::class,'editEvaluate'])->name('editEvaluate');
     Route::post("/officer/updateEvaluate/{supervision_id}",[EditController::class,'updateEvaluate'])->name('updateEvaluate');
-   
-    
-    
+
+
+
     Route::get("/officer/Supervise",[HomeController::class,'Supervise']);
     Route::get("/officer/addSupervise",[addController::class,'addSupervise'])->name('addSupervise');
     Route::post("/officer/addSupervise1",[addController::class,'addSupervise1'])->name('addSupervise1');
@@ -192,14 +195,14 @@ Route::middleware(['auth','user-role:officer'])->group(function()
     Route::post("/officer/addsupervision1",[addController::class,'addsupervision1'])->name('addsupervision1');
     Route::get("/officer/editsupervision1/{id}",[EditController::class,'editsupervision1'])->name('editsupervision1');
     Route::post("/officer/updatesupervision1/{id}",[EditController::class,'updatesupervision1'])->name('updatesupervision1');
-   
+
     Route::get('/officer/deletacceptance/{acceptance_id}', [EditController::class,'delacceptance'])->name('delacceptance');
 
     Route::get("/officer/calendar5",[HomeController::class,'calendar5']);
     Route::get("/officer/calendar6",[HomeController::class,'calendar6']);
 
-    
-    
+
+
 
     Route::get("/officer/schedule",[HomeController::class,'schedule']);
 
@@ -207,7 +210,7 @@ Route::middleware(['auth','user-role:officer'])->group(function()
     Route::post("/officer/addschedule1",[addController::class,'addschedule1'])->name('addschedule1');
     Route::get("/officer/editschedule1/{schedule_id}",[EditController::class,'editschedule1'])->name('editschedule1');
     Route::post("/officer/updateschedule1/{schedule_id}",[EditController::class,'updateschedule1'])->name('updateschedule1');
-   
+
     Route::get('/officer/deleschedule1/{schedule_id}', [EditController::class,'delschedule1'])->name('delschedule1');
 
     Route::get("/officer/Evaluationdocuments",[HomeController::class,'Evaluationdocuments']);
@@ -216,7 +219,7 @@ Route::middleware(['auth','user-role:officer'])->group(function()
     Route::post("/officer/addEvaluationdocument",[addController::class,'addEvaluationdocument'])->name('addEvaluationdocument');
     Route::get("/officer/editEvaluationdocument/{Evaluationdocument_id}",[EditController::class,'editEvaluationdocument'])->name('editEvaluationdocument');
     Route::post("/officer/updateEvaluationdocument/{Evaluationdocument_id}",[EditController::class,'updateEvaluationdocument'])->name('updateEvaluationdocument');
-   
+
     Route::get('/officer/deleEvaluationdocument/{Evaluationdocument_id}', [EditController::class,'deleEvaluationdocument'])->name('deleEvaluationdocument');
 
 
@@ -237,7 +240,7 @@ Route::middleware(['auth','user-role:teacher'])->group(function()
 
     Route::get("/teacher/record1",[HomeController::class,'record1'])->name('teacher.record1');
     Route::get("/teacher/listofteachers1",[HomeController::class,'listofteachers1'])->name('teacher.listofteachers1');
-   
+
     Route::get("/teacher/estimate1",[HomeController::class,'estimate1'])->name('teacher.estimate1');
     Route::get("/teacher/addestimate1",[addController::class,'addestimate1'])->name('addestimate1');
     Route::post("/teacher/addestimate",[addController::class,'addestimate'])->name('addestimate');
@@ -250,10 +253,10 @@ Route::middleware(['auth','user-role:teacher'])->group(function()
 
     Route::get("/teacher/register",[HomeController::class,'registeruser1'])->name('registeruser1');
     Route::get("/teacher/viewregisters/{id}",[EditController::class,'viewregisters'])->name('viewregisters');
-    
+
     Route::get("/teacher/advisor1",[HomeController::class,'advisor1'])->name('teacher.advisor1');
     Route::get("/teacher/reportresults1",[HomeController::class,'reportresults1'])->name('teacher.reportresults1');
-    
+
 
 });
 
@@ -264,14 +267,14 @@ Route::middleware(['auth','user-role:teacher'])->group(function()
 Route::middleware(['auth','user-role:admin'])->group(function()
 {
     Route::get("/adminhome",[HomeController::class,'adminHome' ])->name('admin.adminhome');
-    
+
     Route::get("/user",[HomeController::class,'user'])->name('admin.user');
     Route::get("/user/adduser",[registerController::class,'index2'])->name('adduser2');
     Route::post("/user/add",[registerController::class,'adduser'])->name('adduser');
-  
+
     Route::get("/user/edituser/{id}",[HomeController::class,'edituser'])->name('admin.edituser');
     Route::post("/user/updateuser/{id}",[EditController::class,'updateuser'])->name('updateuser');
-    
+
     Route::get("/user1",[HomeController::class,'changeStatus'])->name('changeStatus');
    // Route::get('/status/update', [HomeController::class, 'updateStatus'])->name('update.status');
 });
@@ -282,8 +285,8 @@ Route::controller(BasicController::class)->group(function () {
     Route::get('/addlist', 'addlist_fn');
     Route::post('/addlist', 'postlist');
     Route::get('/deltel/{id}','deltel_fn');
-   
+
     // Route::get('/edit/{id}','edit_fn');
     Route::post('/post_edit', 'post_edit_fn');
-    
+
 });

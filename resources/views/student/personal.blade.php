@@ -272,8 +272,7 @@
                       <!-- progressbar -->
 
                       <ul id="progressbar">
-                        {{-- class="active" --}}
-                        <a  href="/personal"><li  id="account"><strong>ข้อมูลส่วนตัว</strong></li></a>
+                        <a  href="/studenthome"><li class="active" id="account"><strong>ข้อมูลส่วนตัว</strong></li></a>
                         <a  href="/studenthome">  <li id="personal"><strong>สถานประกอบการ</strong></li></a>
                           <a  href="/studenthome">  <li id="payment"><strong>ลงทะเบียน</strong></li></a>
                             <a  href="/studenthome"> <li id="confirm"><strong>รายงานสถานะการเข้าปฏิบัติงาน</strong></li></a>
@@ -281,74 +280,32 @@
                                 <a  href="/studenthome"> <li id="payment"><strong>รายงานผลการปฏิบัติงาน</strong></li></a>
                       </ul>
                       <div class="progress">
-                          {{-- <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div> --}}
+                          <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
                       </div> <br> <!-- fieldsets -->
                       <fieldset>
                           <div class="form-card">
                               <div class="row">
                                   <div class="col-7">
-                                      {{-- <h2 class="fs-title">ข้อมูลส่วนตัว:</h2> --}}
+                                      <h2 class="fs-title col">ข้อมูลส่วนตัว:</h2>
                                   </div>
                                   <div class="col-4">
                                       {{-- <h2 class="steps">ขั้นตอน 1 - 6</h2> --}}
                                   </div>
                               </div>
                               <div class="accordion" id="accordionExample">
-                                  <div class="accordion-item">
-                                    <h2 class="accordion-header" id="headingOne">
-                                      <div class="col-8">
-                                              {{-- <h2 class="steps">ตรวจสอบข้อมูลและทำการยืนยันข้อมูล
-                                                @if(session("success"))
-                                            <div class="alert alert-success col-4">{{session('success')}}
-                                @endif
+                                <div class="accordion-item">
+                                  <h2 class="accordion-header" id="headingOne">
+                                    <div class="col-8">
+                                            <h2 class="steps">ตรวจสอบข้อมูลและทำการยืนยันข้อมูล
+                                              @if(session("success"))
+                                          <div class="alert alert-success col-4">{{session('success')}}
+                              @endif
 
-                                        </h2> --}}
-                                     </h2>
-                                        <div class="col-12">
- {{-- <div class="text-center"> --}}
-                                    <div class=" alert alert-primary  " role="alert">
+                                      </h2>
 
-                                    <div> <h4> ขั้นตอน</h4>
-   </div>
-                                        <b>ขั้นตอนที่ 1 ข้อมูลส่วนตัว:</b> ตรวจสอบข้อมูลและทำการยืนยันข้อมูล <a href="/personal" class="btn-sm btn btn-outline-primary">คลิกที่นี่</a>
-                                       <br><br>
-                                       <b>ขั้นตอนที่ 2 สถานประกอบการ:</b> ให้เลือกสถานประกอบการ <a href="/studenthome" class="btn-sm btn btn-outline-primary">คลิกที่นี่</a>
-                                        <br>
-                                        {{-- &nbsp;&nbsp; --}}
-                                        หลังจากเลือกสถานประกอบการแล้วให้ยืนยันข้อมูลว่าได้สถานประกอบการแล้ว<a href="/studenthome" class="btn-sm btn btn-outline-primary">คลิกที่นี่</a>
-                                        <br><br>
-                                        <b> ขั้นตอนที่ 3 ลงทะเบียน:</b>
+                                  </div>
+                                  </h2>
 
-                                        <br> ให้กรอกข้อมูลนักศึกษา<a href="/studenthome" class="btn-sm btn btn-outline-primary">คลิกที่นี่</a>
-                                        <br><b> อัพโหลดไฟล์เอกสาร </b><a href="/studenthome" class="btn-sm btn btn-outline-primary">คลิกที่นี่</a>
-                                        <br> แบบพิจารณาคุณสมบัตินักศึกษาสหกิจศึกษา(สก01)
-                                        <br> ใบสมัครงานสหกิจศึกษา(สก03)
-                                        <br> แบบคำรองขอหนังสือขอควำมอนุเคราะหรับนักศึกษาสหกิจศึกษา(สก04)
-                                        <br> บัตรชาชน
-                                        <br> บัตรนักศึกษา
-                                        <br> ผลการเรียน
-                                        <br> ประวัติส่วนตัว(resume)
-                                        <br> <b>ประกาศรายชื่อรับฝึกปฏิบัติงานสหกิจศึกษา</b>: <a href="/studenthome" class="btn-sm btn btn-outline-primary">คลิกที่นี่</a>
-                                        <br>
-                                        <br>
-                                        <b> ขั้นตอนที่ 4 รายงานสถานะการเข้าปฏิบัติงาน:</b> ให้อัพโหลดไฟล์เอกสาร
-                                        <br>แบบแจ้งรายละเอียดการปฏิบัติงาน(สก.07) <b>ภายในสัปดาห์แรก</b><a href="/studenthome" class="btn-sm btn btn-outline-primary">คลิกที่นี่</a>
-                                        <br>แบบแจ้งแผนปฏิบัติงานสหกิจศึกษา(สก.08) <b>ภายในสัปดาห์ที่สอง</b><a href="/studenthome" class="btn-sm btn btn-outline-primary">คลิกที่นี่</a>
-                                        <br>แบบแจ้งโครงร่างรายงานการปฏิบัติงานสหกิจศึกษา(สก.09)<b>ภายในสัปดาห์ที่สาม</b><a href="/studenthome" class="btn-sm btn btn-outline-primary">คลิกที่นี่</a>
-                                        <br>
-                                        <br>
-                                        <b> ขั้นตอนที่ 5 นิเทศงาน:</b>
-                                        <br>ตารางนิเทศนักศึกษาฝึกปฏิบัติงานสหกิจศึกษาและยืนยันเวลานัดนิเทศ<a href="/studenthome" class="btn-sm btn btn-outline-primary">คลิกที่นี่</a>
-                                        <br>
-                                        <br>
-                                        <b> ขั้นตอนที่ 6 รายงานผลการปฏิบัติงาน:</b>
-                                        <br>อัพโหลดเอกสารฝึกประสบการณ์<a href="/studenthome" class="btn-sm btn btn-outline-primary">คลิกที่นี่</a>
-                                        <br> รายงานโครงการ
-                                        <br> PowerPoint การนำเสนอ
-                                        <br> Onepage ของโครงการ (โปสเตอร์)
-                                        <br> รายงานสรุปโครงการ(ไม่เกิน 5 หน้า)
-
-                                    </div></div>
                                     {{-- </div> --}}
 
                                     {{-- <div id="collapseOne"  aria-labelledby="headingOne" data-bs-parent="#accordionExample">
@@ -363,14 +320,113 @@
 
                                     <br>
                                     <br>
-                                    {{-- <div class="text-center">
+                                    <div class="text-center">
                                       <img src="/รูปโปรไฟล์/{{ Auth::user()->images }}" class="rounded mx-auto d-block" style="width:200px;height:200px; text-align:center;">
 
-                                    </div> --}}
+                                    </div>
 
                                     <br>
                                     <br>
+                                    <main role="main" class="">
+                                      <div class="container-fluid">
+                                        <div class="row justify-content-center">
+                                          <div class="col-7">
+                                            {{-- <h2 class="page-title">Form elements</h2> --}}
 
+                                            <div class="card shadow mb-4">
+                                              <div class="card-header">
+                                                <strong class="card-title">ข้อมูลรายละเอียดบุคคล</strong>
+                                              </div>
+
+                                              <div class="card-body">
+                                                <div class="row">
+                                                  <div class="col-md-6">
+                                                    <div class="form-group mb-3">
+                                              {{-- <form method="POST" action="{{url('/studenthome/updateuser2/'.Auth::user()->id)}}" enctype="multipart/form-data">
+                                                @csrf --}}
+                                                      <label for="simpleinput">รหัสนักศึกษา</label>
+                                                      <input type="text"value="{{ Auth::user()->Student_ID }}" disabled="" id="simpleinput" class="form-control">
+                                                    </div>
+                                                    <div class="form-group mb-3">
+                                                      <label for="example-email">Email</label>
+                                                      <input type="email" id="example-email"value="{{ Auth::user()->email }}" disabled="" name="example-email" class="form-control" placeholder="Email">
+                                                    </div>
+                                                    <div class="form-group mb-3">
+                                                      <label for="example-password">Password</label>
+                                                      <input type="password" id="example-password" class="form-control" value="password">
+                                                    </div>
+                                                    <div class="form-group mb-3">
+                                                      <label for="example-palaceholder">ผู้ใช้งาน</label>
+                                                      <input type="text" id="example-palaceholder"value="{{ Auth::user()->username }}" disabled="" class="form-control" placeholder="placeholder">
+                                                    </div>
+                                                    <div class="form-group mb-3">
+                                                      <label for="example-palaceholder">เกรดเฉลี่ย(GPA)	</label>
+                                                      <input type="text" id="example-palaceholder"value="{{ Auth::user()->GPA }}" disabled="" class="form-control" placeholder="placeholder">
+                                                    </div>
+
+                                                    <input type="text" readonly=""value="{{ Auth::user()->status}}" disabled="" class="form-control" id="example-static" placeholder="Input with helping text" >
+                                                  </div> <!-- /.col -->
+                                                  <div class="col-md-6">
+                                                    <div class="form-group mb-3">
+                                                      <label for="example-helping">ที่อยู่</label>
+                                                      <input type="text" id="example-helping"value="{{ Auth::user()->address }}" disabled="" class="form-control" placeholder="Input with helping text">
+
+                                                    </div>
+                                                    <div class="form-group mb-3">
+                                                      <label for="example-readonly">	รหัสไปรษณีย์	</label>
+                                                      <input type="text" id="example-readonly"value="{{ Auth::user()->postcode}}" disabled="" class="form-control" readonly="" value="Readonly value">
+                                                    </div>
+                                                    <div class="form-group mb-3">
+                                                      <label for="example-disable">คณะ</label>
+                                                      <input type="text" class="form-control"value="{{ Auth::user()->faculty}}" disabled="" id="example-disable" disabled="" value="Disabled value">
+                                                    </div>
+                                                    <div class="form-group mb-3">
+                                                      <label for="example-static">หลักสูตร</label>
+                                                      <input type="text" readonly=""value="{{ Auth::user()->course}}" disabled="" class="form-control" id="example-static" >
+                                                    </div>
+                                                    <div class="form-group mb-3">
+                                                      <label for="example-static">เบอร์โทรศัพท์</label>
+                                                      <input type="text" readonly=""value="{{ Auth::user()->telephonenumber}}" disabled="" class="form-control" id="example-static" >
+                                                    </div>
+                                                    <div class="form-group mb-3">
+
+                                                    <input type="text" readonly=""value="{{ Auth::user()->telephonenumber}}" disabled="" class="form-control" id="example-static" >
+                                                  </div>
+{{-- /studenthome/updateuser2/{{Auth::user()->id}} --}}
+
+
+
+                                                      {{-- </form> --}}
+
+
+                                                  {{-- <button id="btn">Button</button> --}}
+
+                                                      {{-- <script src="index.js"></script> --}}
+
+
+
+                                            </div>
+
+                                                </div>
+                                                <div class="col-6 text-center"></div>
+
+                                                                <div class="col text-center">
+                                                <div class="d-grid gap-2 d-md-flex   ">
+                                                    <a href="/studenthome"  class="btn btn-outline-primary fe-16" type="button">ย้อนกลับ</a>
+                                                    &nbsp;&nbsp;
+                                                    <a href="/studenthome/updateuser2/{{Auth::user()->id}}"name="next" class="btn btn-outline-success me-md-2 success btn2" onclick="return confirm('แน่ใจจะยืนยันตัวตน?')"  type="button">ยืนยันข้อมูล</a>
+                                                      &nbsp;&nbsp;
+                                                      {{-- <a href="/studenthome/updateuser2/{{Auth::user()->id}}" class="btn btn-outline-success me-md-2 success edit_employee_form "   type="button">ยืนยันข้อมูล</a> --}}
+
+                                                    {{-- <a href="/studenthome/updateuser2/{{Auth::user()->id}}" class="btn btn-outline-success me-md-2 success show-alert-delete-box"   type="button">ยืนยันข้อมูล</a> --}}
+                                                      <a href="/studenthome/edituser1/{{Auth::user()->id}}"  class="btn btn-outline-warning fe fe-edit fe-16" type="button">แก้ไขข้อมูล</a> </div>
+                                                </div>
+                                                    </div>
+                                            </div> <!-- / .card -->
+                                          </div>
+                                        </div>
+
+                                      </div>
                                       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
                                       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
                                       <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
@@ -552,9 +608,68 @@ $("#edit_employee_form").submit(function(e) {
 
                               </script>
                                   </div>
-
+                                  {{-- <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingTwo">
+                                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                       สถานประกอบการ
+                                      </button>
+                                    </h2>
+                                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                      <div class="accordion-body">
+                                        <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                      </div>
+                                    </div>
+                                  </div> --}}
+                                  {{-- <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingThree">
+                                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        ลงทะเบียน
+                                      </button>
+                                    </h2>
+                                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                      <div class="accordion-body">
+                                        <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                      </div>
+                                    </div>
+                                  </div> --}}
                                 </div>
-
+                                {{-- <div class="accordion-item">
+                                  <h2 class="accordion-header" id="headingTwo4">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo4" aria-expanded="false" aria-controls="collapseTwo">
+                                      รายงานสถานะการเข้าปฏิบัติงาน
+                                    </button>
+                                  </h2>
+                                  <div id="collapseTwo4" class="accordion-collapse collapse" aria-labelledby="headingTwo4" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                      <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                    </div>
+                                  </div>
+                                </div> --}}
+                               {{-- <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingTwo5">
+                                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo5" aria-expanded="false" aria-controls="collapseTwo">
+                                      นิเทศงาน
+                                  </button>
+                                </h2>
+                                <div id="collapseTwo5" class="accordion-collapse collapse" aria-labelledby="headingTwo5" data-bs-parent="#accordionExample">
+                                  <div class="accordion-body">
+                                    <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                  </div>
+                                </div>
+                              </div> --}}
+                              {{-- <div class="accordion-item">
+                                  <h2 class="accordion-header" id="headingTwo6">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo6" aria-expanded="false" aria-controls="collapseTwo6">
+                                      รายงานผลการปฏิบัติงาน
+                                    </button>
+                                  </h2>
+                                  <div id="collapseTwo6" class="accordion-collapse collapse" aria-labelledby="headingTwo6" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                      <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                    </div>
+                                  </div>
+                                </div>
+   --}}
                               {{-- <label class="fieldlabels">Email: *</label>
                                <input type="email" name="email" placeholder="Email Id" />
                                <label class="fieldlabels">Username: *</label>

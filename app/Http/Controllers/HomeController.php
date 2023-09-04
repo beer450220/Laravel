@@ -31,15 +31,22 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-  
+
+
+//studentHome
 
 
     public function studentHome()
     {
-        
+
         return view('student.studenthome',["msg"=>"ยินดีต้อนรับนักศึกษา><"]);
     }
-    
+
+    public function personal()
+    {
+        return view('student.personal',["msg"=>"I am Editor role"]);
+    }
+
     public function establishmentuser()
     {
         // $users=DB::table('users')->get();
@@ -49,12 +56,12 @@ class HomeController extends Controller
     }
 
     public function viewestablishmentuser($id) {
-        //ตรวจสอบข้อมูล 
-        
+        //ตรวจสอบข้อมูล
+
         // $establishments=establishment::find($id);
         $establishments=DB::table('establishment')->find($id);
         //  dd($establishments);
-         
+
          return view('student.viewestablishmentuser1',compact('establishments'));
          // return redirect("/welcome")->with('success', 'Company has been created successfully.');
      }
@@ -81,7 +88,7 @@ class HomeController extends Controller
         ->join('users','registers.user_id','users.id')
         ->select('registers.*','users.name')->where('user_id', auth()->id())
         ->paginate(5);
-        
+
         return view('student.register',compact('registers'));
     }
 
@@ -89,7 +96,7 @@ class HomeController extends Controller
     {
         return view('student.acceptancedocument',["msg"=>"I am student role"]);
     }
-    
+
     public function informdetails()
     {
         $informdetails=DB::table('informdetails')
@@ -201,7 +208,7 @@ class HomeController extends Controller
     public function establishmentuser1()
     {
         $establishments=DB::table('establishment')->paginate(5);
-        
+
         return view('officer.establishmentuser1',compact('establishments'),["msg"=>"I am Editor role"]);
     }
 
@@ -218,7 +225,7 @@ dd($request->$name);
                   //   ->orWhere('SurfaceArea','<', 10)
                   //   ->orWhere('LocalName','like','%'.$search_text.'%')
                     ->paginate(2);
-        
+
         // return view('officer.establishmentuser1',compact('establishments'),["msg"=>"I am Editor role"]);
     }
 
@@ -227,12 +234,12 @@ dd($request->$name);
 
 
     public function viewestablishment($id) {
-        //ตรวจสอบข้อมูล 
-        
+        //ตรวจสอบข้อมูล
+
         // $establishments=establishment::find($id);
         $establishments=DB::table('establishment')->find($id);
         //  dd($establishments);
-         
+
          return view('officer.viewestablishmentuser1',compact('establishments'));
          // return redirect("/welcome")->with('success', 'Company has been created successfully.');
      }
@@ -241,7 +248,7 @@ dd($request->$name);
     // public function editestablishmentuser1()
     // {
     //     // $establishments=DB::table('establishment')->paginate(5);
-        
+
     //     return view('officer.editestablishmentuser1');
     // }
 
@@ -254,8 +261,8 @@ dd($request->$name);
         ->join('users','registers.user_id','users.id')
         ->select('registers.*','users.name')
         ->paginate(5);
-    
-        return view('officer.register1',compact('registers'));  
+
+        return view('officer.register1',compact('registers'));
     }
     public function timeline2()
     {
@@ -263,8 +270,8 @@ dd($request->$name);
         ->join('users','timeline.user_id','users.id')
         ->select('timeline.*','users.name')
         ->paginate(5);
-        
-        return view('officer.timeline2',compact('timelines')); 
+
+        return view('officer.timeline2',compact('timelines'));
     }
     public function acceptancedocument1()
     {
@@ -273,7 +280,7 @@ dd($request->$name);
         ->join('establishment','acceptance.establishment_id','establishment.id')
         ->select('acceptance.*','users.name','establishment.address')
         ->paginate(5);
-        return view('officer.acceptancedocument1',compact('acceptances')); 
+        return view('officer.acceptancedocument1',compact('acceptances'));
     }
     public function informdetails2()
     {
@@ -281,37 +288,37 @@ dd($request->$name);
         ->join('users','informdetails.user_id','users.id')
         ->select('informdetails.*','users.name')
         ->paginate(5);
-        return view('officer.informdetails2',compact('informdetails')); 
+        return view('officer.informdetails2',compact('informdetails'));
     }
     public function record2()
     {
-        return view('officer.record2'); 
+        return view('officer.record2');
     }
-    
+
     public function experiencereport2()
     {
         $report=DB::table('report')
         ->join('users','report.user_id','users.id')
         ->select('report.*','users.name')
         ->paginate(5);
-       
-        return view('officer.experiencereport2',compact('report')); 
+
+        return view('officer.experiencereport2',compact('report'));
     }
     public function assessmentreport2()
     {
-        return view('officer.assessmentreport2'); 
+        return view('officer.assessmentreport2');
     }
     public function advisor2()
     {
-        return view('officer.advisor2'); 
+        return view('officer.advisor2');
     }
     public function practice()
     {
-        return view('officer.practice'); 
+        return view('officer.practice');
     }
     public function documents2()
     {
-        return view('officer.documents2'); 
+        return view('officer.documents2');
     }
     public function Evaluate()
     {
@@ -322,7 +329,7 @@ dd($request->$name);
         //->select('supervision.*')
        // ->where('establishment.establishment_id')
         ->paginate(5);
-        return view('officer.Evaluate',compact('supervision')); 
+        return view('officer.Evaluate',compact('supervision'));
     }
 
     public function Supervise()
@@ -331,7 +338,7 @@ dd($request->$name);
         //->join('users','events.user_id','users.id')
         //->select('events.*','users.name')
         ->paginate(5);
-        return view('officer.Supervise',compact('advisors')); 
+        return view('officer.Supervise',compact('advisors'));
     }
     public function supervision()
     {
@@ -339,7 +346,7 @@ dd($request->$name);
         // ->join('users','events.user_id','users.id')
         // ->select('events.*','users.name')
         ->paginate(5);
-        return view('officer.supervision',compact('events')); 
+        return view('officer.supervision',compact('events'));
     }
 
 
@@ -400,14 +407,14 @@ dd($request->$name);
         return view('officer.calendar6',['events' => $events]);
     }
 
-    
+
     public function schedule()
     {
         $schedules=DB::table('schedule')
         // ->join('users','events.user_id','users.id')
         // ->select('events.*','users.name')
         ->paginate(5);
-        return view('officer.schedule',compact('schedules')); 
+        return view('officer.schedule',compact('schedules'));
     }
 
     public function Evaluationdocuments()
@@ -416,9 +423,9 @@ dd($request->$name);
         // ->join('users','events.user_id','users.id')
         // ->select('events.*','users.name')
         ->paginate(5);
-        return view('officer.Evaluationdocuments',compact('evaluationdocuments')); 
+        return view('officer.Evaluationdocuments',compact('evaluationdocuments'));
     }
-    
+
 
 
 
@@ -436,7 +443,7 @@ dd($request->$name);
         // ->join('users','report.user_id','users.id')
         // ->select('report.*','users.name')
         ->paginate(5);
-       
+
         return view('teacher.documents1',compact('documents'));
     }
     public function timeline1()
@@ -489,7 +496,7 @@ dd($request->$name);
         ->paginate(5);
         return view('teacher.reportresults1',compact('report'));
     }
-    
+
     public function registeruser1()
     {
         $registers=DB::table('registers')
@@ -555,7 +562,7 @@ dd($request->$name);
         return view('teacher.calendar',['events' => $events]);
     }
 
-   
+
 
 
 
@@ -573,14 +580,14 @@ dd($request->$name);
                    // ->pluck('count', 'month_name');
                     //->get();
                    // $users=DB::table('registers')
-                   
+
                     //->select(DB::raw("COUNT(*)(created_at)id"))
                    // ->select(DB::raw("COUNT(created_at),id"))
                    // -> whereYear('created_at', date('Y'))
-                   // ->groupBy('created_at') 
+                   // ->groupBy('created_at')
                    // ->pluck('id', 'created_at');
 
-                  // ->groupBy('id')  
+                  // ->groupBy('id')
                    // ->orderBy('created_at','desc')
                    // ->get();
             //      //->paginate(5);
@@ -588,7 +595,7 @@ dd($request->$name);
 
 //  $users = registers::selectraw('MONTH(created_at)as month,COUNT(*) as count')
 //    -> whereYear('created_at', date('Y'))
-//  ->groupBy('month') 
+//  ->groupBy('month')
 //   ->orderBy('month')
 //   ->get();
 
@@ -598,18 +605,18 @@ dd($request->$name);
 //                     ->pluck('count', 'month_name');
 
 // $users = registers::select(DB::raw("COUNT(*) as count"), DB::raw("YEAR_NAME(created_at) as year_name"))
-        
+
 //     ->whereYear('created_at', date('Y'))
 //     ->groupBy(DB::raw("YEAR(created_at)"))
 //     ->pluck('count', 'year_name');
-   
+
 
 
 // $users = registers::select(DB::raw("COUNT(*) as count"), DB::raw("MONTHNAME(created_at) as month_name"))
 // ->whereYear('created_at', date('Y'))
 // ->groupBy(DB::raw("Month(created_at)"))
 // ->pluck('count', 'month_name');
-   
+
 $users = registers::select(DB::raw("COUNT(*) as count"), DB::raw("YEAR(created_at) as year_name"))
     //->whereYear('created_at', date('Y'))
     ->groupBy(DB::raw("YEAR(created_at)"))
@@ -622,14 +629,14 @@ $users = registers::select(DB::raw("COUNT(*) as count"), DB::raw("YEAR(created_a
 // $labels = $users->keys()->map(function ($monthName) {
     //     return ucfirst($monthName);
     // });
-  //dd($users); 
+  //dd($users);
  //year
  //YEAR
        $labels = $users->keys();
         //$data = $users->values();
         $data = $users->values();
         return view('admin.adminhome',compact('users'), compact('labels','data'),["msg"=>"I am Admin role"]);
-        
+
     }
 
     public function user()
@@ -645,7 +652,7 @@ $users = registers::select(DB::raw("COUNT(*) as count"), DB::raw("YEAR(created_a
         // $users = DB::table('users')->where('role', 'student')->get();
         // $users=Users::get();
         return view('admin.user',compact('users'),["msg"=>"I am Admin role"]);
-        
+
     }
 
     public function changeStatus(Request $request)
@@ -653,16 +660,16 @@ $users = registers::select(DB::raw("COUNT(*) as count"), DB::raw("YEAR(created_a
         $user = Users::find($request->id);
         $user->role = $request->role;
         $user->save();
-  
+
         return response()->json(['success'=>'Status change successfully.']);
     }
     public function updateStatus(Request $request)
     {
         dd($request);
-        $product = Users::find($request->id); 
-        $product->role = $request->role; 
-        $product->save(); 
-        return response()->json(['success'=>'Status change successfully.']); 
+        $product = Users::find($request->id);
+        $product->role = $request->role;
+        $product->save();
+        return response()->json(['success'=>'Status change successfully.']);
     }
 
 
@@ -670,7 +677,7 @@ $users = registers::select(DB::raw("COUNT(*) as count"), DB::raw("YEAR(created_a
     {
         $users=Users::find($id);
         return view('admin.edituser',compact('users'),["msg"=>"I am Admin role"]);
-        
+
     }
 
     public function test(Request $request)
@@ -678,7 +685,7 @@ $users = registers::select(DB::raw("COUNT(*) as count"), DB::raw("YEAR(created_a
         // $users=DB::table('users')->get();
         //$users=Users::get();
 
-        if($request->ajax()) {  
+        if($request->ajax()) {
             $data = CrudEvents::whereDate('event_start', '>=', $request->start)
                 ->whereDate('event_end',   '<=', $request->end)
                 ->get(['id', 'event_name', 'event_start', 'event_end']);
@@ -686,7 +693,7 @@ $users = registers::select(DB::raw("COUNT(*) as count"), DB::raw("YEAR(created_a
         }
 
         return view('student.test',["msg"=>"I am student role"]);
-        
+
     }
 
     public function test2(Request $request)
@@ -696,8 +703,8 @@ $users = registers::select(DB::raw("COUNT(*) as count"), DB::raw("YEAR(created_a
 //dd($request);
     // if(!File::isDirectory($path)){
     //     File::makeDirectory($path, 0777, true, true);
-         
-        
+
+
     // }
 //     if($request->hasFile("files")){
 //         $file=$request->file("files");
@@ -705,10 +712,10 @@ $users = registers::select(DB::raw("COUNT(*) as count"), DB::raw("YEAR(created_a
 //         $file->move(\public_path("/fileinformdetails"),$imageName);
 //     }
 //     ([
-      
-         
+
+
 //            "name" =>$request->name,
-          
+
 //       ]);
 //     $path = public_path().'/test'.$request->name ;
 // File::makeDirectory($path, $mode = 0777, true, true);
@@ -727,15 +734,15 @@ $users = registers::select(DB::raw("COUNT(*) as count"), DB::raw("YEAR(created_a
         // curl_setopt($ch, CURLOPT_RETURNTRANSFER,true);
 
         // $result=curl_exec($ch);
-        // curl_exec($ch); 
+        // curl_exec($ch);
         // $line_token = "NnBcVp0RwWJZsbE7GTdjE96g3F68wxz1KANBrOSTf80";
 //    dd($request->message1);
 
 		$request->validate([
 			'message1' => 'required'
-			
-		 
-			
+
+
+
 		]);
 
     ini_set('display_errors', 1);
@@ -746,34 +753,34 @@ $users = registers::select(DB::raw("COUNT(*) as count"), DB::raw("YEAR(created_a
 	$sToken = "QCMCPw8g9sW980Gz3OkyjGA3qQI6mljDIQ581rXgQcs";
 	$sMessage = "มีรายการสั่งซื้อเข้าจ้า....";
     $sMessage .= "มีรายการสั่งซื้อเข้าจ้า....".$request->message1."\n";
-	
-	$chOne = curl_init(); 
-	curl_setopt( $chOne, CURLOPT_URL, "https://notify-api.line.me/api/notify"); 
-	curl_setopt( $chOne, CURLOPT_SSL_VERIFYHOST, 0); 
-	curl_setopt( $chOne, CURLOPT_SSL_VERIFYPEER, 0); 
-	curl_setopt( $chOne, CURLOPT_POST, 1); 
-	curl_setopt( $chOne, CURLOPT_POSTFIELDS, "message=".$sMessage); 
+
+	$chOne = curl_init();
+	curl_setopt( $chOne, CURLOPT_URL, "https://notify-api.line.me/api/notify");
+	curl_setopt( $chOne, CURLOPT_SSL_VERIFYHOST, 0);
+	curl_setopt( $chOne, CURLOPT_SSL_VERIFYPEER, 0);
+	curl_setopt( $chOne, CURLOPT_POST, 1);
+	curl_setopt( $chOne, CURLOPT_POSTFIELDS, "message=".$sMessage);
 	$headers = array( 'Content-type: application/x-www-form-urlencoded', 'Authorization: Bearer '.$sToken.'', );
-	curl_setopt($chOne, CURLOPT_HTTPHEADER, $headers); 
-	curl_setopt( $chOne, CURLOPT_RETURNTRANSFER, 1); 
-	$result = curl_exec( $chOne ); 
+	curl_setopt($chOne, CURLOPT_HTTPHEADER, $headers);
+	curl_setopt( $chOne, CURLOPT_RETURNTRANSFER, 1);
+	$result = curl_exec( $chOne );
     return redirect('/studenthome/test')->with('success', 'สมัครสำเร็จ.');
     // if($result){
     //     $
     // }
-	//Result error 
-	if(curl_error($chOne)) 
-	{ 
-		echo 'error:' . curl_error($chOne); 
-	} 
-	else { 
-		$result_ = json_decode($result, true); 
+	//Result error
+	if(curl_error($chOne))
+	{
+		echo 'error:' . curl_error($chOne);
+	}
+	else {
+		$result_ = json_decode($result, true);
 		echo "status : ".$result_['status']; echo "message : ". $result_['message'];
-	} 
-	curl_close( $chOne ); 
+	}
+	curl_close( $chOne );
    }
 
-  
+
 
     public Model $model;
     public string $field;
@@ -803,9 +810,9 @@ $users = registers::select(DB::raw("COUNT(*) as count"), DB::raw("YEAR(created_a
     public function cooperative()
     {
         return view('cooperative.cooperative',["msg"=>"I am Admin role"]);
-        
+
     }
-   
+
 
     public function establishment()
     {
@@ -818,9 +825,9 @@ $users = registers::select(DB::raw("COUNT(*) as count"), DB::raw("YEAR(created_a
         //->get();
         //  dd($establishments);
          // $users=DB::table('users')->get();
-         
+
         return view('cooperative.establishment',compact('establishments'));
-        
+
     }
 
 
@@ -830,24 +837,27 @@ $users = registers::select(DB::raw("COUNT(*) as count"), DB::raw("YEAR(created_a
         $user = test::find($request->id);
         $user->role = $request->role;
         $user->save();
-  
+
         return response()->json(['success'=>'Status change successfully.']);
     }
 
     public function changeStatus1()
     {
         $establishments=DB::table('test')->get();
-        
+
         return view('test4',compact('establishments'));
-        
+
     }
 
     public function test6()
     {
         $establishments=DB::table('test')->get();
-        
+
         return view('test6',compact('establishments'));
-        
+
     }
+
+
+
 }
 ?>
