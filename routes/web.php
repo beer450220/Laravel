@@ -64,12 +64,15 @@ Route::middleware(['auth','user-role:student'])->group(function()
     Route::get("/studenthome",[HomeController::class,'studentHome'])->name('student.studenthome');
 
     Route::get("/personal",[HomeController::class,'personal'])->name('personal');
+    Route::get("/Studentinformation",[HomeController::class,'Student'])->name('Student');
 
     Route::get("/studenthome/edituser1/{id}",[EditController::class,'edituser1'])->name('edituser1');
 
     Route::post("/studenthome/updateuser1/{id}",[EditController::class,'updateuser1'])->name('updateuser1');
 
     Route::get("/studenthome/updateuser2/{id}",[EditController::class,'updateuser2'])->name('updateuser2');
+
+    Route::get("/studenthome/establishmentstatus/{id}",[EditController::class,'establishmentstatus'])->name('establishmentstatus');
 
 
      Route::get("/studenthome/test",[HomeController::class,'test'])->name('test');

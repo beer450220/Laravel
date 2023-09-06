@@ -47,12 +47,21 @@ class HomeController extends Controller
         return view('student.personal',["msg"=>"I am Editor role"]);
     }
 
+
+    public function  Student()
+    {
+        return view('student.Studentinformation',);
+    }
+
     public function establishmentuser()
     {
         // $users=DB::table('users')->get();
         $users=DB::table('establishment')->paginate(5);
         // $users=users::paginate(5);
-        return view('student.establishmentuser',compact('users'));
+        $establishments=DB::table('establishment') ->orderBy('name','desc')
+
+        ->paginate(6);
+        return view('student.establishmentuser',compact('users','establishments'));
     }
 
     public function viewestablishmentuser($id) {

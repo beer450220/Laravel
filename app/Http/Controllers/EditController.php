@@ -20,36 +20,36 @@ use Illuminate\Support\Facades\File;
 use RealRashid\SweetAlert\Facades\Alert;
 class EditController extends Controller
 {
-   
-    
+
+
     public function editestablishment($id) {
-        //ตรวจสอบข้อมูล 
-        
+        //ตรวจสอบข้อมูล
+
         // $establishments=establishment::find($id);
         $establishments=DB::table('establishment')->find($id);
         //  dd($establishments);
-         
+
          return view('officer.editestablishmentuser1',compact('establishments'));
          // return redirect("/welcome")->with('success', 'Company has been created successfully.');
      }
 
-    
+
 
      public function editregisteruser($id) {
-        //ตรวจสอบข้อมูล 
-        
+        //ตรวจสอบข้อมูล
+
         // $establishments=establishment::find($id);
         $establishments=DB::table('registers')->find($id);
         //  dd($establishments);
-         
+
          return view('student.Edit.editregister',compact('establishments'));
          // return redirect("/welcome")->with('success', 'Company has been created successfully.');
      }
 
-   
+
      public function   updateestablishment(Request $request,$id) {
-        //ตรวจสอบข้อมูล 
-        
+        //ตรวจสอบข้อมูล
+
         // $establishments=establishment::find($id);
         // $establishments=DB::table('establishment')->find($id);
         //  dd($id,$request);
@@ -95,17 +95,17 @@ class EditController extends Controller
 
 
      public function delestablishment($id) {
-        //ตรวจสอบข้อมูล 
-        
+        //ตรวจสอบข้อมูล
+
         // $establishments=establishment::find($id);
         // DB::table('establishment')->where('id',$id)->delete();
-         
+
         $posts=establishment::findOrFail($id);
 
          if (File::exists("image/".$posts->images)) {
              File::delete("image/".$posts->images);
          }
-        
+
         //  dd($posts);
          $posts->delete();
         //  return view('officer.editestablishmentuser1',compact('establishments'));
@@ -127,16 +127,16 @@ class EditController extends Controller
         $images=establishment::findOrFail($id)->images;
         if (File::exists("/image".$images)) {
            File::delete("/image".$images);
-       } 
+       }
        return back();
 }
 
 
 public function   updateregisteruser(Request $request,$id) {
-    //ตรวจสอบข้อมูล 
-    
-    
-   
+    //ตรวจสอบข้อมูล
+
+
+
     $request->validate([
         // 'images' => ['required','mimes:jpg,jpeg,png'],
         // 'name' => ['required','min:5'],
@@ -169,23 +169,23 @@ public function   updateregisteruser(Request $request,$id) {
         "filess"=>$request->filess,
         "filess"=>$post->filess,
     ]);
-    
+
     return redirect('/studenthome/register')->with('success', 'แก้ไขข้อมูลสำเร็จ.');
  }
 
 
  public function delregister($id) {
-    //ตรวจสอบข้อมูล 
-    
+    //ตรวจสอบข้อมูล
+
     // $establishments=establishment::find($id);
     // DB::table('establishment')->where('id',$id)->delete();
-     
+
     $posts=registers::findOrFail($id);
 
      if (File::exists("file/".$posts->filess)) {
          File::delete("file/".$posts->filess);
      }
-    
+
     //  dd($posts);
      $posts->delete();
     //  return view('officer.editestablishmentuser1',compact('establishments'));
@@ -198,21 +198,21 @@ public function   updateregisteruser(Request $request,$id) {
  #informdetails
 
  public function editinformdetails($informdetails_id) {
-    //ตรวจสอบข้อมูล 
+    //ตรวจสอบข้อมูล
     //dd($informdetails_id);
     $informdetails=informdetails::find($informdetails_id);
     //$informdetails=DB::table('informdetails')->where('idinformdetails', $idinformdetails)->find($idinformdetails);
     //dd($request->informdetails_id);
-     
+
      return view('student.Edit.editinformdetails',compact('informdetails'));
-     
+
  }
 
  public function   updateinformdetails(Request $request,$informdetails_id) {
-    //ตรวจสอบข้อมูล 
-    
+    //ตรวจสอบข้อมูล
+
    // dd($request);
-   
+
     $request->validate([
         // 'images' => ['required','mimes:jpg,jpeg,png'],
         // 'name' => ['required','min:5'],
@@ -245,25 +245,25 @@ public function   updateregisteruser(Request $request,$id) {
         "files"=>$request->files,
         "files"=>$post->files,
     ]);
-    
-    
+
+
     return redirect('/studenthome/informdetails')->with('success', 'แก้ไขข้อมูลสำเร็จ.');
  }
 
 
 
  public function delinformdetails($informdetails_id) {
-    //ตรวจสอบข้อมูล 
-    
+    //ตรวจสอบข้อมูล
+
     // $establishments=establishment::find($id);
     // DB::table('establishment')->where('id',$id)->delete();
-     
+
     $posts=informdetails::findOrFail($informdetails_id);
 
      if (File::exists("fileinformdetails/".$posts->files)) {
          File::delete("fileinformdetails/".$posts->files);
      }
-    
+
     //  dd($posts);
      $posts->delete();
     //  return view('officer.editestablishmentuser1',compact('establishments'));
@@ -275,21 +275,21 @@ public function   updateregisteruser(Request $request,$id) {
 #report
 
 public function editreport($report_id) {
-    //ตรวจสอบข้อมูล 
+    //ตรวจสอบข้อมูล
     //dd($report_id);
     $report=report::find($report_id);
     //$informdetails=DB::table('informdetails')->where('idinformdetails', $idinformdetails)->find($idinformdetails);
     //dd($request->informdetails_id);
-     
+
      return view('student.Edit.editreport',compact('report'));
-     
+
  }
 
  public function   updatereport(Request $request,$report_id) {
-    //ตรวจสอบข้อมูล 
-    
+    //ตรวจสอบข้อมูล
+
     //dd($request);
-   
+
     $request->validate([
         // 'images' => ['required','mimes:jpg,jpeg,png'],
         // 'name' => ['required','min:5'],
@@ -306,7 +306,7 @@ public function editreport($report_id) {
     if($request->hasFile("projects")){
         if (File::exists("รายงานโครงการ/".$post->projects)) {
             File::delete("รายงานโครงการ/".$post->projects);
-        } 
+        }
         $file=$request->file("projects");
          $post->projects=time()."_".$file->getClientOriginalName();
          $file->move(\public_path("/รายงานโครงการ"),$post->projects);
@@ -359,19 +359,19 @@ public function editreport($report_id) {
       //  "poster" =>$images,
        // "projectsummary" =>$images1,
     ]);
-    
-    
+
+
     return redirect('/studenthome/report')->with('success', 'แก้ไขข้อมูลสำเร็จ.');
  }
 
 
 
  public function delreport($report_id) {
-    //ตรวจสอบข้อมูล 
-    
+    //ตรวจสอบข้อมูล
+
     // $establishments=establishment::find($id);
     // DB::table('establishment')->where('id',$id)->delete();
-     
+
     $posts=report::findOrFail($report_id);
 
      if (File::exists("รายงานโครงการ/".$posts->projects)) {
@@ -397,12 +397,12 @@ public function editreport($report_id) {
 #calendar2confirm
 
  public function calendar2confirmedit($id) {
-    //ตรวจสอบข้อมูล 
-    
+    //ตรวจสอบข้อมูล
+
     // $establishments=establishment::find($id);
     $events=DB::table('events')->find($id);
     //  dd($establishments);
-     
+
      return view('student.edit.calendar2confirmedit',compact('events'));
      // return redirect("/welcome")->with('success', 'Company has been created successfully.');
  }
@@ -410,10 +410,10 @@ public function editreport($report_id) {
 
 
  public function   updatecalendar2confirm(Request $request,$id) {
-    //ตรวจสอบข้อมูล 
-    
+    //ตรวจสอบข้อมูล
+
    // dd($request);
-   
+
     $request->validate([
         // 'images' => ['required','mimes:jpg,jpeg,png'],
         // 'name' => ['required','min:5'],
@@ -445,8 +445,8 @@ public function editreport($report_id) {
       //  "poster" =>$images,
        // "projectsummary" =>$images1,
     ]);
-    
-    
+
+
     return redirect('/studenthome/calendar2confirm')->with('success', 'ยืนยันข้อมูลสำเร็จ.');
  }
 
@@ -455,17 +455,17 @@ public function editreport($report_id) {
 # teacher
 
  public function viewregisters($id) {
-    //ตรวจสอบข้อมูล 
-    
+    //ตรวจสอบข้อมูล
+
     // $establishments=establishment::find($id);
     $registers=DB::table('registers')->find($id);
     //  dd($establishments);
-     
+
      return view('teacher.viewregister',compact('registers'));
-    
+
  }
  public function  viewinformdetails1($informdetails_id) {
-    //ตรวจสอบข้อมูล 
+    //ตรวจสอบข้อมูล
     // $informdetails=report::find($informdetails_id)->join('users','informdetails.user_id','users.id')
     // ->select('informdetails.*','users.name');
   //  $informdetails=informdetails::find($informdetails_id);
@@ -475,14 +475,14 @@ public function editreport($report_id) {
     // ->find($informdetails_id);
     ->first();
      //dd($informdetails);
-     
+
      return view('teacher.viewinformdetails1',compact('informdetails'));
-     
+
  }
 
 
  public function editestimate1($supervision_id) {
-    //ตรวจสอบข้อมูล 
+    //ตรวจสอบข้อมูล
     //$users=DB::table('users')
       //->where('role',"student")
       //->join('establishment','establishment.id',"=",'users.id')
@@ -498,14 +498,14 @@ public function editreport($report_id) {
     //dd($establishment);
      // dd($supervisions);
      return view('teacher.edit.editestimate1', compact('supervisions'),compact('establishment'));
-    
+
  }
 
  public function   updateestimate1(Request $request,$supervision_id) {
-    //ตรวจสอบข้อมูล 
-    
+    //ตรวจสอบข้อมูล
+
     //dd($request);
-   
+
     $request->validate([
         // 'images' => ['required','mimes:jpg,jpeg,png'],
         // 'name' => ['required','min:5'],
@@ -527,7 +527,7 @@ public function editreport($report_id) {
    if($request->hasFile("filess")){
        if (File::exists("ไฟล์เอกสารประเมิน(สก.12)/".$post->filess)) {
            File::delete("ไฟล์เอกสารประเมิน(สก.12)/".$post->filess);
-       } 
+       }
        $file=$request->file("filess");
         $post->filess=time()."_".$file->getClientOriginalName();
         $file->move(\public_path("/ไฟล์เอกสารประเมิน(สก.12)"),$post->filess);
@@ -549,15 +549,15 @@ public function editreport($report_id) {
       //  "poster" =>$images,
        // "projectsummary" =>$images1,
     ]);
-    
-    
+
+
     return redirect('/teacher/estimate1')->with('success', 'ยืนยันข้อมูลสำเร็จ.');
  }
 
- 
+
  public function viwetimeline($timeline_id) {
-    //ตรวจสอบข้อมูล 
-        
+    //ตรวจสอบข้อมูล
+
     // $establishments=establishment::find($id);
     $timelines=DB::table('timeline')
     //->get();
@@ -568,26 +568,26 @@ public function editreport($report_id) {
      ->join('registers','timeline.register_id','registers.id')
      ->join('report','timeline.report_id','report.report_id')
      ->join('informdetails','timeline.informdetails_id','informdetails.informdetails_id')
-    
+
      ->select('timeline.*','users.name','registers.Status'
      ,'report.Status_report','informdetails.Status_informdetails')
      //->where('user_id')
-     
+
      //->paginate(5);
      ->where('timeline_id',$timeline_id)
     // ->first();
        ->get();
     // dd($timelines);
-     
+
      return view('teacher.viwe.viwetimeline',compact('timelines'));
-    
+
  }
 
  ##officer
- 
- 
+
+
  public function editexperiencereport2($report_id) {
-    //ตรวจสอบข้อมูล 
+    //ตรวจสอบข้อมูล
     //$users=DB::table('users')
       //->where('role',"student")
       //->join('establishment','establishment.id',"=",'users.id')
@@ -603,14 +603,14 @@ public function editreport($report_id) {
    // dd($reports);
      // dd($supervisions);
      return view('officer.edit.editexperiencereport2',compact('reports'));
-    
+
  }
 
  public function   updateexperiencereport2(Request $request,$report_id) {
-    //ตรวจสอบข้อมูล 
-    
+    //ตรวจสอบข้อมูล
+
     //dd($request);
-   
+
     $request->validate([
         // 'images' => ['required','mimes:jpg,jpeg,png'],
         // 'name' => ['required','min:5'],
@@ -631,23 +631,23 @@ public function editreport($report_id) {
    //$post->Status ="รอตรวจสอบ";
 
     $post->update
-  
+
     ([
-        
+
        "annotation" =>$request->annotation,
         //"establishment"=>$request->establishment,
          "Status_report"=>$request->Status_report,
-       
+
     ]);
      // dd($request);
-    
+
     return redirect('/officer/experiencereport2')->with('success', 'ยืนยันข้อมูลสำเร็จ.');
  }
 
 
 
  public function editEvaluate($supervision_id) {
-    //ตรวจสอบข้อมูล 
+    //ตรวจสอบข้อมูล
     //$users=DB::table('users')
       //->where('role',"student")
       //->join('establishment','establishment.id',"=",'users.id')
@@ -663,14 +663,14 @@ public function editreport($report_id) {
    // dd($reports);
      // dd($supervisions);
      return view('officer.edit.editEvaluate',compact('supervisions'));
-    
+
  }
 
  public function   updateEvaluate(Request $request,$supervision_id) {
-    //ตรวจสอบข้อมูล 
-    
+    //ตรวจสอบข้อมูล
+
     //dd($request);
-   
+
     $request->validate([
         // 'images' => ['required','mimes:jpg,jpeg,png'],
         // 'name' => ['required','min:5'],
@@ -691,22 +691,22 @@ public function editreport($report_id) {
    //$post->Status ="รอตรวจสอบ";
 
     $post->update
-  
+
     ([
-        
+
        "annotation" =>$request->annotation,
         //"establishment"=>$request->establishment,
          "Status_supervision"=>$request->Status_supervision,
-       
+
     ]);
      // dd($request);
-    
+
     return redirect('/officer/Evaluate')->with('success', 'ยืนยันข้อมูลสำเร็จ.');
  }
 
 
  public function editinformdetails2($informdetails_id) {
-    //ตรวจสอบข้อมูล 
+    //ตรวจสอบข้อมูล
     //$users=DB::table('users')
       //->where('role',"student")
       //->join('establishment','establishment.id',"=",'users.id')
@@ -722,13 +722,13 @@ public function editreport($report_id) {
     dd($informdetails);
      // dd($supervisions);
      return view('officer.edit.editinformdetails2',compact('informdetails'));
-     
+
  }
  public function   updateinformdetails2(Request $request,$informdetails_id) {
-    //ตรวจสอบข้อมูล 
-    
+    //ตรวจสอบข้อมูล
+
    // dd($request);
-   
+
     $request->validate([
         // 'images' => ['required','mimes:jpg,jpeg,png'],
         // 'name' => ['required','min:5'],
@@ -749,16 +749,16 @@ public function editreport($report_id) {
    //$post->Status ="รอตรวจสอบ";
 
     $post->update
-  
+
     ([
-        
+
        "annotation" =>$request->annotation,
         //"establishment"=>$request->establishment,
          "Status_informdetails"=>$request->Status_informdetails,
-       
+
     ]);
      // dd($request);
-    
+
     return redirect('/officer/informdetails2')->with('success', 'ยืนยันข้อมูลสำเร็จ.');
  }
 
@@ -766,7 +766,7 @@ public function editreport($report_id) {
 
 
  public function editregister1($_id) {
-    //ตรวจสอบข้อมูล 
+    //ตรวจสอบข้อมูล
     //$users=DB::table('users')
       //->where('role',"student")
       //->join('establishment','establishment.id',"=",'users.id')
@@ -782,13 +782,13 @@ public function editreport($report_id) {
    // dd($reports);
      // dd($supervisions);
      return view('officer.edit.editregister1',compact('registers'));
-     
+
  }
  public function   updateregister1(Request $request,$id) {
-    //ตรวจสอบข้อมูล 
-    
+    //ตรวจสอบข้อมูล
+
    // dd($request);
-   
+
     $request->validate([
         // 'images' => ['required','mimes:jpg,jpeg,png'],
         // 'name' => ['required','min:5'],
@@ -809,22 +809,22 @@ public function editreport($report_id) {
    //$post->Status ="รอตรวจสอบ";
 
     $post->update
-  
+
     ([
-        
+
        "annotation" =>$request->annotation,
         //"establishment"=>$request->establishment,
          "Status_registers"=>$request->Status_registers,
-       
+
     ]);
      // dd($request);
-    
+
     return redirect('/officer/register1')->with('success', 'ยืนยันข้อมูลสำเร็จ.');
  }
 
  public function viwetimeline2($timeline_id) {
-    //ตรวจสอบข้อมูล 
-        
+    //ตรวจสอบข้อมูล
+
     // $establishments=establishment::find($id);
     $timelines=DB::table('timeline')
     //->get();
@@ -835,22 +835,22 @@ public function editreport($report_id) {
      ->join('registers','timeline.register_id','registers.id')
      ->join('report','timeline.report_id','report.report_id')
      ->join('informdetails','timeline.informdetails_id','informdetails.informdetails_id')
-    
+
      ->select('timeline.*','users.name','registers.Status_registers'
      ,'report.Status_report','informdetails.Status_informdetails')
      //->where('user_id')
-     
+
      //->paginate(5);
      ->where('timeline_id',$timeline_id)
     // ->first();
        ->get();
     // dd($timelines);
-     
+
      return view('officer.viwe.viwetimeline',compact('timelines'));
-    
+
  }
  public function editacceptance($acceptance_id) {
-    //ตรวจสอบข้อมูล 
+    //ตรวจสอบข้อมูล
     //$users=DB::table('users')
       //->where('role',"student")
       //->join('establishment','establishment.id',"=",'users.id')
@@ -866,14 +866,14 @@ public function editreport($report_id) {
     //dd($acceptances);
      // dd($supervisions);
      return view('officer.edit.editacceptancedocument1',compact('acceptances'));
-     
+
  }
- 
+
  public function   updateacceptance(Request $request,$acceptance_id) {
-    //ตรวจสอบข้อมูล 
-    
+    //ตรวจสอบข้อมูล
+
     ///dd($request);
-   
+
     $request->validate([
         // 'images' => ['required','mimes:jpg,jpeg,png'],
         // 'name' => ['required','min:5'],
@@ -895,7 +895,7 @@ public function editreport($report_id) {
    if($request->hasFile("filess")){
        if (File::exists("ไฟล์เอกสารตอบรับนักศึกษา(สก.02)/".$post->filess)) {
            File::delete("ไฟล์เอกสารตอบรับนักศึกษา(สก.02)/".$post->filess);
-       } 
+       }
        $file=$request->file("filess");
         $post->filess=time()."_".$file->getClientOriginalName();
         $file->move(\public_path("/ไฟล์เอกสารตอบรับนักศึกษา(สก.02)"),$post->filess);
@@ -917,22 +917,22 @@ public function editreport($report_id) {
       //  "poster" =>$images,
        // "projectsummary" =>$images1,
     ]);
-    
-    
+
+
     return redirect('/officer/acceptancedocument1')->with('success', 'ยืนยันข้อมูลสำเร็จ.');
  }
  public function delacceptance($acceptance_id) {
-    //ตรวจสอบข้อมูล 
+    //ตรวจสอบข้อมูล
     //dd();
     // $establishments=establishment::find($id);
     // DB::table('establishment')->where('id',$id)->delete();
-     
+
     $posts=acceptance::findOrFail($acceptance_id);
 
      if (File::exists("ไฟล์เอกสารตอบรับนักศึกษา(สก.02)/".$posts->filess)) {
          File::delete("ไฟล์เอกสารตอบรับนักศึกษา(สก.02)/".$posts->filess);
      }
-    
+
     //  dd($posts);
      $posts->delete();
     //  return view('officer.editestablishmentuser1',compact('establishments'));
@@ -941,11 +941,11 @@ public function editreport($report_id) {
 
 
 
- 
+
 
 
  public function editSupervise($advisor_id) {
-    //ตรวจสอบข้อมูล 
+    //ตรวจสอบข้อมูล
     //$users=DB::table('users')
       //->where('role',"student")
       //->join('establishment','establishment.id',"=",'users.id')
@@ -961,14 +961,14 @@ public function editreport($report_id) {
     //dd($acceptances);
      // dd($supervisions);
      return view('officer.edit.editSupervise',compact('advisors'));
-     
+
  }
 
  public function   updateSupervise(Request $request,$advisor_id) {
-    //ตรวจสอบข้อมูล 
-    
+    //ตรวจสอบข้อมูล
+
     ///dd($request);
-   
+
     $request->validate([
         // 'images' => ['required','mimes:jpg,jpeg,png'],
         // 'name' => ['required','min:5'],
@@ -987,44 +987,44 @@ public function editreport($report_id) {
    $post=advisor::findOrFail($advisor_id);
   // $post->user_id = Auth::user()->id;
   // $post->Status ="รอตรวจสอบ";
-  
+
      // dd($post);
-   
+
     $post->update
     ([
        "name" =>$request->name,
-        
+
          "course"=>$request->course,
         "faculty"=>$request->faculty,
-        
+
     ]);
-    
-    
+
+
     return redirect('/officer/Supervise')->with('success', 'ยืนยันข้อมูลสำเร็จ.');
  }
 
  public function delSupervise($advisor_id) {
-    //ตรวจสอบข้อมูล 
+    //ตรวจสอบข้อมูล
     //dd();
     // $establishments=establishment::find($id);
     // DB::table('establishment')->where('id',$id)->delete();
-     
+
     $posts=advisor::findOrFail($advisor_id);
     //  dd($posts);
      $posts->delete();
     //  return view('officer.editestablishmentuser1',compact('establishments'));
      return redirect()->back()->with('success1', 'ลบข้อมูลสำเร็จ.');
  }
- 
+
 
  public function editsupervision1($id) {
-    //ตรวจสอบข้อมูล 
+    //ตรวจสอบข้อมูล
     //$users=DB::table('users')
       //->where('role',"student")
       //->join('establishment','establishment.id',"=",'users.id')
       //->select('users.*','establishment.*')
-      //->get();  
-      
+      //->get();
+
      $supervisions=Event::find($id);
    // $acceptances=DB::table('acceptance')->first();
     //$establishment=DB::table('establishment')
@@ -1035,14 +1035,14 @@ public function editreport($report_id) {
   //dd($supervisions);
      // dd($supervisions);
      return view('officer.edit.editsupervision',compact('supervisions'));
-     
+
  }
 
  public function   updatesupervision1(Request $request,$id) {
-    //ตรวจสอบข้อมูล 
-    
+    //ตรวจสอบข้อมูล
+
     //dd($request);
-   
+
     $request->validate([
         // 'images' => ['required','mimes:jpg,jpeg,png'],
         // 'name' => ['required','min:5'],
@@ -1061,9 +1061,9 @@ public function editreport($report_id) {
    $post=Event::findOrFail($id);
   // $post->user_id = Auth::user()->id;
   // $post->Status ="รอตรวจสอบ";
-  
+
      // dd($post);
-   
+
     $post->update
     ([
        "term" =>$request->term,
@@ -1071,21 +1071,21 @@ public function editreport($report_id) {
          "start"=>$request->start,
         "end"=>$request->end,
         "year"=>$request->year,
-        
+
     ]);
-    
-    
+
+
     return redirect('/officer/supervision')->with('success', 'ยืนยันข้อมูลสำเร็จ.');
  }
 
  public function editschedule1($schedule_id) {
-    //ตรวจสอบข้อมูล 
+    //ตรวจสอบข้อมูล
     //$users=DB::table('users')
       //->where('role',"student")
       //->join('establishment','establishment.id',"=",'users.id')
       //->select('users.*','establishment.*')
-      //->get();  
-      
+      //->get();
+
      $schedules=schedule::find($schedule_id);
    // $acceptances=DB::table('acceptance')->first();
     //$establishment=DB::table('establishment')
@@ -1096,15 +1096,15 @@ public function editreport($report_id) {
   //dd($supervisions);
      // dd($supervisions);
      return view('officer.edit.editschedule',compact('schedules'));
-     
+
  }
 
 
  public function   updateschedule1(Request $request,$schedule_id) {
-    //ตรวจสอบข้อมูล 
-    
+    //ตรวจสอบข้อมูล
+
     //dd($request);
-   
+
     $request->validate([
         // 'images' => ['required','mimes:jpg,jpeg,png'],
         // 'name' => ['required','min:5'],
@@ -1123,9 +1123,9 @@ public function editreport($report_id) {
    $post=schedule::findOrFail($schedule_id);
   // $post->user_id = Auth::user()->id;
   // $post->Status ="รอตรวจสอบ";
-  
+
      // dd($post);
-   
+
     $post->update
     ([
        "term" =>$request->term,
@@ -1133,22 +1133,22 @@ public function editreport($report_id) {
          "start"=>$request->start,
         "end"=>$request->end,
         "year"=>$request->year,
-        
+
     ]);
-    
-    
+
+
     return redirect('/officer/schedule')->with('success', 'ยืนยันข้อมูลสำเร็จ.');
  }
 
  public function delschedule1($schedule_id) {
-    //ตรวจสอบข้อมูล 
-    
+    //ตรวจสอบข้อมูล
+
     // $establishments=establishment::find($id);
     // DB::table('establishment')->where('id',$id)->delete();
-     
+
     $posts=schedule::findOrFail($schedule_id);
 
-    
+
     //  dd($posts);
      $posts->delete();
     //  return view('officer.editestablishmentuser1',compact('establishments'));
@@ -1157,7 +1157,7 @@ public function editreport($report_id) {
 
 
  public function editEvaluationdocument($Evaluationdocument_id) {
-    //ตรวจสอบข้อมูล 
+    //ตรวจสอบข้อมูล
     //$users=DB::table('users')
       //->where('role',"student")
       //->join('establishment','establishment.id',"=",'users.id')
@@ -1173,14 +1173,14 @@ public function editreport($report_id) {
     //dd($acceptances);
      // dd($supervisions);
      return view('officer.edit.editEvaluationdocuments',compact('Evaluationdocuments'));
-     
+
  }
 
  public function   updateEvaluationdocument(Request $request,$Evaluationdocument_id) {
-    //ตรวจสอบข้อมูล 
-    
+    //ตรวจสอบข้อมูล
+
     //dd($request);
-   
+
     $request->validate([
         // 'images' => ['required','mimes:jpg,jpeg,png'],
         // 'name' => ['required','min:5'],
@@ -1202,7 +1202,7 @@ public function editreport($report_id) {
    if($request->hasFile("files1")){
        if (File::exists("ไฟล์เอกสารประเมิน(สก.13)/".$post->files1)) {
            File::delete("ไฟล์เอกสารประเมิน(สก.13)/".$post->files1);
-       } 
+       }
        $file=$request->file("files1");
         $post->files1=time()."_".$file->getClientOriginalName();
         $file->move(\public_path("/ไฟล์เอกสารประเมิน(สก.13)"),$post->files1);
@@ -1212,7 +1212,7 @@ public function editreport($report_id) {
    if($request->hasFile("files2")){
     if (File::exists("ไฟล์เอกสารประเมิน(สก.14)/".$post->files2)) {
         File::delete("ไฟล์เอกสารประเมิน(สก.14)/".$post->files2);
-    } 
+    }
     $file=$request->file("files2");
      $post->files2=time()."_".$file->getClientOriginalName();
      $file->move(\public_path("/ไฟล์เอกสารประเมิน(สก.14)"),$post->files2);
@@ -1235,16 +1235,16 @@ public function editreport($report_id) {
       //  "poster" =>$images,
        // "projectsummary" =>$images1,
     ]);
-    
-    
+
+
     return redirect('/officer/Evaluationdocuments')->with('success', 'ยืนยันข้อมูลสำเร็จ.');
  }
  public function deleEvaluationdocument($Evaluationdocument_id) {
-    //ตรวจสอบข้อมูล 
+    //ตรวจสอบข้อมูล
     //dd();
     // $establishments=establishment::find($id);
     // DB::table('establishment')->where('id',$id)->delete();
-     
+
     $posts=Evaluationdocument::findOrFail($Evaluationdocument_id);
 
      if (File::exists("ไฟล์เอกสารประเมิน(สก.13)/".$posts->files1)) {
@@ -1254,7 +1254,7 @@ public function editreport($report_id) {
      if (File::exists("ไฟล์เอกสารประเมิน(สก.14)/".$posts->files2)) {
         File::delete("ไฟล์เอกสารประเมิน(สก.14)/".$posts->files2);
     }
-    
+
     //  dd($posts);
      $posts->delete();
     //  return view('officer.editestablishmentuser1',compact('establishments'));
@@ -1262,10 +1262,10 @@ public function editreport($report_id) {
  }
 
  public function   updateuser(Request $request,$id) {
-    //ตรวจสอบข้อมูล 
-    
+    //ตรวจสอบข้อมูล
+
     //dd($request);
-   
+
     $request->validate([
         // 'images' => ['required','mimes:jpg,jpeg,png'],
         // 'name' => ['required','min:5'],
@@ -1276,14 +1276,14 @@ public function editreport($report_id) {
 
         ]
     );
-   
+
    //dd($request->Status);
    $post=users::findOrFail($id);
-  
+
    if($request->hasFile("images")){
        if (File::exists("รูปโปรไฟล์/".$post->images)) {
            File::delete("รูปโปรไฟล์/".$post->images);
-       } 
+       }
        $file=$request->file("images");
         $post->images=time()."_".$file->getClientOriginalName();
         $file->move(\public_path("/รูปโปรไฟล์"),$post->images);
@@ -1305,14 +1305,14 @@ public function editreport($report_id) {
       //  "poster" =>$images,
        // "projectsummary" =>$images1,
     ]);
-    
-    
+
+
     return redirect('/user')->with('success', 'แก้ไขข้อมูลสำเร็จ.');
  }
 
 
  public function edituser1($id) {
-    //ตรวจสอบข้อมูล 
+    //ตรวจสอบข้อมูล
     //$users=DB::table('users')
       //->where('role',"student")
       //->join('establishment','establishment.id',"=",'users.id')
@@ -1328,16 +1328,16 @@ public function editreport($report_id) {
     //dd($acceptances);
      // dd($Evaluationdocuments);
      return view('student.Edit.edituser1',compact('users'));
-     
+
  }
 
 
 
  public function   updateuser1(Request $request,$id) {
-    //ตรวจสอบข้อมูล 
-    
+    //ตรวจสอบข้อมูล
+
    // dd($request);
-   
+
     $request->validate([
         // 'images' => ['required','mimes:jpg,jpeg,png'],
         // 'name' => ['required','min:5'],
@@ -1348,14 +1348,14 @@ public function editreport($report_id) {
 
         ]
     );
-   
+
    //dd($request->Status);
    $post=users::findOrFail($id);
-  
+
    if($request->hasFile("images")){
        if (File::exists("รูปโปรไฟล์/".$post->images)) {
            File::delete("รูปโปรไฟล์/".$post->images);
-       } 
+       }
        $file=$request->file("images");
         $post->images=time()."_".$file->getClientOriginalName();
         $file->move(\public_path("/รูปโปรไฟล์"),$post->images);
@@ -1377,16 +1377,16 @@ public function editreport($report_id) {
       //  "poster" =>$images,
        // "projectsummary" =>$images1,
     ]);
-    
-    
+
+
     return redirect('/studenthome')->with('success', 'แก้ไขข้อมูลสำเร็จ.');
  }
 
  public function   updateuser2(Request $request,$id) {
-    //ตรวจสอบข้อมูล 
-    
+    //ตรวจสอบข้อมูล
+
    //dd($request);
-   
+
     $request->validate([
         // 'images' => ['required','mimes:jpg,jpeg,png'],
         // 'name' => ['required','min:5'],
@@ -1397,14 +1397,14 @@ public function editreport($report_id) {
 
         ]
     );
-   
+
    //dd($request->Status);
    $post=users::findOrFail($id);
-  
+
 //    if($request->hasFile("images")){
 //        if (File::exists("รูปโปรไฟล์/".$post->images)) {
 //            File::delete("รูปโปรไฟล์/".$post->images);
-//        } 
+//        }
 //        $file=$request->file("images");
 //         $post->images=time()."_".$file->getClientOriginalName();
 //         $file->move(\public_path("/รูปโปรไฟล์"),$post->images);
@@ -1415,10 +1415,41 @@ public function editreport($report_id) {
     $post->update
     ([
     //    "status" =>$request->"",
-      
+
     ]);
-    
-    
+
+
     return redirect('/studenthome')->with('success', 'ยืนยันตัวตนสำเร็จ.');
  }
+ public function   establishmentstatus(Request $request,$id) {
+    //ตรวจสอบข้อมูล
+
+   //dd($request);
+
+    $request->validate([
+        // 'images' => ['required','mimes:jpg,jpeg,png'],
+        // 'name' => ['required','min:5'],
+        // 'filess' => 'required|mimes:pdf',
+        // 'establishment' => 'required',
+    ],[
+            //'establishment.required' => "กรุณา",
+
+        ]
+    );
+
+   //dd($request->Status);
+   $post=users::findOrFail($id);
+
+
+    $post->statusestablishment ="ยืนยันได้สถานประกอบการแล้ว";
+    $post->update
+    ([
+    //    "status" =>$request->"",
+
+    ]);
+
+
+    return redirect('/studenthome')->with('success', 'ยืนยันสำเร็จ.');
+ }
+
 }

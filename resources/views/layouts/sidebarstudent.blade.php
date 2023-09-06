@@ -1,6 +1,6 @@
 {{-- <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <ul class="nav">
-   
+
 
       <li class="nav-item ">
         <a class="nav-link {{Request::is('student.studenthome')}} "
@@ -16,7 +16,7 @@
       <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic1" aria-expanded="false" aria-controls="ui-basic1">
         <i class="menu-icon mdi mdi-file-document"></i>
         <span class="menu-title">จัดการข้อมูลลงทะเบียนสหกิจ</span>
-        <i class="menu-arrow"></i> 
+        <i class="menu-arrow"></i>
       </a>
       <div class="collapse" id="ui-basic1">
         <ul class="nav flex-column sub-menu">
@@ -24,38 +24,38 @@
           <li class="nav-item"> <a class="nav-link "href="?page=Submission">จัดการเอกสารสหกิจ</a></li>
           <li class="nav-item"> <a class="nav-link "href="?page=Form">ลงทะเบียนสหกิจ</a></li>
           <li class="nav-item"> <a class="nav-link "href="?page=Submission">ตรวจสอบสถานะสหกิจ</a></li>
-       
+
         </ul>
       </div>
     </li>
-        
-      
+
+
       <li class="nav-item">
         <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic2" aria-expanded="false" aria-controls="ui-basic2">
           <i class="menu-icon mdi mdi-file-document"></i>
           <span class="menu-title">จัดการข้อมูลนิเทศงาน</span>
-          <i class="menu-arrow"></i> 
+          <i class="menu-arrow"></i>
         </a>
         <div class="collapse" id="ui-basic2">
           <ul class="nav flex-column sub-menu">
             <li class="nav-item"> <a class="nav-link "href="?page=Form">จัดตารางนิเทศ</a></li>
             <li class="nav-item"> <a class="nav-link "href="?page=Submission">ข้อมูลผลประเมิน</a></li>
-         
+
           </ul>
         </div>
       </li>
-    
+
       <li class="nav-item">
         <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
           <i class="menu-icon mdi mdi-file-document"></i>
           <span class="menu-title">เอกสาร</span>
-          <i class="menu-arrow"></i> 
+          <i class="menu-arrow"></i>
         </a>
         <div class="collapse" id="ui-basic">
           <ul class="nav flex-column sub-menu">
             <li class="nav-item"> <a class="nav-link <?php echo isset($_GET['pasge']) && $_GET['page'] =='Form'?'active':''?>"href="?page=Form">แบบฟอร์มสหกิจ</a></li>
             <li class="nav-item"> <a class="nav-link <?php echo isset($_GET['pasge']) && $_GET['page'] =='Submission'?'active':''?>"href="?page=Submission">ส่งแบบฟอร์มสหกิจ</a></li>
-         
+
           </ul>
         </div>
       </li>
@@ -67,9 +67,9 @@
       </li>
 
 
-      
+
     </ul>
-    
+
   </nav> --}}
 
   <aside class="sidebar-left border-right bg-white shadow" id="leftSidebar" data-simplebar>
@@ -95,16 +95,16 @@
             <i class="fe fe-home fe-16"></i>
             <span class="ml-3 item-text">หน้าแรก</span><span class="sr-only">(current)</span>
           </a>
-         
 
-          <ul class="navbar-nav flex-fill w-100 mb-2">
+
+          {{-- <ul class="navbar-nav flex-fill w-100 mb-2">
             <li class="nav-item dropdown">
               <a href="/studenthome/test"  class=" nav-link">
                 <i class="fe fe-home fe-16"></i>
                 <span class="ml-3 item-text">ทดสอบไลน์</span><span class="sr-only">(current)</span>
-              </a>
+              </a> --}}
 
-      <ul class="navbar-nav flex-fill w-100 mb-2">
+      {{-- <ul class="navbar-nav flex-fill w-100 mb-2">
         <li class="nav-item dropdown">
           <a href="/studenthome/establishmentuser"  class=" nav-link">
             <i class="fe fe-box fe-16"></i>
@@ -124,7 +124,7 @@
 
 
         </li>
-      </ul>
+      </ul> --}}
 
 
       <ul class="navbar-nav flex-fill w-100 mb-2">
@@ -316,10 +316,10 @@
                 </div> <!-- .card-body -->
               </div> <!-- .card -->
             </div>
-           
-             
-                  
-             
+
+
+
+
       <div class="modal fade modal-notif modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-sm" role="document">
           <div class="modal-content">

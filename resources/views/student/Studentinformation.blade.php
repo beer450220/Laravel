@@ -273,8 +273,8 @@
 
                       <ul id="progressbar">
                         <a  href="/personal"><li class="active" id="account"><strong>ข้อมูลส่วนตัว</strong></li></a>
-                        <a  href="/studenthome">  <li id="personal"><strong>สถานประกอบการ</strong></li></a>
-                          <a  href="/studenthome">  <li id="payment"><strong>ลงทะเบียน</strong></li></a>
+                        <a  href="/studenthome">  <li class="active" id="personal"><strong>สถานประกอบการ</strong></li></a>
+                          <a  href="/studenthome">  <li class="active" id="payment"><strong>ลงทะเบียน</strong></li></a>
                             <a  href="/studenthome"> <li id="confirm"><strong>รายงานสถานะการเข้าปฏิบัติงาน</strong></li></a>
                               <a  href="/studenthome"> <li id="confirm"><strong>นิเทศงาน</strong></li></a>
                                 <a  href="/studenthome"> <li id="payment"><strong>รายงานผลการปฏิบัติงาน</strong></li></a>
@@ -286,7 +286,7 @@
                           <div class="form-card">
                               <div class="row">
                                   <div class="col-7">
-                                      <h2 class="fs-title col">ข้อมูลส่วนตัว:</h2>
+                                      <h2 class="fs-title col">ข้อมูลนักศึกษา:</h2>
                                   </div>
                                   <div class="col-4">
                                       {{-- <h2 class="steps">ขั้นตอน 1 - 6</h2> --}}
@@ -296,7 +296,7 @@
                                 <div class="accordion-item">
                                   <h2 class="accordion-header" id="headingOne">
                                     <div class="col-8">
-                                            <h2 class="steps">ตรวจสอบข้อมูลและทำการยืนยันข้อมูล
+                                            <h2 class="steps">กรอกข้อมูลนักศึกษาให้เรียนร้อย
                                               @if(session("success"))
                                           <div class="alert alert-success col-4">{{session('success')}}
                               @endif
@@ -320,13 +320,9 @@
 
                                     <br>
                                     <br>
-                                    <div class="text-center">
-                                      <img src="/รูปโปรไฟล์/{{ Auth::user()->images }}" class="rounded mx-auto d-block" style="width:200px;height:200px; text-align:center;">
 
-                                    </div>
 
-                                    <br>
-                                    <br>
+
                                     <main role="main" class="">
                                       <div class="container-fluid">
                                         <div class="row justify-content-center">
@@ -335,7 +331,7 @@
 
                                             <div class="card shadow mb-4">
                                               <div class="card-header">
-                                                <strong class="card-title">ข้อมูลรายละเอียดบุคคล</strong>
+                                                <strong class="card-title">ข้อมูลนักศึกษา</strong>
                                               </div>
 
                                               <div class="card-body">
@@ -356,7 +352,7 @@
                                                       <input type="password" id="example-password" class="form-control" value="password">
                                                     </div>
                                                     <div class="form-group mb-3">
-                                                      <label for="example-palaceholder">ผู้ใช้งาน</label>
+                                                      <label for="example-palaceholder">ชื่อ-นามสกุล</label>
                                                       <input type="text" id="example-palaceholder"value="{{ Auth::user()->username }}" disabled="" class="form-control" placeholder="placeholder">
                                                     </div>
                                                     <div class="form-group mb-3">
@@ -369,26 +365,34 @@
                                                 </div> <!-- /.col -->
                                                   <div class="col-md-6">
                                                     <div class="form-group mb-3">
-                                                      <label for="example-helping">ที่อยู่</label>
+                                                      <label for="example-helping">หลักสูตรสาขา</label>
                                                       <input type="text" id="example-helping"value="{{ Auth::user()->address }}" disabled="" class="form-control" placeholder="Input with helping text">
 
                                                     </div>
                                                     <div class="form-group mb-3">
-                                                      <label for="example-readonly">	รหัสไปรษณีย์	</label>
+                                                      <label for="example-readonly">	เบอร์โทรศัพท์</label>
                                                       <input type="text" id="example-readonly"value="{{ Auth::user()->postcode}}" disabled="" class="form-control" readonly="" value="Readonly value">
                                                     </div>
                                                     <div class="form-group mb-3">
-                                                      <label for="example-disable">คณะ</label>
+                                                      <label for="example-disable">บ้านเลขที่/หมู่/ถนน</label>
                                                       <input type="text" class="form-control"value="{{ Auth::user()->faculty}}" disabled="" id="example-disable" disabled="" value="Disabled value">
                                                     </div>
                                                     <div class="form-group mb-3">
-                                                      <label for="example-static">หลักสูตร</label>
+                                                      <label for="example-static">ตำบล</label>
                                                       <input type="text" readonly=""value="{{ Auth::user()->course}}" disabled="" class="form-control" id="example-static" >
                                                     </div>
                                                     <div class="form-group mb-3">
-                                                      <label for="example-static">เบอร์โทรศัพท์</label>
+                                                      <label for="example-static">อำเภอ</label>
                                                       <input type="text" readonly=""value="{{ Auth::user()->telephonenumber}}" disabled="" class="form-control" id="example-static" >
                                                     </div>
+                                                    <div class="form-group mb-3">
+                                                        <label for="example-static">จังหวัด</label>
+                                                        <input type="text" readonly=""value="{{ Auth::user()->telephonenumber}}" disabled="" class="form-control" id="example-static" >
+                                                      </div>
+                                                      <div class="form-group mb-3">
+                                                        <label for="example-static">รหัสไปรษณีย์</label>
+                                                        <input type="text" readonly=""value="{{ Auth::user()->telephonenumber}}" disabled="" class="form-control" id="example-static" >
+                                                      </div>
                                                     <div class="form-group mb-3">
 
 
@@ -415,7 +419,7 @@
                                                 <div class="d-grid gap-2 d-md-flex   ">
                                                     <a href="/studenthome"  class="btn btn-outline-primary fe-16" type="button">ย้อนกลับ</a>
                                                     &nbsp;&nbsp;
-                                                    <a href="/studenthome/updateuser2/{{Auth::user()->id}}"name="next" class="btn btn-outline-success me-md-2 success btn2" onclick="return confirm('แน่ใจจะยืนยันตัวตน?')"  type="button">ยืนยันข้อมูล</a>
+                                                    <a href="/studenthome/updateuser2/{{Auth::user()->id}}"name="next" class="btn btn-outline-success me-md-2 success btn2" onclick="return confirm('แน่ใจจะยืนยันตัวตน?')"  type="button">ตกลง</a>
                                                       &nbsp;&nbsp;
                                                       {{-- <a href="/studenthome/updateuser2/{{Auth::user()->id}}" class="btn btn-outline-success me-md-2 success edit_employee_form "   type="button">ยืนยันข้อมูล</a> --}}
 

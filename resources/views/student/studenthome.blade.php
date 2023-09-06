@@ -5,10 +5,10 @@
 {{--@include('layouts.sidebarstudent') --}}
 {{-- @include('layouts.scriptsstudent') --}}
 @section('content')
-<title>user</title>
+<title>ระบบสารสนเทศสหกิจศึกษา</title>
 <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="icon" type="image/png" sizes="16x16" href="{{ asset('icons/1.png') }}">
+
 
 {{-- <div class="container">
     <div class="row justify-content-center">
@@ -273,8 +273,8 @@
 
                       <ul id="progressbar">
                         {{-- class="active" --}}
-                        <a  href="/personal"><li  id="account"><strong>ข้อมูลส่วนตัว</strong></li></a>
-                        <a  href="/studenthome">  <li id="personal"><strong>สถานประกอบการ</strong></li></a>
+                        <a  href="/personal"><li  id="account"><strong>ข้อมูลส่วนตัว</strong><br><br>{{ Auth::user()->status }}</li></a>
+                        <a  href="/studenthome/establishmentuser">  <li id="personal" ><strong>สถานประกอบการ</strong><br><br>{{ Auth::user()->statusestablishment }}</li></a>
                           <a  href="/studenthome">  <li id="payment"><strong>ลงทะเบียน</strong></li></a>
                             <a  href="/studenthome"> <li id="confirm"><strong>รายงานสถานะการเข้าปฏิบัติงาน</strong></li></a>
                               <a  href="/studenthome"> <li id="confirm"><strong>นิเทศงาน</strong></li></a>
@@ -312,14 +312,14 @@
    </div>
                                         <b>ขั้นตอนที่ 1 ข้อมูลส่วนตัว:</b> ตรวจสอบข้อมูลและทำการยืนยันข้อมูล <a href="/personal" class="btn-sm btn btn-outline-primary">คลิกที่นี่</a>
                                        <br><br>
-                                       <b>ขั้นตอนที่ 2 สถานประกอบการ:</b> ให้เลือกสถานประกอบการ <a href="/studenthome" class="btn-sm btn btn-outline-primary">คลิกที่นี่</a>
+                                       <b>ขั้นตอนที่ 2 สถานประกอบการ:</b> ให้เลือกสถานประกอบการ <a href="/studenthome/establishmentuser" class="btn-sm btn btn-outline-primary">คลิกที่นี่</a>
                                         <br>
                                         {{-- &nbsp;&nbsp; --}}
-                                        หลังจากเลือกสถานประกอบการแล้วให้ยืนยันข้อมูลว่าได้สถานประกอบการแล้ว<a href="/studenthome" class="btn-sm btn btn-outline-primary">คลิกที่นี่</a>
+                                        หลังจากเลือกสถานประกอบการแล้วให้ยืนยันข้อมูลว่าได้สถานประกอบการแล้ว<a href="/studenthome/establishmentstatus/{{Auth::user()->id}}"onclick="return confirm('แน่ใจจะยืนยันได้สถานประกอบการแล้ว?')" class="btn-sm btn btn-outline-primary">คลิกที่นี่</a>
                                         <br><br>
                                         <b> ขั้นตอนที่ 3 ลงทะเบียน:</b>
 
-                                        <br> ให้กรอกข้อมูลนักศึกษา<a href="/studenthome" class="btn-sm btn btn-outline-primary">คลิกที่นี่</a>
+                                        <br> ให้กรอกข้อมูลนักศึกษา<a href="/Studentinformation" class="btn-sm btn btn-outline-primary">คลิกที่นี่</a>
                                         <br><b> อัพโหลดไฟล์เอกสาร </b><a href="/studenthome" class="btn-sm btn btn-outline-primary">คลิกที่นี่</a>
                                         <br> แบบพิจารณาคุณสมบัตินักศึกษาสหกิจศึกษา(สก01)
                                         <br> ใบสมัครงานสหกิจศึกษา(สก03)

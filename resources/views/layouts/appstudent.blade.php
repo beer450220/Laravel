@@ -1,5 +1,5 @@
-   
-   
+
+
 
 <html lang="en">
     <head>
@@ -26,36 +26,36 @@
      <!-- App CSS -->
      <link rel="stylesheet" href="../student/css/app-light.css" id="lightTheme">
      <link rel="stylesheet" href="../student/css/app-dark.css" id="darkTheme" disabled>
-    
+
 <script src="../admin/vendor/jquery/jquery.min.js"></script>
-     
-     
+
+
 
 
 
 
  <!-- FullCalendar CSS -->
      <link rel="stylesheet" href="../student/css/fullcalendar.css">
-    
-    
- 
+
+
+
       <!-- Date Range Picker CSS -->
      <link rel="stylesheet" href="../student/css/daterangepicker.css">
 
      {{-- <link rel="stylesheet" href="css/all.css"> --}}
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-
-     @include('layouts.menutopstudent') 
+     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('icons/1.png') }}">
+     @include('layouts.menutopstudent')
         @include('layouts.sidebarstudent')
-        
+
     {{-- @include('layouts.cssstudent') --}}
 
 {{-- @include('layouts.scriptsstudent') --}}
      @yield('content')
-    
-   
-   
+
+
+
     <script src="../student/js/jquery.min.js"></script>
     <script src="../student/js/popper.min.js"></script>
     <script src="../student/js/moment.min.js"></script>
@@ -105,15 +105,15 @@
               timeZone: 'Asia/Bangkok',
               themeSystem: 'bootstrap',
               locale:'th',
-      
-            
+
+
               header:
               {
                 left: 'prev,next , today',
                 center: 'title',
-                
+
                 right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
-      
+
               },
               buttonIcons:
               {
@@ -145,11 +145,11 @@
           singleDatePicker: true,
           timePicker: false,
           showDropdowns: true,
-          
+
           locale:
           {
             format: 'MM/DD/YYYY',
-            
+
           }
         });
         $('.time-input').timepicker(
@@ -173,7 +173,7 @@
         }
         var start = moment().subtract(29, 'days');
         var end = moment();
-      
+
         function cb(start, end)
         {
           $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
@@ -340,7 +340,7 @@
       <script async src="https://www.googletagmanager.com/gtag/js?id=UA-56159088-1"></script>
       <script>
         window.dataLayer = window.dataLayer || [];
-      
+
         function gtag()
         {
           dataLayer.push(arguments);
