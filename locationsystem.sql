@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 28, 2023 at 01:30 PM
+-- Generation Time: Sep 07, 2023 at 06:19 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.1
 
@@ -463,6 +463,26 @@ INSERT INTO `timeline` (`timeline_id`, `user_id`, `register_id`, `report_id`, `i
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `userrole`
+--
+
+CREATE TABLE `userrole` (
+  `id` int(3) NOT NULL,
+  `username` varchar(250) NOT NULL,
+  `password` varchar(250) NOT NULL,
+  `role` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `userrole`
+--
+
+INSERT INTO `userrole` (`id`, `username`, `password`, `role`) VALUES
+(1, 'admin', '1234567', 'admin');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -483,22 +503,23 @@ CREATE TABLE `users` (
   `course` char(20) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'หลักสูตร',
   `GPA` float(6,2) NOT NULL COMMENT 'เกรดเฉลี่ย(GPA)',
   `telephonenumber` char(10) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'เบอร์โทรศัพท์',
-  `status` char(20) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'สถานะยืนยันตัวตน'
+  `status` char(20) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'สถานะยืนยันตัวตน',
+  `statusestablishment` char(40) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `username`, `email`, `password`, `role`, `created_at`, `updated_at`, `images`, `Student_ID`, `address`, `postcode`, `faculty`, `course`, `GPA`, `telephonenumber`, `status`) VALUES
-(14, 'User', 'user', 'user@cambotutorial.com', '$2y$10$Hm8bTZs47/B5HLzoqIlV4./TiuS5niyDqGqXwbBVycehwVzYP7Mce', 'student', '2023-02-18 03:22:32', '2023-08-28 04:19:02', '1693221182_icon-5359553_1280.webp', '62042380105', '7/1', '53130', 'คณะวิทยาศาสตร์และเทคโนโลยี', 'วิทยาการคอมพิวเตอร์', 2.40, '0978805487', 'ยืนยันตัวตนแล้ว'),
-(15, 'Editor', 'test1', 'editor@cambotutorial.com', '$2y$10$Hm8bTZs47/B5HLzoqIlV4./TiuS5niyDqGqXwbBVycehwVzYP7Mce', 'officer', '2023-02-18 03:22:32', '2023-02-18 03:22:32', '', '', '', '', '', '', 0.00, '', ''),
-(16, 'Admin', 'admin', 'admin@cambotutorial.com', '$2y$10$Hm8bTZs47/B5HLzoqIlV4./TiuS5niyDqGqXwbBVycehwVzYP7Mce', 'admin', '2023-02-18 03:22:32', '2023-02-18 03:22:32', '', '', '', '', '', '', 0.00, '', ''),
-(34, 'test4', 'test3', 'beer451220@gmail.com', '12345678', 'student', '2023-02-21 12:56:35', '2023-08-25 09:45:30', '1692981930_Agile-Methodology-Infographic-v2-1024x353.jpg', '', '', '', '', '', 0.00, '', ''),
-(35, 'teacher', 'test', 'beer750220@gmail.com', '$2y$10$Hm8bTZs47/B5HLzoqIlV4./TiuS5niyDqGqXwbBVycehwVzYP7Mce', 'teacher', '2023-03-02 10:37:08', '2023-03-02 10:37:08', '', '', '', '', '', '', 0.00, '', ''),
-(57, 'admin', 'admin1', 'wat41ww0220@gmail.com', '$2y$10$Hm8bTZs47/B5HLzoqIlV4./TiuS5niyDqGqXwbBVycehwVzYP7Mce', 'admin', '2023-03-25 05:00:30', '2023-03-25 05:00:30', '', '', '', '', '', '', 0.00, '', ''),
-(62, 'นันทวัฒน์ ศรีลับแล', '62042380105', 'beerwqww450220@gmail.com', '$2y$10$E.dgv2mSCZWWuOWPI87evO416mPbCB9nQmI0XwqoNcmXST50TogNy', 'student', '2023-06-02 02:57:39', '2023-06-02 02:57:39', '', '', '', '', '', '', 0.00, '', ''),
-(69, 'test test', 'u6204s2380105@uru.ac.th', 'u62042380105@uru.ac.th', '$2y$10$WMH.bUEF7/dQiphGETMFx.//C4AY6Z26yFlXu.LKomYnuKmOmxB/2', 'student', '2023-07-16 03:36:55', '2023-07-16 03:36:55', '', '', '', '', '', '', 0.00, '', '');
+INSERT INTO `users` (`id`, `name`, `username`, `email`, `password`, `role`, `created_at`, `updated_at`, `images`, `Student_ID`, `address`, `postcode`, `faculty`, `course`, `GPA`, `telephonenumber`, `status`, `statusestablishment`) VALUES
+(14, 'User', 'user', 'user@cambotutorial.com', '$2y$10$Hm8bTZs47/B5HLzoqIlV4./TiuS5niyDqGqXwbBVycehwVzYP7Mce', 'student', '2023-02-18 03:22:32', '2023-09-06 03:34:41', '1693995483_icon-5359553_1280.webp', '62042380105', '7/1', '53130', 'คณะวิทยาศาสตร์และเทคโนโลยี', 'วิทยาการคอมพิวเตอร์', 2.40, '0978805487', 'ยืนยันตัวตนแล้ว', 'ยืนยันได้สถานประกอบการแล้ว'),
+(15, 'Editor', 'test1', 'editor@cambotutorial.com', '$2y$10$Hm8bTZs47/B5HLzoqIlV4./TiuS5niyDqGqXwbBVycehwVzYP7Mce', 'officer', '2023-02-18 03:22:32', '2023-02-18 03:22:32', '', '', '', '', '', '', 0.00, '', '', ''),
+(16, 'Admin', 'admin', 'admin@cambotutorial.com', '$2y$10$Hm8bTZs47/B5HLzoqIlV4./TiuS5niyDqGqXwbBVycehwVzYP7Mce', 'admin', '2023-02-18 03:22:32', '2023-02-18 03:22:32', '', '', '', '', '', '', 0.00, '', '', ''),
+(34, 'test4', 'test3', 'beer451220@gmail.com', '12345678', 'student', '2023-02-21 12:56:35', '2023-08-25 09:45:30', '1692981930_Agile-Methodology-Infographic-v2-1024x353.jpg', '', '', '', '', '', 0.00, '', '', ''),
+(35, 'teacher', 'test', 'beer750220@gmail.com', '$2y$10$Hm8bTZs47/B5HLzoqIlV4./TiuS5niyDqGqXwbBVycehwVzYP7Mce', 'teacher', '2023-03-02 10:37:08', '2023-03-02 10:37:08', '', '', '', '', '', '', 0.00, '', '', ''),
+(57, 'admin', 'admin1', 'wat41ww0220@gmail.com', '$2y$10$Hm8bTZs47/B5HLzoqIlV4./TiuS5niyDqGqXwbBVycehwVzYP7Mce', 'admin', '2023-03-25 05:00:30', '2023-03-25 05:00:30', '', '', '', '', '', '', 0.00, '', '', ''),
+(62, 'นันทวัฒน์ ศรีลับแล', '62042380105', 'beerwqww450220@gmail.com', '$2y$10$E.dgv2mSCZWWuOWPI87evO416mPbCB9nQmI0XwqoNcmXST50TogNy', 'student', '2023-06-02 02:57:39', '2023-06-02 02:57:39', '', '', '', '', '', '', 0.00, '', '', ''),
+(69, 'test test', 'u6204s2380105@uru.ac.th', 'u62042380105@uru.ac.th', '$2y$10$WMH.bUEF7/dQiphGETMFx.//C4AY6Z26yFlXu.LKomYnuKmOmxB/2', 'student', '2023-07-16 03:36:55', '2023-07-16 03:36:55', '', '', '', '', '', '', 0.00, '', '', '');
 
 --
 -- Indexes for dumped tables
@@ -622,6 +643,12 @@ ALTER TABLE `timeline`
   ADD PRIMARY KEY (`timeline_id`);
 
 --
+-- Indexes for table `userrole`
+--
+ALTER TABLE `userrole`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -738,6 +765,12 @@ ALTER TABLE `test`
 --
 ALTER TABLE `timeline`
   MODIFY `timeline_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `userrole`
+--
+ALTER TABLE `userrole`
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `users`
