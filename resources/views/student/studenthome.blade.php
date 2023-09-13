@@ -273,12 +273,12 @@
 
                       <ul id="progressbar">
                         {{-- class="active" --}}
-                        <a  href="/personal"><li  id="account"><strong>ข้อมูลส่วนตัว</strong><br><br>{{ Auth::user()->status }}</li></a>
-                        <a  href="/studenthome/establishmentuser">  <li id="personal" ><strong>สถานประกอบการ</strong><br><br>{{ Auth::user()->statusestablishment }}</li></a>
-                          <a  href="/studenthome">  <li id="payment"><strong>ลงทะเบียน</strong></li></a>
-                            <a  href="/studenthome"> <li id="confirm"><strong>รายงานสถานะการเข้าปฏิบัติงาน</strong></li></a>
-                              <a  href="/studenthome"> <li id="confirm"><strong>นิเทศงาน</strong></li></a>
-                                <a  href="/studenthome"> <li id="payment"><strong>รายงานผลการปฏิบัติงาน</strong></li></a>
+                        <a  href="/studenthome"><li class="active" id="account"><strong>ข้อมูลส่วนตัว</strong><br><br>{{ Auth::user()->status }}</li></a>
+                        <a  href="/studenthome/establishmentuser">  <li id="personal" ><strong>สถานประกอบการ</strong><br><br></li></a>
+                          <a  href="/studenthome/register">  <li id="payment"><strong>ลงทะเบียน</strong></li></a>
+                            <a  href="/studenthome/informdetails"> <li id="confirm"><strong>รายงานสถานะการเข้าปฏิบัติงาน</strong></li></a>
+                              <a  href="/studenthome/calendar2confirm"> <li id="confirm"><strong>นิเทศงาน</strong></li></a>
+                                <a  href="/studenthome/report"> <li id="payment"><strong>รายงานผลการปฏิบัติงาน</strong></li></a>
                       </ul>
                       <div class="progress">
                           {{-- <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div> --}}
@@ -287,26 +287,34 @@
                           <div class="form-card">
                               <div class="row">
                                   <div class="col-7">
-                                      {{-- <h2 class="fs-title">ข้อมูลส่วนตัว:</h2> --}}
+                                      <h2 class="fs-title">ข้อมูลส่วนตัว:</h2>
                                   </div>
                                   <div class="col-4">
-                                      {{-- <h2 class="steps">ขั้นตอน 1 - 6</h2> --}}
+                                      <h2 class="steps">ขั้นตอน 1 - 6</h2>
                                   </div>
-                              </div>
+                              </div><div class="col-6">
+    <div class=" alert alert-primary  " role="alert">
+        <b>ขั้นตอนที่ 1 ข้อมูลส่วนตัว:</b>
+                                       <br>ตรวจสอบข้อมูล<br> ทำการยืนยันข้อมูล <br>
+                                       <br>ถ้าจะทำการแก้ไขข้อมูลให้<a href="/studenthome/edituser1/{{Auth::user()->id}}"  class="btn btn-outline-warning fe fe-edit fe-16" type="button">คลิกที่นี่</a>
+                                       <br> <br>ถ้ายืนยันตัวตนแล้วให้ <a href="/studenthome/establishmentuser"  class="btn btn-outline-warning " type="button">>คลิกที่นี่<</a> เพื่อทำขั้นตอนถัดไป
+                                    </div>
+</div>
                               <div class="accordion" id="accordionExample">
                                   <div class="accordion-item">
                                     <h2 class="accordion-header" id="headingOne">
-                                      <div class="col-8">
-                                              {{-- <h2 class="steps">ตรวจสอบข้อมูลและทำการยืนยันข้อมูล
-                                                @if(session("success"))
-                                            <div class="alert alert-success col-4">{{session('success')}}
-                                @endif
+                                      <div class="col-7">
+                                              <h1 class="steps">ตรวจสอบข้อมูล<br><h2 class="steps text-success">{{ Auth::user()->status}}</h2></h1>
 
-                                        </h2> --}}
-                                     </h2>
-                                        <div class="col-12">
+                                                {{-- @if(session("success"))
+                                            <div class="alert alert-success col-4">{{session('success')}}
+                                @endif --}}
+                            </h2>
+
+
  {{-- <div class="text-center"> --}}
-                                    <div class=" alert alert-primary  " role="alert">
+
+                                    {{-- <div class=" alert alert-primary  " role="alert">
 
                                     <div> <h4> ขั้นตอน</h4>
    </div>
@@ -314,7 +322,7 @@
                                        <br><br>
                                        <b>ขั้นตอนที่ 2 สถานประกอบการ:</b> ให้เลือกสถานประกอบการ <a href="/studenthome/establishmentuser" class="btn-sm btn btn-outline-primary">คลิกที่นี่</a>
                                         <br>
-                                        {{-- &nbsp;&nbsp; --}}
+
                                         หลังจากเลือกสถานประกอบการแล้วให้ยืนยันข้อมูลว่าได้สถานประกอบการแล้ว<a href="/studenthome/establishmentstatus/{{Auth::user()->id}}"onclick="return confirm('แน่ใจจะยืนยันได้สถานประกอบการแล้ว?')" class="btn-sm btn btn-outline-primary">คลิกที่นี่</a>
                                         <br><br>
                                         <b> ขั้นตอนที่ 3 ลงทะเบียน:</b>
@@ -348,7 +356,7 @@
                                         <br> Onepage ของโครงการ (โปสเตอร์)
                                         <br> รายงานสรุปโครงการ(ไม่เกิน 5 หน้า)
 
-                                    </div></div>
+                                    </div></div> --}}
                                     {{-- </div> --}}
 
                                     {{-- <div id="collapseOne"  aria-labelledby="headingOne" data-bs-parent="#accordionExample">
@@ -363,13 +371,119 @@
 
                                     <br>
                                     <br>
-                                    {{-- <div class="text-center">
-                                      <img src="/รูปโปรไฟล์/{{ Auth::user()->images }}" class="rounded mx-auto d-block" style="width:200px;height:200px; text-align:center;">
+                                    <div class="text-center">
+                                        <img src="/รูปโปรไฟล์/{{ Auth::user()->images }}" class="rounded mx-auto d-block" style="width:200px;height:200px; text-align:center;">
 
-                                    </div> --}}
+                                      </div>
 
-                                    <br>
-                                    <br>
+                                      <br>
+                                      <br>
+                                      <main role="main" class="">
+                                        <div class="container-fluid">
+                                          <div class="row justify-content-center">
+                                            <div class="col-7">
+                                              {{-- <h2 class="page-title">Form elements</h2> --}}
+
+                                              <div class="card shadow mb-4">
+                                                <div class="card-header">
+                                                  <strong class="card-title">ข้อมูลรายละเอียดบุคคล</strong>
+                                                </div>
+
+                                                <div class="card-body">
+                                                  <div class="row">
+                                                    <div class="col-md-6">
+                                                      <div class="form-group mb-3">
+                                                {{-- <form method="POST" action="{{url('/studenthome/updateuser2/'.Auth::user()->id)}}" enctype="multipart/form-data">
+                                                  @csrf --}}
+                                                        <label for="simpleinput">รหัสนักศึกษา</label>
+                                                        <input type="text"value="{{ Auth::user()->Student_ID }}" disabled="" id="simpleinput" class="form-control">
+                                                      </div>
+                                                      <div class="form-group mb-3">
+                                                        <label for="example-email">Email</label>
+                                                        <input type="email" id="example-email"value="{{ Auth::user()->email }}" disabled="" name="example-email" class="form-control" placeholder="Email">
+                                                      </div>
+                                                      <div class="form-group mb-3">
+                                                        <label for="example-password">Password</label>
+                                                        <input type="password" id="example-password" class="form-control" value="password">
+                                                      </div>
+                                                      <div class="form-group mb-3">
+                                                        <label for="example-palaceholder">ผู้ใช้งาน</label>
+                                                        <input type="text" id="example-palaceholder"value="{{ Auth::user()->username }}" disabled="" class="form-control" placeholder="placeholder">
+                                                      </div>
+                                                      <div class="form-group mb-3">
+                                                        <label for="example-palaceholder">เกรดเฉลี่ย(GPA)	</label>
+                                                        <input type="text" id="example-palaceholder"value="{{ Auth::user()->GPA }}" disabled="" class="form-control" placeholder="placeholder">
+                                                      </div>
+
+                                                  </div> <!-- /.col -->
+                                                    <div class="col-md-6">
+                                                      <div class="form-group mb-3">
+                                                        <label for="example-helping">ที่อยู่</label>
+                                                        <input type="text" id="example-helping"value="{{ Auth::user()->address }}" disabled="" class="form-control" placeholder="Input with helping text">
+
+                                                      </div>
+                                                      <div class="form-group mb-3">
+                                                        <label for="example-readonly">	รหัสไปรษณีย์	</label>
+                                                        <input type="text" id="example-readonly"value="{{ Auth::user()->postcode}}" disabled="" class="form-control" readonly="" value="Readonly value">
+                                                      </div>
+                                                      <div class="form-group mb-3">
+                                                        <label for="example-disable">คณะ</label>
+                                                        <input type="text" class="form-control"value="{{ Auth::user()->faculty}}" disabled="" id="example-disable" disabled="" value="Disabled value">
+                                                      </div>
+                                                      <div class="form-group mb-3">
+                                                        <label for="example-static">หลักสูตร</label>
+                                                        <input type="text" readonly=""value="{{ Auth::user()->course}}" disabled="" class="form-control" id="example-static" >
+                                                      </div>
+                                                      <div class="form-group mb-3">
+                                                        <label for="example-static">เบอร์โทรศัพท์</label>
+                                                        <input type="text" readonly=""value="{{ Auth::user()->telephonenumber}}" disabled="" class="form-control" id="example-static" >
+                                                      </div>
+                                                      <div class="form-group mb-3">
+
+
+                                                    </div>
+  {{-- /studenthome/updateuser2/{{Auth::user()->id}} --}}
+
+
+
+                                                        {{-- </form> --}}
+
+
+                                                    {{-- <button id="btn">Button</button> --}}
+
+                                                        {{-- <script src="index.js"></script> --}}
+
+
+
+                                              </div>
+
+                                                  </div>
+                                                  <div class="col-6 text-center"></div>
+
+                                                                  <div class="col text-center">
+                                                  <div class="d-grid gap-2 d-md-flex   ">
+                                                      {{-- <a href="/studenthome"  class="btn btn-outline-primary fe-16" type="button">ย้อนกลับ</a> --}}
+                                                      &nbsp;&nbsp;
+                                                      {{-- <a href="/studenthome/updateuser2/{{Auth::user()->id}}"name="next" class="btn btn-outline-success me-md-2 success btn2" onclick="return confirm('แน่ใจจะยืนยันตัวตน?')"  type="button">ยืนยันข้อมูล</a>
+                                                        &nbsp;&nbsp; --}}
+                                                        {{-- <a href="/studenthome/updateuser2/{{Auth::user()->id}}" class="btn btn-outline-success me-md-2 success edit_employee_form "   type="button">ยืนยันข้อมูล</a> --}}
+
+                                                      {{-- <a href="/studenthome/updateuser2/{{Auth::user()->id}}" class="btn btn-outline-success me-md-2 success show-alert-delete-box"   type="button">ยืนยันข้อมูล</a> --}}
+                                                        {{-- <a href="/studenthome/edituser1/{{Auth::user()->id}}"  class="btn btn-outline-warning fe fe-edit fe-16" type="button">แก้ไขข้อมูล</a> </div> --}}
+                                                  </div>
+                                                      </div>
+                                              </div> <!-- / .card -->
+                                            </div>
+                                          </div>
+                                        </div>
+                                          <div class="accordion" id="accordionExample">
+                                            <div class="accordion-item">
+                                              <h2 class="accordion-header" id="headingOne">
+                                                <div class="col-7">
+                                                        <h2 class="steps">ทำการยืนยันข้อมูล </h2></div>
+                                                        <div class="col-12 text-center">
+                                                        <a href="/studenthome/updateuser2/{{Auth::user()->id}}"name="next" class="btn btn-outline-success me-md-2 success btn2" onclick="return confirm('แน่ใจจะยืนยันตัวตน?')"  type="button">ยืนยันข้อมูล</a>
+                                                </div>
 
                                       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
                                       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

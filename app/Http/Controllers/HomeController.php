@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\registerController;
 use Illuminate\Support\Facades\File;
 use App\Models\test;
+use App\Models\establishment;
 
 class HomeController extends Controller
 {
@@ -45,6 +46,89 @@ class HomeController extends Controller
     public function personal()
     {
         return view('student.personal',["msg"=>"I am Editor role"]);
+    }
+
+
+
+    public function addToCart($id)
+    {
+        $product = establishment::findOrFail($id);
+
+        $cart = session()->get('cart', []);
+
+        if(isset($cart[$id])) {
+            $cart[$id]['quantity']++;
+        }  else {
+            $cart[$id] = [
+                "product_name" => $product->product_name,
+                "images" => $product->images,
+                "price" => $product->price,
+                "quantity" => 1
+            ];
+        }
+
+        session()->put('cart', $cart);
+        return redirect()->back()->with('success', 'Product add to cart successfully!');
+    }
+
+    public function cart()
+    {
+        $establishments=DB::table('establishment') ->orderBy('name','desc')->paginate(6);
+        return view('student.cart',compact('establishments'));
+    }
+    public function update(Request $request)
+    {
+        if($request->id && $request->quantity){
+            $cart = session()->get('cart');
+            $cart[$request->id]["quantity"] = $request->quantity;
+            session()->put('cart', $cart);
+            session()->flash('success', 'Cart successfully updated!');
+        }
+    }
+    public function remove(Request $request)
+    {
+        if($request->id) {
+            $cart = session()->get('cart');
+            if(isset($cart[$request->id])) {
+                unset($cart[$request->id]);
+                session()->put('cart', $cart);
+            }
+            session()->flash('success', 'Product successfully removed!');
+        }
+    }
+
+
+    public function search(Request $request){
+
+
+        //$search = $request->input('search');
+
+        // $establishments =establishment::where(function($query) use ($search){
+
+        //     $query->where('name','like',"%$search%")
+        //     ->orWhere('address','like',"%$search%");
+
+        //     })
+
+        //     ->get();
+
+
+                // $establishments =establishment::where('name','like',"%$search%")
+                // ->orWhere('address','like',"%$search%")->get();
+
+
+                $keyword = $request->input('keyword');
+  dd($request);
+                // สร้างคำสั่งคิวรีเพื่อค้นหาข้อมูล
+                $establishments = establishment::query()
+                    ->where('name', 'LIKE', '%' . $keyword . '%')
+                    //->get();
+                    ->paginate(6);
+
+                return view('student.establishmentuser', ['establishments' => $establishments]);
+
+           // return view('student.establishmentuser',compact('establishments','search'));
+
     }
 
 
@@ -98,7 +182,12 @@ class HomeController extends Controller
         ->select('registers.*','users.name')->where('user_id', auth()->id())
         ->paginate(5);
 
-        return view('student.register',compact('registers'));
+
+        $studentinformations=DB::table('studentinformation')
+        ->join('users','studentinformation.user_id','users.id')
+        ->select('studentinformation.*','users.name')->where('user_id', auth()->id())
+        ->paginate(5);
+        return view('student.register',compact('registers','studentinformations'));
     }
 
     public function acceptancedocument()
@@ -176,7 +265,10 @@ class HomeController extends Controller
         return view('student.documents',["msg"=>"I am student role"]);
     }
 
-
+    public function documents3()
+    {
+        return view('student.documents1',["msg"=>"I am student role"]);
+    }
 
     // public function sendMessage(Request $request)
     // {

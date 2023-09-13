@@ -13,14 +13,14 @@ class registers extends Model
     // public $table="registers";
     // public$primarykey="id";
     protected $fillable=[
-        'establishment',
+        // 'establishment',
         'name',
         'filess',
     //    ' Status',
        'user_id' ,
 
        "annotation",
-      
+
         "Status_registers",
 
     //     // 'images',

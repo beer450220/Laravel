@@ -259,6 +259,21 @@
       width: 100%;
       object-fit: cover
   }
+
+  .fa-regular.fa-heart {
+  color: gray; /* ตั้งค่าสีเริ่มต้นเป็นสีเทา */
+  cursor: pointer;
+}
+.fa-solid.fa-heart {
+  color: red; /* ตั้งค่าสีเมื่อเป็นสีแดงเมื่อคลิก */
+}
+.fa-heart.active {
+  color: red; /* สีที่คุณต้องการเมื่อไอคอนมีสี */
+}
+
+
+
+
   </style>
 
   <div class="container-fluid">
@@ -272,9 +287,9 @@
                       <!-- progressbar -->
 
                       <ul id="progressbar">
-                        <a  href="/personal"><li class="active" id="account"><strong>ข้อมูลส่วนตัว</strong></li></a>
+                        <a  href="/studenthome"><li class="active" id="account"><strong>ข้อมูลส่วนตัว</strong></li></a>
                         <a  href="/studenthome/establishmentuser">  <li class="active" id="personal"><strong>สถานประกอบการ</strong></li></a>
-                          <a  href="/studenthome">  <li id="payment"><strong>ลงทะเบียน</strong></li></a>
+                          <a  href="/studenthome/register">  <li id="payment"><strong>ลงทะเบียน</strong></li></a>
                             <a  href="/studenthome"> <li id="confirm"><strong>รายงานสถานะการเข้าปฏิบัติงาน</strong></li></a>
                               <a  href="/studenthome"> <li id="confirm"><strong>นิเทศงาน</strong></li></a>
                                 <a  href="/studenthome"> <li id="payment"><strong>รายงานผลการปฏิบัติงาน</strong></li></a>
@@ -283,16 +298,106 @@
                           {{-- <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div> --}}
                       </div> <br> <!-- fieldsets -->
                       <fieldset>
+
+
                           <div class="form-card">
                               <div class="row">
                                   <div class="col-7">
-                                      <h2 class="fs-title col">ข้อมูลสถานประกอบการ: <a href="/studenthome"  class="btn btn-outline-primary fe-16" type="button">ย้อนกลับ</a></h2>
+                                      <h2 class="fs-title col">ให้เลือกสถานประกอบการ:</h2>
 
                                   </div>
                                   <div class="col-4">
-                                      {{-- <h2 class="steps">ขั้นตอน 1 - 6</h2> --}}
+                                      <h2 class="steps">ขั้นตอน 2 - 6</h2>
                                   </div>
-                              </div>
+                              </div><div class="col-6">
+                                <div class=" alert alert-primary  " role="alert">
+                                    <b>ขั้นตอนที่ 2 สถานประกอบการ:</b> ให้เลือกสถานประกอบการ
+                                        <br> ถ้าเลือกสถานประกอบการได้แล้วให้<a href="/studenthome/register"  class="btn btn-outline-warning " type="button">>คลิกที่นี่<</a>เพื่อขั้นตอนต่อไป
+                                                                </div>   <br>   <br>
+                            </div>
+                            <div class="row">
+                                <!-- Striped rows -->
+                                <div class="col-md-12 my-4">
+
+                                  <div class="card shadow">
+                                    <div class="card-body">
+                                      <div class="toolbar row mb-3">
+                                        <div class="col">
+                                          <form class="form-inline">
+                                            <div class="form-row">
+                                              <div class="form-group col-auto">
+                                                {{-- <form method="get" action="/search">
+
+                                                    <div class="input-group">
+                                                        <input class="form-control" name="search" placeholder="Search..." value="{{ isset($search) ? $search : ''}}">
+                                                        <button type="submit" class="btn btn-primary">Search</button>
+                                                    </div>
+                                                </form> --}}
+
+                                                <form action="{{ route('search') }}" method="GET">
+                                                    <div class="form-group">
+                                                        {{-- <label for="keyword">คำค้นหา:</label> --}}
+                                                        <input type="text" name="keyword" id="keyword" class="form-control" value="{{ request('keyword') }}">
+                                                    </div>
+                                                    <button type="submit" class="btn btn-primary">ค้นหา</button>
+
+                                              </div>
+                                              <div class="col-3">
+                                              <div class="form-group col-auto ml-3">
+                                                <label class="my-1 mr-2 sr-only" for="inlineFormCustomSelectPref">Status</label>
+                                                <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+                                                  <option selected>Choose...</option>
+                                                  <option value="1">Processing</option>
+                                                  <option value="2">Success</option>
+                                                  <option value="3">Pending</option>
+                                                  <option value="3">Hold</option>
+                                                </select>
+                                              </div>
+                                            </div>
+                                          </form>     </div>
+                                        </div>
+                                        <div class="col-2">
+                                            <div class="dropdown">
+                                                <button type="button" class="btn btn-primary" data-toggle="dropdown">
+                                                    <i class="fa-solid fa-location-dot" aria-hidden="true"></i>  <span class="badge badge-pill badge-danger">{{ count((array) session('cart')) }}</span>
+                                                </button>
+
+                                                <div class="dropdown-menu">
+                                                    <div class="row total-header-section">
+                                                        @php $total = 0 @endphp
+                                                        @foreach((array) session('cart') as $id => $details)
+
+                                                        @endforeach
+                                                        <div class="col-lg-12 col-sm-12 col-12 total-section text-right">
+                                                            {{-- <p>Total: <span class="text-info">{{ $total }}</span></p> --}}
+                                                        </div>
+                                                    </div>
+                                                    @if(session('cart'))
+                                                        {{-- @foreach(session('cart') as $id => $details) --}}
+                                                            <div class="row cart-detail">
+                                                                <div class="col-lg-4 col-sm-4 col-4 cart-detail-img">
+                                                                    <img src="{{ asset('/image') }}/{{ $details['images'] }}"width="50" height="50"  />
+                                                                </div><br><br>
+                                                                <div class="col-lg-8 col-sm-8 col-8 cart-detail-product">
+                                                                    <p></p>
+                                                                    <span class="price text-info"> ${{ $details['price'] }}</span> <span class="count"> Quantity:{{ $details['quantity'] }}</span>
+                                                                </div>
+                                                            </div>
+                                                        {{-- @endforeach --}}
+                                                    @endif
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-sm-12 col-12 text-center checkout">
+                                                            <a href="{{ route('cart') }}" class="btn btn-primary btn-block">View all</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                      </div>
+
+
+
+
                               <div class="accordion" id="accordionExample">
                                 <div class="accordion-item">
                                   <h2 class="accordion-header" id="headingOne">
@@ -333,6 +438,16 @@
                                                             <p>{{ $row->name }}</p>
                                                             <p  class="card-text"><strong>Price: </strong> ${{ $row->name }}</p>
                                                             <p class="btn-holder text-center"><a href="" class="btn btn-primary btn-block text-center" role="button">ดูข้อมูล</a>
+                                                                <p class="btn-holder"><a href="{{ route('add_to_cart', $row->id) }}" class=" text-center" role="button">
+                                                                    <span> <i
+{{-- id="heart-icon" --}}
+                                                                     class=" fa-regular fa-heart"></i></span></a> </p>
+                                                                     {{-- <i class="far fa-heart" id="heart-icon"></i> --}}
+
+                                                                     <a href="{{ route('add_to_cart', $row->id) }}" id="heart" class="{{ $row->id? 'active' : '' }} far fa-heart"></a>
+
+
+
                                                              </p><br>
                                                         </div>
                                                     </div>
@@ -394,6 +509,59 @@
 // btn.addEventListener('click', function onClick() {
 //   document.body.style.backgroundColor = 'salmon';
 // });
+document.addEventListener("DOMContentLoaded", function () {
+  const heartIcon = document.getElementById("heart");
+  let isFavorite = {{ $row->id ? 'true' : 'false' }};
+
+  // ตรวจสอบค่า isFavorite เพื่อกำหนดคลาสเริ่มต้น
+  if (isFavorite) {
+    heartIcon.classList.remove("far");
+    heartIcon.classList.add("fas");
+    heartIcon.classList.add("active");
+  }
+
+  // เพิ่ม Event Listener เมื่อคลิกที่ไอคอน
+  heartIcon.addEventListener("click", function () {
+    // สลับสถานะ isFavorite
+    isFavorite = !isFavorite;
+
+    // ตรวจสอบค่า isFavorite เพื่อกำหนดคลาส
+    if (isFavorite) {
+      heartIcon.classList.remove("far");
+      heartIcon.classList.add("fas");
+      heartIcon.classList.add("active");
+    } else {
+      heartIcon.classList.remove("fas");
+      heartIcon.classList.add("far");
+      heartIcon.classList.remove("active");
+    }
+  });
+});
+
+
+
+
+
+
+const heartIcon = document.getElementById('heart-icon');
+let isFavorite = false;
+
+heartIcon.addEventListener('click', function () {
+  if (isFavorite) {
+    // ถ้าไอคอนเป็นสีแดง (Favorite) ให้เปลี่ยนเป็นสีปรกติ
+    heartIcon.classList.remove('fas', 'fa-heart');
+    heartIcon.classList.add('far', 'fa-heart');
+  } else {
+    // ถ้าไอคอนไม่มีสี (ไม่ใช่ Favorite) ให้เปลี่ยนเป็นสีแดง
+    heartIcon.classList.remove('far', 'fa-heart');
+    heartIcon.classList.add('fas', 'fa-heart');
+  }
+
+  // สลับค่า isFavorite
+  isFavorite = !isFavorite;
+});
+
+
 
 
 

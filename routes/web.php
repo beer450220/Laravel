@@ -68,6 +68,14 @@ Route::middleware(['auth','user-role:student'])->group(function()
 
     Route::get("/studenthome/edituser1/{id}",[EditController::class,'edituser1'])->name('edituser1');
 
+    Route::get('add-to-cart/{id}', [HomeController::class, 'addToCart'])->name('add_to_cart');
+    Route::get('cart', [HomeController::class, 'cart'])->name('cart');
+    Route::delete('remove-from-cart', [HomeController::class, 'remove'])->name('remove_from_cart');
+    Route::patch('update-cart', [HomeController::class, 'update'])->name('update_cart');
+    Route::get('/search',[HomeController::class,'search'])->name('search');
+
+
+
     Route::post("/studenthome/updateuser1/{id}",[EditController::class,'updateuser1'])->name('updateuser1');
 
     Route::get("/studenthome/updateuser2/{id}",[EditController::class,'updateuser2'])->name('updateuser2');
@@ -75,26 +83,39 @@ Route::middleware(['auth','user-role:student'])->group(function()
     Route::get("/studenthome/establishmentstatus/{id}",[EditController::class,'establishmentstatus'])->name('establishmentstatus');
 
 
-     Route::get("/studenthome/test",[HomeController::class,'test'])->name('test');
-     Route::post("/studenthome/test",[HomeController::class,'test2'])->name('test2');
+    //  Route::get("/studenthome/test",[HomeController::class,'test'])->name('test');
+    //  Route::post("/studenthome/test",[HomeController::class,'test2'])->name('test2');
 
     Route::get("/studenthome/establishmentuser",[HomeController::class,'establishmentuser'])->name('student.establishmentuser');
     Route::get('/studenthome/view/{id}', [HomeController::class,'viewestablishmentuser'])->name('viewestablishmentuser');
     Route::get("/studenthome/calendar",[HomeController::class,'calendar'])->name('student.calendar');
 
     Route::get("/studenthome/register",[HomeController::class,'registeruser'])->name('student.register');
-    Route::get("/studenthome/edit/{id}",[EditController::class,'editregisteruser'])->name('editregisteruser');
-    Route::post("/studenthome/update/{id}",[EditController::class,'updateregisteruser'])->name('updateregisteruser');
-    Route::get('/studenthome/delete/{id}', [EditController::class,'delregister'])->name('delregister');
     Route::post("/studenthome/addregisteruser",[AddController::class,'addregisteruser'])->name('addregisteruser');
+    Route::get("/studenthome/edit2register/{id}",[EditController::class,'edit2register'])->name('edit2register');
+    Route::post("/studenthome/update/{id}",[EditController::class,'updateregisteruser'])->name('updateregisteruser');
+
+    // Route::get("/studenthome/edit/{id}",[EditController::class,'editregisteruser'])->name('editregisteruser');
+    // Route::post("/studenthome/update/{id}",[EditController::class,'updateregisteruser'])->name('updateregisteruser');
+    Route::get('/studenthome/delete/{id}', [EditController::class,'delregister'])->name('delregister');
+
 
     Route::post("/studenthome/register",[AddController::class,'sregister2'])->name('sregister2');
+
+    Route::get("/studenthome/addstudent",[AddController::class,'addstudent'])->name('addstudent');
+    Route::post("/studenthome/addstudent1",[AddController::class,'addstudent1'])->name('addstudent1');
+
+
+    Route::get("/studenthome/addregister",[AddController::class,'addregister'])->name('addregister');
+
+
 
 
     Route::post('/register1/add', [AddController::class,'register2'])->name('register2');
     Route::get("/studenthome/timeline",[HomeController::class,'timeline'])->name('student.timeline');
 
     Route::get("/studenthome/documents",[HomeController::class,'documents'])->name('student.documents');
+    Route::get("/studenthome/documents1",[HomeController::class,'documents3'])->name('documents3');
 
     Route::get("/studenthome/informdetails",[HomeController::class,'informdetails'])->name('student.informdetails');
     Route::post("/studenthome/add",[AddController::class,'addinformdetails'])->name('addinformdetails');

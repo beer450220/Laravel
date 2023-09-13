@@ -272,7 +272,7 @@
                       <!-- progressbar -->
 
                       <ul id="progressbar">
-                        <a  href="/personal"><li class="active" id="account"><strong>ข้อมูลส่วนตัว</strong></li></a>
+                        <a  href="/studenthome"><li class="active" id="account"><strong>ข้อมูลส่วนตัว</strong></li></a>
                         <a  href="/studenthome">  <li class="active" id="personal"><strong>สถานประกอบการ</strong></li></a>
                           <a  href="/studenthome">  <li class="active" id="payment"><strong>ลงทะเบียน</strong></li></a>
                             <a  href="/studenthome"> <li id="confirm"><strong>รายงานสถานะการเข้าปฏิบัติงาน</strong></li></a>

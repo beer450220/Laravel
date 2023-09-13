@@ -177,7 +177,7 @@
       </ul>
 
 
-      <ul class="navbar-nav flex-fill w-100 mb-2">
+      {{-- <ul class="navbar-nav flex-fill w-100 mb-2">
         <li class="nav-item ">
           <a href="/studenthome/informdetails"  class=" nav-link">
             <i class="fe fe-box fe-16"></i>
@@ -186,7 +186,7 @@
 
 
         </li>
-      </ul>
+      </ul> --}}
 
 
       {{-- <p class="text-muted nav-heading mt-4 mb-1">
@@ -205,7 +205,7 @@
       <p class="text-muted nav-heading mt-4 mb-1">
         <span>นิเทศงาน</span>
       </p> --}}
-      <ul class="navbar-nav flex-fill w-100 mb-2">
+      {{-- <ul class="navbar-nav flex-fill w-100 mb-2">
         <li class="nav-item dropdown">
           <a href="#ui-elementss3" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
             <i class="fe fe-box fe-16"></i>
@@ -225,14 +225,14 @@
 
 
         </li>
-      </ul>
+      </ul> --}}
 
 
 
       {{-- <p class="text-muted nav-heading mt-4 mb-1">
         <span>รายงานผลฝึกประสบการณ์</span>
       </p> --}}
-      <ul class="navbar-nav flex-fill w-100 mb-2">
+      {{-- <ul class="navbar-nav flex-fill w-100 mb-2">
         <li class="nav-item dropdown">
           <a href="/studenthome/report" class=" nav-link">
             <i class="fe fe-box fe-16"></i>
@@ -243,7 +243,7 @@
 
 
         </li>
-      </ul>
+      </ul> --}}
 
 
 

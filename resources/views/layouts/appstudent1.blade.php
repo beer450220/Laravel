@@ -1,5 +1,5 @@
-   
-   
+
+
      <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -24,21 +24,21 @@
      <!-- Date Range Picker CSS -->
      {{-- <link rel="stylesheet" href="../../student/css/daterangepicker.css"> --}}
      <!-- App CSS -->
-      <link rel="stylesheet" href="../../student/css/app-light.css" id="lightTheme"> 
+      <link rel="stylesheet" href="../../student/css/app-light.css" id="lightTheme">
      <link rel="stylesheet" href="../../student/css/app-dark.css" id="darkTheme" disabled>
-    
 
-     
-     
+
+
+
 
 
 
 
  <!-- FullCalendar CSS -->
      {{-- <link rel="stylesheet" href="../../student/css/fullcalendar.css"> --}}
-    
-    
- 
+
+
+
       <!-- Date Range Picker CSS -->
      {{-- <link rel="stylesheet" href="../../student/css/daterangepicker.css"> --}}
 
@@ -46,16 +46,16 @@
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
-     {{-- @include('layouts.menutopstudent') 
+     {{-- @include('layouts.menutopstudent')
         @include('layouts.sidebarstudent')
          --}}
     {{-- @include('layouts.cssstudent') --}}
 
 {{-- @include('layouts.scriptsstudent') --}}
      @yield('content')
-    
-   
-   
+
+
+
     {{-- <script src="../../student/js/jquery.min.js"></script>
     <script src="../../student/js/popper.min.js"></script>
     <script src="../../student/js/moment.min.js"></script>
@@ -104,15 +104,15 @@
     //           timeZone: 'Asia/Bangkok',
     //           themeSystem: 'bootstrap',
     //           locale:'th',
-      
-            
+
+
     //           header:
     //           {
     //             left: 'prev,next , today',
     //             center: 'title',
-                
+
     //             right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
-      
+
     //           },
     //           buttonIcons:
     //           {
@@ -129,7 +129,7 @@
     //       });
     //     }
     //   </script>
-    //  <script>
+      <script>
     //     $('.select2').select2(
     //     {
     //       theme: 'bootstrap4',
@@ -144,11 +144,11 @@
     //       singleDatePicker: true,
     //       timePicker: false,
     //       showDropdowns: true,
-          
+
     //       locale:
     //       {
     //         format: 'MM/DD/YYYY',
-            
+
     //       }
     //     });
     //     $('.time-input').timepicker(
@@ -172,7 +172,7 @@
     //     }
     //     var start = moment().subtract(29, 'days');
     //     var end = moment();
-      
+
     //     function cb(start, end)
     //     {
     //       $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
@@ -311,7 +311,7 @@
     //       }, false);
     //     })();
     //   </script>
-    //   <script>
+       <script>
     //     var uptarg = document.getElementById('drag-drop-area');
     //     if (uptarg)
     //     {
@@ -335,11 +335,11 @@
     //     }
     //   </script>
     {{-- //   <script src="../student/js/apps.js"></script> --}}
-    //   <!-- Global site tag (gtag.js) - Google Analytics -->
-    //   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-56159088-1"></script>
-    //   <script>
+      <!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-56159088-1"></script>
+      <script>
     //     window.dataLayer = window.dataLayer || [];
-      
+
     //     function gtag()
     //     {
     //       dataLayer.push(arguments);

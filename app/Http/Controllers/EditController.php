@@ -46,6 +46,16 @@ class EditController extends Controller
          // return redirect("/welcome")->with('success', 'Company has been created successfully.');
      }
 
+     public function edit2register($id) {
+        //ตรวจสอบข้อมูล
+
+        // $establishments=establishment::find($id);
+        $establishments=DB::table('registers')->find($id);
+        //  dd($establishments);
+
+         return view('student.Edit.edit2register',compact('establishments'));
+         // return redirect("/welcome")->with('success', 'Company has been created successfully.');
+     }
 
      public function   updateestablishment(Request $request,$id) {
         //ตรวจสอบข้อมูล
@@ -135,22 +145,33 @@ class EditController extends Controller
 public function   updateregisteruser(Request $request,$id) {
     //ตรวจสอบข้อมูล
 
-
+//dd($request);
 
     $request->validate([
-        // 'images' => ['required','mimes:jpg,jpeg,png'],
-        // 'name' => ['required','min:5'],
+
+        'filess' => 'mimes:jpeg,jpg,png',
+        //'filess' => 'sometimes|required|mimes:jpeg,jpg,png',
+        // 'name' => ['required'],
+        'name' => 'required',
         // 'filess' => 'required|mimes:pdf',
         // 'establishment' => 'required',
-    ],[
-            'establishment.required' => "กรุณา",
-
+    ],
+    [
+        'name.required' => "กรุณาชื่อไฟล์",
+            // 'establishment.required' => "กรุณา",
+           // 'filess.required' => "กรุณาใส่รูปภาพ",
+            // 'name.required' => "กรุณากรอกชื่อไฟล์",
         ]
     );
     $post=registers::findOrFail($id);
     $post->user_id = Auth::user()->id;
-    $post->Status ="รอตรวจสอบ";
+    $post->Status_registers ="รอตรวจสอบ";
+    $post->annotation ="-";
+
     if($request->hasFile("filess")){
+        // if (File::exists(public_path("file/".$post->filess))) {
+        //     File::delete(public_path("file/".$post->filess));
+        // }
         if (File::exists("file/".$post->filess)) {
             File::delete("file/".$post->filess);
         }
@@ -158,19 +179,25 @@ public function   updateregisteruser(Request $request,$id) {
         $post->filess=time()."_".$file->getClientOriginalName();
         $file->move(\public_path("/file"),$post->filess);
         $request['filess']=$post->filess;
+        // $file = $request->file("filess");
+        // $post->filess = time() . "_" . $file->getClientOriginalName();
+        // $file->move(public_path("/file"), $post->filess);
     }
     // dd($request);
 
     $post->update
     ([
-        "name" =>$request->name,
-        "establishment"=>$request->establishment,
-        // "phone"=>$request->phone,
-        "filess"=>$request->filess,
+        // "name" =>$request->name,
+        // "establishment"=>$request->establishment,
+
+        // "filess"=>$request->filess,
         "filess"=>$post->filess,
+        "name" => $request->name,
+
+        // "filess" => $post->filess
     ]);
 
-    return redirect('/studenthome/register')->with('success', 'แก้ไขข้อมูลสำเร็จ.');
+    return redirect('/studenthome/register')->with('success6', 'แก้ไขข้อมูลสำเร็จ.');
  }
 
 
