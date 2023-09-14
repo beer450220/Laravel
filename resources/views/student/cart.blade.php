@@ -323,9 +323,9 @@
                                            <table id="cart" class="table table-hover table-condensed">
                                             <thead>
                                                 <tr>
-                                                    <th style="width:50%">Product</th>
-                                                    <th style="width:10%">Price</th>
-                                                    <th style="width:8%">Quantity</th>
+                                                    <th style="width:10%">รูปภาพ</th>
+                                                    <th style="width:10%">ชื่อสถานประกอบการ</th>
+                                                    <th style="width:8%">ลบ</th>
 
                                                 </tr>
                                             </thead>
@@ -347,7 +347,7 @@
 
 
                                                             <td class="actions" data-th="">
-                                                                <button class="btn btn-danger btn-sm cart_remove"><i class="fa fa-trash-o"></i> Delete</button>
+                                                                <button class="btn btn-danger btn-sm cart_remove"><i class="fa fa-trash-o"></i>ลบ</button>
                                                             </td>
                                                         </tr>
                                                     @endforeach
