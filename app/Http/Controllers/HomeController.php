@@ -118,7 +118,7 @@ class HomeController extends Controller
 
 
                 $keyword = $request->input('keyword');
-  dd($request);
+//dd($request);
                 // สร้างคำสั่งคิวรีเพื่อค้นหาข้อมูล
                 $establishments = establishment::query()
                     ->where('name', 'LIKE', '%' . $keyword . '%')
@@ -204,6 +204,12 @@ class HomeController extends Controller
 
         return view('student.informdetails',compact('informdetails'));
     }
+
+    public function addinformdetail()
+    {
+        return view('student.add.addinformdetails',["msg"=>"I am student role"]);
+    }
+
 
      public function record()
     {

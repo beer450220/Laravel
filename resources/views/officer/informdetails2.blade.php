@@ -27,27 +27,47 @@
         <table class="table table-hover">
           <thead class="thead-dark">
             <tr>
-              <th>#</th>
-              <th>ชื่อนักศึกษา</th>
-              <th>ชื่อสถานประกอบการ</th>
-              <th>เอกสารแจ้ง</th> 
-              <th>หมายเหตุ</th>
-              <th>สถานะ</th>
-              <th>ตรวจสอบเอกสาร</th>
-             
+                <th>#</th>
+                <th>ชื่อนักศึกษา</th>
+                <th>ชื่อสถานประกอบการ</th>
+                <th>ชื่อไฟล์</th>
+                <th>รูปภาพ</th>
+                <th>สถานะ</th>
+                <th>หมายเหตุ</th>
+                <th style="width:10%">ดูไฟล์เอกสาร</th>
+                <th>แก้ไข</th>
+
             </tr>
           </thead>
           <tbody>
             @foreach ($informdetails as $row)
-            <tr>
-              <td>{{$informdetails->firstItem()+$loop->index}}</td>
-              <td>{{$row->name}}</td>
-              <td>{{$row->establishment}}</td>
-              <td>{{$row->files }}<br><br><a href="/fileinformdetails/{{ $row->files }}" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td>
-              <td class="text-danger">{{$row->Status_informdetails}}</td>
-              <td class="text-danger">{{$row->Status_informdetails}}</td>
+
+
+              <tr class="{{
+                $row->Status_informdetails === 'รอตรวจสอบ' ? 'table-warning' : (
+                    $row->Status_informdetails === 'ตรวจสอบแล้ว' ? 'table-success' : (
+                        $row->Status_informdetails === 'ไม่ผ่าน' ? 'table-danger' : ''
+                    )
+                )
+            }}">
+                <td class="col-1 text-center">{{ $informdetails->firstItem() + $loop->index }}</td>
+                <td>{{ $row->name }}</td>
+                <td>{{ $row->establishment }}</td>
+                <td>{{ $row->namefile }}</td>
+                <td><img src="/fileinformdetails/{{ $row->files }}" class="img-responsive" style="max-height: 100px; max-width: 100px;" alt="" srcset=""></td>
+                <td>
+                    @if ($row->Status_informdetails === 'รอตรวจสอบ')
+                        <span class="badge badge-pill badge-warning">{{ $row->Status_informdetails }}</span>
+                    @elseif ($row->Status_informdetails === 'ตรวจสอบแล้ว')
+                        <span class="badge badge-pill badge-success">{{ $row->Status_informdetails}}</span>
+                    @elseif ($row->Status_informdetails === 'ไม่ผ่าน')
+                        <span class="badge badge-pill badge-danger">{{ $row->Status_informdetails}}</span>
+                    @endif
+                </td>
+                <td>{{ $row->annotation }}</td>
+                <td><a href="/fileinformdetails/{{ $row->files }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td>
               <td><a href="/officer/editinformdetails2/{{$row->informdetails_id}}" type="button" class="btn btn-outline-secondary fa-solid fa-pen-to-square fe-16"></a></td>
-              
+
             </tr>
 
             @endforeach

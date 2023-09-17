@@ -257,9 +257,9 @@
                       <a  href="/studenthome"><li class="active" id="account"><strong>ข้อมูลส่วนตัว</strong></li></a>
                       <a  href="/studenthome/establishmentuser">  <li class="active" id="personal"><strong>สถานประกอบการ</strong></li></a>
                         <a  href="/studenthome/register">  <li class="active" id="payment"><strong>ลงทะเบียน</strong></li></a>
-                          <a  href="/studenthome"> <li id="confirm"><strong>รายงานสถานะการเข้าปฏิบัติงาน</strong></li></a>
-                            <a  href="/studenthome"> <li id="confirm"><strong>นิเทศงาน</strong></li></a>
-                              <a  href="/studenthome"> <li id="payment"><strong>รายงานผลการปฏิบัติงาน</strong></li></a>
+                        <a  href="/studenthome/informdetails"> <li id="confirm"><strong>รายงานสถานะการเข้าปฏิบัติงาน</strong></li></a>
+                        <a  href="/studenthome/calendar2confirm"> <li id="confirm"><strong>นิเทศงาน</strong></li></a>
+                          <a  href="/studenthome/report"> <li id="payment"><strong>รายงานผลการปฏิบัติงาน</strong></li></a>
                     </ul>
                     <div class="progress">
                         {{-- <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div> --}}
@@ -324,21 +324,32 @@
                                           <form method="POST" action="{{ route('addregisteruser') }}"enctype="multipart/form-data" >
                                             @csrf
 
-                                                  <label for="simpleinput">อัพโหลดไฟล์เอกสาร</label>
-                                                  <div class="custom-file">
-                                                    <input type="file" name="filess" class="custom-file-input" id="customFile">
-                                                    <label class="custom-file-label" for="customFile">เลือกไฟล์รูป</label>
-                                                  </div>
+                                                  <label for="simpleinput">ชื่อไฟล์</label>
+                                                  <select class="form-control required" name="namefile" id="example-select">
+                                                    <option value="">กรุณาเลือก</option>
+                                                    <option value="แบบพิจารณาคุณสมบัตินักศึกษาสหกิจศึกษา(สก01)">แบบพิจารณาคุณสมบัตินักศึกษาสหกิจศึกษา(สก01)</option>
+                                                    <option value="ใบสมัครงานสหกิจศึกษา(สก03)">ใบสมัครงานสหกิจศึกษา(สก03)</option>
+                                                    <option value="แบบคำรองขอหนังสือขอความอนุเคราะหรับนักศึกษาสหกิจศึกษา(สก04)">แบบคำรองขอหนังสือขอความอนุเคราะหรับนักศึกษาสหกิจศึกษา(สก04)</option>
+                                                    <option value="บัตรประชาชน">บัตรประชาชน</option>
+                                                    <option value="บัตรนักศึกษา">บัตรนักศึกษา</option>
+                                                    <option value="ผลการเรียน">ผลการเรียน</option>
+                                                    <option value="ประวัติส่วนตัว(resume)">ประวัติส่วนตัว(resume)</option>
+                                                  </select>
+
                                                 </div>
                                                 <div class="form-group mb-3">
-                                                  <label for="example-email">ชื่อไฟล์</label>
+                                                  <label for="example-email">อัพโหลดไฟล์เอกสาร</label>
                                                   {{-- <div class="custom-file">
                                                     <input type="file" class="custom-file-input" id="customFile">
                                                     <label class="custom-file-label" for="customFile">Choose file</label>
                                                   </div> --}}
                                                   <div class="form-group mb-3">
+                                                    <div class="custom-file">
+                                                        <input type="file" name="filess" class="custom-file-input" id="customFile">
+                                                        <label class="custom-file-label" for="customFile">เลือกไฟล์รูป</label>
 
-                                                    <input type="text"  name="name" class="form-control" id="example-static" >
+                                                      </div>
+                                                    {{-- <input type="text"  name="namefile" class="form-control" id="example-static" > --}}
                                                   </div>
                                                 </div>
 

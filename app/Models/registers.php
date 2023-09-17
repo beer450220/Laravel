@@ -14,7 +14,7 @@ class registers extends Model
     // public$primarykey="id";
     protected $fillable=[
         // 'establishment',
-        'name',
+        'namefile',
         'filess',
     //    ' Status',
        'user_id' ,

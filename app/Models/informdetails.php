@@ -18,7 +18,7 @@ class informdetails extends Model
         'establishment',
         //'Status',
         "annotation" ,
-        
+        "namefile",
          "Status_informdetails",
     ];
     public function Users(){

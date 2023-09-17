@@ -361,7 +361,7 @@
               <div class="d-grid gap-2 d-md-block">
                 <a href="/studenthome/documents1" type="button" class="btn btn-outline-primary"data-bs-toggle="modal" data-bs-target="#exampleModal">ดาวน์โหลดไฟล์เอกสาร</a>
 
-                <a href="/studenthome/addregister"  class=" btn btn-outline-success">เพิ่มข้อมูล</a>
+                <a href="/studenthome/addinformdetail"  class=" btn btn-outline-success">เพิ่มข้อมูล</a>
 
               </div>
             </div>
@@ -378,24 +378,51 @@
               <th>#</th>
               <th>ชื่อนักศึกษา</th>
               <th>ชื่อสถานประกอบการ</th>
-              <th>เอกสารแจ้ง</th>
+              <th>ชื่อไฟล์</th>
+              <th>รูปภาพ</th>
               <th>สถานะ</th>
+              <th>หมายเหตุ</th>
+              <th style="width:10%">ดูไฟล์เอกสาร</th>
               <th>แก้ไข</th>
-              <th>ลบ</th>
+
             </tr>
           </thead>
           <tbody>
             @foreach ($informdetails as $row)
-            <tr>
-              <td>{{$informdetails->firstItem()+$loop->index}}</td>
+            {{-- <tr>
+
               <td>{{$row->name}}</td>
               <td>{{$row->establishment}}</td>
               <td><a href="/fileinformdetails/{{ $row->files }}"target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td>
               <td class="text-danger">{{$row->Status_informdetails}}</td>
               <td><a href="/studenthome/editinformdetails/{{$row->informdetails_id}}" type="button" class="btn btn-outline-secondary fe fe-edit fe-16"></a></td>
               <td><a  href="/studenthome/deleteinformdetails/{{$row->informdetails_id}}" class="btn btn-outline-danger fe fe-trash-2 fe-16"onclick="return confirm('ยืนยันการลบข้อมูล !!');"></a></td>
+            </tr> --}}
+            <tr class="{{
+                $row->Status_informdetails === 'รอตรวจสอบ' ? 'table-warning' : (
+                    $row->Status_informdetails === 'ตรวจสอบแล้ว' ? 'table-success' : (
+                        $row->Status_informdetails === 'ไม่ผ่าน' ? 'table-danger' : ''
+                    )
+                )
+            }}">
+                <td class="col-1 text-center">{{ $informdetails->firstItem() + $loop->index }}</td>
+                <td>{{ $row->name }}</td>
+                <td>{{ $row->establishment }}</td>
+                <td>{{ $row->namefile }}</td>
+                <td><img src="/fileinformdetails/{{ $row->files }}" class="img-responsive" style="max-height: 100px; max-width: 100px;" alt="" srcset=""></td>
+                <td>
+                    @if ($row->Status_informdetails === 'รอตรวจสอบ')
+                        <span class="badge badge-pill badge-warning">{{ $row->Status_informdetails }}</span>
+                    @elseif ($row->Status_informdetails === 'ตรวจสอบแล้ว')
+                        <span class="badge badge-pill badge-success">{{ $row->Status_informdetails}}</span>
+                    @elseif ($row->Status_informdetails === 'ไม่ผ่าน')
+                        <span class="badge badge-pill badge-danger">{{ $row->Status_informdetails}}</span>
+                    @endif
+                </td>
+                <td>{{ $row->annotation }}</td>
+                <td><a href="/fileinformdetails/{{ $row->files }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td>
+                <td><a href="/studenthome/editinformdetails/{{ $row->informdetails_id}}" type="button" class="btn btn-outline-secondary fe fe-edit fe-16"></a></td>
             </tr>
-
             @endforeach
           </tbody>
         </table>

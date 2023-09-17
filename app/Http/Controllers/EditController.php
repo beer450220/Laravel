@@ -152,12 +152,12 @@ public function   updateregisteruser(Request $request,$id) {
         'filess' => 'mimes:jpeg,jpg,png',
         //'filess' => 'sometimes|required|mimes:jpeg,jpg,png',
         // 'name' => ['required'],
-        'name' => 'required',
+        'namefile' => 'required',
         // 'filess' => 'required|mimes:pdf',
         // 'establishment' => 'required',
     ],
     [
-        'name.required' => "กรุณาชื่อไฟล์",
+        'namefile.required' => "กรุณาชื่อไฟล์",
             // 'establishment.required' => "กรุณา",
            // 'filess.required' => "กรุณาใส่รูปภาพ",
             // 'name.required' => "กรุณากรอกชื่อไฟล์",
@@ -192,7 +192,7 @@ public function   updateregisteruser(Request $request,$id) {
 
         // "filess"=>$request->filess,
         "filess"=>$post->filess,
-        "name" => $request->name,
+        "namefile" => $request->namefile,
 
         // "filess" => $post->filess
     ]);
@@ -238,13 +238,14 @@ public function   updateregisteruser(Request $request,$id) {
  public function   updateinformdetails(Request $request,$informdetails_id) {
     //ตรวจสอบข้อมูล
 
-   // dd($request);
+    //dd($request);
 
     $request->validate([
         // 'images' => ['required','mimes:jpg,jpeg,png'],
         // 'name' => ['required','min:5'],
         // 'filess' => 'required|mimes:pdf',
         // 'establishment' => 'required',
+        'files' => 'mimes:jpg,jpeg,png',
     ],[
             'establishment.required' => "กรุณา",
 
@@ -252,7 +253,9 @@ public function   updateregisteruser(Request $request,$id) {
     );
     $post=informdetails::findOrFail($informdetails_id);
     $post->user_id = Auth::user()->id;
-    $post->Status ="รอตรวจสอบ";
+    $post->Status_informdetails ="รอตรวจสอบ";
+    $post->establishment ="-";
+    $post->annotation ="-";
     if($request->hasFile("files")){
         if (File::exists("fileinformdetails/".$post->files)) {
             File::delete("fileinformdetails/".$post->files);
@@ -267,10 +270,12 @@ public function   updateregisteruser(Request $request,$id) {
     $post->update
     ([
         // "name" =>$request->name,
-        "establishment"=>$request->establishment,
+       // "establishment"=>$request->establishment,
         // "phone"=>$request->phone,
-        "files"=>$request->files,
+
         "files"=>$post->files,
+        "namefile" => $request->namefile,
+
     ]);
 
 
@@ -761,6 +766,7 @@ public function editreport($report_id) {
         // 'name' => ['required','min:5'],
         // 'filess' => 'required|mimes:pdf',
         // 'establishment' => 'required',
+
     ],[
             //'establishment.required' => "กรุณา",
 

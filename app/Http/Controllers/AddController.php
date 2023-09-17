@@ -159,11 +159,11 @@ class AddController extends Controller
         // 'filess' => 'required|mimes:jpeg,jpg,png',
         'filess' => 'mimes:jpeg,jpg,png',
 
-        'name' => 'required',
+        'namefile' => 'required',
         // 'user_id' => 'required|unique:user_id',
       ],[
             // 'filess.required' => "กรุณาใส่เป็นไฟล์รูปภาพ",
-           'name.required' => "กรุณาชื่อไฟล์",
+           'namefile.required' => "กรุณาชื่อไฟล์",
         ]
     );
       if($request->hasFile("filess")){
@@ -174,7 +174,7 @@ class AddController extends Controller
 
         $post =new registers([
           "user_id" => $request->user_id,
-             "name" => $request->name,
+             "namefile" => $request->namefile,
             "filess" =>$imageName,
             "annotation" => "-",
             "Status_registers" => "รอตรวจสอบ",
@@ -204,8 +204,12 @@ class AddController extends Controller
       $request->validate([
         // 'filess' => 'required|mimes:pdf',
         // 'user_id' => 'required|unique:user_id',
+        'files' => 'mimes:jpeg,jpg,png',
+
+        'namefile' => 'required',
       ],[
           // 'name.required' => "กรุณา",
+          'namefile.required' => "กรุณาชื่อไฟล์",
         ]
     );
       if($request->hasFile("files")){
@@ -225,14 +229,16 @@ class AddController extends Controller
       // $post->save();
         ([
           // "user_id" => $request->user_id,
-            //  "name" => $request->name,
+            "namefile" => $request->namefile,
            'establishment' => $request->establishment,
             "files" =>$imageName,
 
 
         ]);// dd($request);dd($request->Status);
 
-      $post->Status ="รอตรวจสอบ";
+      $post->Status_informdetails ="รอตรวจสอบ";
+      $post->annotation ="-";
+      $post->establishment ="-";
       $post->user_id = Auth::user()->id;
       $post->save();
       //  $data->save();

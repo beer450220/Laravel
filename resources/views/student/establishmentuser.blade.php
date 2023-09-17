@@ -6,7 +6,7 @@
 {{-- @include('layouts.scriptsstudent') --}}
 @section('content')
 <title>user</title>
-<meta charset="utf-8">
+{{-- <meta charset="utf-8"> --}}
         <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('icons/1.png') }}">
 
@@ -298,7 +298,7 @@
                           {{-- <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div> --}}
                       </div> <br> <!-- fieldsets -->
                       <fieldset>
-
+</form>
 
                           <div class="form-card">
                               <div class="row">
@@ -331,16 +331,16 @@
                                                     <div class="input-group">
                                                         <input class="form-control" name="search" placeholder="Search..." value="{{ isset($search) ? $search : ''}}">
                                                         <button type="submit" class="btn btn-primary">Search</button>
-                                                    </div>
-                                                </form> --}}
+                                                    </div>--}}
+                                                </form>
 
                                                 <form action="{{ route('search') }}" method="GET">
                                                     <div class="form-group">
                                                         {{-- <label for="keyword">คำค้นหา:</label> --}}
                                                         <input type="text" name="keyword" id="keyword" class="form-control" value="{{ request('keyword') }}">
                                                     </div>
-                                                    <button type="submit" class="btn btn-primary">ค้นหา</button>
-
+                                                    {{-- <button type="submit" class="btn btn-primary">ค้นหา</button> --}}
+                                                    </form>
                                               </div>
                                               <div class="col-3">
                                               <div class="form-group col-auto ml-3">
@@ -354,7 +354,7 @@
                                                 </select>
                                               </div>
                                             </div>
-                                          </form>     </div>
+                                           </div>
                                         </div>
                                         <div class="col-2">
                                             <div class="dropdown">

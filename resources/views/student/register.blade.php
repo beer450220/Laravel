@@ -271,7 +271,10 @@
   color: red; /* สีที่คุณต้องการเมื่อไอคอนมีสี */
 }
 
-
+.highlight {
+        background-color: yellow; /* เปลี่ยนสีพื้นหลังเป็นสีเหลืองเมื่อเงื่อนไขเป็นจริง */
+        color: black; /* เปลี่ยนสีข้อความในแถวที่เป็น highlight เป็นสีดำ */
+    }
 
 
   </style>
@@ -310,7 +313,7 @@
                               <div class=" alert alert-primary  " role="alert">
                                   <b>ขั้นตอนที่ 3 ลงทะเบียน:</b> ให้กรอกข้อมูลนักศึกษาให้เรียบร้อย
                                       <br> แล้วให้อัพโหลดไฟล์เอกสารให้เรียบร้อย
-                                      <br>  <a href="/studenthome/register"  class="btn btn-outline-warning " type="button">>คลิกที่นี่<</a>เพื่อขั้นตอนต่อไป
+                                      <br>  <a href="/studenthome/informdetails"  class="btn btn-outline-warning " type="button">>คลิกที่นี่<</a>เพื่อขั้นตอนต่อไป
                                                               </div>   <br>   <br>
                           </div>
                           {{-- <div class="accordion" id="accordionExample">
@@ -443,6 +446,7 @@
             <tr>
               <th>ลำดับ</th>
               <th>ชื่อนักศึกษา</th>
+              <th>ชื่อไฟล์</th>
               <th>รูปภาพ</th>
              <th>สถานะ</th>
              <th>หมายเหตุ</th>
@@ -455,19 +459,55 @@
           <tbody>
             @foreach ($registers as $row)
             <tr>
-              <td class="col-1 text center">{{$registers->firstItem()+$loop->index}}</td>
-              <td>{{$row->name}}</td>
-              <td> <img src="/file/{{ $row->filess }}" class="img-responsive" style="max-height: 100px; max-width: 100px;" alt="" srcset=""></td>
-              <td>{{$row->Status_registers}}</td>
-                 {{-- <td></td> --}}
-                 <td></td>
-              <td><a href="/file/{{ $row->filess }}"target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td>
 
-              {{-- download --}}
-              <td><a href="/studenthome/edit2register/{{$row->id}}" type="button" class="btn btn-outline-secondary fe fe-edit fe-16"></a></td>
-              {{-- <td><a  href="/studenthome/delete/{{$row->id}}" class="btn btn-outline-danger fe fe-trash-2 fe-16"onclick="return confirm('ยืนยันการลบข้อมูล !!');"></a></td> --}}
+
+            {{-- <tr class="{{ $row->Status_registers === 'รอตรวจสอบ' ? 'table-warning' : ($row->Status_registers === 'ตรวจสอบแล้ว' ? 'table-success' : 'table-warning') }}">
+                <td class="col-1 text center">{{$registers->firstItem()+$loop->index}}</td>
+                <td>{{ $row->name }}</td>
+                <td>{{ $row->namefile }}</td>
+                 <td>{{$row->annotation}}</td>
+                <td>
+                    @if ($row->Status_registers === 'รอตรวจสอบ')
+                        <span class="badge badge-pill badge-warning">{{ $row->Status_registers }}</span>
+                    @elseif ($row->Status_registers === 'ตรวจสอบแล้ว')
+                        <span class="badge badge-pill badge-success">{{ $row->Status_registers }}</span>
+                    @else
+                        <!-- กรณีอื่น ๆ --><span class="badge badge-pill badge-danger">{{ $row->Status_registers }}</span>
+                    @endif
+                </td>
+
+                <td>{{$row->annotation}}</td>
+                <td><a href="/file/{{ $row->filess }}"target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td>
+                <td><a href="/studenthome/edit2register/{{$row->id}}" type="button" class="btn btn-outline-secondary fe fe-edit fe-16"></a></td>
+            </tr> --}}
+
+            <tr class="{{
+                $row->Status_registers === 'รอตรวจสอบ' ? 'table-warning' : (
+                    $row->Status_registers === 'ตรวจสอบแล้ว' ? 'table-success' : (
+                        $row->Status_registers === 'ไม่ผ่าน' ? 'table-danger' : ''
+                    )
+                )
+            }}">
+                <td class="col-1 text-center">{{ $registers->firstItem() + $loop->index }}</td>
+                <td>{{ $row->name }}</td>
+                <td>{{ $row->namefile }}</td>
+                <td><img src="/file/{{ $row->filess }}" class="img-responsive" style="max-height: 100px; max-width: 100px;" alt="" srcset=""></td>
+                <td>
+                    @if ($row->Status_registers === 'รอตรวจสอบ')
+                        <span class="badge badge-pill badge-warning">{{ $row->Status_registers }}</span>
+                    @elseif ($row->Status_registers === 'ตรวจสอบแล้ว')
+                        <span class="badge badge-pill badge-success">{{ $row->Status_registers }}</span>
+                    @elseif ($row->Status_registers === 'ไม่ผ่าน')
+                        <span class="badge badge-pill badge-danger">{{ $row->Status_registers }}</span>
+                    @endif
+                </td>
+                <td>{{ $row->annotation }}</td>
+                <td><a href="../file/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td>
+                <td><a href="/studenthome/edit2register/{{ $row->id }}" type="button" class="btn btn-outline-secondary fe fe-edit fe-16"></a></td>
             </tr>
 
+            {{-- download --}}
+{{-- <td><a  href="/studenthome/delete/{{$row->id}}" class="btn btn-outline-danger fe fe-trash-2 fe-16"onclick="return confirm('ยืนยันการลบข้อมูล !!');"></a></td> --}}
             @endforeach
           </tbody>
         </table>

@@ -324,27 +324,43 @@
                                           <form method="POST" action="{{url('/studenthome/update/'.$establishments->id)}}"enctype="multipart/form-data" >
                                             @csrf
 
-                                                  <label for="simpleinput">อัพโหลดไฟล์เอกสาร</label>
-                                                  <div class="custom-file">
-                                                    <input type="file" name="filess" value="{{$establishments->filess}}" class="custom-file-input " id="customFile">
-                                                    <label class="custom-file-label" for="customFile">เลือกไฟล์รูป</label>
-                                                    <img src="/file/{{ $establishments->filess }}" class="img-responsive" style="max-height: 100px; max-width: 100px;" alt="" srcset="">
+                                                  <label for="simpleinput">ชื่อไฟล์</label>
 
-                                                </div>{{--  @error('filess')
+                                                <select class="form-control required" name="namefile" id="example-select">
+                                                    <option selected>กรุณาเลือก</option>
+                                                    <option value="แบบพิจารณาคุณสมบัตินักศึกษาสหกิจศึกษา(สก01)"@if($establishments->namefile=="แบบพิจารณาคุณสมบัตินักศึกษาสหกิจศึกษา(สก01)") selected @endif required>แบบพิจารณาคุณสมบัตินักศึกษาสหกิจศึกษา(สก01)</option>
+                                                    <option value="ใบสมัครงานสหกิจศึกษา(สก03)"@if($establishments->namefile=="ใบสมัครงานสหกิจศึกษา(สก03)") selected @endif required>ใบสมัครงานสหกิจศึกษา(สก03)</option>
+                                                    <option value="แบบคำรองขอหนังสือขอความอนุเคราะหรับนักศึกษาสหกิจศึกษา(สก04)"@if($establishments->namefile=="แบบคำรองขอหนังสือขอความอนุเคราะหรับนักศึกษาสหกิจศึกษา(สก04)") selected @endif required>แบบคำรองขอหนังสือขอความอนุเคราะหรับนักศึกษาสหกิจศึกษา(สก04)</option>
+                                                    <option value="บัตรประชาชน"@if($establishments->namefile=="บัตรประชาชน") selected @endif required>บัตรประชาชน</option>
+                                                    <option value="บัตรนักศึกษา"@if($establishments->namefile=="บัตรนักศึกษา") selected @endif required>บัตรนักศึกษา</option>
+                                                    <option value="ผลการเรียน"@if($establishments->namefile=="ผลการเรียน") selected @endif required>ผลการเรียน</option>
+                                                    <option value="ประวัติส่วนตัว(resume)"@if($establishments->namefile=="ประวัติส่วนตัว(resume)") selected @endif required>ประวัติส่วนตัว(resume)</option>
+
+                                                  </select>
+
+                                                {{--  @error('filess')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror --}}
                                                 </div><br><br>
                                                 <div class="form-group mb-3">
-                                                  <label for="example-email">ชื่อไฟล์</label>
+                                                  <label for="example-email">อัพโหลดไฟล์เอกสาร</label>
                                                   {{-- <div class="custom-file">
                                                     <input type="file" class="custom-file-input" id="customFile">
                                                     <label class="custom-file-label" for="customFile">Choose file</label>
                                                   </div> --}}
                                                   <div class="form-group mb-3">
 
-                                                    <input type="text" value="{{$establishments->name}}" name="name" class="form-control" id="example-static" >
+                                                    <div class="custom-file">
+                                                        <div class="custom-file">
+                                                            <input type="file" name="filess" value="{{$establishments->filess}}" class="custom-file-input " id="customFile">
+                                                            <label class="custom-file-label" for="customFile">เลือกไฟล์รูป</label>
+                                                            <img src="/file/{{ $establishments->filess }}" class="img-responsive" style="max-height: 100px; max-width: 100px;" alt="" srcset="">
+
+                                                        </div>
+
+                                                      </div>
                                                   </div>
                                                 </div>
 

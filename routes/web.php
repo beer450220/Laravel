@@ -118,8 +118,10 @@ Route::middleware(['auth','user-role:student'])->group(function()
     Route::get("/studenthome/documents1",[HomeController::class,'documents3'])->name('documents3');
 
     Route::get("/studenthome/informdetails",[HomeController::class,'informdetails'])->name('student.informdetails');
+    Route::get("/studenthome/addinformdetail",[HomeController::class,'addinformdetail'])->name('addinformdetail');
     Route::post("/studenthome/add",[AddController::class,'addinformdetails'])->name('addinformdetails');
     Route::get("/studenthome/editinformdetails/{informdetails_id}",[EditController::class,'editinformdetails'])->name('editinformdetails');
+
     Route::post("/studenthome/updateinformdetails/{informdetails_id}",[EditController::class,'updateinformdetails'])->name('updateinformdetails');
     Route::get('/studenthome/deleteinformdetails/{informdetails_id}', [EditController::class,'delinformdetails'])->name('delinformdetails');
 
