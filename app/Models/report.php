@@ -12,11 +12,13 @@ class report extends Model
     protected $primaryKey = 'report_id';
     protected $fillable=[
         'user_id',
-        'projects',
-        'presentation',
+        // 'projects',
+        'namefile',
+        'filess',
+        // 'presentation',
        'Status_report',
-       'poster' ,
-       'projectsummary',
+    //    'poster' ,
+    //    'projectsummary',
        'annotation'
     ];
 }

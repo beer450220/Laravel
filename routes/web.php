@@ -126,13 +126,14 @@ Route::middleware(['auth','user-role:student'])->group(function()
     Route::get('/studenthome/deleteinformdetails/{informdetails_id}', [EditController::class,'delinformdetails'])->name('delinformdetails');
 
 
-    Route::get("/studenthome/record",[HomeController::class,'record'])->name('student.record');
+    // Route::get("/studenthome/record",[HomeController::class,'record'])->name('student.record');
 
     Route::get("/studenthome/report",[HomeController::class,'report'])->name('student.report');
+    Route::get("/studenthome/addreport2",[AddController::class,'addreport2'])->name('addreport2');
     Route::post("/studenthome/addreport",[AddController::class,'addreport'])->name('addreport');
     Route::get("/studenthome/editreport/{report_id}",[EditController::class,'editreport'])->name('editreport');
     Route::post("/studenthome/updatereport/{report_id}",[EditController::class,'updatereport'])->name('updatereport');
-    Route::get('/studenthome/deletereport/{report_id}', [EditController::class,'delreport'])->name('delreport');
+    // Route::get('/studenthome/deletereport/{report_id}', [EditController::class,'delreport'])->name('delreport');
 
 
     Route::get("/studenthome/listofteachers",[HomeController::class,'listofteachers'])->name('student.listofteachers');
@@ -140,7 +141,10 @@ Route::middleware(['auth','user-role:student'])->group(function()
     Route::get("/studenthome/calendar2",[HomeController::class,'calendar2'])->name('student.calendar2');
     Route::get("/studenthome/calendar2confirm",[HomeController::class,'calendar2confirm'])->name('calendar2confirm');
     Route::get("/studenthome/calendar2confirmedit/{id}",[EditController::class,'calendar2confirmedit'])->name('calendar2confirmedit');
+    Route::get("/studenthome/calendar2confirmview/{id}",[EditController::class,'calendar2confirmview'])->name('calendar2confirmview');
     Route::post("/studenthome/updatecalendar2confirm/{id}",[EditController::class,'updatecalendar2confirm'])->name('updatecalendar2confirm');
+    Route::get("/studenthome/updateconfirm/{id}",[EditController::class,'updateconfirm'])->name('updateconfirm');
+
     Route::post("/studenthome/calendar2add/{id}",[AddController::class,'calendar2add'])->name('calendar2add');
 
     Route::get("/studenthome/acceptancedocument",[HomeController::class,'acceptancedocument'])->name('student.acceptancedocument');

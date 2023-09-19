@@ -37,7 +37,11 @@ class AddController extends Controller
 
         return view('student.add.addregister');
     }
+    public function addreport2()
+    {
 
+        return view('student.add.addreport');
+    }
     public function addstudent1(Request $request) {
         //ตรวจสอบข้อมูล
         //  dd($request);
@@ -262,51 +266,48 @@ class AddController extends Controller
       $request->validate([
         // 'filess' => 'required|mimes:pdf',
         // 'user_id' => 'required|unique:user_id',
+        'filess' => 'mimes:jpeg,jpg,png',
+
+        'namefile' => 'required',
       ],[
           // 'name.required' => "กรุณา",
+          'namefile.required' => "กรุณาชื่อไฟล์",
         ]
     );
-      if($request->hasFile("projects"))
-      {
-        $file=$request->file("projects");
+      if($request->hasFile("filess")){
+        $file=$request->file("filess");
          $imageName=time().'_'.$file->getClientOriginalName();
-        $file->move(\public_path("/รายงานโครงการ"),$imageName);
+        $file->move(\public_path("/ไฟล์เอกสารฝึกประสบการณ์"),$imageName);
+{
 
-
-        if  ($request->hasFile("presentation")){
-          $file=$request->file("presentation");
-           $image=time().'_'.$file->getClientOriginalName();
-          $file->move(\public_path("/การนำเสนอ"),$image);
-         }
-         if  ($request->hasFile("poster")){
-          $file=$request->file("poster");
-           $poster=time().'_'.$file->getClientOriginalName();
-          $file->move(\public_path("/โปสเตอร์"),$poster);
-         }
-
-         if  ($request->hasFile("projectsummary")){
-          $file=$request->file("projectsummary");
-           $projectsummary=time().'_'.$file->getClientOriginalName();
-          $file->move(\public_path("/รายงานสรุปโครงการ"),$projectsummary);
-         }
         $post =new report
+
+      //  $post->Status = "student"
+      //  $post->name = $request->name;
+      //  $post->establishment = $request->establishment;
+      // //  $post->filess =>$imageName;
+      // $post ->filess= $request->$imageName;
+      //  $post ->filess= $request->filess;
+      // $post->save();
         ([
           // "user_id" => $request->user_id,
-            //  "name" => $request->name,
-          //  'establishment' => $request->establishment,
-            "projects" =>$imageName,
-             "presentation" =>$image,
-             "poster" =>$poster,
-             "projectsummary" =>$projectsummary,
+            "namefile" => $request->namefile,
+        //    'establishment' => $request->establishment,
+            "filess" =>$imageName,
+
 
         ]);// dd($request);dd($request->Status);
 
-      $post->Status ="รอตรวจสอบ";
+      $post->Status_report ="รอตรวจสอบ";
+      $post->annotation ="-";
+    //   $post->establishment ="-";
       $post->user_id = Auth::user()->id;
       $post->save();
+      //  $data->save();
     }
+      }
          return redirect('/studenthome/report')->with('success', 'เพิ่มข้อมูลสำเร็จ.');
-}
+      }
 
 
 public function calendar2add(Request $request,$id) {

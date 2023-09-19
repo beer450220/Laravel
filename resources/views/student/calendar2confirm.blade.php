@@ -309,7 +309,7 @@
                                 <br>
 
 
-                                      <br>  <a href="/studenthome/calendar2confirm"  class="btn btn-outline-warning " type="button">>คลิกที่นี่<</a>เพื่อขั้นตอนต่อไป
+                                      <br>  <a href="/studenthome/report"  class="btn btn-outline-warning " type="button">>คลิกที่นี่<</a>เพื่อขั้นตอนต่อไป
 
 
                                     </div>   <br>   <br>
@@ -375,15 +375,15 @@
           <thead class="thead-dark ">
             <tr>
               <th>#</th>
-               <th>ชื่อนักศึกษา</th>
-
+              <th>วันเวลาการนิเทศ</th>
               <th>ชื่อสถานประกอบการ</th>
-              <th>อาจารย์นิเทศ</th>
+              <th>ชื่อนักศึกษา</th>
+              <th>รายชื่ออาจารย์นิเทศ</th>
 
               <th>รับทราบและยืนยันเวลานัดนิเทศ</th>
               <th>ขอเปลี่ยนเวลานัดนิเทศ</th>
 
-              <th>ยืนยันข้อมูล</th>
+              {{-- <th>ยืนยันข้อมูล</th> --}}
 
             </tr>
           </thead>
@@ -391,13 +391,28 @@
             @foreach ($events as $row)
             <tr>
               <td>{{$events->firstItem()+$loop->index}}</td>
-              <td>{{$row->title}}</td>
-              <td></td>
-              <td></td>
-              <td class="text-danger">{{$row->Statusevents}}</td>
-              <td></td>
+   <td> <?php
+    // แปลงวันที่เป็น Carbon instance
+    $startDateTime = Carbon\Carbon::parse($row->created_at);
 
-              <td><a href="/studenthome/calendar2confirmedit/{{$row->id}}" type="button" class="btn btn-outline-secondary fa-solid fa-pen-to-square fe-16"></a></td>
+    // เพิ่ม 543 ปีเพื่อแปลงเป็น พ.ศ.
+    $buddhistYear = $startDateTime->addYear(543);
+
+    // แปลงชื่อเดือนให้เป็นภาษาไทย
+    $thaiMonth = $buddhistYear->locale('th')->monthName;
+
+    // แสดงผลลัพธ์ในรูปแบบ "วันD เดือนMMMM พ.ศ.GGGG"
+    echo $buddhistYear->isoFormat('วันdddd ที่d MMMM พ.ศ.GGGG', $thaiMonth);
+    ?></td>
+              <td>
+        </td> <td></td>
+        <td><a href="/studenthome/calendar2confirmview/{{$row->id}}" type="button" class="btn btn-outline-primary  fa-regular fa-eye fe-16"></a>  </td>
+
+
+              <td>{{$row->Statusevents}}<br><a href="/studenthome/updateconfirm/{{$row->id}}" type="button"onclick="return confirm('ยืนยันข้อมูล !!');" class="btn btn-outline-success  fa-solid fa-check fe-16"></a></td>
+
+
+              <td>{{$row->Statustime}}<br><a href="/studenthome/calendar2confirmedit/{{$row->id}}" type="button" class="btn btn-outline-warning fa-solid fa-pen-to-square fe-16"></a></td>
               {{-- <td><a  href="/studenthome/deleteinformdetails/{{$row->id}}" class="btn btn-outline-danger fe fe-trash-2 fe-16"onclick="return confirm('ยืนยันการลบข้อมูล !!');"></a></td> --}}
             </tr>
 

@@ -323,75 +323,54 @@ public function editreport($report_id) {
     //dd($request);
 
     $request->validate([
-        // 'images' => ['required','mimes:jpg,jpeg,png'],
-        // 'name' => ['required','min:5'],
+
+        'filess' => 'mimes:jpeg,jpg,png',
+        //'filess' => 'sometimes|required|mimes:jpeg,jpg,png',
+        // 'name' => ['required'],
+        'namefile' => 'required',
         // 'filess' => 'required|mimes:pdf',
         // 'establishment' => 'required',
-    ],[
-            //'establishment.required' => "กรุณา",
-
+    ],
+    [
+        'namefile.required' => "กรุณาชื่อไฟล์",
+            // 'establishment.required' => "กรุณา",
+           // 'filess.required' => "กรุณาใส่รูปภาพ",
+            // 'name.required' => "กรุณากรอกชื่อไฟล์",
         ]
     );
     $post=report::findOrFail($report_id);
     $post->user_id = Auth::user()->id;
-    $post->Status ="รอตรวจสอบ";
-    if($request->hasFile("projects")){
-        if (File::exists("รายงานโครงการ/".$post->projects)) {
-            File::delete("รายงานโครงการ/".$post->projects);
-        }
-        $file=$request->file("projects");
-         $post->projects=time()."_".$file->getClientOriginalName();
-         $file->move(\public_path("/รายงานโครงการ"),$post->projects);
-         $request['projects']=$post->projects;
-      // dd($post);
-    }
+    $post->Status_report ="รอตรวจสอบ";
+    $post->annotation ="-";
 
-    if($request->hasFile("presentation")){
-        if (File::exists("การนำเสนอ/".$post->presentation)) {
-            File::delete("การนำเสนอ/".$post->presentation);
+    if($request->hasFile("filess")){
+        // if (File::exists(public_path("file/".$post->filess))) {
+        //     File::delete(public_path("file/".$post->filess));
+        // }
+        if (File::exists("ไฟล์เอกสารฝึกประสบการณ์/".$post->filess)) {
+            File::delete("ไฟล์เอกสารฝึกประสบการณ์/".$post->filess);
         }
-        $file=$request->file("presentation");
-        $post->presentation=time()."_".$file->getClientOriginalName();
-        $file->move(\public_path("/การนำเสนอ"),$post->presentation);
-        $request['presentation']=$post->presentation;
-    }
-
-    if($request->hasFile("poster")){
-        if (File::exists("โปสเตอร์/".$post->poster)) {
-            File::delete("โปสเตอร์/".$post->poster);
-        }
-        $file=$request->file("poster");
-        $post->poster=time()."_".$file->getClientOriginalName();
-        $file->move(\public_path("/โปสเตอร์"),$post->poster);
-        $request['poster']=$post->poster;
-    }
-    if($request->hasFile("projectsummary")){
-        if (File::exists("รายงานสรุปโครงการ/".$post->projectsummary)) {
-            File::delete("รายงานสรุปโครงการ/".$post->projectsummary);
-        }
-        $file=$request->file("projectsummary");
-        $post->projectsummary=time()."_".$file->getClientOriginalName();
-        $file->move(\public_path("/รายงานสรุปโครงการ"),$post->projectsummary);
-        $request['projectsummary']=$post->projectsummary;
+        $file=$request->file("filess");
+        $post->filess=time()."_".$file->getClientOriginalName();
+        $file->move(\public_path("/ไฟล์เอกสารฝึกประสบการณ์"),$post->filess);
+        $request['filess']=$post->filess;
+        // $file = $request->file("filess");
+        // $post->filess = time() . "_" . $file->getClientOriginalName();
+        // $file->move(public_path("/file"), $post->filess);
     }
     // dd($request);
 
     $post->update
     ([
         // "name" =>$request->name,
-        //"establishment"=>$request->establishment,
-        // "phone"=>$request->phone,
-       // "files"=>$request->files,
-        "projects"=>$post->projects,
-        "presentation"=>$post->presentation,
-        "poster"=>$post->poster,
-        "projectsummary"=>$post->projectsummary,
-       // "projects" =>$imageName,
-       // "presentation" =>$image,
-      //  "poster" =>$images,
-       // "projectsummary" =>$images1,
-    ]);
+        // "establishment"=>$request->establishment,
 
+        // "filess"=>$request->filess,
+        "filess"=>$post->filess,
+        "namefile" => $request->namefile,
+
+        // "filess" => $post->filess
+    ]);
 
     return redirect('/studenthome/report')->with('success', 'แก้ไขข้อมูลสำเร็จ.');
  }
@@ -438,7 +417,16 @@ public function editreport($report_id) {
      return view('student.edit.calendar2confirmedit',compact('events'));
      // return redirect("/welcome")->with('success', 'Company has been created successfully.');
  }
+ public function  calendar2confirmview($id) {
+    //ตรวจสอบข้อมูล
 
+    // $establishments=establishment::find($id);
+    $events=DB::table('events')->find($id);
+    //  dd($establishments);
+
+     return view('student.edit.calendar2confirmview',compact('events'));
+     // return redirect("/welcome")->with('success', 'Company has been created successfully.');
+ }
 
 
  public function   updatecalendar2confirm(Request $request,$id) {
@@ -472,6 +460,46 @@ public function editreport($report_id) {
         // "presentation"=>$post->presentation,
         // "appointmenttime"=>$post->appointmenttime,
         "Status"=>$request->Status,
+       // "projects" =>$imageName,
+       // "presentation" =>$image,
+      //  "poster" =>$images,
+       // "projectsummary" =>$images1,
+    ]);
+
+
+    return redirect('/studenthome/calendar2confirm')->with('success', 'ยืนยันข้อมูลสำเร็จ.');
+ }
+ public function   updateconfirm(Request $request,$id) {
+    //ตรวจสอบข้อมูล
+
+   // dd($request);
+
+    $request->validate([
+        // 'images' => ['required','mimes:jpg,jpeg,png'],
+        // 'name' => ['required','min:5'],
+        // 'filess' => 'required|mimes:pdf',
+        // 'establishment' => 'required',
+    ],[
+            //'establishment.required' => "กรุณา",
+
+        ]
+    );
+    $post=Event::findOrFail($id);
+    $post->user_id = Auth::user()->id;
+     $post->Statusevents ="รับทราบและยืนยันเวลานัดนิเทศ";
+    // $post->Status ="รอตรวจสอบ";
+   //dd($request->Status);
+
+    $post->update
+    ([
+    //    "name2" =>$request->name2,
+        //"establishment"=>$request->establishment,
+        // "phone"=>$request->phone,
+       // "files"=>$request->files,
+        // "projects"=>$post->projects,
+        // "presentation"=>$post->presentation,
+        // "appointmenttime"=>$post->appointmenttime,
+        // "Statusevents"=>$request->Status,
        // "projects" =>$imageName,
        // "presentation" =>$image,
       //  "poster" =>$images,

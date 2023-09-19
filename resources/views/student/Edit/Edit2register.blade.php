@@ -336,6 +336,7 @@
                                                     <option value="ผลการเรียน"@if($establishments->namefile=="ผลการเรียน") selected @endif required>ผลการเรียน</option>
                                                     <option value="ประวัติส่วนตัว(resume)"@if($establishments->namefile=="ประวัติส่วนตัว(resume)") selected @endif required>ประวัติส่วนตัว(resume)</option>
 
+
                                                   </select>
 
                                                 {{--  @error('filess')
