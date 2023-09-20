@@ -119,6 +119,8 @@ Route::middleware(['auth','user-role:student'])->group(function()
     Route::get("/studenthome/documents",[HomeController::class,'documents'])->name('student.documents');
     Route::get("/studenthome/documents1",[HomeController::class,'documents3'])->name('documents3');
 
+    Route::get("/studenthome/Announcement",[HomeController::class,'Announcement'])->name('Announcement');
+
     Route::get("/studenthome/informdetails",[HomeController::class,'informdetails'])->name('student.informdetails');
     Route::get("/studenthome/addinformdetail",[HomeController::class,'addinformdetail'])->name('addinformdetail');
     Route::post("/studenthome/add",[AddController::class,'addinformdetails'])->name('addinformdetails');
@@ -152,7 +154,7 @@ Route::middleware(['auth','user-role:student'])->group(function()
 
     Route::post("/studenthome/calendar2add/{id}",[AddController::class,'calendar2add'])->name('calendar2add');
 
-    Route::get("/studenthome/acceptancedocument",[HomeController::class,'acceptancedocument'])->name('student.acceptancedocument');
+    // Route::get("/studenthome/acceptancedocument",[HomeController::class,'acceptancedocument'])->name('student.acceptancedocument');
 });
 
 

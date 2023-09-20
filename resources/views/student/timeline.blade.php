@@ -16,15 +16,15 @@
               <h6 class="text-uppercase text-muted mb-4">ลงทะเบียน</h6>
               <div class="pb-3 timeline-item item-primary">
                 <div class="pl-5">
-                  
+
                   <div class="mb-1"><strong>{{$row->Status_registers}}</strong>
                   {{-- <p class="small text-muted">Creative Design <span class="badge badge-light">1h ago</span> --}}
                   </p>
                 </div>
               </div>
-             
+
              <br>
-               
+
               </div>
               <br>
               <h6 class="text-uppercase text-muted mb-4">เอกสารตอบรับนักศึกษา</h6>
@@ -32,7 +32,7 @@
                 <div class="pl-5">
                   <div class="mb-3"><strong>@Fletcher Everett</strong><span class="text-muted small mx-2">created new group for</span><strong>Tiny Admin</strong></div>
                   <ul class="avatars-list mb-3">
-                   
+
                 </div>
                 <br>
               </div>
@@ -40,38 +40,38 @@
               <div class="pb-3 timeline-item item-success">
                 <div class="pl-5">
                   <div class="mb-3"><strong>@Bertha Ball</strong><span class="text-muted small mx-2">has commented on</span><strong>Advanced table</strong></div>
-                  
+
                   </p>
-                 
+
                 </div>
-               
+
               </div>
               <h6 class="text-uppercase text-muted mb-4">นิเทศงาน</h6>
               <div class="pb-3 timeline-item item-danger">
                 <div class="pl-5">
                   <div class="mb-3"><strong>@Lillith Joseph</strong><span class="text-muted small mx-2">has upload new files to</span><strong>Tiny Admin</strong></div>
                   <div class="row mb-3">
-                   
+
                   </div>
-            
+
                 </div>
-         
-              
-              
+
+
+
                 </div>
 <br>
                 <h6 class="text-uppercase text-muted mb-4">รายงานผลฝึกประสบการณ์</h6>
                 <div class="pb-3 timeline-item item-success">
                   <div class="pl-5">
                     <div class="mb-3"><strong>@Bertha Ball</strong><span class="text-muted small mx-2">has commented on</span><strong>Advanced table</strong></div>
-                    
+
                     </p>
-                   
+
                   </div>
                   <br>
                 </div>
               </div>
-              
+
             </div> <!-- / .card-body -->
           </div> <!-- / .card -->
         </div> <!-- .col-12 -->

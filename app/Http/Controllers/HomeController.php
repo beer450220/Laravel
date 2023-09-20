@@ -271,7 +271,10 @@ class HomeController extends Controller
     {
         return view('student.documents',["msg"=>"I am student role"]);
     }
-
+    public function Announcement()
+    {
+        return view('student.Announcement');
+    }
     public function documents3()
     {
         return view('student.documents1',["msg"=>"I am student role"]);

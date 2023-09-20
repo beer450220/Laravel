@@ -39,8 +39,8 @@
                   <li><a href="/establishment" class="nav-link px-2 text-white">สถานประกอบการ</a></li>
                   <li><a href="/cooperative" class="nav-link px-2 text-white">แบบฟอร์มสหกิจ</a></li>
 
-                  <li><a href="/test4" class="nav-link px-2 text-white">ทดสอบ</a></li>
-                  <li><a href="/test6" class="nav-link px-2 text-white">ทดสอบ2</a></li>
+                  {{-- <li><a href="/test4" class="nav-link px-2 text-white">ทดสอบ</a></li>
+                  <li><a href="/test6" class="nav-link px-2 text-white">ทดสอบ2</a></li> --}}
                   {{-- <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
                   <li><a href="#" class="nav-link px-2 text-white">About</a></li> --}}
                 </ul>

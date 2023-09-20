@@ -432,6 +432,7 @@
                 <a href="/studenthome/addstudent"  class=" btn btn-outline-success">ดาวห์โหลด</a>
             </div> --}}
             <div class="d-grid gap-2 d-md-block">
+                <a href="/studenthome/Announcement"  class=" btn btn-outline-primary">ประกาศผลการตอบรับ</a>
                 <a href="/studenthome/documents" type="button" class="btn btn-outline-primary"data-bs-toggle="modal" data-bs-target="#exampleModal">ดาวน์โหลดไฟล์เอกสาร</a>
 
                 <a href="/studenthome/addregister"  class=" btn btn-outline-success">ลงทะเบียนใหม่</a>
