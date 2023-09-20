@@ -34,7 +34,16 @@ class EditController extends Controller
      }
 
 
+     public function establishmentuseredit($id) {
+        //ตรวจสอบข้อมูล
 
+        // $establishments=establishment::find($id);
+        $establishments=DB::table('establishment')->find($id);
+        //  dd($establishments);
+
+         return view('student.Edit.establishmentuserview',compact('establishments'));
+         // return redirect("/welcome")->with('success', 'Company has been created successfully.');
+     }
      public function editregisteruser($id) {
         //ตรวจสอบข้อมูล
 
@@ -445,6 +454,8 @@ public function editreport($report_id) {
         ]
     );
     $post=Event::findOrFail($id);
+
+
     $post->user_id = Auth::user()->id;
     // $post->Status ="รอตรวจสอบ";
     // $post->Status ="รอตรวจสอบ";
@@ -510,7 +521,46 @@ public function editreport($report_id) {
     return redirect('/studenthome/calendar2confirm')->with('success', 'ยืนยันข้อมูลสำเร็จ.');
  }
 
+public function   calendar2confirmupdate(Request $request,$id) {
+    //ตรวจสอบข้อมูล
 
+   //dd($request);
+
+    $request->validate([
+        // 'images' => ['required','mimes:jpg,jpeg,png'],
+        // 'name' => ['required','min:5'],
+        // 'filess' => 'required|mimes:pdf',
+        // 'establishment' => 'required',
+    ],[
+            //'establishment.required' => "กรุณา",
+
+        ]
+    );
+    $post=Event::findOrFail($id);
+    $post->user_id = Auth::user()->id;
+     //$post->Statustime ="รับทราบและยืนยันเวลานัดนิเทศ";
+    // $post->Status ="รอตรวจสอบ";
+   //dd($request->Status);
+$post->update
+
+    ([
+     "Statustime" =>$request->Statustime
+        //"establishment"=>$request->establishment,
+        // "phone"=>$request->phone,
+       // "files"=>$request->files,
+        // "projects"=>$post->projects,
+        // "presentation"=>$post->presentation,
+        // "appointmenttime"=>$post->appointmenttime,
+        // "Statusevents"=>$request->Status,
+       // "projects" =>$imageName,
+       // "presentation" =>$image,
+      //  "poster" =>$images,
+       // "projectsummary" =>$images1,
+    ]);
+
+
+    return redirect('/studenthome/calendar2confirm')->with('success', 'ยืนยันข้อมูลสำเร็จ.');
+ }
 
 # teacher
 

@@ -312,7 +312,7 @@
                             </div><div class="col-6">
                               <div class=" alert alert-primary  " role="alert">
                                   <b>ขั้นตอนที่ 3 ลงทะเบียน:</b> ให้กรอกข้อมูลนักศึกษาให้เรียบร้อย
-                                      <br> แล้วให้อัพโหลดไฟล์เอกสารให้เรียบร้อย
+                                      <br> แล้วให้อัพโหลดไฟล์เอกสารเพื่อลงทะเบียนให้เรียบร้อย
                                       <br>  <a href="/studenthome/informdetails"  class="btn btn-outline-warning " type="button">>คลิกที่นี่<</a>เพื่อขั้นตอนต่อไป
                                                               </div>   <br>   <br>
                           </div>
@@ -434,7 +434,7 @@
             <div class="d-grid gap-2 d-md-block">
                 <a href="/studenthome/documents" type="button" class="btn btn-outline-primary"data-bs-toggle="modal" data-bs-target="#exampleModal">ดาวน์โหลดไฟล์เอกสาร</a>
 
-                <a href="/studenthome/addregister"  class=" btn btn-outline-success">เพิ่มข้อมูล</a>
+                <a href="/studenthome/addregister"  class=" btn btn-outline-success">ลงทะเบียนใหม่</a>
 
               </div>
             </div>

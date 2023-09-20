@@ -87,6 +87,8 @@ Route::middleware(['auth','user-role:student'])->group(function()
     //  Route::post("/studenthome/test",[HomeController::class,'test2'])->name('test2');
 
     Route::get("/studenthome/establishmentuser",[HomeController::class,'establishmentuser'])->name('student.establishmentuser');
+    Route::get("/studenthome/establishmentuseredit/{id}",[EditController::class,'establishmentuseredit'])->name('establishmentuseredit');
+
     Route::get('/studenthome/view/{id}', [HomeController::class,'viewestablishmentuser'])->name('viewestablishmentuser');
     Route::get("/studenthome/calendar",[HomeController::class,'calendar'])->name('student.calendar');
 
@@ -141,6 +143,9 @@ Route::middleware(['auth','user-role:student'])->group(function()
     Route::get("/studenthome/calendar2",[HomeController::class,'calendar2'])->name('student.calendar2');
     Route::get("/studenthome/calendar2confirm",[HomeController::class,'calendar2confirm'])->name('calendar2confirm');
     Route::get("/studenthome/calendar2confirmedit/{id}",[EditController::class,'calendar2confirmedit'])->name('calendar2confirmedit');
+
+    Route::post("/studenthome/calendar2confirmupdate/{id}",[EditController::class,'calendar2confirmupdate'])->name('calendar2confirmupdate');
+
     Route::get("/studenthome/calendar2confirmview/{id}",[EditController::class,'calendar2confirmview'])->name('calendar2confirmview');
     Route::post("/studenthome/updatecalendar2confirm/{id}",[EditController::class,'updatecalendar2confirm'])->name('updatecalendar2confirm');
     Route::get("/studenthome/updateconfirm/{id}",[EditController::class,'updateconfirm'])->name('updateconfirm');

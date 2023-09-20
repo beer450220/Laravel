@@ -389,30 +389,71 @@
           </thead>
           <tbody>
             @foreach ($events as $row)
-            <tr>
+            <tr class="{{
+                $row->Statusevents === 'ยังไม่ได้รับทราบและยืนยันเวลานัดนิเทศ' ? 'table-warning' : (
+                    $row->Statusevents === 'รับทราบและยืนยันเวลานัดนิเทศ' ? 'table-success' : (
+                        $row->Statusevents === 'ไม่ผ่าน' ? 'table-danger' : ''
+                    )
+                )
+            }}">
               <td>{{$events->firstItem()+$loop->index}}</td>
    <td> <?php
     // แปลงวันที่เป็น Carbon instance
-    $startDateTime = Carbon\Carbon::parse($row->created_at);
+    $startDateTime = Carbon\Carbon::parse($row->start);
 
     // เพิ่ม 543 ปีเพื่อแปลงเป็น พ.ศ.
     $buddhistYear = $startDateTime->addYear(543);
+// กำหนด Timezone (เช่น Asia/Bangkok)
+// $buddhistYear->setTimezone('Asia/Bangkok');
 
     // แปลงชื่อเดือนให้เป็นภาษาไทย
     $thaiMonth = $buddhistYear->locale('th')->monthName;
 
     // แสดงผลลัพธ์ในรูปแบบ "วันD เดือนMMMM พ.ศ.GGGG"
-    echo $buddhistYear->isoFormat('วันdddd ที่d MMMM พ.ศ.GGGG', $thaiMonth);
+    // echo $buddhistYear->isoFormat('วันdddd', $thaiMonth) . 'ที่' . $buddhistYear->isoFormat('d MMMM พ.ศ.GGGG');
+    echo $buddhistYear->isoFormat('วันdddd ที่d  MMMM พ.ศ.GGGG', $thaiMonth);
+    // echo $buddhistYear->Format('วันd ที่d M พ.ศ.Y', $thaiMonth);
+    // echo strftime('วัน%A ที่%d %B พ.ศ.%Y', $buddhistYear->timestamp) . " " . $thaiMonth;
     ?></td>
               <td>
-        </td> <td></td>
+        </td>
+
+
+        <td></td>
+
+
+
         <td><a href="/studenthome/calendar2confirmview/{{$row->id}}" type="button" class="btn btn-outline-primary  fa-regular fa-eye fe-16"></a>  </td>
 
 
-              <td>{{$row->Statusevents}}<br><a href="/studenthome/updateconfirm/{{$row->id}}" type="button"onclick="return confirm('ยืนยันข้อมูล !!');" class="btn btn-outline-success  fa-solid fa-check fe-16"></a></td>
+              <td> @if ($row->Statusevents === 'ยังไม่ได้รับทราบและยืนยันเวลานัดนิเทศ')
+                <span class="badge badge-pill badge-warning">{{ $row->Statusevents }}</span>
+            @elseif ($row->Statusevents === 'รับทราบและยืนยันเวลานัดนิเทศ')
+                <span class="badge badge-pill badge-success">{{ $row->Statusevents}}</span>
+            @elseif ($row->Statusevents === 'ไม่ผ่าน')
+                <span class="badge badge-pill badge-danger">{{ $row->Statusevents}}</span>
+            @endif
+            <br><a href="/studenthome/updateconfirm/{{$row->id}}" type="button"onclick="return confirm('ยืนยันข้อมูล !!');" class="btn btn-outline-success  fa-solid fa-check fe-16"></a></td>
 
 
-              <td>{{$row->Statustime}}<br><a href="/studenthome/calendar2confirmedit/{{$row->id}}" type="button" class="btn btn-outline-warning fa-solid fa-pen-to-square fe-16"></a></td>
+              <td>
+                <?php
+                // แปลงวันที่เป็น Carbon instance
+                $startDateTime = Carbon\Carbon::parse($row->Statustime);
+
+                // เพิ่ม 543 ปีเพื่อแปลงเป็น พ.ศ.
+                $buddhistYear = $startDateTime->addYear(543);
+
+                // แปลงชื่อเดือนให้เป็นภาษาไทย
+                $thaiMonth = $buddhistYear->locale('th')->monthName;
+
+                // แสดงผลลัพธ์ในรูปแบบ "วันD เดือนMMMM พ.ศ.GGGG"
+                echo $buddhistYear->isoFormat('วันdddd ที่d MMMM พ.ศ.GGGG เวลาHH:mm:ss', $thaiMonth);
+                ?>
+
+
+                {{-- {{$row->Statustime}} --}}
+                <br><br><a href="/studenthome/calendar2confirmedit/{{$row->id}}" type="button" class="btn btn-outline-warning fa-solid fa-pen-to-square fe-16"></a></td>
               {{-- <td><a  href="/studenthome/deleteinformdetails/{{$row->id}}" class="btn btn-outline-danger fe fe-trash-2 fe-16"onclick="return confirm('ยืนยันการลบข้อมูล !!');"></a></td> --}}
             </tr>
 

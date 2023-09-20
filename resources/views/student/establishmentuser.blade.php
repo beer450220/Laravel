@@ -345,13 +345,13 @@
                                               <div class="col-3">
                                               <div class="form-group col-auto ml-3">
                                                 <label class="my-1 mr-2 sr-only" for="inlineFormCustomSelectPref">Status</label>
-                                                <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+                                                {{-- <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
                                                   <option selected>Choose...</option>
                                                   <option value="1">Processing</option>
                                                   <option value="2">Success</option>
                                                   <option value="3">Pending</option>
                                                   <option value="3">Hold</option>
-                                                </select>
+                                                </select> --}}
                                               </div>
                                             </div>
                                            </div>
@@ -434,10 +434,10 @@
                                                         <img src="{{ asset('/image') }}/{{ $row->images }}" class="rounded mx-auto d-block" style="width:200px;height:200px; text-align:center;">
                                                         <hr>
                                                         <div class="caption card-body">
-                                                            <h4 class="card-title">{{ $row->name }}</h4>
-                                                            <p>{{ $row->name }}</p>
-                                                            <p  class="card-text"><strong>Price: </strong> ${{ $row->name }}</p>
-                                                            <p class="btn-holder text-center"><a href="" class="btn btn-primary btn-block text-center" role="button">ดูข้อมูล</a>
+                                                            <h4 class="card-title">ชื่อ:{{ $row->name }}</h4>
+                                                            <p  class="card-text"><strong>รายละเอียด:</strong>{{ $row->name }}</p>
+                                                            <p  class="card-text"><strong>สาขาวิชา: </strong> ${{ $row->name }}</p>
+                                                            <p class="btn-holder text-center"><a href="/studenthome/establishmentuseredit/{{ $row->id }}" class="btn btn-primary btn-block text-center" role="button">ดูข้อมูล</a>
                                                                 <p class="btn-holder"><a href="{{ route('add_to_cart', $row->id) }}" class=" text-center" role="button">
                                                                     <span> <i
 {{-- id="heart-icon" --}}
