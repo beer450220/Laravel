@@ -1,6 +1,7 @@
 @extends('layouts.appstudent')
 
 @section('content')
+<title>ระบบสารสนเทศสหกิจศึกษา</title>
 <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('icons/1.png') }}">
@@ -330,9 +331,157 @@
                               <br> --}}
 
 
+                              <main role="main" class="">
+                                <div class="container-fluid">
+                                  <div class="row justify-content-center">
+                                    <div class="col-12">
+                                        @if(session("success6"))
+                                        <div class="alert alert-success col-4">{{session('success6')}}
+                              @endif
+                             @if(session("success5"))
+                                      <div class="alert alert-success col-4">{{session('success5')}}
+                            @endif
+                                      </div>
+                                      </div>
+                            <div class="col-md-12 my-4">
+                                <div class="card shadow">
+                                  <div class="card-body">
+                                    <h5 class="card-title">ตารางการนิเทศนักศึกษาฝึกปฏิบัติงานสหกิจศึกษา</h5>
+                                    <div class="container">
+                                        <div class="row">
+                                          <div class="col-9">
+                                            <p class="card-text"> <tbody>
+                                            </p>
+                                          </div>
+                                          {{-- <div class="col col-lg-2 ">
+                                            <a href=""  type="button"  class=" btn btn-outline-success"data-toggle="modal" data-target="#varyModal" data-whatever="@mdo">เพิ่มข้อมูล</a>
+
+                                            <a href="/studenthome/addstudent"  class=" btn btn-outline-success">ดาวห์โหลด</a>
+                                        </div> --}}
+                                        <div class="col-9">
+                                            {{-- <a href="/studenthome/documents1"  class=" btn btn-outline-primary">ดาวน์โหลดไฟล์เอกสาร</a> --}}
+                                            {{-- <a href="/studenthome/documents1" type="button" class="btn btn-outline-primary">ดาวน์โหลดไฟล์เอกสาร</a> --}}
+
+
+
+                                          </div>
+                                        </div>
+
+                                    </div>
+                                    <br>
+
+
+                                </div> <!-- end section -->
+                            </div> <!-- end section -->
                                 <br>
                                 <br>
-<main role="main" class="">
+
+                                <div class="col-md-12 mb-4">
+                                    <div class="accordion w-100" id="accordion1">
+                                      <div class="card shadow">
+                                        <div class="card-header" id="heading1">
+                                          <a role="button" href="#collapse1" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapse1" class="collapsed">
+                                  @foreach ($events as $row)
+
+                                         @if ($row->Statusevents === 'ยังไม่ได้รับทราบและยืนยันเวลานัดนิเทศ')
+                                         <span class="circle circle-sm bg-warning-light"><i class="fe fe-16 fe-alert-triangle text-white "></i></span>
+                                     @elseif ($row->Statusevents === 'รับทราบและยืนยันเวลานัดนิเทศแล้ว')
+                                         <span class="circle circle-sm bg-success warning-light "><i class="fe fe-16 fe-check text-white "></i></span>
+                                     @elseif ($row->Statusevents === 'ไม่ผ่าน')
+                                         <span class="badge badge-pill badge-danger">{{ $row->Statusevents }}</span>
+                                     @endif
+                                         {{--  class="circle circle-sm bg-warning-light">
+
+ --}}
+
+
+
+                                             <strong>นิเทศงาน</strong> <span class="">
+
+                                                {{-- <a href="/studenthome/addregister"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> --}}
+
+
+                                            </span>
+
+                                          </a>
+                                        </div>
+                                        <div id="collapse1" class="collapse" aria-labelledby="heading1" data-parent="#accordion1" style="">
+                                          <div class="card-body">
+                                             {{-- <a href="/studenthome/addregister"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> --}}
+                                         </div>
+                                        <br>
+
+
+
+                                        <div class="col-md-3">
+                                            <div class="card shadow mb-4">
+                                              <div class="card-body text-center">
+                                                <div class="avatar avatar-lg mt-4">
+                                                  {{-- <a href="">
+                                                    <img src="./assets/avatars/face-4.jpg" alt="..." class="avatar-img rounded-circle">
+                                                  </a> --}}
+                                                </div>
+                                                <div class="card-text my-2">
+                                                  <strong class="card-title my-0">วันเวลาการนิเทศ: </strong>
+                                                  <p class="small text-muted mb-0">สถานประกอบการ:</p>
+                                                  <p class="small"><span class="badge badge-light text-muted">อาจารย์นิเทศ:<a href="/studenthome/calendar2confirmview/{{$row->id}}"  class=" btn btn-outline-success fa-solid fa-eye fe-5"></a></span></p>
+                                                  <p class="small text-muted mb-0">รับทราบและยืนยันเวลานัดนิเทศ:@if ($row->Statusevents === 'ยังไม่ได้รับทราบและยืนยันเวลานัดนิเทศ')
+                                                    <span class="badge badge-pill badge-warning">{{ $row->Statusevents }}</span>
+                                                @elseif ($row->Statusevents === 'รับทราบและยืนยันเวลานัดนิเทศแล้ว')
+                                                    <span class="badge badge-pill badge-success">{{ $row->Statusevents}}</span>
+                                                @elseif ($row->Statusevents === 'ไม่ผ่าน')
+                                                    <span class="badge badge-pill badge-danger">{{ $row->Statusevents}}</span>
+                                                @endif</p>
+                                                  <p class="small text-muted mb-0">ขอเปลี่ยนเวลานัดนิเทศ:</p>
+                                                </div>
+                                              </div> <!-- ./card-text -->
+                                              <div class="card-footer">
+                                                <div class="row align-items-center justify-content-between">
+
+                                                  <div class="col-auto">
+                                                    <small>
+                                                   {{-- <span class="dot dot-lg bg-success mr-1"></span> Online </small> --}}
+                                                     <td><a href="/studenthome/updateconfirm/{{$row->id}}" type="button"onclick="return confirm('ยืนยันข้อมูล !!');" class="btn btn-outline-success  fa-solid fa-check fe-16"></a></td>
+                                                      <td><a href="/studenthome/calendar2confirmedit/{{$row->id}}" type="button" class="btn btn-outline-warning fa-solid fa-pen-to-square fe-16"></a></td>
+                                                    </div>
+
+                                                  <div class="col-auto">
+
+                                                  </div>
+                                                </div>
+                                              </div> <!-- /.card-footer -->
+                                            </div>
+                                          </div>@endforeach
+                                          </div>
+
+
+
+
+
+                                        </div>
+                                      </div>
+
+
+
+                                      </div>
+                                    </div>
+                                    <main role="main" class="">
+                                        <div class="container-fluid">
+                                      <div class="row justify-content-center">
+                                        <div class="col-md-12 my-4 " >
+                                       </div>
+
+
+                                      </div></div></div></div> <div class="d-grid gap-2">
+
+                                        <h2>ขั้นตอนต่อไป</h2>
+                                        </div>   <a href="/studenthome/calendar2confirm"  id="show-alert" class="btn btn-outline-warning " type="button">>คลิกที่นี่<</a>
+                                  </div>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+{{-- <main role="main" class="">
     <div class="container-fluid">
       <div class="row justify-content-center">
         <div class="col-12">
@@ -356,22 +505,22 @@
                 <p class="card-text"> <tbody>
                 </p>
                 <div class="col">
-                  {{-- <a href="/studenthome/calendar2" class="btn btn-success" ><span class="fe fe-filter fe-16 text-muted"></span>ย้อมกลับ</a> --}}
+
                 </div>
               </div>
               <i class=""></i>
               <div class="col col-lg-2">
-                {{-- <button type="button" class=" btn btn-outline-success"data-toggle="modal" data-target="#varyModal" data-whatever="@mdo">เพิ่มข้อมูล</button> --}}
+
               </div>
             </div>
 
         </div>
 
-<br>
+<br> --}}
 
 
 
-        <table class="table table-hover text-center">
+        {{-- <table class="table table-hover text-center">
           <thead class="thead-dark ">
             <tr>
               <th>#</th>
@@ -383,7 +532,7 @@
               <th>รับทราบและยืนยันเวลานัดนิเทศ</th>
               <th>ขอเปลี่ยนเวลานัดนิเทศ</th>
 
-              {{-- <th>ยืนยันข้อมูล</th> --}}
+
 
             </tr>
           </thead>
@@ -396,7 +545,7 @@
                     )
                 )
             }}">
-              <td>{{$events->firstItem()+$loop->index}}</td>
+              <td>{{$events->firstItem()+$loop->index}}</td> --}}
    <td> <?php
     // แปลงวันที่เป็น Carbon instance
     $startDateTime = Carbon\Carbon::parse($row->start);
@@ -414,7 +563,8 @@
     echo $buddhistYear->isoFormat('วันdddd ที่d  MMMM พ.ศ.GGGG', $thaiMonth);
     // echo $buddhistYear->Format('วันd ที่d M พ.ศ.Y', $thaiMonth);
     // echo strftime('วัน%A ที่%d %B พ.ศ.%Y', $buddhistYear->timestamp) . " " . $thaiMonth;
-    ?></td>
+    ?>
+    </td>
               <td>
         </td>
 
@@ -453,11 +603,11 @@
 
 
                 {{-- {{$row->Statustime}} --}}
-                <br><br><a href="/studenthome/calendar2confirmedit/{{$row->id}}" type="button" class="btn btn-outline-warning fa-solid fa-pen-to-square fe-16"></a></td>
-              {{-- <td><a  href="/studenthome/deleteinformdetails/{{$row->id}}" class="btn btn-outline-danger fe fe-trash-2 fe-16"onclick="return confirm('ยืนยันการลบข้อมูล !!');"></a></td> --}}
+                {{-- <br><br><a href="/studenthome/calendar2confirmedit/{{$row->id}}" type="button" class="btn btn-outline-warning fa-solid fa-pen-to-square fe-16"></a></td> --}}
+
             </tr>
 
-            @endforeach
+            {{-- @endforeach --}}
           </tbody>
         </table>
       </div>
@@ -467,96 +617,7 @@
 
 
 
-{{-- เพิ่มข้อมูล --}}
-<div class="col-md-4 mb-4">
 
-
-
-
-  <div class="modal fade" id="varyModal" tabindex="-1" role="dialog" aria-labelledby="varyModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl" role="document">
-      <div class="modal-content ">
-        <div class="modal-header ">
-          <h5 class="modal-title text center" id="varyModalLabel">เพิ่มข้อมูล</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-
-
-        <div class="modal-body">
-
-
-          <form method="POST" action="{{ route('addinformdetails') }}"enctype="multipart/form-data">
-            @csrf
-            @if ($errors->any())
-            {{-- <div class="alert alert-danger"> --}}
-
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        {{-- <li>{{ $error }}</li> --}}
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-            <div class="row">
-              <div class="col-md-4">
-                <label for="recipient-name" class="col-form-label">ชื่อสถานประกอบการ</label>
-                <input type="text" class="form-control" name="establishment" >
-              </div>
-              @error('establishment')
-              <span class="invalid-feedback" >
-                  {{ $message }}
-              </span>
-          @enderror
-              {{-- <div class="col-md-4">
-                <label for="recipient-name" class="col-form-label"></label>
-                <input type="text" class="form-control"	name="" placeholder="Last name" aria-label="Last name">
-              </div> --}}
-              <div class="col-md-4">
-                <label for="recipient-name" class="col-form-label">ไฟล์เอกสาร</label>
-                <div class="custom-file mb-6">
-                  <input type="file" class="custom-file-input" name="files" id="validatedCustomFile" >
-                  <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
-                  <div class="invalid-feedback">Example invalid custom file feedback</div>
-              </div>
-            </div>
-            <br>
-            {{-- <div class="row">
-              <div class="col-md-4">
-                <label for="recipient-name" class="col-form-label">เบอร์โทร</label>
-                <input type="text" class="form-control" placeholder="First name" aria-label="First name">
-              </div> --}}
-
-              {{-- <div class="col-md-4">
-                <label for="recipient-name" class="col-form-label">รูปหน่วยงาน</label>
-                <input type="file" class="form-control"name="filess" placeholder="First name" aria-label="First name">--}}
-              {{-- </div>  --}}
-
-            <div class="row">
-              <div class="col-md-4">
-
-                </div>
-              </div>
-              {{-- @error('')
-              <span class="invalid-feedback" >
-                  {{ $message }}
-              </span>
-          @enderror --}}
-            </div>
-        </div>
-
-        <div class="modal-footer">
-          <button type="reset" class="btn mb-2 btn-secondary" >ยกเลิก</button>
-          <button type="submit" class="btn mb-2 btn-primary">ตกลง</button>
-        </div></form>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-</div>
-</div>
 
 
 

@@ -183,12 +183,25 @@ class HomeController extends Controller
         ->select('registers.*','users.name')->where('user_id', auth()->id())
         ->paginate(5);
 
+        $registers1=DB::table('registers')
+        ->join('users','registers.user_id','users.id')
+        ->select('registers.*','users.name')
+        ->where('registers.namefile', 'แบบพิจารณาคุณสมบัตินักศึกษาสหกิจศึกษา(สก01)')
+        ->where('user_id', auth()->id())
+        ->paginate(5);
+
+        $registers2=DB::table('registers')
+        ->join('users','registers.user_id','users.id')
+        ->select('registers.*','users.name')
+        ->where('registers.namefile', 'ใบสมัครงานสหกิจศึกษา(สก03)')
+        ->where('user_id', auth()->id())
+        ->paginate(5);
 
         $studentinformations=DB::table('studentinformation')
         ->join('users','studentinformation.user_id','users.id')
         ->select('studentinformation.*','users.name')->where('user_id', auth()->id())
         ->paginate(5);
-        return view('student.register',compact('registers','studentinformations'));
+        return view('student.register',compact('registers','studentinformations','registers1','registers2'));
     }
 
     public function acceptancedocument()

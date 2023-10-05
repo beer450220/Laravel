@@ -1,7 +1,7 @@
 @extends('layouts.appstudent')
 
 @section('content')
-<title>user</title>
+<title>ระบบสารสนเทศสหกิจศึกษา</title>
 <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('icons/1.png') }}">
@@ -328,11 +328,228 @@
 {{--
                               <br>
                               <br> --}}
+                              <main role="main" class="">
+                                <div class="container-fluid">
+                                  <div class="row justify-content-center">
+                                    <div class="col-12">
+                                        @if(session("success6"))
+                                        <div class="alert alert-success col-4">{{session('success6')}}
+                              @endif
+                             @if(session("success5"))
+                                      <div class="alert alert-success col-4">{{session('success5')}}
+                            @endif
+                                      </div>
+                                      </div>
+                            <div class="col-md-12 my-4">
+                                <div class="card shadow">
+                                  <div class="card-body">
+                                    <h5 class="card-title">รายงานผลการฝึกประสบการณ์</h5>
+                                    <div class="container">
+                                        <div class="row">
+                                          <div class="col-9">
+                                            <p class="card-text"> <tbody>
+                                            </p>
+                                          </div>
+                                          {{-- <div class="col col-lg-2 ">
+                                            <a href=""  type="button"  class=" btn btn-outline-success"data-toggle="modal" data-target="#varyModal" data-whatever="@mdo">เพิ่มข้อมูล</a>
 
+                                            <a href="/studenthome/addstudent"  class=" btn btn-outline-success">ดาวห์โหลด</a>
+                                        </div> --}}
+                                        <div class="col-9">
+                                            {{-- <a href="/studenthome/documents1"  class=" btn btn-outline-primary">ดาวน์โหลดไฟล์เอกสาร</a> --}}
+                                            {{-- <a href="/studenthome/documents1" type="button" class="btn btn-outline-primary">ดาวน์โหลดไฟล์เอกสาร</a> --}}
+
+
+
+                                          </div>
+                                        </div>
+
+                                    </div>
+                                    <br>
+
+
+                                </div> <!-- end section -->
+                            </div> <!-- end section -->
+                                <br>
+                                <br>
+
+                                <div class="col-md-12 mb-4">
+                                    <div class="accordion w-100" id="accordion1">
+                                      <div class="card shadow">
+                                        <div class="card-header" id="heading1">
+                                          <a role="button" href="#collapse1" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapse1" class="collapsed">
+                                  @foreach ($report as $row)
+
+                                         @if ($row->Status_report === 'รอตรวจสอบ')
+                                         <span class="circle circle-sm bg-warning-light"><i class="fe fe-16 fe-alert-triangle text-white "></i></span>
+                                     @elseif ($row->Status_report === 'ตรวจสอบแล้ว')
+                                         <span class="circle circle-sm bg-success warning-light "><i class="fe fe-16 fe-check text-white "></i></span>
+                                     @elseif ($row->Status_report === 'ไม่ผ่าน')
+                                         <span class="badge badge-pill badge-danger">{{ $row->Status_report }}</span>
+                                     @endif
+                                         {{--  class="circle circle-sm bg-warning-light">
+
+ --}}
+
+
+
+                                             <strong>รายงานโครงการ</strong> <span class="">
+
+
+
+
+                                            </span>
+
+                                          </a>
+                                        </div>
+                                        <div id="collapse1" class="collapse" aria-labelledby="heading1" data-parent="#accordion1" style="">
+                                          <div class="card-body">  <a href="/studenthome/addregister"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> </div>
+                                        <br>
+
+
+
+                                        <div class="col-md-3">
+                                            <div class="card shadow mb-4">
+                                              <div class="card-body text-center">
+                                                <div class="avatar avatar-lg mt-4">
+                                                  {{-- <a href="">
+                                                    <img src="./assets/avatars/face-4.jpg" alt="..." class="avatar-img rounded-circle">
+                                                  </a> --}}
+                                                </div>
+                                                <div class="card-text my-2">
+                                                  <strong class="card-title my-0">ชื่อเอกสาร </strong>
+                                                  <p class="small text-muted mb-0">Accumsan Consulting</p>
+                                                  <p class="small"><span class="badge badge-light text-muted">New York, USA</span></p>
+                                                </div>
+                                              </div> <!-- ./card-text -->
+                                              <div class="card-footer">
+                                                <div class="row align-items-center justify-content-between">
+                                                  <div class="col-auto">
+                                                    <small>
+                                                      {{-- <span class="dot dot-lg bg-success mr-1"></span> Online </small> --}}
+                                                      <td><a href="../file/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down "></a></td>
+                                                      <td><a href="/studenthome/edit2register/{{ $row->report_id }}" type="button" class="btn btn-outline-secondary fa-regular fe fe-edit "></a></td>
+                                                    </div>
+
+                                                  <div class="col-auto">
+
+                                                  </div>
+                                                </div>
+                                              </div> <!-- /.card-footer -->
+                                            </div>
+                                          </div>@endforeach
+                                          </div>
+
+                                        </div>
+                                      </div>
+                                      <div class="card shadow">
+                                        <div class="card-header" id="heading1">
+                                          <a role="button" href="#collapse2" data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                                            <span>  @foreach ($report as $row)
+
+                                            @if ($row->Status_report === 'รอตรวจสอบ')
+                                            <span class="circle circle-sm bg-warning-light"><i class="fe fe-16 fe-alert-triangle text-white "></i></span>
+                                        @elseif ($row->Status_report === 'ตรวจสอบแล้ว')
+                                            <span class="circle circle-sm bg-success warning-light "><i class="fe fe-16 fe-check text-white "></i></span>
+                                        @elseif ($row->Status_report === 'ไม่ผ่าน')
+                                            <span class="circle circle-sm bg-danger-light "><i class="fe fe-16 fe-x-circle text-white "></i></span>
+                                        @endif
+
+
+                                    </span><strong>PowerPoint การนำเสนอ</strong>
+                                          </a>
+                                        </div>
+                                        <div id="collapse2" class="collapse" aria-labelledby="heading2" data-parent="#accordion1">
+                                          <div class="card-body"> <a href="/studenthome/addregister"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a></div>
+
+                                          <br>
+
+
+
+                                          <div class="col-md-3">
+                                              <div class="card shadow mb-4">
+                                                <div class="card-body text-center">
+                                                  <div class="avatar avatar-lg mt-4">
+                                                    {{-- <a href="">
+                                                      <img src="./assets/avatars/face-4.jpg" alt="..." class="avatar-img rounded-circle">
+                                                    </a> --}}
+                                                  </div>
+                                                  <div class="card-text my-2">
+                                                    <strong class="card-title my-0">ชื่อเอกสาร </strong>
+                                                    <p class="small text-muted mb-0">Accumsan Consulting</p>
+                                                    <p class="small"><span class="badge badge-light text-muted">New York, USA</span></p>
+                                                  </div>
+                                                </div> <!-- ./card-text -->
+                                                <div class="card-footer">
+                                                  <div class="row align-items-center justify-content-between">
+                                                    <div class="col-auto">
+                                                      <small>
+                                                        {{-- <span class="dot dot-lg bg-success mr-1"></span> Online </small> --}}
+                                                        <td><a href="../file/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down "></a></td>
+                                                        <td><a href="/studenthome/edit2register/{{ $row->report_id }}" type="button" class="btn btn-outline-secondary fa-regular fe fe-edit "></a></td>
+                                                      </div>
+
+                                                    <div class="col-auto">
+
+                                                    </div>
+                                                  </div>
+                                                </div> <!-- /.card-footer -->
+                                              </div>
+                                            </div>@endforeach
+
+                                        </div>
+                                      </div>
+
+                                      <div class="card shadow">
+                                        <div class="card-header" id="heading1">
+                                          <a role="button" href="#collapse3" data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                                            <span class="circle circle-sm bg-success-light">
+
+                                                <i class="fe fe-16 fe-check text-white "></i>
+
+
+                                            </span> <strong>Onepage ของโครงการ (โปสเตอร์)</strong>
+                                          </a>
+                                        </div>
+                                        <div id="collapse3" class="collapse" aria-labelledby="heading3" data-parent="#accordion1">
+                                          <div class="card-body"> <a href="/studenthome/addregister"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> </div>
+                                        </div>
+                                      </div>
+                                      <div class="card shadow">
+                                        <div class="card-header" id="heading1">
+                                          <a role="button" href="#collapse4" data-toggle="collapse" data-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                                            <span class="circle circle-sm bg-success-light">
+
+                                                <i class="fe fe-16 fe-check text-white "></i>
+
+
+                                            </span> <strong>รายงานสรุปโครงการ(ไม่เกิน 5 หน้า)</strong>
+                                          </a>
+                                        </div>
+                                        <div id="collapse4" class="collapse" aria-labelledby="heading4" data-parent="#accordion1">
+                                          <div class="card-body"> <a href="/studenthome/addregister"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> </div>
+                                        </div>
+                                      </div>
+                                      </div>
+                                    </div>
+                                    {{-- <main role="main" class="">
+                                        <div class="container-fluid">
+                                      <div class="row justify-content-center">
+                                        <div class="col-md-12 my-4 " >
+                                       </div>
+
+
+                                      </div></div></div></div> <div class="d-grid gap-2">
+
+                                        <h2>ขั้นตอนต่อไป</h2>
+                                        </div>   <a href="/studenthome/calendar2confirm"  id="show-alert" class="btn btn-outline-warning " type="button">>คลิกที่นี่<</a>
+                                  </div> --}}
+                                <br>
+                                <br>
 
                                 <br>
                                 <br>
-<main role="main" class="">
+{{-- <main role="main" class="">
     <div class="container-fluid">
       <div class="row justify-content-center">
         <div class="col-12">
@@ -392,7 +609,7 @@
                 <td>{{ $row->annotation }}</td>
                 <td><a href="../ไฟล์เอกสารฝึกประสบการณ์/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td>
                 <td><a href="/studenthome/editreport/{{$row->report_id}}" type="button" class="btn btn-outline-secondary fe fe-edit fe-16"></a></td>
-          {{-- <td><a  href="/studenthome/deletereport/{{$row->report_id}}" class="btn btn-outline-danger fe fe-trash-2 fe-16"onclick="return confirm('ยืนยันการลบข้อมูล !!');"></a> --}}
+
         </td>  </tr>
 
 
@@ -402,7 +619,7 @@
           </tbody>
         </table>
       </div>
-    </div>
+    </div> --}}
   </div> <!-- Bordered table -->
 </div> <!-- end section -->
 

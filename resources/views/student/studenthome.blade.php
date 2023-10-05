@@ -273,12 +273,112 @@
 
                       <ul id="progressbar">
                         {{-- class="active" --}}
-                        <a  href="/studenthome"><li class="active" id="account"><strong>ข้อมูลส่วนตัว</strong><br><br>{{ Auth::user()->status }}</li></a>
-                        <a  href="/studenthome/establishmentuser">  <li id="personal" ><strong>สถานประกอบการ</strong><br><br></li></a>
-                          <a  href="/studenthome/register">  <li id="payment"><strong>ลงทะเบียน</strong></li></a>
-                            <a  href="/studenthome/informdetails"> <li id="confirm"><strong>รายงานสถานะการเข้าปฏิบัติงาน</strong></li></a>
-                              <a  href="/studenthome/calendar2confirm"> <li id="confirm"><strong>นิเทศงาน</strong></li></a>
-                                <a  href="/studenthome/report"> <li id="payment"><strong>รายงานผลการปฏิบัติงาน</strong></li></a>
+                        <a  href="/studenthome"><li class="active" id="account"><strong>ข้อมูลส่วนตัว</strong><br><br>
+                            <br>   @if (Auth::user()->status === 'ยืนยันตัวตนแล้ว')
+                            <span class="circle circle-sm bg-success-light">
+
+                                <i class="fe fe-16 fe-check text-white mb-0"></i>
+
+                                <!-- เนื้อหาภายใน <span> element ที่ต้องการแสดง -->
+                            </span>
+                            @elseif (Auth::user()->status === 'ยังไม่ได้ยืนยันตัวตน')
+                            <span class="circle circle-sm bg-secondary-light">
+
+                                <i class="fe fe-16 fe-check text-white mb-0"></i>
+
+
+
+
+                        @endif </li></a>
+                        <a  href="/studenthome/establishmentuser">  <li id="personal" ><strong>สถานประกอบการ</strong><br><br>
+                           <br>   @if (Auth::user()->status === 'ยืนยันตัวตนแล้ว')
+                            <span class="circle circle-sm bg-success-light">
+
+                                <i class="fe fe-16 fe-check text-white mb-0"></i>
+
+                                <!-- เนื้อหาภายใน <span> element ที่ต้องการแสดง -->
+                            </span>
+                            @elseif (Auth::user()->status === 'ยังไม่ได้ยืนยันตัวตน')
+                            <span class="circle circle-sm bg-secondary-light">
+
+                                <i class="fe fe-16 fe-check text-white mb-0"></i>
+
+
+
+
+                        @endif</li></a>
+                          <a  href="/studenthome/register">  <li id="payment"><strong>ลงทะเบียน</strong><br><br><br>
+                            @if (Auth::user()->status === 'ยืนยันตัวตนแล้ว')
+                            <span class="circle circle-sm bg-success-light">
+
+                                <i class="fe fe-16 fe-check text-white mb-0"></i>
+
+                                <!-- เนื้อหาภายใน <span> element ที่ต้องการแสดง -->
+                            </span>
+                            @elseif (Auth::user()->status === 'ยังไม่ได้ยืนยันตัวตน')
+                            <span class="circle circle-sm bg-secondary-light">
+
+                                <i class="fe fe-16 fe-check text-white mb-0"></i>
+
+
+
+
+                        @endif
+                        </li></a>
+                            <a  href="/studenthome/informdetails"> <li id="confirm"><strong>รายงานสถานะการเข้าปฏิบัติงาน</strong>
+                                <br><br>  @if (Auth::user()->status === 'ยืนยันตัวตนแล้ว')
+                                <span class="circle circle-sm bg-success-light">
+
+                                    <i class="fe fe-16 fe-check text-white mb-0"></i>
+
+                                    <!-- เนื้อหาภายใน <span> element ที่ต้องการแสดง -->
+                                </span>
+                                @elseif (Auth::user()->status === 'ยังไม่ได้ยืนยันตัวตน')
+                                <span class="circle circle-sm bg-secondary-light">
+
+                                    <i class="fe fe-16 fe-check text-white mb-0"></i>
+
+
+
+
+                            @endif
+                            </li></a>
+                              <a  href="/studenthome/calendar2confirm"> <li id="confirm"><strong>นิเทศงาน</strong>
+                                <br><br> <br>   @if (Auth::user()->status === 'ยืนยันตัวตนแล้ว')
+                                <span class="circle circle-sm bg-success-light">
+
+                                    <i class="fe fe-16 fe-check text-white mb-0"></i>
+
+                                    <!-- เนื้อหาภายใน <span> element ที่ต้องการแสดง -->
+                                </span>
+                                @elseif (Auth::user()->status === 'ยังไม่ได้ยืนยันตัวตน')
+                                <span class="circle circle-sm bg-secondary-light">
+
+                                    <i class="fe fe-16 fe-check text-white mb-0"></i>
+
+
+
+
+                            @endif
+                            </li></a>
+                            <a  href="/studenthome/report"> <li id="payment"><strong>รายงานผลการปฏิบัติงาน</strong>
+                                <br><br>    @if (Auth::user()->status === 'ยืนยันตัวตนแล้ว')
+                                    <span class="circle circle-sm bg-success-light">
+
+                                        <i class="fe fe-16 fe-check text-white mb-0"></i>
+
+                                        <!-- เนื้อหาภายใน <span> element ที่ต้องการแสดง -->
+                                    </span>
+                                    @elseif (Auth::user()->status === 'ยังไม่ได้ยืนยันตัวตน')
+                                    <span class="circle circle-sm bg-secondary-light">
+
+                                        <i class="fe fe-16 fe-check text-white mb-0"></i>
+
+
+
+
+                                @endif
+                                </li></a>
                       </ul>
                       <div class="progress">
                           {{-- <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div> --}}
@@ -287,6 +387,8 @@
                           <div class="form-card">
                               <div class="row">
                                   <div class="col-7">
+
+
                                       <h2 class="fs-title">ข้อมูลส่วนตัว:</h2>
                                   </div>
                                   <div class="col-4">
@@ -294,9 +396,36 @@
                                   </div>
                               </div><div class="col-6">
     <div class=" alert alert-primary  " role="alert">
-        <b>ขั้นตอนที่ 1 ข้อมูลส่วนตัว:</b>
-                                       <br>ตรวจสอบข้อมูล<br> ทำการยืนยันข้อมูล <br>
-                                       <br>ถ้าจะทำการแก้ไขข้อมูลให้<a href="/studenthome/edituser1/{{Auth::user()->id}}"  class="btn btn-outline-warning fe fe-edit fe-16" type="button">คลิกที่นี่</a>
+
+        {{-- @if (Auth::user()->status === 'ยืนยันตัวตนแล้ว')
+        <span class="circle circle-sm bg-secondary-light">
+
+            {{ Auth::user()->status}}</span>
+
+    @endif --}}
+    <br>
+
+
+    <br>
+    <h2><span>{{-- <i class="fe fe-16 fe-check text-white mb-0"></i> --}}
+                                   @if (Auth::user()->status === 'ยืนยันตัวตนแล้ว')
+    <span class="circle circle-sm bg-success-light">
+
+        <i class="fe fe-16 fe-check text-white mb-0"></i>
+
+        <!-- เนื้อหาภายใน <span> element ที่ต้องการแสดง -->
+    </span>
+    @elseif (Auth::user()->status === 'ยังไม่ได้ยืนยันตัวตน')
+    <span class="circle circle-sm bg-secondary-light">
+
+        <i class="fe fe-16 fe-check text-white mb-0"></i>
+
+
+
+
+@endif </span><span>ขั้นตอนที่ 1 ข้อมูลส่วนตัว:</h1></span>
+                                       <br>ตรวจสอบข้อมูลและทำการยืนยันข้อมูล <br>
+                                       {{-- <br>ถ้าจะทำการแก้ไขข้อมูลให้ --}}
                                        <br> <br>ถ้ายืนยันตัวตนแล้วให้ <a href="/studenthome/establishmentuser"  class="btn btn-outline-warning " type="button">>คลิกที่นี่<</a> เพื่อทำขั้นตอนถัดไป
                                     </div>
 </div>
@@ -462,6 +591,7 @@
 
                                                                   <div class="col text-center">
                                                   <div class="d-grid gap-2 d-md-flex   ">
+                                                    <a href="/studenthome/edituser1/{{Auth::user()->id}}"  class="btn btn-outline-warning fe fe-edit fe-16" type="button">แก้ไข</a>
                                                       {{-- <a href="/studenthome"  class="btn btn-outline-primary fe-16" type="button">ย้อนกลับ</a> --}}
                                                       &nbsp;&nbsp;
                                                       {{-- <a href="/studenthome/updateuser2/{{Auth::user()->id}}"name="next" class="btn btn-outline-success me-md-2 success btn2" onclick="return confirm('แน่ใจจะยืนยันตัวตน?')"  type="button">ยืนยันข้อมูล</a>
