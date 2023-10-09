@@ -66,6 +66,7 @@ class EditController extends Controller
          // return redirect("/welcome")->with('success', 'Company has been created successfully.');
      }
 
+
      public function   updateestablishment(Request $request,$id) {
         //ตรวจสอบข้อมูล
 

@@ -197,11 +197,48 @@ class HomeController extends Controller
         ->where('user_id', auth()->id())
         ->paginate(5);
 
+        $registers3=DB::table('registers')
+        ->join('users','registers.user_id','users.id')
+        ->select('registers.*','users.name')
+        ->where('registers.namefile', 'แบบคำรองขอหนังสือขอความอนุเคราะหรับนักศึกษาสหกิจศึกษา(สก04)')
+        ->where('user_id', auth()->id())
+        ->paginate(5);
+
+        $registers4=DB::table('registers')
+        ->join('users','registers.user_id','users.id')
+        ->select('registers.*','users.name')
+        ->where('registers.namefile', 'บัตรประชาชน')
+        ->where('user_id', auth()->id())
+        ->paginate(5);
+
+        $registers5=DB::table('registers')
+        ->join('users','registers.user_id','users.id')
+        ->select('registers.*','users.name')
+        ->where('registers.namefile', 'บัตรนักศึกษา')
+        ->where('user_id', auth()->id())
+        ->paginate(5);
+
+        $registers6=DB::table('registers')
+        ->join('users','registers.user_id','users.id')
+        ->select('registers.*','users.name')
+        ->where('registers.namefile', 'ผลการเรียน')
+        ->where('user_id', auth()->id())
+        ->paginate(5);
+        $registers7=DB::table('registers')
+        ->join('users','registers.user_id','users.id')
+        ->select('registers.*','users.name')
+        ->where('registers.namefile', 'ประวัติส่วนตัว(resume)')
+        ->where('user_id', auth()->id())
+        ->paginate(5);
+
         $studentinformations=DB::table('studentinformation')
         ->join('users','studentinformation.user_id','users.id')
         ->select('studentinformation.*','users.name')->where('user_id', auth()->id())
         ->paginate(5);
-        return view('student.register',compact('registers','studentinformations','registers1','registers2'));
+        return view('student.register',compact('registers','studentinformations','registers1'
+
+
+        ,'registers2','registers3','registers4','registers5','registers6','registers7'));
     }
 
     public function acceptancedocument()
@@ -216,7 +253,28 @@ class HomeController extends Controller
         ->select('informdetails.*','users.name')->where('user_id', auth()->id())
         ->paginate(5);
 
-        return view('student.informdetails',compact('informdetails'));
+        $informdetails1=DB::table('informdetails')
+        ->join('users','informdetails.user_id','users.id')
+        ->select('informdetails.*','users.name')
+        ->where('informdetails.namefile', 'แบบแจ้งรายละเอียดการปฏิบัติงาน(สก.07)')
+        ->where('user_id', auth()->id())
+        ->paginate(5);
+
+        $informdetails2=DB::table('informdetails')
+        ->join('users','informdetails.user_id','users.id')
+        ->select('informdetails.*','users.name')
+        ->where('informdetails.namefile', 'แบบแจ้งแผนปฏิบัติงานสหกิจศึกษา(สก.08)')
+        ->where('user_id', auth()->id())
+        ->paginate(5);
+
+        $informdetails3=DB::table('informdetails')
+        ->join('users','informdetails.user_id','users.id')
+        ->select('informdetails.*','users.name')
+        ->where('informdetails.namefile', 'แบบแจ้งโครงร่างรายงานการปฏิบัติงานสหกิจศึกษา(สก.09)')
+        ->where('user_id', auth()->id())
+        ->paginate(5);
+
+        return view('student.informdetails',compact('informdetails','informdetails1','informdetails2','informdetails3'));
     }
 
     public function addinformdetail()
@@ -236,7 +294,34 @@ class HomeController extends Controller
         ->join('users','report.user_id','users.id')
         ->select('report.*','users.name')->where('user_id', auth()->id())
         ->paginate(5);
-        return view('student.report',compact('report'));
+
+
+        $report1=DB::table('report')
+        ->join('users','report.user_id','users.id')
+        ->select('report.*','users.name')
+        ->where('report.namefile', 'รายงานโครงการ')
+        ->where('user_id', auth()->id())
+        ->paginate(5);
+
+        $report2=DB::table('report')
+        ->join('users','report.user_id','users.id')
+        ->select('report.*','users.name')
+        ->where('report.namefile', 'PowerPoint การนำเสนอ')
+        ->where('user_id', auth()->id())
+        ->paginate(5);
+        $report3=DB::table('report')
+        ->join('users','report.user_id','users.id')
+        ->select('report.*','users.name')
+        ->where('report.namefile', 'Onepage ของโครงการ (โปสเตอร์)')
+        ->where('user_id', auth()->id())
+        ->paginate(5);
+        $report4=DB::table('report')
+        ->join('users','report.user_id','users.id')
+        ->select('report.*','users.name')
+        ->where('report.namefile', 'รายงานสรุปโครงการ(ไม่เกิน 5 หน้า)')
+        ->where('user_id', auth()->id())
+        ->paginate(5);
+        return view('student.report',compact('report','report1','report2','report3','report4'));
     }
 
        public function listofteachers()

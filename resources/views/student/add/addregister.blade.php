@@ -311,10 +311,14 @@
             @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
             @endforeach
-        </ul>
-    </div>
+        </ul>@endif
+@if(session("error"))
+<div class="alert alert-danger col-6">{{session('error')}}
 @endif
-                                            <strong class="card-title">ลงทะเบียน</strong>
+
+
+    </div>
+                                   <strong class="card-title">ลงทะเบียน</strong>
                                           </div>
 
                                           <div class="card-body">
@@ -324,7 +328,7 @@
                                           <form method="POST" action="{{ route('addregisteruser') }}"enctype="multipart/form-data" >
                                             @csrf
 
-                                                  <label for="simpleinput">ชื่อไฟล์</label>
+                                                  {{-- <label for="simpleinput">ชื่อไฟล์</label>
                                                   <select class="form-control required" name="namefile" id="example-select">
                                                     <option value="">กรุณาเลือก</option>
                                                     <option value="แบบพิจารณาคุณสมบัตินักศึกษาสหกิจศึกษา(สก01)">แบบพิจารณาคุณสมบัตินักศึกษาสหกิจศึกษา(สก01)</option>
@@ -334,8 +338,8 @@
                                                     <option value="บัตรนักศึกษา">บัตรนักศึกษา</option>
                                                     <option value="ผลการเรียน">ผลการเรียน</option>
                                                     <option value="ประวัติส่วนตัว(resume)">ประวัติส่วนตัว(resume)</option>
-                                                  </select>
-
+                                                  </select> --}}
+                                                  <input type="hidden" id="custId" name="namefile" value="แบบพิจารณาคุณสมบัตินักศึกษาสหกิจศึกษา(สก01)">
                                                 </div>
                                                 <div class="form-group mb-3">
                                                   <label for="example-email">อัพโหลดไฟล์เอกสาร</label>

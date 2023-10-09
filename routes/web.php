@@ -8,7 +8,9 @@ use App\Http\Controllers\BasicController;
 use App\Http\Controllers\AddController;
 use App\Http\Controllers\EditController;
 use App\Http\Controllers\FileController;
-
+use App\Http\Controllers\Register2Controller;
+use App\Http\Controllers\informdetailsController;
+use App\Http\Controllers\reportController;
 use Illuminate\Support\Facades\DB;
 
 /*
@@ -92,10 +94,45 @@ Route::middleware(['auth','user-role:student'])->group(function()
     Route::get('/studenthome/view/{id}', [HomeController::class,'viewestablishmentuser'])->name('viewestablishmentuser');
     Route::get("/studenthome/calendar",[HomeController::class,'calendar'])->name('student.calendar');
 
+    //ลงทะเบียน
     Route::get("/studenthome/register",[HomeController::class,'registeruser'])->name('student.register');
+    // แบบพิจารณาคุณสมบัตินักศึกษาสหกิจศึกษา(สก01)
+
+    Route::get("/studenthome/addregister",[AddController::class,'addregister'])->name('addregister');
     Route::post("/studenthome/addregisteruser",[AddController::class,'addregisteruser'])->name('addregisteruser');
     Route::get("/studenthome/edit2register/{id}",[EditController::class,'edit2register'])->name('edit2register');
     Route::post("/studenthome/update/{id}",[EditController::class,'updateregisteruser'])->name('updateregisteruser');
+
+    // ใบสมัครงานสหกิจศึกษา(สก03)
+    Route::get("/studenthome/addregister2",[Register2Controller::class,'addregister2'])->name('addregister2');
+    Route::post("/studenthome/addregisteruser2",[Register2Controller::class,'addregisteruser2'])->name('addregisteruser2');
+    Route::get("/studenthome/edit3register/{id}",[Register2Controller::class,'edit3register'])->name('edit2register');
+    // Route::post("/studenthome/update/{id}",[EditController::class,'updateregisteruser'])->name('updateregisteruser');
+
+     // แบบคำรองขอหนังสือขอควำมอนุเคราะหรับนักศึกษาสหกิจศึกษา(สก04)
+     Route::get("/studenthome/addregister3",[Register2Controller::class,'addregister3'])->name('addregister3');
+     Route::post("/studenthome/addregisteruser3",[Register2Controller::class,'addregisteruser3'])->name('addregisteruser3');
+     Route::get("/studenthome/edit4register/{id}",[Register2Controller::class,'edit4register'])->name('edit2register');
+
+      // บัตรชาชน
+      Route::get("/studenthome/addregister4",[Register2Controller::class,'addregister4'])->name('addregister4');
+      Route::post("/studenthome/addregisteruser4",[Register2Controller::class,'addregisteruser4'])->name('addregisteruser4');
+      Route::get("/studenthome/edit5register/{id}",[Register2Controller::class,'edit5register'])->name('edit2register');
+
+      // บัตรนักศึกษา
+      Route::get("/studenthome/addregister5",[Register2Controller::class,'addregister5'])->name('addregister5');
+      Route::post("/studenthome/addregisteruser5",[Register2Controller::class,'addregisteruser5'])->name('addregisteruser5');
+      Route::get("/studenthome/edit6register/{id}",[Register2Controller::class,'edit6register'])->name('edit2register');
+
+        // ผลการเรียน
+      Route::get("/studenthome/addregister6",[Register2Controller::class,'addregister6'])->name('addregister6');
+      Route::post("/studenthome/addregisteruser6",[Register2Controller::class,'addregisteruser6'])->name('addregisteruser6');
+      Route::get("/studenthome/edit7register/{id}",[Register2Controller::class,'edit7register'])->name('edit2register');
+
+       // ประวัติส่วนตัว(resume)
+       Route::get("/studenthome/addregister7",[Register2Controller::class,'addregister7'])->name('addregister7');
+       Route::post("/studenthome/addregisteruser7",[Register2Controller::class,'addregisteruser7'])->name('addregisteruser7');
+       Route::get("/studenthome/edit8register/{id}",[Register2Controller::class,'edit8register'])->name('edit2register');
 
     // Route::get("/studenthome/edit/{id}",[EditController::class,'editregisteruser'])->name('editregisteruser');
     // Route::post("/studenthome/update/{id}",[EditController::class,'updateregisteruser'])->name('updateregisteruser');
@@ -108,10 +145,6 @@ Route::middleware(['auth','user-role:student'])->group(function()
     Route::post("/studenthome/addstudent1",[AddController::class,'addstudent1'])->name('addstudent1');
 
 
-    Route::get("/studenthome/addregister",[AddController::class,'addregister'])->name('addregister');
-
-
-
 
     Route::post('/register1/add', [AddController::class,'register2'])->name('register2');
     Route::get("/studenthome/timeline",[HomeController::class,'timeline'])->name('student.timeline');
@@ -121,7 +154,9 @@ Route::middleware(['auth','user-role:student'])->group(function()
 
     Route::get("/studenthome/Announcement",[HomeController::class,'Announcement'])->name('Announcement');
 
+    //เอกสารแจ้งรายละเอียดการปฎิบัติงาน
     Route::get("/studenthome/informdetails",[HomeController::class,'informdetails'])->name('student.informdetails');
+    //แบบแจ้งรายละเอียดการปฏิบัติงาน(สก.07)
     Route::get("/studenthome/addinformdetail",[HomeController::class,'addinformdetail'])->name('addinformdetail');
     Route::post("/studenthome/add",[AddController::class,'addinformdetails'])->name('addinformdetails');
     Route::get("/studenthome/editinformdetails/{informdetails_id}",[EditController::class,'editinformdetails'])->name('editinformdetails');
@@ -129,15 +164,42 @@ Route::middleware(['auth','user-role:student'])->group(function()
     Route::post("/studenthome/updateinformdetails/{informdetails_id}",[EditController::class,'updateinformdetails'])->name('updateinformdetails');
     Route::get('/studenthome/deleteinformdetails/{informdetails_id}', [EditController::class,'delinformdetails'])->name('delinformdetails');
 
+    //แบบแจ้งแผนปฏิบัติงานสหกิจศึกษา(สก.08)
+    Route::get("/studenthome/addinformdetail1",[informdetailsController::class,'addinformdetail1'])->name('addinformdetail1');
+    Route::post("/studenthome/addinformdetailuser1",[informdetailsController::class,'addinformdetailuser1'])->name('addinformdetailuser1');
+    Route::get("/studenthome/editinformdetails1/{informdetails_id}",[informdetailsController::class,'editinformdetails1'])->name('editinformdetails1');
+
+     //แบบแจ้งโครงร่างรายงานการปฏิบัติงานสหกิจศึกษา(สก.09)
+     Route::get("/studenthome/addinformdetail2",[informdetailsController::class,'addinformdetail2'])->name('addinformdetail2');
+     Route::post("/studenthome/addinformdetailuser2",[informdetailsController::class,'addinformdetailuser2'])->name('addinformdetailuser2');
+     Route::get("/studenthome/editinformdetails2/{informdetails_id}",[informdetailsController::class,'editinformdetails2'])->name('editinformdetails2');
 
     // Route::get("/studenthome/record",[HomeController::class,'record'])->name('student.record');
 
+    //รายงานผลการปฏิบัติงาน
     Route::get("/studenthome/report",[HomeController::class,'report'])->name('student.report');
+
+    //รายงานโครงการ
     Route::get("/studenthome/addreport2",[AddController::class,'addreport2'])->name('addreport2');
     Route::post("/studenthome/addreport",[AddController::class,'addreport'])->name('addreport');
     Route::get("/studenthome/editreport/{report_id}",[EditController::class,'editreport'])->name('editreport');
     Route::post("/studenthome/updatereport/{report_id}",[EditController::class,'updatereport'])->name('updatereport');
     // Route::get('/studenthome/deletereport/{report_id}', [EditController::class,'delreport'])->name('delreport');
+
+   // PowerPoint การนำเสนอ
+    Route::get("/studenthome/addreport3",[reportController::class,'addreport3'])->name('addreport3');
+    Route::post("/studenthome/addreportuser3",[reportController::class,'addreportuser3'])->name('addreportuser3');
+    Route::get("/studenthome/editreport3/{report_id}",[reportController::class,'editreport3'])->name('editreport3');
+
+ // Onepage ของโครงการ (โปสเตอร์)
+ Route::get("/studenthome/addreport4",[reportController::class,'addreport4'])->name('addreport4');
+ Route::post("/studenthome/addreportuser4",[reportController::class,'addreportuser4'])->name('addreportuser4');
+ Route::get("/studenthome/editreport4/{report_id}",[reportController::class,'editreport4'])->name('editreport4');
+
+ // รายงานสรุปโครงการ(ไม่เกิน 5 หน้า)
+ Route::get("/studenthome/addreport5",[reportController::class,'addreport5'])->name('addreport5');
+ Route::post("/studenthome/addreportuser5",[reportController::class,'addreportuser5'])->name('addreportuser5');
+ Route::get("/studenthome/editreport5/{report_id}",[reportController::class,'editreport5'])->name('editreport5');
 
 
     Route::get("/studenthome/listofteachers",[HomeController::class,'listofteachers'])->name('student.listofteachers');

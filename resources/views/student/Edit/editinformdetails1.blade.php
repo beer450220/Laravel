@@ -1,4 +1,4 @@
-@extends('layouts.appstudent')
+@extends('layouts.appstudent1')
 {{-- @include('layouts.admincss2') --}}
  {{-- @include('layouts.menutopstudent') --}}
 {{-- @include('layouts.cssstudent') --}}
@@ -258,8 +258,8 @@
                       <a  href="/studenthome/establishmentuser">  <li class="active" id="personal"><strong>สถานประกอบการ</strong></li></a>
                         <a  href="/studenthome/register">  <li class="active" id="payment"><strong>ลงทะเบียน</strong></li></a>
                         <a  href="/studenthome/informdetails"> <li class="active" id="confirm"><strong>รายงานสถานะการเข้าปฏิบัติงาน</strong></li></a>
-                        <a  href="/studenthome/calendar2confirm"> <li class="active" id="confirm"><strong>นิเทศงาน</strong></li></a>
-                          <a  href="/studenthome/report"> <li class="active" id="payment"><strong>รายงานผลการปฏิบัติงาน</strong></li></a>
+                        <a  href="/studenthome/calendar2confirm"> <li id="confirm"><strong>นิเทศงาน</strong></li></a>
+                          <a  href="/studenthome/report"> <li id="payment"><strong>รายงานผลการปฏิบัติงาน</strong></li></a>
                     </ul>
                     <div class="progress">
                         {{-- <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div> --}}
@@ -268,11 +268,11 @@
                         <div class="form-card">
                             <div class="row">
                                 <div class="col-7">
-                                    <h2 class="fs-title col">รายงานผลการฝึกประสบการณ์</h2>
+                                    <h2 class="fs-title col">รายงานสถานะการเข้าปฏิบัติงาน</h2>
 
                                 </div>
                                 <div class="col-4">
-                                    <h2 class="steps">ขั้นตอน 6 - 6</h2>
+                                    <h2 class="steps">ขั้นตอน 4 - 6</h2>
                                 </div>
                             </div><div class="col-6">
                                  <br>   <br>
@@ -305,7 +305,7 @@
 
                                         <div class="card shadow mb-4">
                                           <div class="card-header">
-                                             @if ($errors->any())
+                                            @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
             @foreach ($errors->all() as $error)
@@ -314,27 +314,33 @@
         </ul>
     </div>
 @endif
-                                            <strong class="card-title">รายงานผลการฝึกประสบการณ์</strong>
+                                            <strong class="card-title">ลงทะเบียน</strong>
                                           </div>
 
                                           <div class="card-body">
                                             <div class="row">
                                               <div class="col-md-6">
                                                 <div class="form-group mb-3">
-                                          <form method="POST" action="{{ route('addreport') }}"enctype="multipart/form-data" >
+                                          <form method="POST" action="{{url('/studenthome/updateinformdetails/'.$informdetails->informdetails_id)}}"enctype="multipart/form-data" >
                                             @csrf
 
                                                   {{-- <label for="simpleinput">ชื่อไฟล์</label>
-                                                  <select class="form-control required" name="namefile" id="example-select">
-                                                    <option value="">กรุณาเลือก</option>
-                                                    <option value="รายงานโครงการ">รายงานโครงการ</option>
-                                                    <option value="PowerPoint การนำเสนอ">PowerPoint การนำเสนอ</option>
-                                                    <option value="Onepage ของโครงการ (โปสเตอร์)">Onepage ของโครงการ (โปสเตอร์)</option>
-                                                    <option value="รายงานสรุปโครงการ(ไม่เกิน 5 หน้า)">รายงานสรุปโครงการ(ไม่เกิน 5 หน้า)</option>
+
+                                                <select class="form-control required" name="namefile" id="example-select">
+                                                    <option selected>กรุณาเลือก</option>
+                                                    <option value="แบบแจ้งรายละเอียดการปฏิบัติงาน(สก.07)"@if($informdetails->namefile=="แบบแจ้งรายละเอียดการปฏิบัติงาน(สก.07)") selected @endif required>แบบแจ้งรายละเอียดการปฏิบัติงาน(สก.07)</option>
+                                                    <option value="แบบแจ้งแผนปฏิบัติงานสหกิจศึกษา(สก.08)"@if($informdetails->namefile=="แบบแจ้งแผนปฏิบัติงานสหกิจศึกษา(สก.08)") selected @endif required>แบบแจ้งแผนปฏิบัติงานสหกิจศึกษา(สก.08)</option>
+                                                    <option value="แบบแจ้งโครงร่างรายงานการปฏิบัติงานสหกิจศึกษา(สก.09)"@if($informdetails->namefile=="แบบแจ้งโครงร่างรายงานการปฏิบัติงานสหกิจศึกษา(สก.09)") selected @endif required>แบบแจ้งโครงร่างรายงานการปฏิบัติงานสหกิจศึกษา(สก.09)</option>
+
 
                                                   </select> --}}
-                                                  <input type="hidden" id="custId" name="namefile" value="รายงานโครงการ">
-                                                </div>
+                                                  <input type="hidden" id="custId" name="namefile" value="แบบแจ้งแผนปฏิบัติงานสหกิจศึกษา(สก.08)">
+                                                {{--  @error('filess')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror --}}
+                                                </div><br><br>
                                                 <div class="form-group mb-3">
                                                   <label for="example-email">อัพโหลดไฟล์เอกสาร</label>
                                                   {{-- <div class="custom-file">
@@ -342,12 +348,16 @@
                                                     <label class="custom-file-label" for="customFile">Choose file</label>
                                                   </div> --}}
                                                   <div class="form-group mb-3">
+
                                                     <div class="custom-file">
-                                                        <input type="file" name="filess" class="custom-file-input" id="customFile">
-                                                        <label class="custom-file-label" for="customFile">เลือกไฟล์รูป</label>
+                                                        <div class="custom-file">
+                                                            <input type="file" name="files" value="{{$informdetails->files}}" class="custom-file-input " id="customFile">
+                                                            <label class="custom-file-label" for="customFile">เลือกไฟล์รูป</label>
+                                                            <img src="/fileinformdetails/{{ $informdetails->files }}" class="img-responsive" style="max-height: 100px; max-width: 100px;" alt="" srcset="">
+
+                                                        </div>
 
                                                       </div>
-                                                    {{-- <input type="text"  name="namefile" class="form-control" id="example-static" > --}}
                                                   </div>
                                                 </div>
 
@@ -363,7 +373,7 @@
                                                 </div><div class="modal-footer">
                                                     <button type="submit" class="btn mb-2 btn-primary">ตกลง</button>
                                                     <button type="reset" class="btn mb-2 btn-secondary" >ยกเลิก</button>
-                                                    <a href="/studenthome/report" type="submit" class="btn mb-2 btn-secondary" >ย้อนกลับ</a>
+                                                    <a href="/studenthome/informdetails" type="submit" class="btn mb-2 btn-secondary" >ย้อนกลับ</a>
                                                   </div></form>
                                                 <div class="form-group mb-3">
 

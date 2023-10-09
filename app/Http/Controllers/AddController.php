@@ -37,6 +37,8 @@ class AddController extends Controller
 
         return view('student.add.addregister');
     }
+
+
     public function addreport2()
     {
 
@@ -158,47 +160,119 @@ class AddController extends Controller
      public function addregisteruser(Request $request) {
       //ตรวจสอบข้อมูล
       // dd($request);
-      $request->validate([
-        // 'filess' => 'required|mimes:pdf',
-        // 'filess' => 'required|mimes:jpeg,jpg,png',
-        'filess' => 'mimes:jpeg,jpg,png',
 
-        'namefile' => 'required',
-        // 'user_id' => 'required|unique:user_id',
-      ],[
-            // 'filess.required' => "กรุณาใส่เป็นไฟล์รูปภาพ",
-           'namefile.required' => "กรุณาชื่อไฟล์",
-        ]
-    );
-      if($request->hasFile("filess")){
-        $file=$request->file("filess");
-         $imageName=time().'_'.$file->getClientOriginalName();
-        $file->move(\public_path("/file"),$imageName);
+      if (Auth::check()) {
+        $user = Auth::user();
 
 
-        $post =new registers([
-          "user_id" => $request->user_id,
-             "namefile" => $request->namefile,
-            "filess" =>$imageName,
-            "annotation" => "-",
-            "Status_registers" => "รอตรวจสอบ",
-        ]);
-    //   $post->annotation ="-";
-    //   $post->Status_registers ="รอตรวจสอบ";
-      $post->user_id = Auth::user()->id;
-      $post->save();
-      //  $data->save();
+         $postCount = registers::where('user_id', $user->id)->count();
+        //$existingPost = registers::where('user_id', $user->id)->first();
+        // ตรวจสอบว่าผู้ใช้เพิ่มข้อมูลได้ไม่เกิน 2 ครั้ง
+        if (($postCount < 1 && $request->namefile === "แบบพิจารณาคุณสมบัตินักศึกษาสหกิจศึกษา(สก01)") || !Auth::user()->id)
+        // ($postCount < 1)
+        // ($postCount < 1 && $request->filled('user_id'))
+        // (!$existingPost)
+        // ($postCount < 1 && $user->Status_registers == "ไม่ผ่าน")
+        {
+            $request->validate([
+                // 'filess' => 'required|mimes:pdf',
+                // 'filess' => 'required|mimes:jpeg,jpg,png',
+                'filess' => 'mimes:jpeg,jpg,png',
+
+                // 'namefile' => 'required|unique:namefile',
+                // 'user_id' => 'required|unique:user_id',
+              ],[
+                    // 'filess.required' => "กรุณาใส่เป็นไฟล์รูปภาพ",
+                //    'namefile.required' => "กรุณาชื่อไฟล์",
+                //    'namefile.unique' => "ไม่สามารถเพิ่มข้อมูลได้",
+                ]
+            );
+              if($request->hasFile("filess")){
+                $file=$request->file("filess");
+                 $imageName=time().'_'.$file->getClientOriginalName();
+                $file->move(\public_path("/file"),$imageName);
+
+
+                $post =new registers([
+                  "user_id" => $request->user_id,
+                     "namefile" => $request->namefile,
+                    "filess" =>$imageName,
+                    "annotation" => "-",
+                    "Status_registers" => "รอตรวจสอบ",
+                ]);
+            //   $post->annotation ="-";
+            //   $post->Status_registers ="รอตรวจสอบ";
+              $post->user_id = Auth::user()->id;
+              $post->save();
+            }
+            // else{  if(Auth::check()) {
+            //     $user = Auth::user();
+            //     $postCount = registers::where('user_id', $user->id)->count();
+
+            //     if ($postCount < 1 && $user->Status_registers == "ไม่ผ่าน") {
+            //     $request->validate([
+            //         'filess' => 'mimes:jpeg,jpg,png',
+            //         // 'namefile' => 'required|unique:namefile',
+            //         // 'user_id' => 'required|unique:user_id',
+            //     ], [
+            //         // 'filess.required' => "กรุณาใส่เป็นไฟล์รูปภาพ",
+            //         // 'namefile.required' => "กรุณาชื่อไฟล์",
+            //         // 'namefile.unique' => "ไม่สามารถเพิ่มข้อมูลได้",
+            //     ]);
+
+            //     if ($request->hasFile("filess")) {
+            //         $file = $request->file("filess");
+            //         $imageName = time() . '_' . $file->getClientOriginalName();
+            //         $file->move(\public_path("/file"), $imageName);
+
+            //         $post = new registers([
+            //             "user_id" => $request->user_id,
+            //             "namefile" => $request->namefile,
+            //             "filess" => $imageName,
+            //             "annotation" => "-",
+            //             "Status_registers" => "รอตรวจสอบ",
+            //         ]);
+
+            //         $post->user_id = Auth::user()->id;
+            //         $post->save();
+
+
+              return redirect('/studenthome/register')->with('success5', 'เพิ่มข้อมูลสำเร็จ.');
+        } else {
+            return redirect('/studenthome/register')
+                ->with('error', 'ไม่สามารถเพิ่มข้อมูลได้');
+        }
+    }else
+     {
+            return redirect('/studenthome/register')->with('error', 'ไม่สามารถเพิ่มข้อมูลได้');
     }
-
-
-
-         return redirect('/studenthome/register')->with('success5', 'เพิ่มข้อมูลสำเร็จ.');
-
-
-
-
-
 }
+
+
+    //   if (registers::count() >= 1) {
+    //     return redirect('/studenthome/register')->with('error', 'ไม่สามารถเพิ่มข้อมูลได้');
+    // }
+
+
+
+
+//         return redirect('/studenthome/register')->with('success5', 'เพิ่มข้อมูลสำเร็จ.');
+// } else {
+//     return redirect('/studenthome/register')
+//         ->with('error', 'ไม่สามารถเพิ่มข้อมูลได้');
+// }
+//}
+
+      //  $data->save();
+
+
+
+
+
+
+
+
+
 
 
 

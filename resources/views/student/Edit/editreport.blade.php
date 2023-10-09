@@ -257,9 +257,9 @@
                       <a  href="/studenthome"><li class="active" id="account"><strong>ข้อมูลส่วนตัว</strong></li></a>
                       <a  href="/studenthome/establishmentuser">  <li class="active" id="personal"><strong>สถานประกอบการ</strong></li></a>
                         <a  href="/studenthome/register">  <li class="active" id="payment"><strong>ลงทะเบียน</strong></li></a>
-                          <a  href="/studenthome"> <li id="confirm"><strong>รายงานสถานะการเข้าปฏิบัติงาน</strong></li></a>
-                            <a  href="/studenthome"> <li id="confirm"><strong>นิเทศงาน</strong></li></a>
-                              <a  href="/studenthome"> <li id="payment"><strong>รายงานผลการปฏิบัติงาน</strong></li></a>
+                          <a  href="/studenthome"> <li class="active" id="confirm"><strong>รายงานสถานะการเข้าปฏิบัติงาน</strong></li></a>
+                            <a  href="/studenthome"> <li class="active" id="confirm"><strong>นิเทศงาน</strong></li></a>
+                              <a  href="/studenthome"> <li class="active" id="payment"><strong>รายงานผลการปฏิบัติงาน</strong></li></a>
                     </ul>
                     <div class="progress">
                         {{-- <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div> --}}
@@ -268,11 +268,11 @@
                         <div class="form-card">
                             <div class="row">
                                 <div class="col-7">
-                                    <h2 class="fs-title col">ลงทะเบียน:</h2>
+                                    <h2 class="fs-title col">รายงานผลการฝึกประสบการณ์:</h2>
 
                                 </div>
                                 <div class="col-4">
-                                    <h2 class="steps">ขั้นตอน 3 - 6</h2>
+                                    <h2 class="steps">ขั้นตอน 6 - 6</h2>
                                 </div>
                             </div><div class="col-6">
                                  <br>   <br>
@@ -314,7 +314,7 @@
         </ul>
     </div>
 @endif
-                                            <strong class="card-title">ลงทะเบียน</strong>
+                                            <strong class="card-title">รายงานผลการฝึกประสบการณ์</strong>
                                           </div>
 
                                           <div class="card-body">
@@ -324,7 +324,7 @@
                                           <form method="POST" action="{{url('/studenthome/updatereport/'.$report->report_id)}}"enctype="multipart/form-data" >
                                             @csrf
 
-                                                  <label for="simpleinput">ชื่อไฟล์</label>
+                                                  {{-- <label for="simpleinput">ชื่อไฟล์</label>
 
                                                 <select class="form-control required" name="namefile" id="example-select">
                                                     <option selected>กรุณาเลือก</option>
@@ -334,8 +334,8 @@
                                                     <option value="PowerPoint การนำเสนอ"@if($report->namefile=="PowerPoint การนำเสนอ") selected @endif required>PowerPoint การนำเสนอ</option>
                                                     <option value="Onepage ของโครงการ (โปสเตอร์)"@if($report->namefile=="Onepage ของโครงการ (โปสเตอร์)") selected @endif required>Onepage ของโครงการ (โปสเตอร์)</option>
                                                     <option value="รายงานสรุปโครงการ(ไม่เกิน 5 หน้า)"@if($report->namefile=="ายงานสรุปโครงการ(ไม่เกิน 5 หน้า)") selected @endif required>รายงานสรุปโครงการ(ไม่เกิน 5 หน้า)</option>
-                                                  </select>
-
+                                                  </select> --}}
+                                                  <input type="hidden" id="custId" name="namefile" value="รายงานโครงการ">
                                                 {{--  @error('filess')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

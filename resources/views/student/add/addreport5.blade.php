@@ -321,7 +321,7 @@
                                             <div class="row">
                                               <div class="col-md-6">
                                                 <div class="form-group mb-3">
-                                          <form method="POST" action="{{ route('addreport') }}"enctype="multipart/form-data" >
+                                          <form method="POST" action="{{ route('addreportuser5') }}"enctype="multipart/form-data" >
                                             @csrf
 
                                                   {{-- <label for="simpleinput">ชื่อไฟล์</label>
@@ -333,7 +333,7 @@
                                                     <option value="รายงานสรุปโครงการ(ไม่เกิน 5 หน้า)">รายงานสรุปโครงการ(ไม่เกิน 5 หน้า)</option>
 
                                                   </select> --}}
-                                                  <input type="hidden" id="custId" name="namefile" value="รายงานโครงการ">
+                                                  <input type="hidden" id="custId" name="namefile" value="รายงานสรุปโครงการ(ไม่เกิน 5 หน้า)">
                                                 </div>
                                                 <div class="form-group mb-3">
                                                   <label for="example-email">อัพโหลดไฟล์เอกสาร</label>

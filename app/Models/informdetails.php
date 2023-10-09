@@ -13,6 +13,7 @@ class informdetails extends Model
     protected $table="informdetails";
     // protected $primarykey = "";
     protected $fillable=[
+        'informdetails_id',
         'user_id',
         'files',
         'establishment',

@@ -378,7 +378,7 @@
                                       <div class="card shadow">
                                         <div class="card-header" id="heading1">
                                           <a role="button" href="#collapse1" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapse1" class="collapsed">
-                                  @foreach ($report as $row)
+                                  @foreach ($report1 as $row)
 
                                          @if ($row->Status_report === 'รอตรวจสอบ')
                                          <span class="circle circle-sm bg-warning-light"><i class="fe fe-16 fe-alert-triangle text-white "></i></span>
@@ -387,6 +387,7 @@
                                      @elseif ($row->Status_report === 'ไม่ผ่าน')
                                          <span class="badge badge-pill badge-danger">{{ $row->Status_report }}</span>
                                      @endif
+                                     @endforeach
                                          {{--  class="circle circle-sm bg-warning-light">
 
  --}}
@@ -403,10 +404,10 @@
                                           </a>
                                         </div>
                                         <div id="collapse1" class="collapse" aria-labelledby="heading1" data-parent="#accordion1" style="">
-                                          <div class="card-body">  <a href="/studenthome/addregister"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> </div>
+                                          <div class="card-body">  <a href="/studenthome/addreport2"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> </div>
                                         <br>
 
-
+                                        @foreach ($report1 as $row)
 
                                         <div class="col-md-3">
                                             <div class="card shadow mb-4">
@@ -418,7 +419,7 @@
                                                 </div>
                                                 <div class="card-text my-2">
                                                   <strong class="card-title my-0">ชื่อเอกสาร </strong>
-                                                  <p class="small text-muted mb-0">Accumsan Consulting</p>
+                                                  <p class="small text-muted mb-0">{{ $row->namefile}}</p>
                                                   <p class="small"><span class="badge badge-light text-muted">New York, USA</span></p>
                                                 </div>
                                               </div> <!-- ./card-text -->
@@ -427,8 +428,8 @@
                                                   <div class="col-auto">
                                                     <small>
                                                       {{-- <span class="dot dot-lg bg-success mr-1"></span> Online </small> --}}
-                                                      <td><a href="../file/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down "></a></td>
-                                                      <td><a href="/studenthome/edit2register/{{ $row->report_id }}" type="button" class="btn btn-outline-secondary fa-regular fe fe-edit "></a></td>
+                                                      <td><a href="../ไฟล์เอกสารฝึกประสบการณ์/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down "></a></td>
+                                                      <td><a href="/studenthome/editreport/{{ $row->report_id }}" type="button" class="btn btn-outline-secondary fa-regular fe fe-edit "></a></td>
                                                     </div>
 
                                                   <div class="col-auto">
@@ -445,7 +446,7 @@
                                       <div class="card shadow">
                                         <div class="card-header" id="heading1">
                                           <a role="button" href="#collapse2" data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
-                                            <span>  @foreach ($report as $row)
+                                            <span>  @foreach ($report2 as $row)
 
                                             @if ($row->Status_report === 'รอตรวจสอบ')
                                             <span class="circle circle-sm bg-warning-light"><i class="fe fe-16 fe-alert-triangle text-white "></i></span>
@@ -454,17 +455,74 @@
                                         @elseif ($row->Status_report === 'ไม่ผ่าน')
                                             <span class="circle circle-sm bg-danger-light "><i class="fe fe-16 fe-x-circle text-white "></i></span>
                                         @endif
-
+                                        @endforeach
 
                                     </span><strong>PowerPoint การนำเสนอ</strong>
                                           </a>
                                         </div>
                                         <div id="collapse2" class="collapse" aria-labelledby="heading2" data-parent="#accordion1">
-                                          <div class="card-body"> <a href="/studenthome/addregister"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a></div>
+                                          <div class="card-body"> <a href="/studenthome/addreport3"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a></div>
 
                                           <br>
 
+                                        @foreach ($report2 as $row)
 
+                                        <div class="col-md-3">
+                                            <div class="card shadow mb-4">
+                                              <div class="card-body text-center">
+                                                <div class="avatar avatar-lg mt-4">
+                                                  {{-- <a href="">
+                                                    <img src="./assets/avatars/face-4.jpg" alt="..." class="avatar-img rounded-circle">
+                                                  </a> --}}
+                                                </div>
+                                                <div class="card-text my-2">
+                                                  <strong class="card-title my-0">ชื่อเอกสาร </strong>
+                                                  <p class="small text-muted mb-0">{{ $row->namefile}}</p>
+                                                  <p class="small"><span class="badge badge-light text-muted">New York, USA</span></p>
+                                                </div>
+                                              </div> <!-- ./card-text -->
+                                              <div class="card-footer">
+                                                <div class="row align-items-center justify-content-between">
+                                                  <div class="col-auto">
+                                                    <small>
+                                                      {{-- <span class="dot dot-lg bg-success mr-1"></span> Online </small> --}}
+                                                      <td><a href="../ไฟล์เอกสารฝึกประสบการณ์/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down "></a></td>
+                                                      <td><a href="/studenthome/editreport3/{{ $row->report_id }}" type="button" class="btn btn-outline-secondary fa-regular fe fe-edit "></a></td>
+                                                    </div>
+
+                                                  <div class="col-auto">
+
+                                                  </div>
+                                                </div>
+                                              </div> <!-- /.card-footer -->
+                                            </div>
+                                          </div>@endforeach
+
+                                        </div>
+                                      </div>
+
+                                      <div class="card shadow">
+                                        <div class="card-header" id="heading1">
+                                          <a role="button" href="#collapse3" data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                                            <span>  @foreach ($report3 as $row)
+
+                                                @if ($row->Status_report === 'รอตรวจสอบ')
+                                                <span class="circle circle-sm bg-warning-light"><i class="fe fe-16 fe-alert-triangle text-white "></i></span>
+                                            @elseif ($row->Status_report === 'ตรวจสอบแล้ว')
+                                                <span class="circle circle-sm bg-success warning-light "><i class="fe fe-16 fe-check text-white "></i></span>
+                                            @elseif ($row->Status_report === 'ไม่ผ่าน')
+                                                <span class="circle circle-sm bg-danger-light "><i class="fe fe-16 fe-x-circle text-white "></i></span>
+                                            @endif
+                                            @endforeach
+
+                                            </span> <strong>Onepage ของโครงการ (โปสเตอร์)</strong>
+                                          </a>
+                                        </div>
+                                        <div id="collapse3" class="collapse" aria-labelledby="heading3" data-parent="#accordion1">
+                                          <div class="card-body"> <a href="/studenthome/addreport4"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> </div>
+                                          <br>
+
+                                          @foreach ($report3 as $row)
 
                                           <div class="col-md-3">
                                               <div class="card shadow mb-4">
@@ -476,7 +534,7 @@
                                                   </div>
                                                   <div class="card-text my-2">
                                                     <strong class="card-title my-0">ชื่อเอกสาร </strong>
-                                                    <p class="small text-muted mb-0">Accumsan Consulting</p>
+                                                    <p class="small text-muted mb-0">{{ $row->namefile}}</p>
                                                     <p class="small"><span class="badge badge-light text-muted">New York, USA</span></p>
                                                   </div>
                                                 </div> <!-- ./card-text -->
@@ -485,8 +543,8 @@
                                                     <div class="col-auto">
                                                       <small>
                                                         {{-- <span class="dot dot-lg bg-success mr-1"></span> Online </small> --}}
-                                                        <td><a href="../file/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down "></a></td>
-                                                        <td><a href="/studenthome/edit2register/{{ $row->report_id }}" type="button" class="btn btn-outline-secondary fa-regular fe fe-edit "></a></td>
+                                                        <td><a href="../ไฟล์เอกสารฝึกประสบการณ์/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down "></a></td>
+                                                        <td><a href="/studenthome/editreport4/{{ $row->report_id }}" type="button" class="btn btn-outline-secondary fa-regular fe fe-edit "></a></td>
                                                       </div>
 
                                                     <div class="col-auto">
@@ -496,38 +554,61 @@
                                                 </div> <!-- /.card-footer -->
                                               </div>
                                             </div>@endforeach
-
-                                        </div>
-                                      </div>
-
-                                      <div class="card shadow">
-                                        <div class="card-header" id="heading1">
-                                          <a role="button" href="#collapse3" data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
-                                            <span class="circle circle-sm bg-success-light">
-
-                                                <i class="fe fe-16 fe-check text-white "></i>
-
-
-                                            </span> <strong>Onepage ของโครงการ (โปสเตอร์)</strong>
-                                          </a>
-                                        </div>
-                                        <div id="collapse3" class="collapse" aria-labelledby="heading3" data-parent="#accordion1">
-                                          <div class="card-body"> <a href="/studenthome/addregister"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> </div>
                                         </div>
                                       </div>
                                       <div class="card shadow">
                                         <div class="card-header" id="heading1">
                                           <a role="button" href="#collapse4" data-toggle="collapse" data-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
-                                            <span class="circle circle-sm bg-success-light">
+                                            <span>  @foreach ($report4 as $row)
 
-                                                <i class="fe fe-16 fe-check text-white "></i>
-
+                                                @if ($row->Status_report === 'รอตรวจสอบ')
+                                                <span class="circle circle-sm bg-warning-light"><i class="fe fe-16 fe-alert-triangle text-white "></i></span>
+                                            @elseif ($row->Status_report === 'ตรวจสอบแล้ว')
+                                                <span class="circle circle-sm bg-success warning-light "><i class="fe fe-16 fe-check text-white "></i></span>
+                                            @elseif ($row->Status_report === 'ไม่ผ่าน')
+                                                <span class="circle circle-sm bg-danger-light "><i class="fe fe-16 fe-x-circle text-white "></i></span>
+                                            @endif
+                                            @endforeach
 
                                             </span> <strong>รายงานสรุปโครงการ(ไม่เกิน 5 หน้า)</strong>
                                           </a>
                                         </div>
                                         <div id="collapse4" class="collapse" aria-labelledby="heading4" data-parent="#accordion1">
-                                          <div class="card-body"> <a href="/studenthome/addregister"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> </div>
+                                          <div class="card-body"> <a href="/studenthome/addreport5"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> </div>
+                                          <br>
+
+                                          @foreach ($report4 as $row)
+
+                                          <div class="col-md-3">
+                                              <div class="card shadow mb-4">
+                                                <div class="card-body text-center">
+                                                  <div class="avatar avatar-lg mt-4">
+                                                    {{-- <a href="">
+                                                      <img src="./assets/avatars/face-4.jpg" alt="..." class="avatar-img rounded-circle">
+                                                    </a> --}}
+                                                  </div>
+                                                  <div class="card-text my-2">
+                                                    <strong class="card-title my-0">ชื่อเอกสาร </strong>
+                                                    <p class="small text-muted mb-0">{{ $row->namefile}}</p>
+                                                    <p class="small"><span class="badge badge-light text-muted">New York, USA</span></p>
+                                                  </div>
+                                                </div> <!-- ./card-text -->
+                                                <div class="card-footer">
+                                                  <div class="row align-items-center justify-content-between">
+                                                    <div class="col-auto">
+                                                      <small>
+                                                        {{-- <span class="dot dot-lg bg-success mr-1"></span> Online </small> --}}
+                                                        <td><a href="../ไฟล์เอกสารฝึกประสบการณ์/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down "></a></td>
+                                                        <td><a href="/studenthome/editreport5/{{ $row->report_id }}" type="button" class="btn btn-outline-secondary fa-regular fe fe-edit "></a></td>
+                                                      </div>
+
+                                                    <div class="col-auto">
+
+                                                    </div>
+                                                  </div>
+                                                </div> <!-- /.card-footer -->
+                                              </div>
+                                            </div>@endforeach
                                         </div>
                                       </div>
                                       </div>

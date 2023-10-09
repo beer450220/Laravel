@@ -1,4 +1,4 @@
-@extends('layouts.appstudent')
+@extends('layouts.appstudent1')
 {{-- @include('layouts.admincss2') --}}
  {{-- @include('layouts.menutopstudent') --}}
 {{-- @include('layouts.cssstudent') --}}
@@ -257,9 +257,9 @@
                       <a  href="/studenthome"><li class="active" id="account"><strong>ข้อมูลส่วนตัว</strong></li></a>
                       <a  href="/studenthome/establishmentuser">  <li class="active" id="personal"><strong>สถานประกอบการ</strong></li></a>
                         <a  href="/studenthome/register">  <li class="active" id="payment"><strong>ลงทะเบียน</strong></li></a>
-                        <a  href="/studenthome/informdetails"> <li class="active" id="confirm"><strong>รายงานสถานะการเข้าปฏิบัติงาน</strong></li></a>
-                        <a  href="/studenthome/calendar2confirm"> <li class="active" id="confirm"><strong>นิเทศงาน</strong></li></a>
-                          <a  href="/studenthome/report"> <li class="active" id="payment"><strong>รายงานผลการปฏิบัติงาน</strong></li></a>
+                          <a  href="/studenthome"> <li class="active" id="confirm"><strong>รายงานสถานะการเข้าปฏิบัติงาน</strong></li></a>
+                            <a  href="/studenthome"> <li class="active" id="confirm"><strong>นิเทศงาน</strong></li></a>
+                              <a  href="/studenthome"> <li class="active" id="payment"><strong>รายงานผลการปฏิบัติงาน</strong></li></a>
                     </ul>
                     <div class="progress">
                         {{-- <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div> --}}
@@ -268,7 +268,7 @@
                         <div class="form-card">
                             <div class="row">
                                 <div class="col-7">
-                                    <h2 class="fs-title col">รายงานผลการฝึกประสบการณ์</h2>
+                                    <h2 class="fs-title col">รายงานผลการฝึกประสบการณ์:</h2>
 
                                 </div>
                                 <div class="col-4">
@@ -305,7 +305,7 @@
 
                                         <div class="card shadow mb-4">
                                           <div class="card-header">
-                                             @if ($errors->any())
+                                            @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
             @foreach ($errors->all() as $error)
@@ -321,20 +321,27 @@
                                             <div class="row">
                                               <div class="col-md-6">
                                                 <div class="form-group mb-3">
-                                          <form method="POST" action="{{ route('addreport') }}"enctype="multipart/form-data" >
+                                          <form method="POST" action="{{url('/studenthome/updatereport/'.$report->report_id)}}"enctype="multipart/form-data" >
                                             @csrf
 
                                                   {{-- <label for="simpleinput">ชื่อไฟล์</label>
-                                                  <select class="form-control required" name="namefile" id="example-select">
-                                                    <option value="">กรุณาเลือก</option>
-                                                    <option value="รายงานโครงการ">รายงานโครงการ</option>
-                                                    <option value="PowerPoint การนำเสนอ">PowerPoint การนำเสนอ</option>
-                                                    <option value="Onepage ของโครงการ (โปสเตอร์)">Onepage ของโครงการ (โปสเตอร์)</option>
-                                                    <option value="รายงานสรุปโครงการ(ไม่เกิน 5 หน้า)">รายงานสรุปโครงการ(ไม่เกิน 5 หน้า)</option>
 
+                                                <select class="form-control required" name="namefile" id="example-select">
+                                                    <option selected>กรุณาเลือก</option>
+
+
+                                                    <option value="รายงานโครงการ"@if($report->namefile=="รายงานโครงการ") selected @endif required>รายงานโครงการ</option>
+                                                    <option value="PowerPoint การนำเสนอ"@if($report->namefile=="PowerPoint การนำเสนอ") selected @endif required>PowerPoint การนำเสนอ</option>
+                                                    <option value="Onepage ของโครงการ (โปสเตอร์)"@if($report->namefile=="Onepage ของโครงการ (โปสเตอร์)") selected @endif required>Onepage ของโครงการ (โปสเตอร์)</option>
+                                                    <option value="รายงานสรุปโครงการ(ไม่เกิน 5 หน้า)"@if($report->namefile=="ายงานสรุปโครงการ(ไม่เกิน 5 หน้า)") selected @endif required>รายงานสรุปโครงการ(ไม่เกิน 5 หน้า)</option>
                                                   </select> --}}
-                                                  <input type="hidden" id="custId" name="namefile" value="รายงานโครงการ">
-                                                </div>
+                                                  <input type="hidden" id="custId" name="namefile" value="Onepage ของโครงการ (โปสเตอร์)">
+                                                {{--  @error('filess')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror --}}
+                                                </div><br><br>
                                                 <div class="form-group mb-3">
                                                   <label for="example-email">อัพโหลดไฟล์เอกสาร</label>
                                                   {{-- <div class="custom-file">
@@ -342,12 +349,16 @@
                                                     <label class="custom-file-label" for="customFile">Choose file</label>
                                                   </div> --}}
                                                   <div class="form-group mb-3">
+
                                                     <div class="custom-file">
-                                                        <input type="file" name="filess" class="custom-file-input" id="customFile">
-                                                        <label class="custom-file-label" for="customFile">เลือกไฟล์รูป</label>
+                                                        <div class="custom-file">
+                                                            <input type="file" name="filess" value="{{$report->filess}}" class="custom-file-input " id="customFile">
+                                                            <label class="custom-file-label" for="customFile">เลือกไฟล์รูป</label>
+                                                            <img src="/ไฟล์เอกสารฝึกประสบการณ์/{{ $report->filess }}" class="img-responsive" style="max-height: 100px; max-width: 100px;" alt="" srcset="">
+
+                                                        </div>
 
                                                       </div>
-                                                    {{-- <input type="text"  name="namefile" class="form-control" id="example-static" > --}}
                                                   </div>
                                                 </div>
 

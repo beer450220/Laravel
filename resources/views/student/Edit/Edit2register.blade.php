@@ -324,7 +324,7 @@
                                           <form method="POST" action="{{url('/studenthome/update/'.$establishments->id)}}"enctype="multipart/form-data" >
                                             @csrf
 
-                                                  <label for="simpleinput">ชื่อไฟล์</label>
+                                                  {{-- <label for="simpleinput">ชื่อไฟล์</label>
 
                                                 <select class="form-control required" name="namefile" id="example-select">
                                                     <option selected>กรุณาเลือก</option>
@@ -337,8 +337,8 @@
                                                     <option value="ประวัติส่วนตัว(resume)"@if($establishments->namefile=="ประวัติส่วนตัว(resume)") selected @endif required>ประวัติส่วนตัว(resume)</option>
 
 
-                                                  </select>
-
+                                                  </select> --}}
+                                                  <input type="hidden" id="custId" name="namefile" value="แบบพิจารณาคุณสมบัตินักศึกษาสหกิจศึกษา(สก01)">
                                                 {{--  @error('filess')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

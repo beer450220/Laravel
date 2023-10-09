@@ -324,17 +324,17 @@
                                           <form method="POST" action="{{url('/studenthome/updateinformdetails/'.$informdetails->informdetails_id)}}"enctype="multipart/form-data" >
                                             @csrf
 
-                                                  <label for="simpleinput">ชื่อไฟล์</label>
+                                                  {{-- <label for="simpleinput">ชื่อไฟล์</label>
 
                                                 <select class="form-control required" name="namefile" id="example-select">
                                                     <option selected>กรุณาเลือก</option>
                                                     <option value="แบบแจ้งรายละเอียดการปฏิบัติงาน(สก.07)"@if($informdetails->namefile=="แบบแจ้งรายละเอียดการปฏิบัติงาน(สก.07)") selected @endif required>แบบแจ้งรายละเอียดการปฏิบัติงาน(สก.07)</option>
                                                     <option value="แบบแจ้งแผนปฏิบัติงานสหกิจศึกษา(สก.08)"@if($informdetails->namefile=="แบบแจ้งแผนปฏิบัติงานสหกิจศึกษา(สก.08)") selected @endif required>แบบแจ้งแผนปฏิบัติงานสหกิจศึกษา(สก.08)</option>
                                                     <option value="แบบแจ้งโครงร่างรายงานการปฏิบัติงานสหกิจศึกษา(สก.09)"@if($informdetails->namefile=="แบบแจ้งโครงร่างรายงานการปฏิบัติงานสหกิจศึกษา(สก.09)") selected @endif required>แบบแจ้งโครงร่างรายงานการปฏิบัติงานสหกิจศึกษา(สก.09)</option>
+{{$informdetails->files}}
 
-
-                                                  </select>
-
+                                                  </select> --}}
+                                                  <input type="hidden" id="custId" name="namefile" value="แบบแจ้งรายละเอียดการปฏิบัติงาน(สก.07)">
                                                 {{--  @error('filess')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

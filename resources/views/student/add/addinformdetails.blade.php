@@ -324,15 +324,15 @@
                                           <form method="POST" action="{{ route('addinformdetails') }}"enctype="multipart/form-data" >
                                             @csrf
 
-                                                  <label for="simpleinput">ชื่อไฟล์</label>
+                                                  {{-- <label for="simpleinput">ชื่อไฟล์</label>
                                                   <select class="form-control required" name="namefile" id="example-select">
                                                     <option value="">กรุณาเลือก</option>
                                                     <option value="แบบแจ้งรายละเอียดการปฏิบัติงาน(สก.07)">แบบแจ้งรายละเอียดการปฏิบัติงาน(สก.07)</option>
                                                     <option value="แบบแจ้งแผนปฏิบัติงานสหกิจศึกษา(สก.08)">แบบแจ้งแผนปฏิบัติงานสหกิจศึกษา(สก.08)</option>
                                                     <option value="แบบแจ้งโครงร่างรายงานการปฏิบัติงานสหกิจศึกษา(สก.09)">แบบแจ้งโครงร่างรายงานการปฏิบัติงานสหกิจศึกษา(สก.09)</option>
 
-                                                  </select>
-
+                                                  </select> --}}
+                                                  <input type="hidden" id="custId" name="namefile" value="แบบแจ้งรายละเอียดการปฏิบัติงาน(สก.07)">
                                                 </div>
                                                 <div class="form-group mb-3">
                                                   <label for="example-email">อัพโหลดไฟล์เอกสาร</label>
