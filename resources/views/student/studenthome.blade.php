@@ -282,10 +282,10 @@
                                 <!-- เนื้อหาภายใน <span> element ที่ต้องการแสดง -->
                             </span>
                             @elseif (Auth::user()->status === 'ยังไม่ได้ยืนยันตัวตน')
-                            <span class="circle circle-sm bg-secondary-light">
+                            <span class="circle circle-sm bg-warning-light">
 
-                                <i class="fe fe-16 fe-check text-white mb-0"></i>
-
+                                <i class="fe fe-16 fe-alert-triangle text-white mb-0"></i>
+                                {{-- <i class="fe fe-16 fe-alert-triangle text-white "></i> --}}
 
 
 
@@ -416,10 +416,10 @@
         <!-- เนื้อหาภายใน <span> element ที่ต้องการแสดง -->
     </span>
     @elseif (Auth::user()->status === 'ยังไม่ได้ยืนยันตัวตน')
-    <span class="circle circle-sm bg-secondary-light">
-
-        <i class="fe fe-16 fe-check text-white mb-0"></i>
-
+    <span class="circle circle-sm bg-warning-light">
+{{--
+        <i class="fe fe-16 fe-check text-white mb-0"></i> --}}
+        <i class="fe fe-16 fe-alert-triangle text-white mb-0"></i>
 
 
 

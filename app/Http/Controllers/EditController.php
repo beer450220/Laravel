@@ -498,7 +498,7 @@ public function editreport($report_id) {
     );
     $post=Event::findOrFail($id);
     $post->user_id = Auth::user()->id;
-     $post->Statusevents ="รับทราบและยืนยันเวลานัดนิเทศ";
+     $post->Statusevents ="รับทราบและยืนยันเวลานัดนิเทศแล้ว";
     // $post->Status ="รอตรวจสอบ";
    //dd($request->Status);
 

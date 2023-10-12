@@ -346,21 +346,18 @@
                             <div class="col-md-12 my-4">
                                 <div class="card shadow">
                                   <div class="card-body">
-                                    <h5 class="card-title">ตารางการนิเทศนักศึกษาฝึกปฏิบัติงานสหกิจศึกษา</h5>
+
+
+                                    {{-- <h5 class="card-title">ตารางการนิเทศนักศึกษาฝึกปฏิบัติงานสหกิจศึกษา</h5> --}}
                                     <div class="container">
                                         <div class="row">
                                           <div class="col-9">
                                             <p class="card-text"> <tbody>
                                             </p>
                                           </div>
-                                          {{-- <div class="col col-lg-2 ">
-                                            <a href=""  type="button"  class=" btn btn-outline-success"data-toggle="modal" data-target="#varyModal" data-whatever="@mdo">เพิ่มข้อมูล</a>
 
-                                            <a href="/studenthome/addstudent"  class=" btn btn-outline-success">ดาวห์โหลด</a>
-                                        </div> --}}
                                         <div class="col-9">
-                                            {{-- <a href="/studenthome/documents1"  class=" btn btn-outline-primary">ดาวน์โหลดไฟล์เอกสาร</a> --}}
-                                            {{-- <a href="/studenthome/documents1" type="button" class="btn btn-outline-primary">ดาวน์โหลดไฟล์เอกสาร</a> --}}
+
 
 
 
@@ -369,90 +366,76 @@
 
                                     </div>
                                     <br>
-
-
-                                </div> <!-- end section -->
-                            </div> <!-- end section -->
-                                <br>
-                                <br>
-
-                                <div class="col-md-12 mb-4">
-                                    <div class="accordion w-100" id="accordion1">
-                                      <div class="card shadow">
-                                        <div class="card-header" id="heading1">
-                                          <a role="button" href="#collapse1" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapse1" class="collapsed">
-                                  @foreach ($events as $row)
-
-                                         @if ($row->Statusevents === 'ยังไม่ได้รับทราบและยืนยันเวลานัดนิเทศ')
-                                         <span class="circle circle-sm bg-warning-light"><i class="fe fe-16 fe-alert-triangle text-white "></i></span>
-                                     @elseif ($row->Statusevents === 'รับทราบและยืนยันเวลานัดนิเทศแล้ว')
-                                         <span class="circle circle-sm bg-success warning-light "><i class="fe fe-16 fe-check text-white "></i></span>
-                                     @elseif ($row->Statusevents === 'ไม่ผ่าน')
-                                         <span class="badge badge-pill badge-danger">{{ $row->Statusevents }}</span>
-                                     @endif
-                                         {{--  class="circle circle-sm bg-warning-light">
-
- --}}
-
-
-
-                                             <strong>นิเทศงาน</strong> <span class="">
-
-                                                {{-- <a href="/studenthome/addregister"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> --}}
-
-
-                                            </span>
-
-                                          </a>
-                                        </div>
-                                        <div id="collapse1" class="collapse" aria-labelledby="heading1" data-parent="#accordion1" style="">
+                                    <div class="col-md-12 my-4">
+                                        <div class="card shadow">
                                           <div class="card-body">
-                                             {{-- <a href="/studenthome/addregister"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> --}}
-                                         </div>
-                                        <br>
+                                        </span>
+                                       <h5 class="card-title"> <span> @foreach ($events as $row)
+
+                                            @if ($row->Statusevents === 'ยังไม่ได้รับทราบและยืนยันเวลานัดนิเทศ')
+                                            <span class="circle circle-sm bg-warning-light"><i class="fe fe-16 fe-alert-triangle text-white "></i></span>
+                                        @elseif ($row->Statusevents === 'รับทราบและยืนยันเวลานัดนิเทศแล้ว')
+                                            <span class="circle circle-sm bg-success-light "><i class="fe fe-16 fe-check text-white "></i></span>
+                                        @elseif ($row->Statusevents === 'ไม่ผ่าน')
+                                            <span class="badge badge-pill badge-danger">{{ $row->Statusevents }}
+                                        @endif
+                                        @endforeach
+                                        ตารางการนิเทศนักศึกษาฝึกปฏิบัติงานสหกิจศึกษา</span></h5>
+                                        {{-- <h5 class="card-title">นิเทศงาน</h5> --}}
 
 
+                                </div>
+                                 <!-- end section -->
+                            </div> <!-- end section -->
+                            <br>
+                            @foreach ($events as $row)
+                            <div class="col-md-4">
+                                <div class="card shadow mb-4">
+                                  <div class="card-body text-center">
+                                    <div class="avatar avatar-lg mt-4">
+                                      {{-- <a href="">
+                                        <img src="./assets/avatars/face-4.jpg" alt="..." class="avatar-img rounded-circle">
+                                      </a> --}}
 
-                                        <div class="col-md-3">
-                                            <div class="card shadow mb-4">
-                                              <div class="card-body text-center">
-                                                <div class="avatar avatar-lg mt-4">
-                                                  {{-- <a href="">
-                                                    <img src="./assets/avatars/face-4.jpg" alt="..." class="avatar-img rounded-circle">
-                                                  </a> --}}
-                                                </div>
-                                                <div class="card-text my-2">
-                                                  <strong class="card-title my-0">วันเวลาการนิเทศ: </strong>
-                                                  <p class="small text-muted mb-0">สถานประกอบการ:</p>
-                                                  <p class="small"><span class="badge badge-light text-muted">อาจารย์นิเทศ:<a href="/studenthome/calendar2confirmview/{{$row->id}}"  class=" btn btn-outline-success fa-solid fa-eye fe-5"></a></span></p>
-                                                  <p class="small text-muted mb-0">รับทราบและยืนยันเวลานัดนิเทศ:@if ($row->Statusevents === 'ยังไม่ได้รับทราบและยืนยันเวลานัดนิเทศ')
-                                                    <span class="badge badge-pill badge-warning">{{ $row->Statusevents }}</span>
-                                                @elseif ($row->Statusevents === 'รับทราบและยืนยันเวลานัดนิเทศแล้ว')
-                                                    <span class="badge badge-pill badge-success">{{ $row->Statusevents}}</span>
-                                                @elseif ($row->Statusevents === 'ไม่ผ่าน')
-                                                    <span class="badge badge-pill badge-danger">{{ $row->Statusevents}}</span>
-                                                @endif</p>
-                                                  <p class="small text-muted mb-0">ขอเปลี่ยนเวลานัดนิเทศ:</p>
-                                                </div>
-                                              </div> <!-- ./card-text -->
-                                              <div class="card-footer">
-                                                <div class="row align-items-center justify-content-between">
+                                    </div>
+                                    <div class="card-text my-2">
+                                      <strong class="card-title my-0">วันเวลาการนิเทศ: </strong>
+                                      <p class="small text-muted mb-0">สถานประกอบการ:</p>
+                                      <p class="small"><span class="badge badge-light text-muted">อาจารย์นิเทศ:<a href="/studenthome/calendar2confirmview/{{$row->id}}"  class=" btn btn-outline-success fa-solid fa-eye fe-5"></a></span></p>
+                                      <p class="small text-muted mb-0">รับทราบและยืนยันเวลานัดนิเทศ:@if ($row->Statusevents === 'ยังไม่ได้รับทราบและยืนยันเวลานัดนิเทศ')
+                                        <span class="badge badge-pill badge-warning">{{ $row->Statusevents }}</span>
+                                    @elseif ($row->Statusevents === 'รับทราบและยืนยันเวลานัดนิเทศแล้ว')
+                                        <span class="badge badge-pill badge-success">{{ $row->Statusevents}}</span>
+                                    @elseif ($row->Statusevents === 'ไม่ผ่าน')
+                                        <span class="badge badge-pill badge-danger">{{ $row->Statusevents}}</span>
+                                    @endif</p>
+                                      <p class="small text-muted mb-0">ขอเปลี่ยนเวลานัดนิเทศ:{{ $row->Statustime}}</p>
 
-                                                  <div class="col-auto">
-                                                    <small>
-                                                   {{-- <span class="dot dot-lg bg-success mr-1"></span> Online </small> --}}
-                                                     <td><a href="/studenthome/updateconfirm/{{$row->id}}" type="button"onclick="return confirm('ยืนยันข้อมูล !!');" class="btn btn-outline-success  fa-solid fa-check fe-16"></a></td>
-                                                      <td><a href="/studenthome/calendar2confirmedit/{{$row->id}}" type="button" class="btn btn-outline-warning fa-solid fa-pen-to-square fe-16"></a></td>
-                                                    </div>
+                                    </div>
+                                  </div> <!-- ./card-text -->
+                                  <div class="card-footer">
+                                    <div class="row align-items-center justify-content-between">
 
-                                                  <div class="col-auto">
+                                      <div class="col-auto">
+                                        <small>
+                                       {{-- <span class="dot dot-lg bg-success mr-1"></span> Online </small> --}}
+                                         <td><a href="/studenthome/updateconfirm/{{$row->id}}" type="button"onclick="return confirm('ยืนยันข้อมูล !!');" class="btn btn-outline-success  fa-solid fa-check fe-16"></a></td>
+                                          <td><a href="/studenthome/calendar2confirmedit/{{$row->id}}" type="button" class="btn btn-outline-warning fa-solid fa-pen-to-square fe-16"></a></td>
+                                        </div>
 
-                                                  </div>
-                                                </div>
-                                              </div> <!-- /.card-footer -->
-                                            </div>
-                                          </div>@endforeach
-                                          </div>
+                                      <div class="col-auto">
+
+                                      </div>
+                                    </div>
+                                  </div> <!-- /.card-footer -->
+                                </div>
+                              </div>@endforeach
+
+
+                                <br>
+                                <br>
+
+
 
 
 
@@ -481,6 +464,12 @@
                                 <br>
                                 <br>
                                 <br>
+
+
+
+
+
+
 {{-- <main role="main" class="">
     <div class="container-fluid">
       <div class="row justify-content-center">
@@ -548,24 +537,24 @@
               <td>{{$events->firstItem()+$loop->index}}</td> --}}
    <td> <?php
     // แปลงวันที่เป็น Carbon instance
-    $startDateTime = Carbon\Carbon::parse($row->start);
+   // $startDateTime = Carbon\Carbon::parse($row->start);
 
     // เพิ่ม 543 ปีเพื่อแปลงเป็น พ.ศ.
-    $buddhistYear = $startDateTime->addYear(543);
+   // $buddhistYear = $startDateTime->addYear(543);
 // กำหนด Timezone (เช่น Asia/Bangkok)
 // $buddhistYear->setTimezone('Asia/Bangkok');
 
     // แปลงชื่อเดือนให้เป็นภาษาไทย
-    $thaiMonth = $buddhistYear->locale('th')->monthName;
+   // $thaiMonth = $buddhistYear->locale('th')->monthName;
 
     // แสดงผลลัพธ์ในรูปแบบ "วันD เดือนMMMM พ.ศ.GGGG"
     // echo $buddhistYear->isoFormat('วันdddd', $thaiMonth) . 'ที่' . $buddhistYear->isoFormat('d MMMM พ.ศ.GGGG');
-    echo $buddhistYear->isoFormat('วันdddd ที่d  MMMM พ.ศ.GGGG', $thaiMonth);
+   // echo $buddhistYear->isoFormat('วันdddd ที่d  MMMM พ.ศ.GGGG', $thaiMonth);
     // echo $buddhistYear->Format('วันd ที่d M พ.ศ.Y', $thaiMonth);
     // echo strftime('วัน%A ที่%d %B พ.ศ.%Y', $buddhistYear->timestamp) . " " . $thaiMonth;
     ?>
     </td>
-              <td>
+              {{-- <td>
         </td>
 
 
@@ -583,22 +572,22 @@
             @elseif ($row->Statusevents === 'ไม่ผ่าน')
                 <span class="badge badge-pill badge-danger">{{ $row->Statusevents}}</span>
             @endif
-            <br><a href="/studenthome/updateconfirm/{{$row->id}}" type="button"onclick="return confirm('ยืนยันข้อมูล !!');" class="btn btn-outline-success  fa-solid fa-check fe-16"></a></td>
+            <br><a href="/studenthome/updateconfirm/{{$row->id}}" type="button"onclick="return confirm('ยืนยันข้อมูล !!');" class="btn btn-outline-success  fa-solid fa-check fe-16"></a></td> --}}
 
 
               <td>
                 <?php
                 // แปลงวันที่เป็น Carbon instance
-                $startDateTime = Carbon\Carbon::parse($row->Statustime);
+               // $startDateTime = Carbon\Carbon::parse($row->Statustime);
 
                 // เพิ่ม 543 ปีเพื่อแปลงเป็น พ.ศ.
-                $buddhistYear = $startDateTime->addYear(543);
+               // $buddhistYear = $startDateTime->addYear(543);
 
                 // แปลงชื่อเดือนให้เป็นภาษาไทย
-                $thaiMonth = $buddhistYear->locale('th')->monthName;
+               // $thaiMonth = $buddhistYear->locale('th')->monthName;
 
                 // แสดงผลลัพธ์ในรูปแบบ "วันD เดือนMMMM พ.ศ.GGGG"
-                echo $buddhistYear->isoFormat('วันdddd ที่d MMMM พ.ศ.GGGG เวลาHH:mm:ss', $thaiMonth);
+                //echo $buddhistYear->isoFormat('วันdddd ที่d MMMM พ.ศ.GGGG เวลาHH:mm:ss', $thaiMonth);
                 ?>
 
 

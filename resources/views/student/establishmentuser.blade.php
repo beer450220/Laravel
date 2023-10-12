@@ -312,7 +312,9 @@
                               </div><div class="col-6">
                                 <div class=" alert alert-primary  " role="alert">
                                     <b>ขั้นตอนที่ 2 สถานประกอบการ:</b> ให้เลือกสถานประกอบการ
-                                        <br> ถ้าเลือกสถานประกอบการได้แล้วให้<a href="/studenthome/register"  class="btn btn-outline-warning " type="button">>คลิกที่นี่<</a>เพื่อขั้นตอนต่อไป
+                                        <br> ถ้าเลือกสถานประกอบการได้แล้วให้
+                                        <a href="/studenthome/register"  class="btn btn-outline-warning " type="button">>คลิกที่นี่<</a>  <br> เพื่อบันทึกข้อมูล
+                                        <br>  <a href="/studenthome/register"  class="btn btn-outline-warning " type="button">>คลิกที่นี่<</a>เพื่อขั้นตอนต่อไป
                                                                 </div>   <br>   <br>
                             </div>
                             <div class="row">
