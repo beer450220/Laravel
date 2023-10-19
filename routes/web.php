@@ -63,36 +63,43 @@ Auth::routes();
 // student Route
 Route::middleware(['auth','user-role:student'])->group(function()
 {
+    //ข้อมูลส่วนตัว
     Route::get("/studenthome",[HomeController::class,'studentHome'])->name('student.studenthome');
-
-    Route::get("/personal",[HomeController::class,'personal'])->name('personal');
-    Route::get("/Studentinformation",[HomeController::class,'Student'])->name('Student');
-
     Route::get("/studenthome/edituser1/{id}",[EditController::class,'edituser1'])->name('edituser1');
-
-    Route::get('add-to-cart/{id}', [HomeController::class, 'addToCart'])->name('add_to_cart');
-    Route::get('cart', [HomeController::class, 'cart'])->name('cart');
-    Route::delete('remove-from-cart', [HomeController::class, 'remove'])->name('remove_from_cart');
-    Route::patch('update-cart', [HomeController::class, 'update'])->name('update_cart');
-    Route::get('/search',[HomeController::class,'search'])->name('search');
-
-
-
     Route::post("/studenthome/updateuser1/{id}",[EditController::class,'updateuser1'])->name('updateuser1');
 
+    //ยืยยันตัวตน
     Route::get("/studenthome/updateuser2/{id}",[EditController::class,'updateuser2'])->name('updateuser2');
 
-    Route::get("/studenthome/establishmentstatus/{id}",[EditController::class,'establishmentstatus'])->name('establishmentstatus');
+    // Route::get("/personal",[HomeController::class,'personal'])->name('personal');
+    //Route::get("/Studentinformation",[HomeController::class,'Student'])->name('Student');
 
 
-    //  Route::get("/studenthome/test",[HomeController::class,'test'])->name('test');
-    //  Route::post("/studenthome/test",[HomeController::class,'test2'])->name('test2');
 
+    //สถานประกอบการ
     Route::get("/studenthome/establishmentuser",[HomeController::class,'establishmentuser'])->name('student.establishmentuser');
-    Route::get("/studenthome/establishmentuseredit/{id}",[EditController::class,'establishmentuseredit'])->name('establishmentuseredit');
 
-    Route::get('/studenthome/view/{id}', [HomeController::class,'viewestablishmentuser'])->name('viewestablishmentuser');
-    Route::get("/studenthome/calendar",[HomeController::class,'calendar'])->name('student.calendar');
+     //ดูสถานประกอบการ
+       Route::get("/studenthome/establishmentuser4",[HomeController::class,'establishmentuser4'])->name('establishmentuser4');
+       Route::get("/studenthome/establishmentuseredit/{id}",[EditController::class,'establishmentuseredit'])->name('establishmentuseredit');
+
+       //ถูกใจ
+       Route::get('add-to-cart/{id}', [HomeController::class, 'addToCart'])->name('add_to_cart');
+         Route::get('cart', [HomeController::class, 'cart'])->name('cart');
+         Route::delete('remove-from-cart', [HomeController::class, 'remove'])->name('remove_from_cart');
+         Route::patch('update-cart', [HomeController::class, 'update'])->name('update_cart');
+         //ค้นหาข้อมูล
+         Route::get('/search',[HomeController::class,'search'])->name('search');
+
+         //ยืนยันสถานประกอบการ
+         Route::get("/studenthome/establishmentstatus",[HomeController::class,'establishmentstatus'])->name('establishmentstatus');
+        Route::get("/studenthome/establishmentstatus/{id}",[EditController::class,'establishmentstatus'])->name('establishmentstatus');
+
+
+    // Route::get('/studenthome/view/{id}', [HomeController::class,'viewestablishmentuser'])->name('viewestablishmentuser');
+    // Route::get("/studenthome/test",[HomeController::class,'test'])->name('test');
+    // Route::post("/studenthome/test",[HomeController::class,'test2'])->name('test2');
+    // Route::get("/studenthome/calendar",[HomeController::class,'calendar'])->name('student.calendar');
 
     //ลงทะเบียน
     Route::get("/studenthome/register",[HomeController::class,'registeruser'])->name('student.register');

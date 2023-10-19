@@ -149,6 +149,34 @@ class HomeController extends Controller
         return view('student.establishmentuser',compact('users','establishments'));
     }
 
+
+    public function establishmentstatus()
+    {
+        // $users=DB::table('users')->get();
+        // $users=DB::table('establishment')->paginate(5);
+
+        $users = establishment::pluck('name', 'id'); // ดึงรายชื่อของผู้ใช้และ ID จากฐานข้อมูล
+        // $users=users::paginate(5);
+        $establishments=DB::table('users') ->orderBy('name','desc')
+
+        ->paginate(6);
+        return view('student.establishmentstatus',compact('users','establishments'));
+    }
+
+
+    public function establishmentuser4()
+    {
+        // $users=DB::table('users')->get();
+        $users=DB::table('establishment')->paginate(5);
+        // $users=users::paginate(5);
+        $establishments=DB::table('establishment') ->orderBy('name','desc')
+
+        ->paginate(6);
+        return view('student.establishmentuser4',compact('users','establishments'));
+    }
+
+
+
     public function viewestablishmentuser($id) {
         //ตรวจสอบข้อมูล
 

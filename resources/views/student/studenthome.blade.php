@@ -426,19 +426,239 @@
 @endif </span><span>ขั้นตอนที่ 1 ข้อมูลส่วนตัว:</h1></span>
                                        <br>ตรวจสอบข้อมูลและทำการยืนยันข้อมูล <br>
                                        {{-- <br>ถ้าจะทำการแก้ไขข้อมูลให้ --}}
-                                       <br> <br>ถ้ายืนยันตัวตนแล้วให้ <a href="/studenthome/establishmentuser"  class="btn btn-outline-warning " type="button">>คลิกที่นี่<</a> เพื่อทำขั้นตอนถัดไป
+                                       {{-- <br> <br>ถ้ายืนยันตัวตนแล้วให้ <a href="/studenthome/establishmentuser"  class="btn btn-outline-warning " type="button">>คลิกที่นี่<</a> เพื่อทำขั้นตอนถัดไป --}}
                                     </div>
 </div>
-                              <div class="accordion" id="accordionExample">
-                                  <div class="accordion-item">
-                                    <h2 class="accordion-header" id="headingOne">
-                                      <div class="col-7">
-                                              <h1 class="steps">ตรวจสอบข้อมูล<br><h2 class="steps text-success">{{ Auth::user()->status}}</h2></h1>
 
-                                                {{-- @if(session("success"))
-                                            <div class="alert alert-success col-4">{{session('success')}}
-                                @endif --}}
-                            </h2>
+
+<main role="main" class="">
+    <div class="container-fluid">
+      <div class="row justify-content-center">
+        <div class="col-12">
+            @if(session("success6"))
+            <div class="alert alert-success col-4">{{session('success6')}}
+  @endif
+ @if(session("success5"))
+          <div class="alert alert-success col-4">{{session('success5')}}
+@endif
+          </div>
+          </div>
+{{-- <div class="col-md-12 my-4">
+    <div class="card shadow">
+      <div class="card-body">
+        <h5 class="card-title">เอกสารแจ้งรายละเอียดการปฎิบัติงาน</h5>
+        <div class="container">
+            <div class="row">
+              <div class="col-9">
+                <p class="card-text"> <tbody>
+                </p>
+              </div> --}}
+              {{-- <div class="col col-lg-2 ">
+                <a href=""  type="button"  class=" btn btn-outline-success"data-toggle="modal" data-target="#varyModal" data-whatever="@mdo">เพิ่มข้อมูล</a>
+
+                <a href="/studenthome/addstudent"  class=" btn btn-outline-success">ดาวห์โหลด</a>
+            </div> --}}
+            {{-- <div class="col-9"> --}}
+
+                {{-- <a href="/studenthome/documents1" type="button" class="btn btn-outline-primary">ดาวน์โหลดไฟล์เอกสาร</a> --}}
+
+
+
+              {{-- </div>
+            </div> --}}
+
+        {{-- </div> --}}
+        <br>
+
+
+    {{-- </div>
+</div> --}}
+    <br>
+    <br>
+
+    <div class="col-md-12 mb-4">
+        <div class="accordion w-100" id="accordion1">
+          <div class="card shadow">
+            <div class="card-header" id="heading1">
+              <a role="button" href="#collapse1" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapse1" class="collapsed">
+
+                <span>
+             @if (Auth::user()->status === 'ยังไม่ได้ยืนยันตัวตน')
+             <span class="circle circle-sm bg-warning-light"><i class="fe fe-16 fe-alert-triangle text-white "></i></span>
+         @elseif (Auth::user()->status === 'ยืนยันตัวตนแล้ว')
+             <span class="circle circle-sm bg-success warning-light "><i class="fe fe-16 fe-check text-white "></i></span>
+
+         @endif
+             {{--  class="circle circle-sm bg-warning-light">
+
+--}}
+
+
+
+                 </span><h3><strong>ตรวจสอบข้อมูลส่วนตัว</strong> <span class="text-success">
+
+
+
+
+                   @if (Auth::user()->status === 'ยังไม่ได้ยืนยันตัวตน')
+                   <span class="text-warning">{{ Auth::user()->status }}</span>
+                    <span class="text-primary ">( กรุณายืนยันตัวตนด้วย)</span>
+               @elseif (Auth::user()->status === 'ยืนยันตัวตนแล้ว')
+                   <span class="text-success  ">{{ Auth::user()->status }}</span>
+
+               @endif
+
+
+            </a>
+            </div></h3>
+</span>
+</div>
+
+<div id="collapse1" class="collapse" aria-labelledby="heading1" data-parent="#accordion1" style="">
+              {{-- <div class="card-body">  <a href="/studenthome/addinformdetail"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> </div> --}}
+              <br>
+
+
+
+              <div class="text-center">
+                <img src="/รูปโปรไฟล์/{{ Auth::user()->images }}" class="rounded mx-auto d-block" style="width:200px;height:200px; text-align:center;">
+
+              </div>
+
+              <br>
+              <br>
+              <main role="main" class="">
+                <div class="container-fluid">
+                  <div class="row justify-content-center">
+                    <div class="col-7">
+                      {{-- <h2 class="page-title">Form elements</h2> --}}
+
+                      <div class="card shadow mb-4">
+                        <div class="card-header">
+                          <strong class="card-title">ข้อมูลรายละเอียดบุคคล</strong>
+                        </div>
+
+                        <div class="card-body">
+                          <div class="row">
+                            <div class="col-md-6">
+                              <div class="form-group mb-3">
+                        {{-- <form method="POST" action="{{url('/studenthome/updateuser2/'.Auth::user()->id)}}" enctype="multipart/form-data">
+                          @csrf --}}
+                                <label for="simpleinput">รหัสนักศึกษา</label>
+                                <input type="text"value="{{ Auth::user()->Student_ID }}" disabled="" id="simpleinput" class="form-control">
+                              </div>
+                              <div class="form-group mb-3">
+                                <label for="example-email">Email</label>
+                                <input type="email" id="example-email"value="{{ Auth::user()->email }}" disabled="" name="example-email" class="form-control" placeholder="Email">
+                              </div>
+                              <div class="form-group mb-3">
+                                <label for="example-password">Password</label>
+                                <input type="password" id="example-password" class="form-control" value="password">
+                              </div>
+                              <div class="form-group mb-3">
+                                <label for="example-palaceholder">ผู้ใช้งาน</label>
+                                <input type="text" id="example-palaceholder"value="{{ Auth::user()->username }}" disabled="" class="form-control" placeholder="placeholder">
+                              </div>
+                              <div class="form-group mb-3">
+                                <label for="example-palaceholder">เกรดเฉลี่ย(GPA)	</label>
+                                <input type="text" id="example-palaceholder"value="{{ Auth::user()->GPA }}" disabled="" class="form-control" placeholder="placeholder">
+                              </div>
+
+                          </div> <!-- /.col -->
+                            <div class="col-md-6">
+                              <div class="form-group mb-3">
+                                <label for="example-helping">ที่อยู่</label>
+                                <input type="text" id="example-helping"value="{{ Auth::user()->address }}" disabled="" class="form-control" placeholder="Input with helping text">
+
+                              </div>
+                              <div class="form-group mb-3">
+                                <label for="example-readonly">	รหัสไปรษณีย์	</label>
+                                <input type="text" id="example-readonly"value="{{ Auth::user()->postcode}}" disabled="" class="form-control" readonly="" value="Readonly value">
+                              </div>
+                              <div class="form-group mb-3">
+                                <label for="example-disable">คณะ</label>
+                                <input type="text" class="form-control"value="{{ Auth::user()->faculty}}" disabled="" id="example-disable" disabled="" value="Disabled value">
+                              </div>
+                              <div class="form-group mb-3">
+                                <label for="example-static">หลักสูตร</label>
+                                <input type="text" readonly=""value="{{ Auth::user()->course}}" disabled="" class="form-control" id="example-static" >
+                              </div>
+                              <div class="form-group mb-3">
+                                <label for="example-static">เบอร์โทรศัพท์</label>
+                                <input type="text" readonly=""value="{{ Auth::user()->telephonenumber}}" disabled="" class="form-control" id="example-static" >
+                              </div>
+                              <div class="form-group mb-3">
+
+
+                            </div>
+
+
+
+
+                      </div>
+
+                          </div>
+                          <div class="col-6 text-center"></div>
+
+                                          <div class="col text-center">
+                          <div class="d-grid gap-2 d-md-flex   ">
+                            <a href="/studenthome/edituser1/{{Auth::user()->id}}"  class="btn btn-outline-warning fe fe-edit fe-16" type="button">แก้ไข</a>
+                              {{-- <a href="/studenthome"  class="btn btn-outline-primary fe-16" type="button">ย้อนกลับ</a> --}}
+                              &nbsp;&nbsp;
+                              {{-- <a href="/studenthome/updateuser2/{{Auth::user()->id}}"name="next" class="btn btn-outline-success me-md-2 success btn2" onclick="return confirm('แน่ใจจะยืนยันตัวตน?')"  type="button">ยืนยันข้อมูล</a>
+                                &nbsp;&nbsp; --}}
+                                {{-- <a href="/studenthome/updateuser2/{{Auth::user()->id}}" class="btn btn-outline-success me-md-2 success edit_employee_form "   type="button">ยืนยันข้อมูล</a> --}}
+
+                              {{-- <a href="/studenthome/updateuser2/{{Auth::user()->id}}" class="btn btn-outline-success me-md-2 success show-alert-delete-box"   type="button">ยืนยันข้อมูล</a> --}}
+                                {{-- <a href="/studenthome/edituser1/{{Auth::user()->id}}"  class="btn btn-outline-warning fe fe-edit fe-16" type="button">แก้ไขข้อมูล</a> </div> --}}
+                          </div>
+                              </div>
+                      </div> <!-- / .card -->
+
+                        <div class="col-auto">
+
+                        </div>
+                      </div>
+                      <br>
+                      <br>
+
+                              </div>
+                            </div>
+                          </div>
+                            <div class="accordion" id="accordionExample">
+                              <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingOne">
+                                  <div class="col-7">
+                                          <h2 class="steps">ทำการยืนยันข้อมูล </h2></div>
+                                          <div class="col-12 text-center">
+                                          <a href="/studenthome/updateuser2/{{Auth::user()->id}}"name="next" class="btn btn-outline-success me-md-2 success btn2" onclick="return confirm('แน่ใจจะยืนยันตัวตน?')"  type="button">ยืนยันข้อมูล</a>
+                                  </div>
+                    </div> <!-- /.card-footer -->
+                  </div>
+                </div>
+                {{-- @endforeach --}}
+              </div>
+
+            </div>
+          </div>
+
+
+
+          <main role="main" class="">
+            <div class="container-fluid">
+          <div class="row justify-content-center">
+            <div class="col-md-12 my-4 " >
+           </div>
+
+
+          </div></div></div></div> <div class="d-grid gap-2">
+
+            <h2>ขั้นตอนต่อไป</h2>
+            </div>   <a href="/studenthome/establishmentuser"  id="show-alert" class="btn btn-outline-warning " type="button">>คลิกที่นี่<</a>
+      </div>
+    <br>
+    <br>
+
 
 
  {{-- <div class="text-center"> --}}
@@ -498,122 +718,7 @@
                                       </div>
                                     </div> --}}
 
-                                    <br>
-                                    <br>
-                                    <div class="text-center">
-                                        <img src="/รูปโปรไฟล์/{{ Auth::user()->images }}" class="rounded mx-auto d-block" style="width:200px;height:200px; text-align:center;">
 
-                                      </div>
-
-                                      <br>
-                                      <br>
-                                      <main role="main" class="">
-                                        <div class="container-fluid">
-                                          <div class="row justify-content-center">
-                                            <div class="col-7">
-                                              {{-- <h2 class="page-title">Form elements</h2> --}}
-
-                                              <div class="card shadow mb-4">
-                                                <div class="card-header">
-                                                  <strong class="card-title">ข้อมูลรายละเอียดบุคคล</strong>
-                                                </div>
-
-                                                <div class="card-body">
-                                                  <div class="row">
-                                                    <div class="col-md-6">
-                                                      <div class="form-group mb-3">
-                                                {{-- <form method="POST" action="{{url('/studenthome/updateuser2/'.Auth::user()->id)}}" enctype="multipart/form-data">
-                                                  @csrf --}}
-                                                        <label for="simpleinput">รหัสนักศึกษา</label>
-                                                        <input type="text"value="{{ Auth::user()->Student_ID }}" disabled="" id="simpleinput" class="form-control">
-                                                      </div>
-                                                      <div class="form-group mb-3">
-                                                        <label for="example-email">Email</label>
-                                                        <input type="email" id="example-email"value="{{ Auth::user()->email }}" disabled="" name="example-email" class="form-control" placeholder="Email">
-                                                      </div>
-                                                      <div class="form-group mb-3">
-                                                        <label for="example-password">Password</label>
-                                                        <input type="password" id="example-password" class="form-control" value="password">
-                                                      </div>
-                                                      <div class="form-group mb-3">
-                                                        <label for="example-palaceholder">ผู้ใช้งาน</label>
-                                                        <input type="text" id="example-palaceholder"value="{{ Auth::user()->username }}" disabled="" class="form-control" placeholder="placeholder">
-                                                      </div>
-                                                      <div class="form-group mb-3">
-                                                        <label for="example-palaceholder">เกรดเฉลี่ย(GPA)	</label>
-                                                        <input type="text" id="example-palaceholder"value="{{ Auth::user()->GPA }}" disabled="" class="form-control" placeholder="placeholder">
-                                                      </div>
-
-                                                  </div> <!-- /.col -->
-                                                    <div class="col-md-6">
-                                                      <div class="form-group mb-3">
-                                                        <label for="example-helping">ที่อยู่</label>
-                                                        <input type="text" id="example-helping"value="{{ Auth::user()->address }}" disabled="" class="form-control" placeholder="Input with helping text">
-
-                                                      </div>
-                                                      <div class="form-group mb-3">
-                                                        <label for="example-readonly">	รหัสไปรษณีย์	</label>
-                                                        <input type="text" id="example-readonly"value="{{ Auth::user()->postcode}}" disabled="" class="form-control" readonly="" value="Readonly value">
-                                                      </div>
-                                                      <div class="form-group mb-3">
-                                                        <label for="example-disable">คณะ</label>
-                                                        <input type="text" class="form-control"value="{{ Auth::user()->faculty}}" disabled="" id="example-disable" disabled="" value="Disabled value">
-                                                      </div>
-                                                      <div class="form-group mb-3">
-                                                        <label for="example-static">หลักสูตร</label>
-                                                        <input type="text" readonly=""value="{{ Auth::user()->course}}" disabled="" class="form-control" id="example-static" >
-                                                      </div>
-                                                      <div class="form-group mb-3">
-                                                        <label for="example-static">เบอร์โทรศัพท์</label>
-                                                        <input type="text" readonly=""value="{{ Auth::user()->telephonenumber}}" disabled="" class="form-control" id="example-static" >
-                                                      </div>
-                                                      <div class="form-group mb-3">
-
-
-                                                    </div>
-  {{-- /studenthome/updateuser2/{{Auth::user()->id}} --}}
-
-
-
-                                                        {{-- </form> --}}
-
-
-                                                    {{-- <button id="btn">Button</button> --}}
-
-                                                        {{-- <script src="index.js"></script> --}}
-
-
-
-                                              </div>
-
-                                                  </div>
-                                                  <div class="col-6 text-center"></div>
-
-                                                                  <div class="col text-center">
-                                                  <div class="d-grid gap-2 d-md-flex   ">
-                                                    <a href="/studenthome/edituser1/{{Auth::user()->id}}"  class="btn btn-outline-warning fe fe-edit fe-16" type="button">แก้ไข</a>
-                                                      {{-- <a href="/studenthome"  class="btn btn-outline-primary fe-16" type="button">ย้อนกลับ</a> --}}
-                                                      &nbsp;&nbsp;
-                                                      {{-- <a href="/studenthome/updateuser2/{{Auth::user()->id}}"name="next" class="btn btn-outline-success me-md-2 success btn2" onclick="return confirm('แน่ใจจะยืนยันตัวตน?')"  type="button">ยืนยันข้อมูล</a>
-                                                        &nbsp;&nbsp; --}}
-                                                        {{-- <a href="/studenthome/updateuser2/{{Auth::user()->id}}" class="btn btn-outline-success me-md-2 success edit_employee_form "   type="button">ยืนยันข้อมูล</a> --}}
-
-                                                      {{-- <a href="/studenthome/updateuser2/{{Auth::user()->id}}" class="btn btn-outline-success me-md-2 success show-alert-delete-box"   type="button">ยืนยันข้อมูล</a> --}}
-                                                        {{-- <a href="/studenthome/edituser1/{{Auth::user()->id}}"  class="btn btn-outline-warning fe fe-edit fe-16" type="button">แก้ไขข้อมูล</a> </div> --}}
-                                                  </div>
-                                                      </div>
-                                              </div> <!-- / .card -->
-                                            </div>
-                                          </div>
-                                        </div>
-                                          <div class="accordion" id="accordionExample">
-                                            <div class="accordion-item">
-                                              <h2 class="accordion-header" id="headingOne">
-                                                <div class="col-7">
-                                                        <h2 class="steps">ทำการยืนยันข้อมูล </h2></div>
-                                                        <div class="col-12 text-center">
-                                                        <a href="/studenthome/updateuser2/{{Auth::user()->id}}"name="next" class="btn btn-outline-success me-md-2 success btn2" onclick="return confirm('แน่ใจจะยืนยันตัวตน?')"  type="button">ยืนยันข้อมูล</a>
-                                                </div>
 
                                       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
                                       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -811,118 +916,7 @@ $("#edit_employee_form").submit(function(e) {
 
                           </div>
                           {{-- <input type="button" name="next" class="next action-button" value="Next" /> --}}
-                      </fieldset>
-                      <fieldset>
-                          <div class="form-card">
-                              <div class="row">
-                                  <div class="col-7">
-                                      <h2 class="fs-title">Personal Information:</h2>
-                                  </div>
-                                  <div class="col-5">
-                                      <h2 class="steps">Step 2 - 6</h2>
-                                  </div>
-                              </div>
-                              {{-- <label class="fieldlabels">First Name: *</label>
-                              <input type="text" name="fname" placeholder="First Name" />
-                               <label class="fieldlabels">Last Name: *</label>
-                               <input type="text" name="lname" placeholder="Last Name" />
-                                <label class="fieldlabels">Contact No.: *</label>
-                                 <input type="text" name="phno" placeholder="Contact No." />
-                                  <label class="fieldlabels">Alternate Contact No.: *</label>
-                                  <input type="text" name="phno_2" placeholder="Alternate Contact No." /> --}}
 
-                                  <table class="table table-hover">
-                                      <thead class="thead-dark">
-                                        <tr>
-                                          <th>#</th>
-                                          <th>รายชื่อนักศึกษา</th>
-                                          <th>ชื่อหน่วยงาน</th>
-                                          <th>สถานะ</th>
-                                          <th>แก้ไข</th>
-                                          <th>ลบ</th>
-                                        </tr>
-                                      </thead>
-                                      <tbody>
-                                        <tr>
-                                          <td>1</td>
-                                          <td>
-                                         หห
-                                          </td>
-                                          <td>หห</td>
-                                          <td>หห</td>
-                                          <td><button type="button" class="btn btn-outline-secondary fe fe-edit fe-16"></button></td>
-                                          <td><button type="button" class="btn btn-outline-danger fe fe-trash-2 fe-16"></td>
-                                        </tr>
-
-
-                                      </tbody>
-                                    </table>
-                          </div> <input type="button" name="next" class="next action-button" value="Next" /> <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
-                      </fieldset>
-                      <fieldset>
-                          <div class="form-card">
-                              <div class="row">
-                                  <div class="col-7">
-                                      <h2 class="fs-title">Image Upload:</h2>
-                                  </div>
-                                  <div class="col-5">
-                                      <h2 class="steps">Step 3 - 6</h2>
-                                  </div>
-                              </div> <label class="fieldlabels">Upload Your Photo:</label> <input type="file" name="pic" accept="image/*"> <label class="fieldlabels">Upload Signature Photo:</label> <input type="file" name="pic" accept="image/*">
-                          </div> <input type="button" name="next" class="next action-button" value="Next" /> <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
-                      </fieldset>
-                      <fieldset>
-                          <div class="form-card">
-                              <div class="row">
-                                  <div class="col-7">
-                                      <h2 class="fs-title">Finish:</h2>
-                                  </div>
-                                  <div class="col-5">
-                                      <h2 class="steps">Step 4 - 6</h2>
-                                  </div>
-                              </div><label class="fieldlabels">Upload Your Photo:</label> <input type="file" name="pic" accept="image/*"> <label class="fieldlabels">Upload Signature Photo:</label> <input type="file" name="pic" accept="image/*">
-                          </div> <input type="button" name="next" class="next action-button" value="Next" /> <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
-                      </fieldset>
-
-                      <fieldset>
-                          <div class="form-card">
-                              <div class="row">
-                                  <div class="col-7">
-                                      <h2 class="fs-title">Finish:</h2>
-                                  </div>
-                                  <div class="col-5">
-                                      <h2 class="steps">Step 5 - 6</h2>
-                                  </div>
-                              </div><label class="fieldlabels">Upload Your Photo:</label> <input type="file" name="pic" accept="image/*"> <label class="fieldlabels">Upload Signature Photo:</label> <input type="file" name="pic" accept="image/*">
-                          </div> <input type="button" name="next" class="next action-button" value="Next" /> <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
-                      </fieldset>
-                      <fieldset>
-                          <div class="form-card">
-                              <div class="row">
-                                  <div class="col-7">
-                                      <h2 class="fs-title">Finish:</h2>
-                                  </div>
-                                  <div class="col-5">
-                                      <h2 class="steps">Step 6 - 6</h2>
-                                  </div>
-                              </div> <br><br>
-                              <h2 class="purple-text text-center"><strong>SUCCESS !</strong></h2> <br>
-                              <div class="row justify-content-center">
-                                  <div class="col-3"> <img src="" class="fit-image"> </div>
-                              </div> <br><br>
-                              <div class="row justify-content-center">
-                                  <div class="col-7 text-center">
-                                      <h5 class="purple-text text-center">You Have Successfully Signed Up</h5>
-                                  </div>
-                              </div>
-                          </div>
-                      </fieldset>
-
-                    </form>
-              </div>
-          </div>
-      </div>
-  </div>
 
   <script>
 
