@@ -394,14 +394,24 @@
 
 
 
-                                             <strong>รายงานโครงการ</strong> <span class="">
-
-
+                                             <h2><strong>รายงานโครงการ</strong> <span class="">
+</a>
+@foreach ($report1 as $row)
+@if ($row->Status_report === 'รอตรวจสอบ')
+    <span class="text-warning">รอตรวจสอบเอกสาร</span>
+@elseif ($row->Status_report === 'ตรวจสอบแล้ว')
+    <span class="text-Success ">ตรวจสอบแล้ว</span>
+@elseif ($row->Status_report=== 'ไม่ผ่าน')
+    <span class="text-Danger ">ไม่ผ่าน&nbsp;&nbsp;{{$row->annotation}}</span>
+@else
+    <span class="text-Secondary">ยังไม่ได้อัปโหลดเอกสาร (กรุณาให้อัปโหลดไฟล์)</span>
+@endif
+@endforeach</h2>
 
 
                                             </span>
 
-                                          </a>
+
                                         </div>
                                         <div id="collapse1" class="collapse" aria-labelledby="heading1" data-parent="#accordion1" style="">
                                           <div class="card-body">  <a href="/studenthome/addreport2"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> </div>
@@ -457,8 +467,19 @@
                                         @endif
                                         @endforeach
 
-                                    </span><strong>PowerPoint การนำเสนอ</strong>
+                                    </span><h2><strong>PowerPoint การนำเสนอ</strong>
                                           </a>
+                                          @foreach ($report2 as $row)
+                                                @if ($row->Status_report === 'รอตรวจสอบ')
+                                        <span class="text-warning">รอตรวจสอบเอกสาร</span>
+                                    @elseif ($row->Status_report === 'ตรวจสอบแล้ว')
+                                        <span class="text-Success ">ตรวจสอบแล้ว</span>
+                                    @elseif ($row->Status_report=== 'ไม่ผ่าน')
+                                        <span class="text-Danger ">ไม่ผ่าน&nbsp;&nbsp;{{$row->annotation}}</span>
+                                    @else
+                                        <span class="text-Secondary">ยังไม่ได้อัปโหลดเอกสาร (กรุณาให้อัปโหลดไฟล์)</span>
+                                    @endif
+                                    @endforeach</h2>
                                         </div>
                                         <div id="collapse2" class="collapse" aria-labelledby="heading2" data-parent="#accordion1">
                                           <div class="card-body"> <a href="/studenthome/addreport3"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a></div>
@@ -515,8 +536,19 @@
                                             @endif
                                             @endforeach
 
-                                            </span> <strong>Onepage ของโครงการ (โปสเตอร์)</strong>
+                                            </span> <h2><strong>Onepage ของโครงการ (โปสเตอร์)</strong>
                                           </a>
+                                          @foreach ($report3 as $row)
+                                          @if ($row->Status_report === 'รอตรวจสอบ')
+                                  <span class="text-warning">รอตรวจสอบเอกสาร</span>
+                              @elseif ($row->Status_report === 'ตรวจสอบแล้ว')
+                                  <span class="text-Success ">ตรวจสอบแล้ว</span>
+                              @elseif ($row->Status_report=== 'ไม่ผ่าน')
+                                  <span class="text-Danger ">ไม่ผ่าน&nbsp;&nbsp;{{$row->annotation}}</span>
+                              @else
+                                  <span class="text-Secondary">ยังไม่ได้อัปโหลดเอกสาร (กรุณาให้อัปโหลดไฟล์)</span>
+                              @endif
+                              @endforeach</h2>
                                         </div>
                                         <div id="collapse3" class="collapse" aria-labelledby="heading3" data-parent="#accordion1">
                                           <div class="card-body"> <a href="/studenthome/addreport4"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> </div>
@@ -570,8 +602,19 @@
                                             @endif
                                             @endforeach
 
-                                            </span> <strong>รายงานสรุปโครงการ(ไม่เกิน 5 หน้า)</strong>
+                                            </span><h2> <strong>รายงานสรุปโครงการ(ไม่เกิน 5 หน้า)</strong>
                                           </a>
+                                          @foreach ($report4 as $row)
+                                          @if ($row->Status_report === 'รอตรวจสอบ')
+                                  <span class="text-warning">รอตรวจสอบเอกสาร</span>
+                              @elseif ($row->Status_report === 'ตรวจสอบแล้ว')
+                                  <span class="text-Success ">ตรวจสอบแล้ว</span>
+                              @elseif ($row->Status_report=== 'ไม่ผ่าน')
+                                  <span class="text-Danger ">ไม่ผ่าน&nbsp;&nbsp;{{$row->annotation}}</span>
+                              @else
+                                  <span class="text-Secondary">ยังไม่ได้อัปโหลดเอกสาร (กรุณาให้อัปโหลดไฟล์)</span>
+                              @endif
+                              @endforeach</h2>
                                         </div>
                                         <div id="collapse4" class="collapse" aria-labelledby="heading4" data-parent="#accordion1">
                                           <div class="card-body"> <a href="/studenthome/addreport5"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> </div>

@@ -291,18 +291,22 @@
 
                         @endif </li></a>
                         <a  href="/studenthome/establishmentuser">  <li id="personal" ><strong>สถานประกอบการ</strong><br><br>
-                           <br>   @if (Auth::user()->status === 'ยืนยันตัวตนแล้ว')
+                           <br>   @if (Auth::user()->statusestablishment === 'ยืนยันตัวตนแล้ว')
                             <span class="circle circle-sm bg-success-light">
 
                                 <i class="fe fe-16 fe-check text-white mb-0"></i>
 
                                 <!-- เนื้อหาภายใน <span> element ที่ต้องการแสดง -->
                             </span>
-                            @elseif (Auth::user()->status === 'ยังไม่ได้ยืนยันตัวตน')
+                            @elseif (Auth::user()->statusestablishment === 'ยังไม่ได้ยืนยันตัวตน')
                             <span class="circle circle-sm bg-secondary-light">
 
                                 <i class="fe fe-16 fe-check text-white mb-0"></i>
 
+                                @else
+                                <span class="circle circle-sm bg-secondary-light">
+
+                                    <i class="fe fe-16 fe-check text-white mb-0"></i>
 
 
 

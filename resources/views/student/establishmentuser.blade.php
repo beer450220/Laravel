@@ -449,13 +449,45 @@
                                           </a>
                                         </div>
                                         <div id="collapse2" class="collapse" aria-labelledby="heading2" data-parent="#accordion1">
-                                          <div class="card-body"> <a href="/studenthome/establishmentstatus"  class=" btn btn-outline-success">>คลิกที่นี่<</a></div>
+                                          <div class="card-body"> <a href="/studenthome/establishmentstatus/{{(Auth::user()->id )}}"  class=" btn btn-outline-success">>คลิกที่นี่<</a></div>
 
                                           <br>
 
 
 
+                                          @foreach ($registers1 as $row)
 
+
+                                          <div class="col-md-3">
+                                              <div class="card shadow mb-4">
+                                                <div class="card-body text-center">
+                                                  <div class="avatar avatar-lg mt-4">
+                                                    {{-- <a href="">
+                                                      <img src="./assets/avatars/face-4.jpg" alt="..." class="avatar-img rounded-circle">
+                                                    </a> --}}
+                                                  </div>
+                                                  <div class="card-text my-2">
+                                                    <strong class="card-title my-0">ชื่อสถานประกอบการ </strong>
+                                                    <p class="small text-muted mb-0">{{ $row->establishment}}</p>
+                                                    <p class="small"><span class="badge badge-light text-muted"></span></p>
+                                                  </div>
+                                                </div> <!-- ./card-text -->
+                                                <div class="card-footer">
+                                                  <div class="row align-items-center justify-content-between">
+                                                    <div class="col-auto">
+                                                      <small>
+                                                        {{-- <span class="dot dot-lg bg-success mr-1"></span> Online </small> --}}
+                                                        {{-- <td><a href="../fileinformdetails/{{ $row->files }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down "></a></td> --}}
+                                                        <td><a href="/studenthome/establishmentstatus/{{ $row->id }}" type="button" class="btn btn-outline-secondary fa-regular fe fe-edit "></a></td>
+                                                      </div>
+
+                                                    <div class="col-auto">
+
+                                                    </div>
+                                                  </div>
+                                                </div> <!-- /.card-footer -->
+                                              </div>
+                                            </div>@endforeach
 
                                         </div>
 
@@ -474,6 +506,11 @@
                                   </div></div> <div class="d-grid gap-2">
 
                                     <h2>ขั้นตอนต่อไป</h2>
+                                    <a href="/studenthome/test/{{Auth::user()->id}}"  id="show-alert" class="btn btn-outline-warning " type="button">>sssคลิกที่นี่<</a>
+
+
+
+
                                  <a href="/studenthome/register"  id="show-alert" class="btn btn-outline-warning " type="button">>คลิกที่นี่<</a>
 
 

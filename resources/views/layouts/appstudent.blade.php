@@ -378,7 +378,7 @@
             }
        body,html,h2,h3 {
            font-family: "THSarabunNew";
-           font-size: 16pt;
+           font-size: 12pt;
 
        }
     </style>

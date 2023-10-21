@@ -66,6 +66,7 @@ Route::middleware(['auth','user-role:student'])->group(function()
     //ข้อมูลส่วนตัว
     Route::get("/studenthome",[HomeController::class,'studentHome'])->name('student.studenthome');
     Route::get("/studenthome/edituser1/{id}",[EditController::class,'edituser1'])->name('edituser1');
+
     Route::post("/studenthome/updateuser1/{id}",[EditController::class,'updateuser1'])->name('updateuser1');
 
     //ยืยยันตัวตน
@@ -92,14 +93,14 @@ Route::middleware(['auth','user-role:student'])->group(function()
          Route::get('/search',[HomeController::class,'search'])->name('search');
 
          //ยืนยันสถานประกอบการ
-         Route::get("/studenthome/establishmentstatus",[HomeController::class,'establishmentstatus'])->name('establishmentstatus');
-        Route::get("/studenthome/establishmentstatus/{id}",[EditController::class,'establishmentstatus'])->name('establishmentstatus');
-
-
+         Route::get("/studenthome/establishmentstatus/{id}",[HomeController::class,'establishmentstatus'])->name('establishmentstatus');
+            Route::post("/studenthome/establishmentstatusupdate/{id}",[EditController::class,'establishmentstatusupdate'])->name('establishmentstatusupdate');
+            // Route::get("/studenthome/establishmentstatusedit/{id}",[EditController::class,'statusedit'])->name('statusedit');
+            Route::get("/studenthome/test/{id}",[EditController::class,'test'])->name('test');
     // Route::get('/studenthome/view/{id}', [HomeController::class,'viewestablishmentuser'])->name('viewestablishmentuser');
     // Route::get("/studenthome/test",[HomeController::class,'test'])->name('test');
     // Route::post("/studenthome/test",[HomeController::class,'test2'])->name('test2');
-    // Route::get("/studenthome/calendar",[HomeController::class,'calendar'])->name('student.calendar');
+    // Route::get("/studenthome/calendar",[HหomeController::class,'calendar'])->name('student.calendar');
 
     //ลงทะเบียน
     Route::get("/studenthome/register",[HomeController::class,'registeruser'])->name('student.register');

@@ -142,25 +142,50 @@ class HomeController extends Controller
     {
         // $users=DB::table('users')->get();
         $users=DB::table('establishment')->paginate(5);
+        $users1=DB::table('users')->paginate(5);
         // $users=users::paginate(5);
         $establishments=DB::table('establishment') ->orderBy('name','desc')
 
         ->paginate(6);
-        return view('student.establishmentuser',compact('users','establishments'));
+
+        $registers1=DB::table('users')
+        // ->join('users','users.id')
+        // ->select('registers.*','users.name')
+        // ->where('registers.namefile', 'แบบพิจารณาคุณสมบัตินักศึกษาสหกิจศึกษา(สก01)')
+        ->where('id',
+         auth()->id())
+        ->paginate(5);
+        return view('student.establishmentuser',compact('users','establishments','users1','registers1'));
     }
 
 
-    public function establishmentstatus()
+    public function establishmentstatus(Request $request,$id)
     {
+       // dd($request);
         // $users=DB::table('users')->get();
         // $users=DB::table('establishment')->paginate(5);
-
+        $users1=users::find($id);
+    // dd($request);
+     $events=DB::table('users')->find($id);
+    //  $events1=users::pluck('establishment', 'id'); ->where('id',
+    //  auth()->id())
+   // $events1 = users::pluck('establishment', 'id');
+     $events1=DB::table('users')->paginate(5);
         $users = establishment::pluck('name', 'id'); // ดึงรายชื่อของผู้ใช้และ ID จากฐานข้อมูล
+
+
+
+    //     $users = DB::table('users')
+    //     ->select('users.id', 'users.establishment', 'establishment.name')
+    //     ->join('establishment', 'users.id', '=', 'establishment.id')
+    //    // ->where('users.something', '=', 'something')
+    //    // ->where('users.otherThing', '=', 'otherThing')
+    //     ->get();
         // $users=users::paginate(5);
         $establishments=DB::table('users') ->orderBy('name','desc')
 
         ->paginate(6);
-        return view('student.establishmentstatus',compact('users','establishments'));
+        return view('student.establishmentstatus',compact('users','establishments','events','users1','events1' ));
     }
 
 

@@ -15,7 +15,8 @@ class users extends Authenticatable
         'username',
         'GPA',
         'images',
-        'Status'
+        'Status',
+        'establishment'
     ];
     public function Users(){
         return $this->hasOne(Users::class,'id','name');

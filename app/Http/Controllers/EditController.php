@@ -1533,7 +1533,7 @@ $post->update
 
     return redirect('/studenthome')->with('success', 'ยืนยันตัวตนสำเร็จ.');
  }
- public function   establishmentstatus(Request $request,$id) {
+ public function   establishmentstatusupdate(Request $request,$id) {
     //ตรวจสอบข้อมูล
 
    //dd($request);
@@ -1553,15 +1553,56 @@ $post->update
    $post=users::findOrFail($id);
 
 
-    $post->statusestablishment ="ยืนยันได้สถานประกอบการแล้ว";
+    // $post->establishment ="ยืนยันได้สถานประกอบการแล้ว";
     $post->update
     ([
-    //    "status" =>$request->"",
+        "establishment" =>$request->establishment,
 
     ]);
 
 
-    return redirect('/studenthome')->with('success', 'ยืนยันสำเร็จ.');
+    return redirect('/studenthome/establishmentuser')->with('success', 'ยืนยันสำเร็จ.');
+ }
+public function statusedit($id) {
+    //ตรวจสอบข้อมูล
+    //dd($id);
+    //$users=DB::table('users')
+      //->where('role',"student")
+      //->join('establishment','establishment.id',"=",'users.id')
+      //->select('users.*','establishment.*')
+      //->get();
+     $users=users::find($id);
+   // $acceptances=DB::table('acceptance')->first();
+    //$establishment=DB::table('establishment')
+    // ->join('supervision','supervision.supervision_id')
+     //->join('supervision', 'establishments.id', '=', 'supervision.id')
+    // ->select('supervision.*','establishment.*')
+   // ->get();
+    //dd($acceptances);
+     // dd($Evaluationdocuments);
+     return view('student.Edit.establishmentstatus',compact('users'));
+
  }
 
+ public function test($id) {
+
+
+    $statusestablishment = Auth::user()->statusestablishment;
+    if ($statusestablishment === 'ยังไม่ได้ยืนยันสถานประกอบการ') {
+        return redirect('/studenthome/establishmentuser')->with('success', 'ยืนยันสำเร็จ.');
+    } elseif ($statusestablishment === 'ยืนยันได้สถานประกอบการแล้ว') {
+        return redirect('/studenthome/register')->with('success', 'ยืนยันสำเร็จ.');
+    } elseif ($statusestablishment === 'ยังไม่ได้ยืนยันตัวตน') {
+        return redirect('/studenthome/establishmentuser')->with('success', 'ยืนยันสำเร็จ.');
+    }
+    return redirect('/studenthome/establishmentuser')->with('success', 'ยืนยันสำเร็จ.');
 }
+ }
+
+
+
+
+
+
+
+

@@ -10,9 +10,7 @@
 
 @section('content')
 @yield('content')
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
-		<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+
 
 
 
@@ -57,8 +55,9 @@
 
                           </div>
                           <div class="modal-body">
-                            <form method="POST" action="{{url('/studenthome/establishmentstatusupdate/'.$events->id)}}" enctype="multipart/form-data">
+                            <form method="POST" action="" enctype="multipart/form-data">
                               @csrf
+                              {{-- {{url('/studenthome/establishmentstatusupdate/'.$events->id)}} --}}
                               <div class="mb-3">
 
                                 <br>
@@ -69,7 +68,7 @@
                               </div>
                               <div class="mb-3">
                                 <label for="message-text" class="col-form-label">เลือกสถานประกอบการ</label>
-                                <select class="form-select  select2" name="establishment" aria-label="Default select example">
+                                <select class="form-select form-select" name="establishment" aria-label="Default select example">
 
                                   <option selected>กรุณาเลือก</option>
 
@@ -86,8 +85,6 @@
                                                                         @endforeach
                                 </select>
                               </div>
-
-
 
                           </div>
                           <div class="modal-footer">
@@ -111,13 +108,7 @@
     </div>
     </div>
 
-    <script>
-        $(document).ready(function() {
-    $('.select2').select2({
-    closeOnSelect: false
-    });
-    });
-    </script>
+
     @foreach($users as $name )
     {{-- {{$name->id}} --}}
     {{-- {{$name->id}} --}}

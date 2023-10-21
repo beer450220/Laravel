@@ -161,14 +161,17 @@ class AddController extends Controller
       //ตรวจสอบข้อมูล
       // dd($request);
 
-      if (Auth::check()) {
-        $user = Auth::user();
+    //   if (Auth::check()) {
+    //     $user = Auth::user();
 
 
-         $postCount = registers::where('user_id', $user->id)->count();
-        //$existingPost = registers::where('user_id', $user->id)->first();
-        // ตรวจสอบว่าผู้ใช้เพิ่มข้อมูลได้ไม่เกิน 2 ครั้ง
-        if (($postCount < 1 && $request->namefile === "แบบพิจารณาคุณสมบัตินักศึกษาสหกิจศึกษา(สก01)") || !Auth::user()->id)
+    //      $postCount = registers::where('user_id', $user->id)->count();
+
+    //     //$existingPost = registers::where('user_id', $user->id)->first();
+    //     // ตรวจสอบว่าผู้ใช้เพิ่มข้อมูลได้ไม่เกิน 2 ครั้ง
+
+    //     if (($postCount < 1 && $request->namefile === "แบบพิจารณาคุณสมบัตินักศึกษาสหกิจศึกษา(สก01)") || !Auth::user()->id)
+
         // ($postCount < 1)
         // ($postCount < 1 && $request->filled('user_id'))
         // (!$existingPost)
@@ -238,12 +241,11 @@ class AddController extends Controller
 
 
               return redirect('/studenthome/register')->with('success5', 'เพิ่มข้อมูลสำเร็จ.');
-        } else {
+
             return redirect('/studenthome/register')
                 ->with('error', 'ไม่สามารถเพิ่มข้อมูลได้');
-        }
-    }else
-     {
+
+
             return redirect('/studenthome/register')->with('error', 'ไม่สามารถเพิ่มข้อมูลได้');
     }
 }
