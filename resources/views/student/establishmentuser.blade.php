@@ -332,10 +332,97 @@
 
                         @endif
                         </li></a>
-                          <a  href="/studenthome/register">  <li id="payment"><strong>ลงทะเบียน</strong></li></a>
-                            <a  href="/studenthome"> <li id="confirm"><strong>รายงานสถานะการเข้าปฏิบัติงาน</strong></li></a>
-                              <a  href="/studenthome"> <li id="confirm"><strong>นิเทศงาน</strong></li></a>
-                                <a  href="/studenthome"> <li id="payment"><strong>รายงานผลการปฏิบัติงาน</strong></li></a>
+                          <a  href="/studenthome/register">  <li id="payment"><strong>ลงทะเบียน</strong>
+
+                          <br><br>
+                          <br>   @if (Auth::user()->statusestablishment === 'ยืนยันได้สถานประกอบการแล้ว')
+                          <span class="circle circle-sm bg-success-light">
+
+                              <i class="fe fe-16 fe-check text-white mb-0"></i>
+
+                              <!-- เนื้อหาภายใน <span> element ที่ต้องการแสดง -->
+                          </span>
+                          @elseif (Auth::user()->statusestablishment === 'ยังไม่ได้ยืนยันตัวตน')
+                          <span class="circle circle-sm bg-warning-light">
+
+                              <i class="fe fe-16 fe-alert-triangle text-white mb-0"></i>
+                              {{-- <i class="fe fe-16 fe-alert-triangle text-white "></i> --}}
+
+                              @else (Auth::user()->statusestablishment === 'ยังไม่ได้ยืนยันตัวตน')
+                              <span class="circle circle-sm bg-warning-light">
+
+                                  <i class="fe fe-16 fe-alert-triangle text-white mb-0"></i>
+
+                      @endif</li></a>
+                            <a  href="/studenthome"> <li id="confirm"><strong>รายงานสถานะการเข้าปฏิบัติงาน</strong>
+                                <br><br>
+                                  @if (Auth::user()->statusestablishment === 'ยืนยันได้สถานประกอบการแล้ว')
+                                <span class="circle circle-sm bg-success-light">
+
+                                    <i class="fe fe-16 fe-check text-white mb-0"></i>
+
+                                    <!-- เนื้อหาภายใน <span> element ที่ต้องการแสดง -->
+                                </span>
+                                @elseif (Auth::user()->statusestablishment === 'ยังไม่ได้ยืนยันตัวตน')
+                                <span class="circle circle-sm bg-warning-light">
+
+                                    <i class="fe fe-16 fe-alert-triangle text-white mb-0"></i>
+                                    {{-- <i class="fe fe-16 fe-alert-triangle text-white "></i> --}}
+
+                                    @else (Auth::user()->statusestablishment === 'ยังไม่ได้ยืนยันตัวตน')
+                                    <span class="circle circle-sm bg-warning-light">
+
+                                        <i class="fe fe-16 fe-alert-triangle text-white mb-0"></i>
+
+                            @endif
+                            </li></a>
+
+                              <a  href="/studenthome"> <li id="confirm"><strong>นิเทศงาน</strong>
+
+                                <br><br>
+                                <br>   @if (Auth::user()->statusestablishment === 'ยืนยันได้สถานประกอบการแล้ว')
+                                <span class="circle circle-sm bg-success-light">
+
+                                    <i class="fe fe-16 fe-check text-white mb-0"></i>
+
+                                    <!-- เนื้อหาภายใน <span> element ที่ต้องการแสดง -->
+                                </span>
+                                @elseif (Auth::user()->statusestablishment === 'ยังไม่ได้ยืนยันตัวตน')
+                                <span class="circle circle-sm bg-warning-light">
+
+                                    <i class="fe fe-16 fe-alert-triangle text-white mb-0"></i>
+                                    {{-- <i class="fe fe-16 fe-alert-triangle text-white "></i> --}}
+
+                                    @else (Auth::user()->statusestablishment === 'ยังไม่ได้ยืนยันตัวตน')
+                                    <span class="circle circle-sm bg-warning-light">
+
+                                        <i class="fe fe-16 fe-alert-triangle text-white mb-0"></i>
+
+                            @endif
+                            </li></a>
+                                <a  href="/studenthome"> <li id="payment"><strong>รายงานผลการปฏิบัติงาน</strong>
+
+                                    <br><br>
+                                     @if (Auth::user()->statusestablishment === 'ยืนยันได้สถานประกอบการแล้ว')
+                                    <span class="circle circle-sm bg-success-light">
+
+                                        <i class="fe fe-16 fe-check text-white mb-0"></i>
+
+                                        <!-- เนื้อหาภายใน <span> element ที่ต้องการแสดง -->
+                                    </span>
+                                    @elseif (Auth::user()->statusestablishment === 'ยังไม่ได้ยืนยันตัวตน')
+                                    <span class="circle circle-sm bg-warning-light">
+
+                                        <i class="fe fe-16 fe-alert-triangle text-white mb-0"></i>
+                                        {{-- <i class="fe fe-16 fe-alert-triangle text-white "></i> --}}
+
+                                        @else (Auth::user()->statusestablishment === 'ยังไม่ได้ยืนยันตัวตน')
+                                        <span class="circle circle-sm bg-warning-light">
+
+                                            <i class="fe fe-16 fe-alert-triangle text-white mb-0"></i>
+
+                                @endif
+                                </li></a>
                       </ul>
                       <div class="progress">
                           {{-- <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div> --}}
@@ -449,7 +536,7 @@
                                           </a>
                                         </div>
                                         <div id="collapse2" class="collapse" aria-labelledby="heading2" data-parent="#accordion1">
-                                          <div class="card-body"> <a href="/studenthome/establishmentstatus/{{(Auth::user()->id )}}"  class=" btn btn-outline-success">>คลิกที่นี่<</a></div>
+                                          <div class="card-body"> <a href="/studenthome/establishmentstatus/{{(Auth::user()->id )}}"  class=" btn btn-outline-success">>คลิกที่นี่เพื่อบันทึกข้อมูล<</a></div>
 
                                           <br>
 

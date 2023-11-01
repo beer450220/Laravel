@@ -280,7 +280,7 @@
                                 <i class="fe fe-16 fe-check text-white mb-0"></i>
 
                                 <!-- เนื้อหาภายใน <span> element ที่ต้องการแสดง -->
-                            </span>
+                            </span><span class="text-Success" >ยืนยันตัวตนแล้ว </span>
                             @elseif (Auth::user()->status === 'ยังไม่ได้ยืนยันตัวตน')
                             <span class="circle circle-sm bg-warning-light">
 
@@ -291,13 +291,13 @@
 
                         @endif </li></a>
                         <a  href="/studenthome/establishmentuser">  <li id="personal" ><strong>สถานประกอบการ</strong><br><br>
-                           <br>   @if (Auth::user()->statusestablishment === 'ยืนยันตัวตนแล้ว')
+                           <br>   @if (Auth::user()->statusestablishment === 'ยืนยันได้สถานประกอบการแล้ว')
                             <span class="circle circle-sm bg-success-light">
 
                                 <i class="fe fe-16 fe-check text-white mb-0"></i>
 
                                 <!-- เนื้อหาภายใน <span> element ที่ต้องการแสดง -->
-                            </span>
+                            </span><span class="text-Success" >ยืนยันได้สถานประกอบการแล้ว </span>
                             @elseif (Auth::user()->statusestablishment === 'ยังไม่ได้ยืนยันตัวตน')
                             <span class="circle circle-sm bg-secondary-light">
 
@@ -644,7 +644,7 @@
               </div>
 
             </div>
-          </div>
+
 
 
 

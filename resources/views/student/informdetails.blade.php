@@ -360,9 +360,50 @@
                                             <a href="/studenthome/addstudent"  class=" btn btn-outline-success">ดาวห์โหลด</a>
                                         </div> --}}
                                         <div class="col-9">
+                                            <div class="card-header" id="heading1">
+                                                <a role="button" href="#collapses" data-toggle="collapse" data-target="#collapses" aria-expanded="false" aria-controls="collapses" class="collapsed ">
+
+
+                                     <strong class="btn btn-outline-primary">ปฏิทินสหกิจ</strong> </a>
+
+
                                             <a href="/studenthome/documents1"  class=" btn btn-outline-primary">ดาวน์โหลดไฟล์เอกสาร</a>
                                             {{-- <a href="/studenthome/documents1" type="button" class="btn btn-outline-primary">ดาวน์โหลดไฟล์เอกสาร</a> --}}
+                                            <div id="collapses" class="collapse" aria-labelledby="heading1" data-parent="#accordion1" style="">
+                                                <br>
+                                                                                                    <table class="table table-hover">
+                                                                                                        <thead class="thead-dark">
+                                                                                                          <tr>
+                                                                                                              <th>ลำดับ</th>
+                                                                                                            <th>วันเวลาการสหกิจ</th>
+                                                                                                            <th>ชื่อเรื่อง</th>
+                                                                                                            <th>รายละเอียด</th>
 
+
+                                                                                                          </tr>
+                                                                                                        </thead>
+                                                                                                        <tbody>
+                                                                                                          @foreach ($activity as $row)
+                                                                                                          <tr>
+                                                                                                            <td class="col-1 text-center">{{ $activity->firstItem() + $loop->index }}</td>
+
+                                                                                                            <td>{{$row->business}}</td>
+                                                                                                           <td>{{$row->title}}</td>
+
+                                                                                                           <td><a href="{{ $row->activity_id }}" ><i class="fa-solid fa-eye fe-24"></i></a></td>
+                                                                                      {{-- download --}}<i class=" "></i>
+                                                                                                          </tr>
+                                                                                                          @endforeach
+
+                                                                                                        </tbody>
+                                                                                                      </table>
+
+
+                                                                                                </div>
+                                                                                            </div>
+
+
+                                                                                                </div>
 
 
                                           </div>

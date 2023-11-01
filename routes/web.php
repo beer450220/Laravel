@@ -102,7 +102,14 @@ Route::middleware(['auth','user-role:student'])->group(function()
     // Route::post("/studenthome/test",[HomeController::class,'test2'])->name('test2');
     // Route::get("/studenthome/calendar",[HหomeController::class,'calendar'])->name('student.calendar');
 
+    //ปฏิทินสหกิจ
+    Route::get("/studenthome/Announcement",[HomeController::class,'Announcement'])->name('Announcement');
+
     //ลงทะเบียน
+            //ประกาศตอบรับ
+    //    Route::get("/studenthome/acceptancedocument",[HomeController::class,'acceptancedocument'])->name('student.acceptancedocument');
+
+
     Route::get("/studenthome/register",[HomeController::class,'registeruser'])->name('student.register');
     // แบบพิจารณาคุณสมบัตินักศึกษาสหกิจศึกษา(สก01)
 
@@ -160,7 +167,7 @@ Route::middleware(['auth','user-role:student'])->group(function()
     Route::get("/studenthome/documents",[HomeController::class,'documents'])->name('student.documents');
     Route::get("/studenthome/documents1",[HomeController::class,'documents3'])->name('documents3');
 
-    Route::get("/studenthome/Announcement",[HomeController::class,'Announcement'])->name('Announcement');
+
 
     //เอกสารแจ้งรายละเอียดการปฎิบัติงาน
     Route::get("/studenthome/informdetails",[HomeController::class,'informdetails'])->name('student.informdetails');
@@ -224,7 +231,7 @@ Route::middleware(['auth','user-role:student'])->group(function()
 
     Route::post("/studenthome/calendar2add/{id}",[AddController::class,'calendar2add'])->name('calendar2add');
 
-    // Route::get("/studenthome/acceptancedocument",[HomeController::class,'acceptancedocument'])->name('student.acceptancedocument');
+
 });
 
 

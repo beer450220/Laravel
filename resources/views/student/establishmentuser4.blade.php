@@ -430,7 +430,7 @@
                                               <div class="row align-items-center justify-content-between">
                                                 <div class="col-auto">
                                                   <small>
-                                                    <span class="dot dot-lg bg-success mr-1"></span> Online </small>
+                                                    <span class="dot dot-lg bg-success mr-1"></span> คอมพิวเตอร์ </small>
                                                 </div>
                                                 <div class="col-auto">
 

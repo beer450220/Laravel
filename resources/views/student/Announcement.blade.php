@@ -308,7 +308,7 @@
                                 </div>
                             </div><div class="col-6">
                               <div class=" alert alert-primary  " role="alert">
-                                  <b>ขั้นตอนที่ 3 ลงทะเบียน:</b> ประกาศผลการตอบรับ
+                                  <b>ขั้นตอนที่ 3 ลงทะเบียน:</b> ปฏิทินสหกิจ
                                       <br>
                                       <br>  <a href="/studenthome/register"  class="btn btn-outline-warning " type="button">>คลิกที่นี่<</a>เพื่อย้อนกลับ
                                                               </div>   <br>   <br>
@@ -342,31 +342,32 @@
         <div class="col-md-12 my-4">
             <div class="card shadow">
               <div class="card-body">
-                <h5 class="card-title">ประกาศผลการตอบรับ</h5>
+                <h5 class="card-title">ปฏิทินสหกิจ</h5>
                 {{-- <p class="card-text">Add .table-hover to enable a hover state on table rows within a <tbody>
                 </p> --}}
                 <table class="table table-hover">
                   <thead class="thead-dark">
                     <tr>
-                      <th>#</th>
-                      <th>ชื่อนักศึกษา</th>
-                      <th>สถานประกอบการ</th>
-                      <th></th>
-                      <th   class="text-end">ดาวน์โหลด</th>
+                        <th>ลำดับ</th>
+                      <th>วันเวลาการสหกิจ</th>
+                      <th>ชื่อเรื่อง</th>
+                      <th>รายละเอียด</th>
+
 
                     </tr>
                   </thead>
                   <tbody>
+                    @foreach ($registers as $row)
                     <tr>
-                      <td>1</td>
+                      <td class="col-1 text-center">{{ $registers->firstItem() + $loop->index }}</td>
 
-                      <td></td>
-                     <td></td>
-                     <td></td>
-                     <td><a href="/ไฟล์เอกสารดาวน์โหลด/สก.01.pdf" target="_BLANK"><i class="fe fe-arrow-down-circle fe-24"></i></a></td>
-{{-- download --}}
+                      <td>{{$row->business}}</td>
+                     <td>{{$row->title}}</td>
+
+                     <td><a href="{{ $row->activity_id }}" ><i class="fa-solid fa-eye fe-24"></i></a></td>
+{{-- download --}}<i class=" "></i>
                     </tr>
-
+                    @endforeach
 
                   </tbody>
                 </table>

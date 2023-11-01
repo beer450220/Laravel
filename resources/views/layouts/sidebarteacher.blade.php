@@ -51,7 +51,7 @@
     </ul> --}}
 
 
-    <ul class="navbar-nav flex-fill w-100 mb-2">
+    {{-- <ul class="navbar-nav flex-fill w-100 mb-2">
       <li class="nav-item dropdown">
         <a href="#ui-elementsss" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
           <i class="fe fe-box fe-16"></i>
@@ -75,7 +75,7 @@
 
 
       </li>
-    </ul>
+    </ul> --}}
 
 
     {{-- <ul class="navbar-nav flex-fill w-100 mb-2">
@@ -129,7 +129,7 @@
     <p class="text-muted nav-heading mt-4 mb-1">
       <span>นิเทศงาน</span>
     </p> --}}
-    <ul class="navbar-nav flex-fill w-100 mb-2">
+    {{-- <ul class="navbar-nav flex-fill w-100 mb-2">
       <li class="nav-item dropdown">
         <a href="#ui-elementss3" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
           <i class="fe fe-box fe-16"></i>
@@ -139,10 +139,10 @@
              <li class="nav-item">
             <a class="nav-link pl-3" href="/teacher/calendar2"><span class="ml-1 item-text">ปฏิทินนิเทศงานสหกิจ</span></a>
           </li>
-       
-         
+
+
           <li class="nav-item">
-            {{-- <a class="nav-link pl-3" href="/teacher/listofteachers1"><span class="ml-1 item-text"> จัดอาจารย์นิเทศงาน</span> --}}
+            <a class="nav-link pl-3" href="/teacher/listofteachers1"><span class="ml-1 item-text"> จัดอาจารย์นิเทศงาน</span>
             </a>
           </li>
       </li>
@@ -151,11 +151,11 @@
         </a>
       </li>
   </li>
-  
+
 
 
       </li>
-    </ul>
+    </ul> --}}
 
     <ul class="navbar-nav flex-fill w-100 mb-2">
       <li class="nav-item dropdown">
@@ -168,10 +168,10 @@
             {{-- <a class="nav-link pl-3" href="/teacher/advisor1"><span class="ml-1 item-text">จัดอาจารย์ที่ปรึกษา</span></a> --}}
             <a class="nav-link pl-3" href="/teacher/reportresults1"><span class="ml-1 item-text">เอกสารฝึกประสบการณ์</span></a>
           </li>
-      
-        
-         
-  
+
+
+
+
 
 
       </li>
@@ -200,4 +200,3 @@
   </nav>
 </aside>
 
- 

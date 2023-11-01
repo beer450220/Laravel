@@ -216,7 +216,7 @@
 
 
   }
-  /* content: "\f0f6" */
+
 
   #progressbar li:before {
       width: 50px;
@@ -277,6 +277,9 @@
     }
 
 
+
+
+
   </style>
 <div class="container-fluid">
     <div class="row justify-content-center">
@@ -289,8 +292,48 @@
                     <!-- progressbar -->
 
                     <ul id="progressbar">
-                      <a  href="/studenthome"><li class="active" id="account"><strong>ข้อมูลส่วนตัว</strong></li></a>
-                      <a  href="/studenthome/establishmentuser">  <li class="active" id="personal"><strong>สถานประกอบการ</strong></li></a>
+                      <a  href="/studenthome"><li class="active" id="account"><strong>ข้อมูลส่วนตัว</strong>
+
+                        <br><br>
+                        <br>
+                         @if (Auth::user()->status === 'ยืนยันตัวตนแล้ว')
+                         <span class="circle circle-sm bg-success-light">
+
+                            <i class="fe fe-16 fe-check text-white mb-0"></i>
+
+                            <!-- เนื้อหาภายใน <span> element ที่ต้องการแสดง -->
+                        </span><span class="text-Success" >ยืนยันตัวตนแล้ว  </span>
+                        @elseif (Auth::user()->status === 'ยังไม่ได้ยืนยันตัวตน')
+                        <span class="circle circle-sm bg-warning-light">
+
+                            <i class="fe fe-16 fe-alert-triangle text-white mb-0"></i>
+                            {{-- <i class="fe fe-16 fe-alert-triangle text-white "></i> --}}
+
+                    @endif
+                    </li></a>
+                      <a  href="/studenthome/establishmentuser">  <li class="active" id="personal"><strong>สถานประกอบการ</strong>
+
+                        <br><br>
+                        <br>   @if (Auth::user()->statusestablishment === 'ยืนยันได้สถานประกอบการแล้ว')
+                        <span class="circle circle-sm bg-success-light">
+
+                            <i class="fe fe-16 fe-check text-white mb-0"></i>
+
+                            <!-- เนื้อหาภายใน <span> element ที่ต้องการแสดง -->
+                        </span><span class="text-Success" >ยืนยันได้สถานประกอบการแล้ว </span>
+                        @elseif (Auth::user()->statusestablishment === 'ยังไม่ได้ยืนยันตัวตน')
+                        <span class="circle circle-sm bg-warning-light">
+
+                            <i class="fe fe-16 fe-alert-triangle text-white mb-0"></i>
+                            {{-- <i class="fe fe-16 fe-alert-triangle text-white "></i> --}}
+
+                            @else (Auth::user()->statusestablishment === 'ยังไม่ได้ยืนยันตัวตน')
+                            <span class="circle circle-sm bg-warning-light">
+
+                                <i class="fe fe-16 fe-alert-triangle text-white mb-0"></i>
+
+                    @endif
+                    </li></a>
                         <a  href="/studenthome/register">  <li class="active" id="payment"><strong>ลงทะเบียน</strong></li></a>
                           <a  href="/studenthome/informdetails"> <li id="confirm"><strong>รายงานสถานะการเข้าปฏิบัติงาน</strong></li></a>
                             <a  href="/studenthome/calendar2confirm"> <li id="confirm"><strong>นิเทศงาน</strong></li></a>
@@ -350,7 +393,8 @@
                                 <div class="card shadow">
                                   <div class="card-body">
                                     <h5 class="card-title">ลงทะเบียน</h5>
-                                    <h5 class="card-title"><a href="/studenthome/documents" type="button" class="btn btn-outline-primary"data-bs-toggle="modal" data-bs-target="#exampleModal">ดาวน์โหลดไฟล์เอกสาร</a></h5>
+                                    {{-- <h5 class="card-title"><a href="/studenthome/documents" type="button" class="btn btn-outline-primary"data-bs-toggle="modal" data-bs-target="#exampleModal">ดาวน์โหลดไฟล์เอกสาร</a></h5> --}}
+
                                     <div class="container">
                                         <div class="row">
                                           <div class="col-1">
@@ -362,13 +406,53 @@
 
                                             <a href="/studenthome/addstudent"  class=" btn btn-outline-success">ดาวห์โหลด</a>
                                         </div> --}}
-                                        <div class="">
-                                            {{-- <a href="/studenthome/Announcement"  class=" btn btn-outline-primary">ประกาศผลการตอบรับ</a> --}}
+                                        <div class="col">
+                                            {{-- <a href="/studenthome/Announcement"  class=" btn btn-outline-primary">ปฏิทินสหกิจ</a> --}}
 
 
+                                             <div class="card-header" id="heading1">
+                                                    <a role="button" href="#collapses" data-toggle="collapse" data-target="#collapses" aria-expanded="false" aria-controls="collapses" class="collapsed ">
 
 
-                                          </div>
+                                         <strong class="btn btn-outline-primary">ปฏิทินสหกิจ</strong> </a>
+
+
+ <a href="/studenthome/documents"  class=" btn btn-outline-primary">ดาวน์โหลดไฟล์เอกสาร</a>
+                                                <div id="collapses" class="collapse" aria-labelledby="heading1" data-parent="#accordion1" style="">
+<br>
+                                                    <table class="table table-hover">
+                                                        <thead class="thead-dark">
+                                                          <tr>
+                                                              <th>ลำดับ</th>
+                                                            <th>วันเวลาการสหกิจ</th>
+                                                            <th>ชื่อเรื่อง</th>
+                                                            <th>รายละเอียด</th>
+
+
+                                                          </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                          @foreach ($activity as $row)
+                                                          <tr>
+                                                            <td class="col-1 text-center">{{ $activity->firstItem() + $loop->index }}</td>
+
+                                                            <td>{{$row->business}}</td>
+                                                           <td>{{$row->title}}</td>
+
+                                                           <td><a href="{{ $row->activity_id }}" ><i class="fa-solid fa-eye fe-24"></i></a></td>
+                                      {{-- download --}}<i class=" "></i>
+                                                          </tr>
+                                                          @endforeach
+
+                                                        </tbody>
+                                                      </table>
+
+
+                                                </div>
+                                            </div>
+
+
+                                                </div>
                                         </div>
 
                                     </div>
@@ -379,6 +463,8 @@
                             </div> <!-- end section -->
                                 <br>
                                 <br>
+
+
 
                                 <div class="col-md-12 mb-4">
                                     <div class="accordion w-100" id="accordion1">
@@ -408,9 +494,10 @@
                                                     <span class="text-Success ">ตรวจสอบแล้ว</span>
                                                 @elseif ($row->Status_registers === 'ไม่ผ่าน')
                                                     <span class="text-Danger ">{{ $row->Status_registers }}</span>
-                                                @else
+                                                @else (sss)
                                                     <span class="text-Secondary">ยังไม่ได้อัปโหลดเอกสาร (กรุณาให้อัปโหลดไฟล์)</span>
-                                                @endif
+
+                                                    @endif
                                             @endforeach</H2>
 
                                             </span>
@@ -462,17 +549,17 @@
                                         <div class="card-header" id="heading1">
                                           <a role="button" href="#collapse2" data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
                                             <span>  @foreach ($registers2 as $row)
-                                                @if (empty($row->Status_registers))
-                                            <!-- แสดงข้อความเมื่อ $row->Status_registers ไม่มีค่า (null) -->
-                                            <span class="circle circle-sm bg-danger-light "><i class="fe fe-16 fe-x-circle text-white "></i></span>
 
-                                            @elseif ($row->Status_registers === 'รอตรวจสอบ')
+
+
+                                            @if ($row->Status_registers === 'รอตรวจสอบ')
                                             <span class="circle circle-sm bg-warning-light"><i class="fe fe-16 fe-alert-triangle text-white "></i></span>
                                         @elseif ($row->Status_registers === 'ตรวจสอบแล้ว')
                                             <span class="circle circle-sm bg-success warning-light "><i class="fe fe-16 fe-check text-white "></i></span>
                                         @elseif ($row->Status_registers === 'ไม่ผ่าน')
                                             <span class="circle circle-sm bg-danger-light "><i class="fe fe-16 fe-x-circle text-white "></i></span>
-
+                                            @else (ss)
+                                            <span class="circle circle-sm bg-warning-light"><i class="fe fe-16 fe-alert-triangle text-white "></i></span>
                                             @endif
                                         @endforeach
 
@@ -486,7 +573,7 @@
                                                 <span class="text-Success ">ตรวจสอบแล้ว</span>
                                             @elseif ($row->Status_registers === 'ไม่ผ่าน')
                                                 <span class="text-Danger ">{{ $row->Status_registers }}</span>
-                                            @else
+                                            @else ()
                                                 <span class="text-Secondary">ยังไม่ได้อัปโหลดเอกสาร (กรุณาให้อัปโหลดไฟล์)</span>
                                             @endif
                                         @endforeach</h2>
@@ -897,13 +984,13 @@
                                       <div class="card shadow">
                                         <div class="card-header" id="heading1">
                                           <a role="button" href="#collapse0" data-toggle="collapse" data-target="#collapse0" aria-expanded="false" aria-controls="collapse0" class="collapsed">
-                                 @foreach ($registers1 as $row)
+                                 @foreach ($registers8 as $row)
 
-                                         @if ($row->Status_registers === 'รอตรวจสอบ')
+                                         @if ($row->Status_acceptance === 'ยังไม่ได้ตอบรับนักศึกษา')
                                          <span class="circle circle-sm bg-warning-light"><i class="fe fe-16 fe-alert-triangle text-white "></i></span>
-                                     @elseif ($row->Status_registers === 'ตรวจสอบแล้ว')
+                                     @elseif ($row->Status_acceptance === 'ตอบรับนักศึกษาแล้ว')
                                          <span class="circle circle-sm bg-success warning-light "><i class="fe fe-16 fe-check text-white "></i></span>
-                                     @elseif ($row->Status_registers === 'ไม่ผ่าน')
+                                     @elseif ($row->Status_acceptance === 'ไม่ผ่าน')
                                          <span class="badge badge-pill badge-danger">{{ $row->Status_registers }}</span>
                                      @endif
                                          {{-- class="circle circle-sm bg-warning-light"> --}}
@@ -913,15 +1000,18 @@
 
 
                                              <h2><strong>ประกาศผลการตอบรับ</strong> </a> <span class="">
-                                                @foreach ($registers1 as $row)
-                                                @if ($row->Status_registers === 'รอตรวจสอบ')
-                                                    <span class="text-warning">รอตรวจสอบเอกสาร</span>
-                                                @elseif ($row->Status_registers === 'ตรวจสอบแล้ว')
-                                                    <span class="text-Success ">ตรวจสอบแล้ว</span>
-                                                @elseif ($row->Status_registers === 'ไม่ผ่าน')
-                                                    <span class="text-Danger ">{{ $row->Status_registers }}</span>
-                                                @elseif (Auth::user()->Status_registers)
-                                                    <span class="text-Secondary">ยังไม่ได้อัปโหลดเอกสาร (กรุณาให้อัปโหลดไฟล์)</span>
+                                                @foreach ($registers8 as $row)
+                                                @if ($row->Status_acceptance === 'ยังไม่ได้ตอบรับนักศึกษา')
+                                                    <span class="text-warning">ยังไม่ได้ตอบรับนักศึกษา</span>
+                                                @elseif ($row->Status_acceptance === 'ตอบรับนักศึกษาแล้ว')
+                                                    <span class="text-Success ">ตอบรับนักศึกษาแล้ว</span>
+                                                @elseif ($row->Status_acceptance === 'ไม่ผ่าน')
+                                                    <span class="text-Danger ">{{ $row->Status_acceptance }}</span>
+                                                {{-- @elseif (Auth::user()->Status_acceptance)
+                                                    <span class="text-Secondary">ยังไม่ได้อัปโหลดเอกสาร (กรุณาให้อัปโหลดไฟล์)</span> --}}
+
+                                                    @else (Auth::user()->Status_acceptance)
+                                                    <span class="text-Secondary">ยังไม่ได้ตอบรับนักศึกษา (กรุณารอการตอบรับ)</span>
                                                 @endif
                                             @endforeach</h2>
 
@@ -936,7 +1026,7 @@
                                          </div>
                                         <br>
 
-                                        @foreach ($registers1 as $row)
+                                        @foreach ($registers8 as $row)
 
                                         <div class="col-md-3">
                                             <div class="card shadow mb-4">
@@ -949,7 +1039,7 @@
                                                 <div class="card-text my-2">
                                                   <strong class="card-title my-0">ชื่อเอกสาร </strong>
                                                   <p class="small text-muted mb-0">{{ $row->namefile}}</p>
-                                                  <p class="small"><span class="badge badge-light text-muted">New York, USA</span></p>
+                                                  <p class="small"><span class="badge badge-light text-muted"></span></p>
                                                 </div>
                                               </div> <!-- ./card-text -->
                                               <div class="card-footer">
@@ -957,8 +1047,8 @@
                                                   <div class="col-auto">
                                                     <small>
                                                       {{-- <span class="dot dot-lg bg-success mr-1"></span> Online </small> --}}
-                                                      <td><a href="../file/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down "></a></td>
-                                                      <td><a href="/studenthome/edit2register/{{ $row->id }}" type="button" class="btn btn-outline-secondary fa-regular fe fe-edit "></a></td>
+                                                      <td><a href="../ไฟล์เอกสารตอบรับนักศึกษา(สก.02)/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down "></a></td>
+                                                      {{-- <td><a href="/studenthome/edit2register/{{ $row->acceptance_id }}" type="button" class="btn btn-outline-secondary fa-regular fe fe-edit "></a></td> --}}
                                                     </div>
 
                                                   <div class="col-auto">
@@ -990,6 +1080,10 @@
                                     </div>   <a href=""  id="show-alert" class="btn btn-outline-warning " type="button">>คลิกที่นี่<</a>
                                   <br>
 <br>
+
+
+
+
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
 //Swal.fire('Any fool can use a computer')

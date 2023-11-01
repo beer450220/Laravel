@@ -239,7 +239,7 @@ class HomeController extends Controller
         $registers1=DB::table('registers')
         ->join('users','registers.user_id','users.id')
         ->select('registers.*','users.name')
-        ->where('registers.namefile', 'แบบพิจารณาคุณสมบัตินักศึกษาสหกิจศึกษา(สก01)')
+        ->where('registers.namefile', 'แบบพิจารณาคุณสมบัตินักศึกษาสหกิจศึกษา(สก01)','')
         ->where('user_id', auth()->id())
         ->paginate(5);
 
@@ -284,15 +284,30 @@ class HomeController extends Controller
         ->where('user_id', auth()->id())
         ->paginate(5);
 
+        $registers8=DB::table('acceptance')
+        ->join('users','acceptance.user_id','users.id')
+        ->select('acceptance.*','users.name')
+        ->where('acceptance.namefile','แบบตอบรับและเสนองานนักศึกสหกิจศึกษา')
+        ->where('user_id', auth()->id())
+        ->paginate(5);
+
         $studentinformations=DB::table('studentinformation')
         ->join('users','studentinformation.user_id','users.id')
         ->select('studentinformation.*','users.name')->where('user_id', auth()->id())
         ->paginate(5);
+
+
+        $activity=DB::table('activity')
+        // ->join('users','registers.user_id','users.id')
+        // ->select('registers.*','users.name')->where('user_id', auth()->id())
+        ->paginate(5);
+
         return view('student.register',compact('registers','studentinformations','registers1'
 
 
-        ,'registers2','registers3','registers4','registers5','registers6','registers7'));
+        ,'registers2','registers3','registers4','registers5','registers6','registers7','registers8','activity'));
     }
+
 
     public function acceptancedocument()
     {
@@ -327,7 +342,11 @@ class HomeController extends Controller
         ->where('user_id', auth()->id())
         ->paginate(5);
 
-        return view('student.informdetails',compact('informdetails','informdetails1','informdetails2','informdetails3'));
+        $activity=DB::table('activity')
+        // ->join('users','registers.user_id','users.id')
+        // ->select('registers.*','users.name')->where('user_id', auth()->id())
+        ->paginate(5);
+        return view('student.informdetails',compact('informdetails','informdetails1','informdetails2','informdetails3','activity'));
     }
 
     public function addinformdetail()
@@ -424,7 +443,11 @@ class HomeController extends Controller
     }
     public function Announcement()
     {
-        return view('student.Announcement');
+        $registers=DB::table('activity')
+        // ->join('users','registers.user_id','users.id')
+        // ->select('registers.*','users.name')->where('user_id', auth()->id())
+        ->paginate(5);
+        return view('student.Announcement',compact('registers'));
     }
     public function documents3()
     {
