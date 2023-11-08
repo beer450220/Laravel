@@ -30,7 +30,7 @@
                 <th>ลำดับ</th>
                 <th>ชื่อนักศึกษา</th>
                 <th>ชื่อไฟล์</th>
-                <th>รูปภาพ</th>
+                {{-- <th>รูปภาพ</th> --}}
                <th>สถานะ</th>
                <th>หมายเหตุ</th>
                 <th style="width:10%">ดูไฟล์เอกสาร</th>
@@ -51,7 +51,7 @@
               <td class="col-1 text center">{{$registers->firstItem()+$loop->index}}</td>
               <td>{{ $row->name }}</td>
               <td>{{ $row->namefile }}</td>
-              <td><img src="/file/{{ $row->filess }}" class="img-responsive" style="max-height: 100px; max-width: 100px;" alt="" srcset=""></td>
+              {{-- <td><img src="/file/{{ $row->filess }}" class="img-responsive" style="max-height: 100px; max-width: 100px;" alt="" srcset=""></td> --}}
               <td>
                   @if ($row->Status_registers === 'รอตรวจสอบ')
                       <span class="badge badge-pill badge-warning">{{ $row->Status_registers }}</span>

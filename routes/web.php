@@ -220,6 +220,8 @@ Route::middleware(['auth','user-role:student'])->group(function()
     Route::get("/studenthome/listofteachers",[HomeController::class,'listofteachers'])->name('student.listofteachers');
 
     Route::get("/studenthome/calendar2",[HomeController::class,'calendar2'])->name('student.calendar2');
+
+    //นิเทศงาน
     Route::get("/studenthome/calendar2confirm",[HomeController::class,'calendar2confirm'])->name('calendar2confirm');
     Route::get("/studenthome/calendar2confirmedit/{id}",[EditController::class,'calendar2confirmedit'])->name('calendar2confirmedit');
 
@@ -344,6 +346,31 @@ Route::middleware(['auth','user-role:officer'])->group(function()
 Route::middleware(['auth','user-role:teacher'])->group(function()
 {
     Route::get("/teacher/home",[HomeController::class,'teacherHome'])->name('teacher.teacherhome');
+
+    Route::get("/teacher/edituser2/{id}",[EditController::class,'edituser2'])->name('edituser2');
+
+    Route::post("/teacher/updateuser4/{id}",[EditController::class,'updateuser4'])->name('updateuser4');
+
+    //ยืยยันตัวตน
+   Route::get("/teacher/updateuser2/{id}",[EditController::class,'updateuser3'])->name('updateuser3');
+
+   //นิเทศงาน
+    Route::get("/teacher/calendar5confirm",[HomeController::class,'calendar5confirm'])->name('calendar5confirm');
+
+ // แบบบันทึกการนิเทศงานสหกิจศึกษา(สก12)
+
+ Route::get("/teacher/addSuperviseteacher",[AddController::class,'addSuperviseteacher'])->name('addSuperviseteacher');
+ Route::post("/teacher/addSuperviseteacheruser",[AddController::class,'addSuperviseteacheruser'])->name('addSuperviseteacheruser');
+ Route::get("/teacher/edit2Superviseteacheruser/{id}",[EditController::class,'edit2Superviseteacheruser'])->name('edit2Superviseteacheruser');
+ Route::post("/teacher/update/{id}",[EditController::class,'updateSuperviseteacheruser'])->name('updateSuperviseteacheruser');
+
+ // แบบประเมินรายงานนักศึกษาสหกิจศึกษา(สก15)
+ Route::get("/teacher/addSuperviseteacher1",[AddController::class,'addSuperviseteacher1'])->name('addSuperviseteacher1');
+ Route::post("/teacher/addSuperviseteacheruser1",[AddController::class,'addSuperviseteacheruser1'])->name('addSuperviseteacheruser1');
+ Route::get("/teacher/edit2Superviseteacheruser1/{id}",[EditController::class,'edit2Superviseteacheruser1'])->name('edit2Superviseteacheruser1');
+ Route::post("/teacher/update1/{id}",[EditController::class,'updateSuperviseteacheruser1'])->name('updateSuperviseteacheruser1');
+
+
     Route::get("/teacher/documents1",[HomeController::class,'documents1'])->name('teacher.documents1');
 
     Route::get("/teacher/timeline1",[HomeController::class,'timeline1'])->name('teacher.documents1');

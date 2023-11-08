@@ -18,7 +18,7 @@
                 </p>
               </div>
               <div class="col col-lg-2">
-                 <button type="button" class=" btn btn-outline-success">เพิ่มข้อมูล</button> 
+                 <button type="button" class=" btn btn-outline-success">เพิ่มข้อมูล</button>
               </div>
             </div>
 
@@ -50,7 +50,7 @@
               <td>{{$row->annotation}}</td>
               <td class="text-danger">{{$row->Status_report}}</td>
               <td><br><br><a href="/teacher/editexperiencereport2/{{$row->report_id}}" type="button" class="btn btn-outline-secondary fa-solid fa-pen-to-square fe-16"></a></td>
-            
+
             </tr>
             @endforeach
 
@@ -102,14 +102,12 @@
             <thead class="thead-dark">
               <tr>
                 <th>ลำดับ</th>
-                <th style="width:10%">ชื่อนักศึกษา</th>
-                <th >รายงานโครงการ</th>
-                <th>การนำเสนอ</th>
-                <th>โปสเตอร์</th>
-                <th>รายงานสรุปโครงการ</th>
-                <th style="width:10%">หมายเหตุ</th>
-                <th style="width:10%">สถานะ</th>
-                <th style="width:10%">ตรวจสอบเอกสาร</th>
+                <th >ชื่อนักศึกษา</th>
+                <th >ชื่อไฟล์</th>
+                <th >ดูเอกสาร</th>
+                <th >หมายเหตุ</th>
+                <th >สถานะ</th>
+                <th >ตรวจสอบเอกสาร</th>
               </tr>
             </thead>
             <tbody>
@@ -117,36 +115,33 @@
               <tr>
                 <td>{{$report->firstItem()+$loop->index}}</td>
                 <td>{{$row->name}} </td>
-                <td  >{{$row->projects}}<br><a href="/รายงานโครงการ/{{ $row->projects }}" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td>
-                <td>{{$row->presentation}}<br><a href="/การนำเสนอ/{{ $row->presentation}}" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td>
-                <td>{{$row->poster}}<br><a href="/โปสเตอร์/{{ $row->poster }}" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td>
-                <td>{{$row->projectsummary}}<br><a href="/รายงานสรุปโครงการ/{{ $row->projectsummary }}" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td>
+                <td  >{{$row->namefile}}</td>
+                <td><a href="/รายงานโครงการ/{{ $row->namefile }}" class="btn btn-outline-primary fa-regular fa-circle-down"></a> </td>
                 <td>{{$row->annotation}}</td>
                 <td class="text-danger">{{$row->Status_report}}</td>
-                <td><br><br><a href="/teacher/editexperiencereport2/{{$row->report_id}}" type="button" class="btn btn-outline-secondary fa-solid fa-pen-to-square fe-16"></a></td>
+                <td><a href="/teacher/editexperiencereport2/{{$row->report_id}}" type="button" class="btn btn-outline-secondary fa-solid fa-pen-to-square fe-16"></a></td>
                 {{-- <td><a  href="/studenthome/deletereport/{{$row->report_id}}" class="btn btn-outline-danger fe fe-trash-2 fe-16"onclick="return confirm('ยืนยันการลบข้อมูล !!');"></a></td> --}}
               </tr>
               @endforeach
-  
+
             </tbody>
           </table>
-          
-          
+
+
            </div>
-        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab"> 
-          
+        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+
           <table class="table table-hover">
             <thead class="thead-dark">
               <tr>
                 <th>ลำดับ</th>
-                <th style="width:10%">ชื่อนักศึกษา</th>
-                <th >รายงานโครงการ</th>
-                <th>การนำเสนอ</th>
-                <th>โปสเตอร์</th>
-                <th>รายงานสรุปโครงการ</th>
-                <th style="width:10%">หมายเหตุ</th>
-                <th style="width:10%">สถานะ</th>
-                <th style="width:10%">ตรวจสอบเอกสาร</th>
+                <th >ชื่อนักศึกษา</th>
+                <th >ชื่อไฟล์</th>
+                <th >ดูเอกสาร</th>
+
+                <th >หมายเหตุ</th>
+                <th >สถานะ</th>
+                <th >ตรวจสอบเอกสาร</th>
               </tr>
             </thead>
             <tbody>
@@ -154,36 +149,33 @@
               <tr>
                 <td>{{$report->firstItem()+$loop->index}}</td>
                 <td>{{$row->name}} </td>
-                <td  >{{$row->projects}}<br><a href="/รายงานโครงการ/{{ $row->projects }}" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td>
-                <td>{{$row->presentation}}<br><a href="/การนำเสนอ/{{ $row->presentation}}" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td>
-                <td>{{$row->poster}}<br><a href="/โปสเตอร์/{{ $row->poster }}" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td>
-                <td>{{$row->projectsummary}}<br><a href="/รายงานสรุปโครงการ/{{ $row->projectsummary }}" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td>
+                <td  >{{$row->namefile}}</td>
+                <td><a href="/รายงานโครงการ/{{ $row->namefile }}" class="btn btn-outline-primary fa-regular fa-circle-down"></a> </td>
                 <td>{{$row->annotation}}</td>
                 <td class="text-danger">{{$row->Status_report}}</td>
-                <td><br><br><a href="/teacher/editexperiencereport2/{{$row->report_id}}" type="button" class="btn btn-outline-secondary fa-solid fa-pen-to-square fe-16"></a></td>
+                <td><a href="/teacher/editexperiencereport2/{{$row->report_id}}" type="button" class="btn btn-outline-secondary fa-solid fa-pen-to-square fe-16"></a></td>
                 {{-- <td><a  href="/studenthome/deletereport/{{$row->report_id}}" class="btn btn-outline-danger fe fe-trash-2 fe-16"onclick="return confirm('ยืนยันการลบข้อมูล !!');"></a></td> --}}
               </tr>
               @endforeach
-  
+
             </tbody>
           </table>
-        
+
         </div>
-        <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab"> 
+        <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
 
 
           <table class="table table-hover">
             <thead class="thead-dark">
               <tr>
                 <th>ลำดับ</th>
-                <th style="width:10%">ชื่อนักศึกษา</th>
-                <th >รายงานโครงการ</th>
-                <th>การนำเสนอ</th>
-                <th>โปสเตอร์</th>
-                <th>รายงานสรุปโครงการ</th>
-                <th style="width:10%">หมายเหตุ</th>
-                <th style="width:10%">สถานะ</th>
-                <th style="width:10%">ตรวจสอบเอกสาร</th>
+                <th >ชื่อนักศึกษา</th>
+                <th >ชื่อไฟล์</th>
+                <th >ดูเอกสาร</th>
+
+                <th >หมายเหตุ</th>
+                <th >สถานะ</th>
+                <th >ตรวจสอบเอกสาร</th>
               </tr>
             </thead>
             <tbody>
@@ -191,17 +183,15 @@
               <tr>
                 <td>{{$report->firstItem()+$loop->index}}</td>
                 <td>{{$row->name}} </td>
-                <td  >{{$row->projects}}<br><a href="/รายงานโครงการ/{{ $row->projects }}" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td>
-                <td>{{$row->presentation}}<br><a href="/การนำเสนอ/{{ $row->presentation}}" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td>
-                <td>{{$row->poster}}<br><a href="/โปสเตอร์/{{ $row->poster }}" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td>
-                <td>{{$row->projectsummary}}<br><a href="/รายงานสรุปโครงการ/{{ $row->projectsummary }}" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td>
+                <td  >{{$row->namefile}}</td>
+                <td><a href="/รายงานโครงการ/{{ $row->namefile }}" class="btn btn-outline-primary fa-regular fa-circle-down"></a> </td>
                 <td>{{$row->annotation}}</td>
                 <td class="text-danger">{{$row->Status_report}}</td>
-                <td><br><br><a href="/teacher/editexperiencereport2/{{$row->report_id}}" type="button" class="btn btn-outline-secondary fa-solid fa-pen-to-square fe-16"></a></td>
+                <td><a href="/teacher/editexperiencereport2/{{$row->report_id}}" type="button" class="btn btn-outline-secondary fa-solid fa-pen-to-square fe-16"></a></td>
                 {{-- <td><a  href="/studenthome/deletereport/{{$row->report_id}}" class="btn btn-outline-danger fe fe-trash-2 fe-16"onclick="return confirm('ยืนยันการลบข้อมูล !!');"></a></td> --}}
               </tr>
               @endforeach
-  
+
             </tbody>
           </table>
 

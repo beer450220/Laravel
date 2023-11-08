@@ -482,7 +482,26 @@ class HomeController extends Controller
 // officerHome
     public function officerHome()
     {
-        return view('officer.officerhome',["msg"=>"I am Editor role"]);
+        $users = registers::select(DB::raw("COUNT(*) as count"), DB::raw("YEAR(created_at) as year_name"))
+    //->whereYear('created_at', date('Y'))
+    ->groupBy(DB::raw("YEAR(created_at)"))
+    ->pluck('count', 'year_name');
+
+// $labels = $users->keys()->map(function ($month) {
+//     return Carbon::createFromDate(null, $month, null)->format('F Y');
+// });
+
+// $labels = $users->keys()->map(function ($monthName) {
+    //     return ucfirst($monthName);
+    // });
+  //dd($users);
+ //year
+ //YEAR
+       $labels = $users->keys();
+        //$data = $users->values();
+        $data = $users->values();
+
+        return view('officer.officerhome',compact('users'), compact('labels','data'),["msg"=>"I am Editor role"]);
     }
 
     public function user1()
@@ -608,7 +627,7 @@ dd($request->$name);
     public function Evaluate()
     {
         $supervision=DB::table('supervision')
-        ->join('users','users.id','=','student_id',)
+        ->join('users','supervision.user_id','users.id')
         ->join('establishment','establishment.id','=','establishment_id')
         ->select('supervision.*','users.name','establishment.address')
         //->select('supervision.*')
@@ -845,6 +864,31 @@ dd($request->$name);
         }
 
         return view('teacher.calendar',['events' => $events]);
+    }
+
+
+
+    public function calendar5confirm()
+    {
+        $events=DB::table('events')
+        ->join('users','events.user_id','users.id')
+        ->select('events.*','users.name')
+        //->where('user_id', auth()->id())
+        ->paginate(3);
+        $report_results=DB::table('report_results')
+        ->join('users','report_results.user_id','users.id')
+        ->select('report_results.*','users.name')
+        ->where('report_results.namefile', 'แบบบันทึกการนิเทศงานสหกิจศึกษา(สก12)','')
+        ->where('user_id', auth()->id())
+        ->paginate(5);
+
+        $report_results1=DB::table('report_results')
+        ->join('users','report_results.user_id','users.id')
+        ->select('report_results.*','users.name')
+        ->where('report_results.namefile', 'แบบประเมินรายงานนักศึกษาสหกิจศึกษา(สก15)','')
+        ->where('user_id', auth()->id())
+        ->paginate(5);
+        return view('teacher.calendar2confirm',compact('events','report_results','report_results1'));
     }
 
 

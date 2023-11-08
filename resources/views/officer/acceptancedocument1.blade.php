@@ -27,13 +27,16 @@
         <table class="table table-hover">
           <thead class="thead-dark">
             <tr>
-              <th>#</th>
-              <th>ชื่อนักศึกษา</th>
-              <th>ชื่อสถานประกอบการ</th>
-              <th>เอกสารตอบรับนักศึกษา</th> 
-              <th>หมายเหตุ</th> 
-              <th>สถานะ</th>
-              <th>แก้ไข</th>
+                <th>ลำดับ</th>
+                <th>ชื่อนักศึกษา</th>
+                <th>ชื่อไฟล์</th>
+                {{-- <th>รูปภาพ</th> --}}
+               <th>สถานะ</th>
+               <th>หมายเหตุ</th>
+                <th style="width:10%">ดูไฟล์เอกสาร</th>
+
+                <th style="width:10%">แก้ไข</th>
+
               <th>ลบ</th>
             </tr>
           </thead>
@@ -42,15 +45,17 @@
               @foreach ($acceptances as $row)
               <td>{{$acceptances->firstItem()+$loop->index}}</td>
               <td>{{$row->name}}</td>
-              <td>{{$row->establishment_id}}</td>
-              <td>{{ $row->filess }}<br><br><a href="/ไฟล์เอกสารตอบรับนักศึกษา(สก.02)/{{ $row->filess }}" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td>
+              <td>{{$row->namefile}}</td>
+              <td>{{$row->Status_acceptance	}}</td>
               <td>{{$row->annotation}}</td>
-              <td>{{$row->Status_acceptance}}</td>
+              <td><a href="/ไฟล์เอกสารตอบรับนักศึกษา(สก.02)/{{ $row->filess }}" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td>
+
+
               <td><a href="/officer/editacceptancedocument1/{{$row->acceptance_id}}" type="button" class="btn btn-outline-secondary fa-solid fa-pen-to-square fe-16"></a></td>
               <td><a href="/officer/deletacceptance/{{$row->acceptance_id}}"type="button" class="btn btn-outline-danger fa-solid fa-trash-can"onclick="return confirm('ยืนยันการลบข้อมูล !!');"></td>
-          
+
               </tr>
-           
+
             @endforeach
           </tbody>
         </table>

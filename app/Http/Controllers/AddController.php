@@ -15,7 +15,7 @@ use App\Models\advisor;
 use App\Models\Event;
 use App\Models\schedule;
 use App\Models\Evaluationdocument;
-
+use App\Models\report_results;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
@@ -414,6 +414,206 @@ $post->update([
 
 
 #teacher
+
+public function addSuperviseteacher()
+{
+
+    return view('teacher.add.addSupervise');
+}
+
+public function addSuperviseteacher1()
+{
+
+    return view('teacher.add.addSupervise1');
+}
+public function addSuperviseteacheruser(Request $request) {
+    //ตรวจสอบข้อมูล
+    // dd($request);
+
+  //   if (Auth::check()) {
+  //     $user = Auth::user();
+
+
+  //      $postCount = registers::where('user_id', $user->id)->count();
+
+  //     //$existingPost = registers::where('user_id', $user->id)->first();
+  //     // ตรวจสอบว่าผู้ใช้เพิ่มข้อมูลได้ไม่เกิน 2 ครั้ง
+
+  //     if (($postCount < 1 && $request->namefile === "แบบพิจารณาคุณสมบัตินักศึกษาสหกิจศึกษา(สก01)") || !Auth::user()->id)
+
+      // ($postCount < 1)
+      // ($postCount < 1 && $request->filled('user_id'))
+      // (!$existingPost)
+      // ($postCount < 1 && $user->Status_registers == "ไม่ผ่าน")
+      {
+          $request->validate([
+              // 'filess' => 'required|mimes:pdf',
+              // 'filess' => 'required|mimes:jpeg,jpg,png',
+              'filess' => 'mimes:jpeg,jpg,png',
+
+              // 'namefile' => 'required|unique:namefile',
+              // 'user_id' => 'required|unique:user_id',
+            ],[
+                  // 'filess.required' => "กรุณาใส่เป็นไฟล์รูปภาพ",
+              //    'namefile.required' => "กรุณาชื่อไฟล์",
+              //    'namefile.unique' => "ไม่สามารถเพิ่มข้อมูลได้",
+              ]
+          );
+            if($request->hasFile("filess")){
+              $file=$request->file("filess");
+               $imageName=time().'_'.$file->getClientOriginalName();
+              $file->move(\public_path("/ไฟล์เอกสารประเมิน(สก.12)"),$imageName);
+
+
+              $post =new report_results([
+                "user_id" => $request->user_id,
+                   "namefile" => $request->namefile,
+                  "filess" =>$imageName,
+                  "annotation" => "-",
+                  "Status_results" => "รอตรวจสอบ",
+              ]);
+          //   $post->annotation ="-";
+          //   $post->Status_registers ="รอตรวจสอบ";
+            $post->user_id = Auth::user()->id;
+            $post->save();
+          }
+          // else{  if(Auth::check()) {
+          //     $user = Auth::user();
+          //     $postCount = registers::where('user_id', $user->id)->count();
+
+          //     if ($postCount < 1 && $user->Status_registers == "ไม่ผ่าน") {
+          //     $request->validate([
+          //         'filess' => 'mimes:jpeg,jpg,png',
+          //         // 'namefile' => 'required|unique:namefile',
+          //         // 'user_id' => 'required|unique:user_id',
+          //     ], [
+          //         // 'filess.required' => "กรุณาใส่เป็นไฟล์รูปภาพ",
+          //         // 'namefile.required' => "กรุณาชื่อไฟล์",
+          //         // 'namefile.unique' => "ไม่สามารถเพิ่มข้อมูลได้",
+          //     ]);
+
+          //     if ($request->hasFile("filess")) {
+          //         $file = $request->file("filess");
+          //         $imageName = time() . '_' . $file->getClientOriginalName();
+          //         $file->move(\public_path("/file"), $imageName);
+
+          //         $post = new registers([
+          //             "user_id" => $request->user_id,
+          //             "namefile" => $request->namefile,
+          //             "filess" => $imageName,
+          //             "annotation" => "-",
+          //             "Status_registers" => "รอตรวจสอบ",
+          //         ]);
+
+          //         $post->user_id = Auth::user()->id;
+          //         $post->save();
+
+
+            return redirect('/teacher/calendar5confirm')->with('success5', 'เพิ่มข้อมูลสำเร็จ.');
+
+          return redirect('/teacher/calendar5confirm')
+              ->with('error', 'ไม่สามารถเพิ่มข้อมูลได้');
+
+
+          return redirect('/teacher/calendar5confirm')->with('error', 'ไม่สามารถเพิ่มข้อมูลได้');
+  }
+}
+
+public function addSuperviseteacheruser1(Request $request) {
+    //ตรวจสอบข้อมูล
+    // dd($request);
+
+  //   if (Auth::check()) {
+  //     $user = Auth::user();
+
+
+  //      $postCount = registers::where('user_id', $user->id)->count();
+
+  //     //$existingPost = registers::where('user_id', $user->id)->first();
+  //     // ตรวจสอบว่าผู้ใช้เพิ่มข้อมูลได้ไม่เกิน 2 ครั้ง
+
+  //     if (($postCount < 1 && $request->namefile === "แบบพิจารณาคุณสมบัตินักศึกษาสหกิจศึกษา(สก01)") || !Auth::user()->id)
+
+      // ($postCount < 1)
+      // ($postCount < 1 && $request->filled('user_id'))
+      // (!$existingPost)
+      // ($postCount < 1 && $user->Status_registers == "ไม่ผ่าน")
+      {
+          $request->validate([
+              // 'filess' => 'required|mimes:pdf',
+              // 'filess' => 'required|mimes:jpeg,jpg,png',
+              'filess' => 'mimes:jpeg,jpg,png',
+
+              // 'namefile' => 'required|unique:namefile',
+              // 'user_id' => 'required|unique:user_id',
+            ],[
+                  // 'filess.required' => "กรุณาใส่เป็นไฟล์รูปภาพ",
+              //    'namefile.required' => "กรุณาชื่อไฟล์",
+              //    'namefile.unique' => "ไม่สามารถเพิ่มข้อมูลได้",
+              ]
+          );
+            if($request->hasFile("filess")){
+              $file=$request->file("filess");
+               $imageName=time().'_'.$file->getClientOriginalName();
+              $file->move(\public_path("/ไฟล์เอกสารประเมิน(สก.15)"),$imageName);
+
+
+              $post =new report_results([
+                "user_id" => $request->user_id,
+                   "namefile" => $request->namefile,
+                  "filess" =>$imageName,
+                  "annotation" => "-",
+                  "Status_results" => "รอตรวจสอบ",
+              ]);
+          //   $post->annotation ="-";
+          //   $post->Status_registers ="รอตรวจสอบ";
+            $post->user_id = Auth::user()->id;
+            $post->save();
+          }
+          // else{  if(Auth::check()) {
+          //     $user = Auth::user();
+          //     $postCount = registers::where('user_id', $user->id)->count();
+
+          //     if ($postCount < 1 && $user->Status_registers == "ไม่ผ่าน") {
+          //     $request->validate([
+          //         'filess' => 'mimes:jpeg,jpg,png',
+          //         // 'namefile' => 'required|unique:namefile',
+          //         // 'user_id' => 'required|unique:user_id',
+          //     ], [
+          //         // 'filess.required' => "กรุณาใส่เป็นไฟล์รูปภาพ",
+          //         // 'namefile.required' => "กรุณาชื่อไฟล์",
+          //         // 'namefile.unique' => "ไม่สามารถเพิ่มข้อมูลได้",
+          //     ]);
+
+          //     if ($request->hasFile("filess")) {
+          //         $file = $request->file("filess");
+          //         $imageName = time() . '_' . $file->getClientOriginalName();
+          //         $file->move(\public_path("/file"), $imageName);
+
+          //         $post = new registers([
+          //             "user_id" => $request->user_id,
+          //             "namefile" => $request->namefile,
+          //             "filess" => $imageName,
+          //             "annotation" => "-",
+          //             "Status_registers" => "รอตรวจสอบ",
+          //         ]);
+
+          //         $post->user_id = Auth::user()->id;
+          //         $post->save();
+
+
+            return redirect('/teacher/calendar5confirm')->with('success5', 'เพิ่มข้อมูลสำเร็จ.');
+
+          return redirect('/teacher/calendar5confirm')
+              ->with('error', 'ไม่สามารถเพิ่มข้อมูลได้');
+
+
+          return redirect('/teacher/calendar5confirm')->with('error', 'ไม่สามารถเพิ่มข้อมูลได้');
+  }
+}
+
+
+
 public function addestimate1()
     {
      // $users=users::all()->where('role',"student");

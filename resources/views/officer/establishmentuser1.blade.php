@@ -6,11 +6,11 @@
 
 
 <div class="wrapper">
-    
+
     <main role="main" class="main-content">
-      <div class="container-fluid">
-        <div class="row justify-content-center">
-          <div class="col-12">
+        <div class="container-fluid">
+          <div class="row justify-content-center">
+            <div class="col-12">
             @if(session("success"))
             <div class="alert alert-success col-4">{{session('success')}}
 @endif
@@ -20,22 +20,17 @@
 
             </div>
 
-         
-         
-            <div class="row">
-              <!-- Striped rows -->
-              <div class="col-md-12 my-4">
-                {{-- <h2 class="h4 mb-1">สถานประกอบการ</h2> --}}
-                {{-- <p class="mb-4">Customized table based on Bootstrap with additional elements and more functions</p> --}}
+
+            <div class="col-md-12 my-4">
                 <div class="card shadow">
                   <div class="card-body">
-                    <div class="toolbar row mb-3">
-                      <div class="col">       
+                    {{-- <div class="toolbar row mb-3"> --}}
+                      <div class="col">
                            <h2 class="h4 mb-1">สถานประกอบการ</h2><br>
                         <form action="{{ route('searchestablishment') }}" method="POST" class="form-inline">
-                          <div class="form-row"> 
+                          <div class="form-row">
                             <div class="form-group col-auto">
-                             
+
                               <label for="search" class="sr-only">Search</label>
                               <input type="text" class="form-control" name="query" id="search" value="" placeholder="Search">
                             </div>
@@ -49,9 +44,9 @@
                                 <option value="3">Hold</option>
                               </select>
                             </div> --}}
-                            
+
                           </div>
-                        
+
                           <div class="">
                             <a href=""  type="button"  class=" btn btn-outline-warning">ค้นหาข้อมูล</a>
                           </div>
@@ -73,14 +68,14 @@
                         </div>
                       </div> --}}
                     </div>
-              
+
                     <!-- table -->
                     <table class="table table-bordered">
                       <thead class=table-dark>
                         <tr role="row">
-                       
-                          
-                     
+
+
+
                           <th >ลำดับ</th>
                           <th colspan="1">ชื่อสถานประกอบการ</th>
                           <th colspan="1">ที่อยู่</th>
@@ -95,24 +90,24 @@
 
                         @foreach ($establishments as $row)
                         <tr>
-                          
+
                           <td class="col-1 text center">{{$establishments->firstItem()+$loop->index}}</td>
                           <td>{{$row->name}}</td>
                           <td>{{$row->address}}</td>
                           <td>{{$row->phone}}</td>
                           <td><img src="/image/{{ $row->images }}" class="img-responsive" style="max-height: 100px; max-width: 100px;" alt="" srcset=""></td>
-                          
+
                           <td class="col-1 "><a href="/officer/view/{{$row->id}}" class="btn mb btn-outline-primary fa-solid fa-eye  "></a></td>
                           <td class="col-1 "><a href="/officer/establishmentuser1/{{$row->id}}" class="btn mb btn-outline-secondary fa-solid fa-pen-to-square  "></a></td>
                           <td class="col-1"><a href="/officer/delete/{{$row->id}}" class="btn mb btn-outline-danger fa-solid fa-trash-can  "onclick="return confirm('ยืนยันการลบข้อมูล !!');"></a></td>
                           {{-- {{url('/officer/editestablishmentuser1/'.$row->id)}} --}}
-                    
+
                         </tr>
-                        
-                    
+
+
                         @endforeach
-                       
-                         
+
+
                           {{-- @endforeach --}}
                       </tbody>
                     </table>
@@ -121,14 +116,14 @@
                 </div>
               </div> <!-- Bordered table -->
             </div> <!-- end section -->
-        
-   
+
+
    {{-- เพิ่มข้อมูล --}}
             <div class="col-md-4 mb-4">
- 
-   
-      
-     
+
+
+
+
               <div class="modal fade" id="varyModal" tabindex="-1" role="dialog" aria-labelledby="varyModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-xl" role="document">
                   <div class="modal-content ">
@@ -137,12 +132,12 @@
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
-                    </div> 
-                  
-                      
+                    </div>
+
+
                     <div class="modal-body">
-                     
-                     
+
+
                       <form method="POST" action="{{ route('addestablishment') }}"enctype="multipart/form-data">
                         @csrf
                         <div class="row">
@@ -169,7 +164,7 @@
                             <label for="recipient-name" class="col-form-label">เบอร์โทร</label>
                             <input type="text" class="form-control" placeholder="Last name" aria-label="Last name">
                           </div>
-                          
+
                         </div>
                         <div class="row">
                           <div class="col-md-4">
@@ -183,7 +178,7 @@
                       @enderror
                         </div>
                     </div>
-                    
+
                     <div class="modal-footer">
                       <button type="reset" class="btn mb-2 btn-secondary" >ยกเลิก</button>
                       <button type="submit" class="btn mb-2 btn-primary">ตกลง</button>
@@ -197,12 +192,12 @@
         </div>
 
 
-       
-
-
-  
 
 
 
- 
+
+
+
+
+
 @endsection

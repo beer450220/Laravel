@@ -1,6 +1,7 @@
 @extends('layouts.appteacher')
 
 @section('content')
+<link rel="icon" type="image/png" sizes="16x16" href="{{ asset('icons/1.png') }}">
 {{-- <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -364,7 +365,7 @@
 
                             @endif
                             </li></a> --}}
-                              <a  href="/studenthome/calendar2confirm"> <li id="confirm"><strong>นิเทศงาน</strong>
+                              <a  href="/teacher/calendar5confirm"> <li id="confirm"><strong>นิเทศงาน</strong>
                                 <br><br> <br>   @if (Auth::user()->status === 'ยืนยันตัวตนแล้ว')
                                 <span class="circle circle-sm bg-success-light">
 
@@ -413,7 +414,7 @@
                                       <h2 class="fs-title">ข้อมูลส่วนตัว:</h2>
                                   </div>
                                   <div class="col-4">
-                                      <h2 class="steps">ขั้นตอน 1 - 6</h2>
+                                      <h2 class="steps">ขั้นตอน 1 - 2</h2>
                                   </div>
                               </div><div class="col-6">
     <div class=" alert alert-primary  " role="alert">
@@ -623,7 +624,7 @@
 
                                           <div class="col text-center">
                           <div class="d-grid gap-2 d-md-flex   ">
-                            <a href="/studenthome/edituser1/{{Auth::user()->id}}"  class="btn btn-outline-warning fe fe-edit fe-16" type="button">แก้ไข</a>
+                            <a href="/teacher/edituser2/{{Auth::user()->id}}"  class="btn btn-outline-warning fe fe-edit fe-16" type="button">แก้ไข</a>
                               {{-- <a href="/studenthome"  class="btn btn-outline-primary fe-16" type="button">ย้อนกลับ</a> --}}
                               &nbsp;&nbsp;
                               {{-- <a href="/studenthome/updateuser2/{{Auth::user()->id}}"name="next" class="btn btn-outline-success me-md-2 success btn2" onclick="return confirm('แน่ใจจะยืนยันตัวตน?')"  type="button">ยืนยันข้อมูล</a>
@@ -652,7 +653,7 @@
                                   <div class="col-7">
                                           <h2 class="steps">ทำการยืนยันข้อมูล </h2></div>
                                           <div class="col-12 text-center">
-                                          <a href="/studenthome/updateuser2/{{Auth::user()->id}}"name="next" class="btn btn-outline-success me-md-2 success btn2" onclick="return confirm('แน่ใจจะยืนยันตัวตน?')"  type="button">ยืนยันข้อมูล</a>
+                                          <a href="/teacher/updateuser2/{{Auth::user()->id}}"name="next" class="btn btn-outline-success me-md-2 success btn2" onclick="return confirm('แน่ใจจะยืนยันตัวตน?')"  type="button">ยืนยันข้อมูล</a>
                                   </div>
                     </div> <!-- /.card-footer -->
                   </div>
@@ -675,7 +676,7 @@
           </div></div></div></div> <div class="d-grid gap-2">
 
             <h2>ขั้นตอนต่อไป</h2>
-            </div>   <a href="/studenthome/establishmentuser"  id="show-alert" class="btn btn-outline-warning " type="button">>คลิกที่นี่<</a>
+            </div>   <a href="/teacher/calendar5confirm"  id="show-alert" class="btn btn-outline-warning " type="button">>คลิกที่นี่<</a>
       </div>
     <br>
     <br>

@@ -14,6 +14,8 @@ use App\Models\acceptance;
 use App\Models\advisor;
 use App\Models\schedule;
 use App\Models\Evaluationdocument;
+use App\Models\report_results;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
@@ -575,6 +577,115 @@ $post->update
      return view('teacher.viewregister',compact('registers'));
 
  }
+ public function edituser2($id) {
+    //ตรวจสอบข้อมูล
+    //$users=DB::table('users')
+      //->where('role',"student")
+      //->join('establishment','establishment.id',"=",'users.id')
+      //->select('users.*','establishment.*')
+      //->get();
+     $users=users::find($id);
+   // $acceptances=DB::table('acceptance')->first();
+    //$establishment=DB::table('establishment')
+    // ->join('supervision','supervision.supervision_id')
+     //->join('supervision', 'establishments.id', '=', 'supervision.id')
+    // ->select('supervision.*','establishment.*')
+   // ->get();
+    //dd($acceptances);
+     // dd($Evaluationdocuments);
+     return view('teacher.Edit.edituser1',compact('users'));
+
+ }
+
+ public function   updateuser4(Request $request,$id) {
+    //ตรวจสอบข้อมูล
+
+   // dd($request);
+
+    $request->validate([
+        // 'images' => ['required','mimes:jpg,jpeg,png'],
+        // 'name' => ['required','min:5'],
+        // 'filess' => 'required|mimes:pdf',
+        // 'establishment' => 'required',
+    ],[
+            //'establishment.required' => "กรุณา",
+
+        ]
+    );
+
+   //dd($request->Status);
+   $post=users::findOrFail($id);
+
+   if($request->hasFile("images")){
+       if (File::exists("รูปโปรไฟล์/".$post->images)) {
+           File::delete("รูปโปรไฟล์/".$post->images);
+       }
+       $file=$request->file("images");
+        $post->images=time()."_".$file->getClientOriginalName();
+        $file->move(\public_path("/รูปโปรไฟล์"),$post->images);
+        $request['images']=$post->images;
+     // dd($post);
+   }
+    $post->update
+    ([
+       "GPA" =>$request->GPA,
+        //"establishment"=>$request->establishment,
+       //  "term"=>$request->term,
+       // "annotation"=>$request->annotation,
+         "images"=>$post->images
+        // "presentation"=>$post->presentation,
+        // "appointmenttime"=>$post->appointmenttime,
+       // "Status_acceptance"=>$request->Status_acceptance,
+       // "projects" =>$imageName,
+       // "presentation" =>$image,
+      //  "poster" =>$images,
+       // "projectsummary" =>$images1,
+    ]);
+
+
+    return redirect('/teacher/home')->with('success', 'แก้ไขข้อมูลสำเร็จ.');
+ }
+
+ public function   updateuser3(Request $request,$id) {
+    //ตรวจสอบข้อมูล
+
+   //dd($request);
+
+    $request->validate([
+        // 'images' => ['required','mimes:jpg,jpeg,png'],
+        // 'name' => ['required','min:5'],
+        // 'filess' => 'required|mimes:pdf',
+        // 'establishment' => 'required',
+    ],[
+            //'establishment.required' => "กรุณา",
+
+        ]
+    );
+
+   //dd($request->Status);
+   $post=users::findOrFail($id);
+
+//    if($request->hasFile("images")){
+//        if (File::exists("รูปโปรไฟล์/".$post->images)) {
+//            File::delete("รูปโปรไฟล์/".$post->images);
+//        }
+//        $file=$request->file("images");
+//         $post->images=time()."_".$file->getClientOriginalName();
+//         $file->move(\public_path("/รูปโปรไฟล์"),$post->images);
+//         $request['images']=$post->images;
+//      // dd($post);
+//    }
+    $post->Status ="ยืนยันตัวตนแล้ว";
+    $post->update
+    ([
+    //    "status" =>$request->"",
+
+    ]);
+
+
+    return redirect('/teacher/home')->with('success', 'ยืนยันตัวตนสำเร็จ.');
+ }
+
  public function  viewinformdetails1($informdetails_id) {
     //ตรวจสอบข้อมูล
     // $informdetails=report::find($informdetails_id)->join('users','informdetails.user_id','users.id')
@@ -611,6 +722,125 @@ $post->update
      return view('teacher.edit.editestimate1', compact('supervisions'),compact('establishment'));
 
  }
+
+ public function   updateSuperviseteacheruser(Request $request,$id) {
+    //ตรวจสอบข้อมูล
+
+//dd($request);
+
+    $request->validate([
+
+        'filess' => 'mimes:jpeg,jpg,png',
+        //'filess' => 'sometimes|required|mimes:jpeg,jpg,png',
+        // 'name' => ['required'],
+        'namefile' => 'required',
+        // 'filess' => 'required|mimes:pdf',
+        // 'establishment' => 'required',
+    ],
+    [
+        'namefile.required' => "กรุณาชื่อไฟล์",
+            // 'establishment.required' => "กรุณา",
+           // 'filess.required' => "กรุณาใส่รูปภาพ",
+            // 'name.required' => "กรุณากรอกชื่อไฟล์",
+        ]
+    );
+    $post=report_results::findOrFail($id);
+    $post->user_id = Auth::user()->id;
+    $post->Status_results ="รอตรวจสอบ";
+    $post->annotation ="-";
+
+    if($request->hasFile("filess")){
+        // if (File::exists(public_path("file/".$post->filess))) {
+        //     File::delete(public_path("file/".$post->filess));
+        // }
+        if (File::exists("ไฟล์เอกสารประเมิน(สก.12)/".$post->filess)) {
+            File::delete("ไฟล์เอกสารประเมิน(สก.12)/".$post->filess);
+        }
+        $file=$request->file("filess");
+        $post->filess=time()."_".$file->getClientOriginalName();
+        $file->move(\public_path("/ไฟล์เอกสารประเมิน(สก.12)"),$post->filess);
+        $request['filess']=$post->filess;
+        // $file = $request->file("filess");
+        // $post->filess = time() . "_" . $file->getClientOriginalName();
+        // $file->move(public_path("/file"), $post->filess);
+    }
+    // dd($request);
+
+    $post->update
+    ([
+        // "name" =>$request->name,
+        // "establishment"=>$request->establishment,
+
+        // "filess"=>$request->filess,
+        "filess"=>$post->filess,
+        "namefile" => $request->namefile,
+
+        // "filess" => $post->filess
+    ]);
+
+    return redirect('/teacher/calendar5confirm')->with('success6', 'แก้ไขข้อมูลสำเร็จ.');
+ }
+
+ public function   updateSuperviseteacheruser1(Request $request,$id) {
+    //ตรวจสอบข้อมูล
+
+//dd($request);
+
+    $request->validate([
+
+        'filess' => 'mimes:jpeg,jpg,png',
+        //'filess' => 'sometimes|required|mimes:jpeg,jpg,png',
+        // 'name' => ['required'],
+        'namefile' => 'required',
+        // 'filess' => 'required|mimes:pdf',
+        // 'establishment' => 'required',
+    ],
+    [
+        'namefile.required' => "กรุณาชื่อไฟล์",
+            // 'establishment.required' => "กรุณา",
+           // 'filess.required' => "กรุณาใส่รูปภาพ",
+            // 'name.required' => "กรุณากรอกชื่อไฟล์",
+        ]
+    );
+    $post=report_results::findOrFail($id);
+    $post->user_id = Auth::user()->id;
+    $post->Status_results ="รอตรวจสอบ";
+    $post->annotation ="-";
+
+    if($request->hasFile("filess")){
+        // if (File::exists(public_path("file/".$post->filess))) {
+        //     File::delete(public_path("file/".$post->filess));
+        // }
+        if (File::exists("ไฟล์เอกสารประเมิน(สก.15)/".$post->filess)) {
+            File::delete("ไฟล์เอกสารประเมิน(สก.15)/".$post->filess);
+        }
+        $file=$request->file("filess");
+        $post->filess=time()."_".$file->getClientOriginalName();
+        $file->move(\public_path("/ไฟล์เอกสารประเมิน(สก.15)"),$post->filess);
+        $request['filess']=$post->filess;
+        // $file = $request->file("filess");
+        // $post->filess = time() . "_" . $file->getClientOriginalName();
+        // $file->move(public_path("/file"), $post->filess);
+    }
+    // dd($request);
+
+    $post->update
+    ([
+        // "name" =>$request->name,
+        // "establishment"=>$request->establishment,
+
+        // "filess"=>$request->filess,
+        "filess"=>$post->filess,
+        "namefile" => $request->namefile,
+
+        // "filess" => $post->filess
+    ]);
+
+    return redirect('/teacher/calendar5confirm')->with('success6', 'แก้ไขข้อมูลสำเร็จ.');
+ }
+
+
+
 
  public function   updateestimate1(Request $request,$supervision_id) {
     //ตรวจสอบข้อมูล
@@ -666,6 +896,29 @@ $post->update
  }
 
 
+ public function edit2Superviseteacheruser($id) {
+    //ตรวจสอบข้อมูล
+
+    // $establishments=establishment::find($id);
+    $establishments=DB::table('report_results')->find($id);
+    //  dd($establishments);
+
+     return view('teacher.Edit.edit2Superviseteacheruser',compact('establishments'));
+     // return redirect("/welcome")->with('success', 'Company has been created successfully.');
+ }
+
+ public function edit2Superviseteacheruser1($id) {
+    //ตรวจสอบข้อมูล
+
+    // $establishments=establishment::find($id);
+    $establishments=DB::table('report_results')->find($id);
+    //  dd($establishments);
+
+     return view('teacher.Edit.edit2Superviseteacheruser1',compact('establishments'));
+     // return redirect("/welcome")->with('success', 'Company has been created successfully.');
+ }
+
+
  public function viwetimeline($timeline_id) {
     //ตรวจสอบข้อมูล
 
@@ -693,6 +946,10 @@ $post->update
      return view('teacher.viwe.viwetimeline',compact('timelines'));
 
  }
+
+
+
+
 
  ##officer
 
