@@ -111,7 +111,7 @@
                     <a class="collapse-item "href="/officer/supervision">ตารางนิเทศงาน </a>
                     {{-- <a class="collapse-item "href="/officer/calendar5">ปฏิทินนิเทศงานสหกิจ</a> --}}
 
-                    <a class="collapse-item "href="/officer/Supervise">รายชื่ออาจารย์นิเทศงาน</a>
+                    {{-- <a class="collapse-item "href="/officer/Supervise">รายชื่ออาจารย์นิเทศงาน</a> --}}
                     <a class="collapse-item "href="/officer/Evaluate">รายงานผลการนิเทศ </a>
                     {{-- <a class="collapse-item "href="/officer/documents2">เอกสารขออนุญาตนิเทศงาน </a> --}}
 

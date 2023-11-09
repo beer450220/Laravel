@@ -482,10 +482,19 @@ class HomeController extends Controller
 // officerHome
     public function officerHome()
     {
-        $users = registers::select(DB::raw("COUNT(*) as count"), DB::raw("YEAR(created_at) as year_name"))
-    //->whereYear('created_at', date('Y'))
+    //     $users = registers::select(DB::raw("COUNT(user_id) as count"), DB::raw("YEAR(created_at) as year_name"))
+    // //->whereYear('created_at', date('Y'))
+    // ->groupBy(DB::raw("YEAR(created_at)"))
+    // ->pluck('count', 'year_name');
+    $users = registers::select(DB::raw("COUNT(DISTINCT user_id) as count"), DB::raw("YEAR(created_at) as year_name"))
     ->groupBy(DB::raw("YEAR(created_at)"))
     ->pluck('count', 'year_name');
+
+    // $users = registers::select(DB::raw("COUNT(DISTINCT user_id) as count"), DB::raw("YEAR(created_at ) AS year_name "))
+    // ->groupBy(DB::raw("YEAR(created_at)"))
+    // ->pluck('count', 'year_name');
+
+
 
 // $labels = $users->keys()->map(function ($month) {
 //     return Carbon::createFromDate(null, $month, null)->format('F Y');

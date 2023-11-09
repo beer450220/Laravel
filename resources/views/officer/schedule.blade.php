@@ -28,10 +28,14 @@
           <thead class="thead-dark">
             <tr>
               <th>ลำดับ</th>
+              <th>วันเวลาการปฏิทินสหกิจ</th>
               <th>หัวเรื่อง</th>
-              <th>ชื่อนักศึกษา</th>
-              <th>ชื่อสถานประกอบการ</th>
-              <th>สถานะ</th>
+               <th>รายละเอียด</th>
+              <th>ปีการศึกษา</th>
+              <th>ภาคเรียน</th>
+
+
+
               <th>แก้ไข</th>
               <th>ลบ</th>
             </tr>
@@ -40,6 +44,7 @@
             @foreach ($schedules as $row)
             <tr>
               <td class="col-1 text center">{{$schedules->firstItem()+$loop->index}}</td>
+              <td>{{$row->title}}</td>
               <td>{{$row->title}}</td>
               <td>{{$row->start}}</td>
               <td>{{$row->end}}</td>

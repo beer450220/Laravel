@@ -29,8 +29,7 @@
             <tr>
               <th>ลำดับ</th>
               <th>ชื่ออาจารย์</th>
-              <th>หลักสูตร</th>
-              <th>คณะ</th>
+
               <th>แก้ไข</th>
               <th>ลบ</th>
             </tr>
@@ -39,10 +38,9 @@
             @foreach ($advisors as $row)
             <tr>
               <td class="col-1 text center">{{$advisors->firstItem()+$loop->index}}</td>
-             
+
               <td>{{$row->name}}</td>
-              <td>{{$row->course}}</td>
-              <td>{{$row->faculty}}</td>
+
               <td><a href="/officer/editSupervise/{{$row->advisor_id}}" type="button" class="btn btn-outline-secondary fa-solid fa-pen-to-square fe-16"></a></td>
               <td><a href="/officer/deletSupervise/{{$row->advisor_id}}"type="button" class="btn btn-outline-danger fa-solid fa-trash-can"onclick="return confirm('ยืนยันการลบข้อมูล !!');"></td>
             </tr>

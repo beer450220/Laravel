@@ -1087,7 +1087,7 @@ $post->update
      //->join('supervision', 'establishments.id', '=', 'supervision.id')
     // ->select('supervision.*','establishment.*')
    // ->get();
-    dd($informdetails);
+   // dd($informdetails);
      // dd($supervisions);
      return view('officer.edit.editinformdetails2',compact('informdetails'));
 

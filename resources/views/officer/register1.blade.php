@@ -35,7 +35,7 @@
                <th>หมายเหตุ</th>
                 <th style="width:10%">ดูไฟล์เอกสาร</th>
 
-                <th style="width:10%">แก้ไข</th>
+                <th style="width:10%">แก้ไขข้อมูล</th>
               {{-- <th style="width:10%">ลบ</th> --}}
             </tr>
           </thead>

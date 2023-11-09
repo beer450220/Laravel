@@ -70,20 +70,20 @@
                     </div>
 
                     <!-- table -->
-                    <table class="table table-bordered">
-                      <thead class=table-dark>
-                        <tr role="row">
+                    <table class="table table-bordered ">
+                      <thead class="table-dark ">
+                        <tr >
 
 
 
                           <th >ลำดับ</th>
-                          <th colspan="1">ชื่อสถานประกอบการ</th>
-                          <th colspan="1">ที่อยู่</th>
-                          <th colspan="1">เบอร์โทร</th>
-                          <th colspan="1">รูปหน่วยงาน</th>
-                          <th colspan="1">ดูข้อมูล</th>
-                          <th colspan="1">แก้ข้อมูล</th>
-                          <th scope="col-2">ลบข้อมูล</th>
+                          <th >ชื่อสถานประกอบการ</th>
+                          {{-- <th colspan="1">ที่อยู่</th>
+                          <th colspan="1">เบอร์โทร</th> --}}
+                          {{-- <th >รูปหน่วยงาน</th> --}}
+                          <th >ดูข้อมูล</th>
+                          <th >แก้ข้อมูล</th>
+                          <th s>ลบข้อมูล</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -91,15 +91,15 @@
                         @foreach ($establishments as $row)
                         <tr>
 
-                          <td class="col-1 text center">{{$establishments->firstItem()+$loop->index}}</td>
+                          <td >{{$establishments->firstItem()+$loop->index}}</td>
                           <td>{{$row->name}}</td>
-                          <td>{{$row->address}}</td>
-                          <td>{{$row->phone}}</td>
-                          <td><img src="/image/{{ $row->images }}" class="img-responsive" style="max-height: 100px; max-width: 100px;" alt="" srcset=""></td>
+                         {{--  <td>{{$row->address}}</td>
+                          <td>{{$row->phone}}</td>--}}
+                          {{-- <td><img src="/image/{{ $row->images }}" class="img-responsive" style="max-height: 100px; max-width: 100px;" alt="" srcset=""></td> --}}
 
-                          <td class="col-1 "><a href="/officer/view/{{$row->id}}" class="btn mb btn-outline-primary fa-solid fa-eye  "></a></td>
-                          <td class="col-1 "><a href="/officer/establishmentuser1/{{$row->id}}" class="btn mb btn-outline-secondary fa-solid fa-pen-to-square  "></a></td>
-                          <td class="col-1"><a href="/officer/delete/{{$row->id}}" class="btn mb btn-outline-danger fa-solid fa-trash-can  "onclick="return confirm('ยืนยันการลบข้อมูล !!');"></a></td>
+                          <td class=""><a href="/officer/view/{{$row->id}}" class="btn mb btn-outline-primary fa-solid fa-eye  "></a></td>
+                          <td ><a href="/officer/establishmentuser1/{{$row->id}}" class="btn mb btn-outline-secondary fa-solid fa-pen-to-square  "></a></td>
+                          <td ><a href="/officer/delete/{{$row->id}}" class="btn mb btn-outline-danger fa-solid fa-trash-can  "onclick="return confirm('ยืนยันการลบข้อมูล !!');"></a></td>
                           {{-- {{url('/officer/editestablishmentuser1/'.$row->id)}} --}}
 
                         </tr>

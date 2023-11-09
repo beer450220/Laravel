@@ -178,7 +178,7 @@
             <!-- Card Header - Dropdown -->
             <div
                 class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
+                <h6 class="m-0 font-weight-bold text-primary">ปีลงทะเบียน</h6>
                 <div class="dropdown no-arrow">
                     <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -197,7 +197,7 @@
             <!-- Card Body -->
             <div class="card-body">
                 <div class="chart-pie pt-4 pb-2">
-                    <canvas id="myPieChart"></canvas>
+                    <canvas id="myPieChart2"></canvas>
                 </div>
                 <div class="mt-4 text-center small">
                     <span class="mr-2">
@@ -217,13 +217,13 @@
 <script src="../admin/js/demo/chart-bar-demo.js"></script>
 
                             <!-- Bar Chart -->
-                            <div class="card shadow mb-4">
+                            {{-- <div class="card shadow mb-4">
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary">Bar Chart</h6>
                                 </div>
                                 <div class="card-body">
                                     <div class="chart-bar">
-                                        <canvas id="myBarChart"></canvas>
+                                        <canvas id="myBarChart1"></canvas>
                                     </div>
                                     <hr>
                                     Styling for the bar chart can be found in the
@@ -234,7 +234,7 @@
                         </div>
 
 
-</div>
+</div> --}}
 {{-- <div class="card shadow mb-4">
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary">Bar Chart</h6>
@@ -243,32 +243,47 @@
 <div>
 
     <canvas id="myChart"></canvas>
-  </div>
+  </div>--}}
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   <script>
-    const ctx = document.getElementById('myChart');
+      var labels =  {{ Js::from($labels) }};
+      var users =  {{ Js::from($data) }};
+   var ctx = document.getElementById("myPieChart2");
 
-    new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        datasets: [{
-          label: '# of Votes',
-          data: [12, 19, 3, 5, 2, 3],
-          borderWidth: 1
-        }]
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
-          }
-        }
-      }
-    });
-  </script> --}}
+var myPieChart = new Chart(ctx, {
+  type: 'doughnut',
+  data: {
+    labels:  labels,
+    datasets: [{
+
+      data: users,
+      backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc'],
+      hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf'],
+      hoverBorderColor: "rgba(234, 236, 244, 1)",
+    }],
+  },
+  options: {
+    maintainAspectRatio: false,
+    tooltips: {
+      backgroundColor: "rgb(255,255,255)",
+      bodyFontColor: "#858796",
+      borderColor: '#dddfeb',
+      borderWidth: 1,
+      xPadding: 15,
+      yPadding: 15,
+      displayColors: false,
+      caretPadding: 10,
+    },
+    legend: {
+      display: false
+    },
+    cutoutPercentage: 80,
+  },
+});
+
+  </script>
 
 
   <div>
@@ -302,6 +317,7 @@
           borderColor: 'rgb(244, 125, 136)',
         //   'rgb(255, 159, 64)',
         //'rgb(255, 99, 136)',
+
           data:
           users,
           //[10, 20,30, 40, 50, 60],
