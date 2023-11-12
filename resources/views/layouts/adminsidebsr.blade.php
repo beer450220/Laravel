@@ -1,8 +1,8 @@
-{{-- 
+{{--
 
     <!-- Sidebar -->
     <ul class=" navbar-nav bg-secondary sidebar sidebar-dark " >
-    
+
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../Admin/">
             <div class="sidebar-brand-icon rotate-n-15">
@@ -10,42 +10,42 @@
             </div>
             <div class="sidebar-brand-text mx-3">Admin </div>
         </a>
-    
+
         <!-- Divider -->
         <hr class="sidebar-divider my-0">
-    
-    
+
+
      <li class="nav-item ">
             <a class="nav-link {{ set_active(['admin.adminhome'])}} " href="{{ route('admin.adminhome') }}">
-              
+
                <i class="fa fa-home" aria-hidden="true"></i>
-              
+
                 <span>หน้าแรก</span></a>
         </li>
-    
-      
+
+
      <li class="nav-item">
-            <a class="nav-link {{ set_active(['admin.user'])}} "href="{{ route('admin.user') }}"> 
-    
+            <a class="nav-link {{ set_active(['admin.user'])}} "href="{{ route('admin.user') }}">
+
            <i class="fa fa-user" aria-hidden="true"></i>
-           
-           
+
+
                 <span>จัดการผู้ใช้งาน</span></a>
-        </li> 
-    
-    
+        </li>
+
+
     </ul> --}}
 
-{{-- 
+{{--
     <div class="be-left-sidebar">
         <div class="left-sidebar-wrapper"><a class="left-sidebar-toggle" href="#">Blank Page</a>
           <div class="left-sidebar-spacer">
             <div class="left-sidebar-scroll">
               <div class="left-sidebar-content">
                 <ul class="sidebar-elements">
-    
+
                   <li class="divider">Menu</li>
-    
+
                   <li class=""><a href="{{ route('admin.adminhome') }}"><i class="icon mdi mdi-home"></i><span>หน้าแรก</span></a>
                   </li>
                   <li class=""><a class="text-primary" href="{{ route('admin.user') }}"><i class="icon mdi mdi-face"></i>จัดการผู้ใช้งาน</a>
@@ -59,8 +59,8 @@
                       </li>
                       <li><a href="ui-buttons.html">Buttons</a>
                       </li>
-             
-                    
+
+
                       </li>
                       <li><a href="ui-dragdrop.html"><span class="badge badge-primary float-right">New</span>Drag &amp; Drop</a>
                       </li>
@@ -75,7 +75,7 @@
                       </li>
                       <li><a href="ui-buttons.html">เพิ่มข้อมูล</a>
                       </li>
-                      
+
                       <li><a href="ui-panels.html">ลบ</a>
                       </li>
                       <li><a href="ui-general.html">แก้ไข</a>
@@ -100,12 +100,12 @@
                       </li>
                     </ul>
                   </li> --}}
-                  
+
                 {{-- </ul>
               </div>
             </div>
           </div>
-        
+
         </div>
       </div> --}}
 
@@ -179,7 +179,7 @@
 
         <!-- Sidebar -->
         <ul class="navbar-nav bg-warning opacity-25 sidebar sidebar-dark accordion" id="accordionSidebar">
-        
+
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../Admin/">
                 <div class="sidebar-brand-icon rotate-n-15">
@@ -187,38 +187,38 @@
                 </div>
                 <div class="sidebar-brand-text mx-3">Admin </div>
             </a>
-        
+
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
-        
-        
+
+
          <li class="nav-item active">
                 <a class="nav-link "
                  href="{{ route('admin.adminhome') }}">
-                  
+
                    <i class="fa fa-home" aria-hidden="true"></i>
-                  
+
                     <span>หน้าแรก</span></a>
             </li>
-        
-         
+
+
          <li class="nav-item">
-                <a class="nav-link "href="{{ route('admin.user') }}"> 
-        
+                <a class="nav-link "href="{{ route('admin.user') }}">
+
                <i class="fa fa-user" aria-hidden="true"></i>
-               
-               
+
+
                     <span>จัดการผู้ใช้งาน</span></a>
-            </li> 
-        
-        
-       
-       
-           
-        
-        
-        
+            </li>
+
+
+
+
+
+
+
+
             <hr class="sidebar-divider">
-        
-        
+
+
         </ul>

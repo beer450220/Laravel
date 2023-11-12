@@ -955,11 +955,26 @@ dd($request->$name);
 // ->groupBy(DB::raw("Month(created_at)"))
 // ->pluck('count', 'month_name');
 
-$users = registers::select(DB::raw("COUNT(*) as count"), DB::raw("YEAR(created_at) as year_name"))
-    //->whereYear('created_at', date('Y'))
+// $users = registers::select(DB::raw("COUNT(*) as count"), DB::raw("YEAR(created_at) as year_name"))
+//     //->whereYear('created_at', date('Y'))
+//     ->groupBy(DB::raw("YEAR(created_at)"))
+//     ->pluck('count', 'year_name');
+
+// $users1 = Users::select('id')
+//     ->get();
+    // $users1=DB::table('users')
+
+    // ->select('users.*')  ->paginate(5);
+    $users1 = Users::select(DB::raw("COUNT(DISTINCT id) as count"))
+    ->get();
+
+    // $users = registers::select(DB::raw("COUNT(DISTINCT user_id) as count"), DB::raw("YEAR(created_at) as year_name"))
+    // ->groupBy(DB::raw("YEAR(created_at)"))
+    // ->pluck('count', 'year_name');
+
+    $users = Users::select(DB::raw("COUNT(DISTINCT id) as count"), DB::raw("YEAR(created_at) as year_name"))
     ->groupBy(DB::raw("YEAR(created_at)"))
     ->pluck('count', 'year_name');
-
 // $labels = $users->keys()->map(function ($month) {
 //     return Carbon::createFromDate(null, $month, null)->format('F Y');
 // });
@@ -973,17 +988,21 @@ $users = registers::select(DB::raw("COUNT(*) as count"), DB::raw("YEAR(created_a
        $labels = $users->keys();
         //$data = $users->values();
         $data = $users->values();
-        return view('admin.adminhome',compact('users'), compact('labels','data'),["msg"=>"I am Admin role"]);
+        return view('admin.adminhome',compact('users','users1'), compact('labels','data'),["msg"=>"I am Admin role"]);
 
     }
 
     public function user()
     {
         $users=DB::table('users')
-         -> where('role','student')
+
+        //  -> where('role','student')
+// ->orWhere('role', '=', '0')
+
         // ->orWhere('role', '=', 'test')
         //-> where('role','1',)
-        ->orWhere('role', '=', '0')
+
+
         ->paginate(5);
         //->get();
         #แสดงข้อมูลเฉพาะ

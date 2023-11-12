@@ -8,7 +8,8 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 //use Illuminate\Support\Facades\Hash;
     use Hash;
-    //use App\Models\Users;
+    use App\Models\User;
+    use App\Models\Users;
 class LoginController extends Controller
 {
     /*
@@ -50,7 +51,7 @@ class LoginController extends Controller
     {
         $input = $request->all();
         // dd($request->password);
-        // dd($request);
+        //dd($request);
         $this->validate($request,[
             // 'username'=>'required|email',
             'username'=>'required',

@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    
-    
-   
+
+
+
 </head>
 <body>
      {{-- <header class="p-3 bg-dark text-white">
@@ -15,7 +15,7 @@
             <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
               <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
             </a>
-    
+
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
               <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
               <li><a href="#" class="nav-link px-2 text-white">Features</a></li>
@@ -23,13 +23,13 @@
               <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
               <li><a href="#" class="nav-link px-2 text-white">About</a></li>
             </ul>
-    
+
             <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
               <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
             </form>
-    
-            <div class="text-end">  
-                
+
+            <div class="text-end">
+
               @if (session('status'))
                 <div class="alert alert-success" role="alert">
                     {{ session('status') }}
@@ -37,13 +37,13 @@
             @endif
             {{ Auth::user()->name }}
             <br>
-            {{$msg}} 
-             
+            {{$msg}}
+
              <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
               <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
             </a>
             <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-               
+
                 <li><a class="dropdown-item" href="#"></a></li>
               <li><a class="dropdown-item" href="#">New project...</a></li>
               <li><a class="dropdown-item" href="#">Settings</a></li>
@@ -58,14 +58,14 @@
         </form></li>
             </ul>
           </div>
-          
+
           <h5 class="">{{ Auth::user()->name }}</h5>
             </div>
           </div>
         </div>
 
-        
-            
+
+
       </header>  --}}
 
 
@@ -75,24 +75,24 @@
             <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
               <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
             </a>
-    
+
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
               <li><a href="#" class="nav-link px-2 link-secondary">Overview</a></li>
               <li><a href="#" class="nav-link px-2 link-dark">Inventory</a></li>
               <li><a href="#" class="nav-link px-2 link-dark">Customers</a></li>
               <li><a href="#" class="nav-link px-2 link-dark">Products</a></li>
             </ul>
-    
+
             <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
               <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
             </form>
-    
+
             <div class="dropdown text-end">
               <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                 <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
               </a>
               <ul class="dropdown-menu text-small" style="">
-        
+
                 <li><a class="dropdown-item" href="">{{ Auth::user()->name }}</a></li>
                 <li><a class="dropdown-item" href="#">New project...</a></li>
                 <li><a class="dropdown-item" href="#">Settings</a></li>
@@ -112,22 +112,22 @@
       </header> --}}
 
 
-   
+
 
 
       <div id="content-wrapper" class="d-flex flex-column">
 
         <!-- Main Content -->
         <div id="content">
-    
+
             <!-- Topbar -->
             <nav class="navbar navbar-expand navbar-light bg-dark bg-gradient topbar mb-4 static-top shadow">
-    
+
                 <!-- Sidebar Toggle (Topbar) -->
                 <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                     <i class="fa fa-bars"></i>
                 </button>
-    
+
                 <!-- Topbar Search -->
                 {{-- <form
                     class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
@@ -141,10 +141,10 @@
                         </div>
                     </div>
                 </form> --}}
-    
+
                 <!-- Topbar Navbar -->
                 <ul class="navbar-nav ml-auto">
-    
+
                     <!-- Nav Item - Search Dropdown (Visible Only XS) -->
                     <li class="nav-item dropdown no-arrow d-sm-none">
                         <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
@@ -168,24 +168,24 @@
                             </form>
                         </div>
                     </li>
-       
+
                     <!-- Nav Item - Alerts -->
-                    <li class="nav-item dropdown no-arrow mx-1">
+                    {{-- <li class="nav-item dropdown no-arrow mx-1">
                         <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-bell fa-fw"></i>
                             <!-- Counter - Alerts -->
                             <span class="badge badge-danger badge-counter">3+</span>
-                         
-                        </a>
-                      
-           
-            
-          
-            
-      
-    
-    
+
+                        </a> --}}
+
+
+
+
+
+
+
+
                         <!-- Dropdown - Alerts -->
                         <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
                             aria-labelledby="alertsDropdown">
@@ -228,15 +228,15 @@
                             <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
                         </div>
                     </li>
-    
+
                     <!-- Nav Item - Messages -->
-                    <li class="nav-item dropdown no-arrow mx-1">
+                    {{-- <li class="nav-item dropdown no-arrow mx-1">
                         <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-envelope fa-fw"></i>
                             <!-- Counter - Messages -->
                             <span class="badge badge-danger badge-counter">7</span>
-                        </a>
+                        </a> --}}
                         <!-- Dropdown - Messages -->
                         <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
                             aria-labelledby="messagesDropdown">
@@ -294,55 +294,55 @@
                             <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
                         </div>
                     </li>
-    
+
                     <div class="topbar-divider d-none d-sm-block"></div>
-    
+
                     <!-- Nav Item - User Information -->
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    
-   
-    
-                            <h4 class="mt-4">Welcome,{{ Auth::user()->name }}</h4>
+
+
+
+                            <h4 class="mt-4">{{ Auth::user()->user_fname }}{{ Auth::user()->user_surname }}</h4>
                             @if (session('status'))
                             <div class="alert alert-success" role="alert">
                                 {{ session('status') }}
                             </div>
                         @endif
-                     
+
                         <br>
-                      
-                            <img class="img-profile rounded-circle"
-                                src="img/undraw_profile.svg">
+
+                            {{-- <img class="img-profile rounded-circle"
+                                src="img/undraw_profile.svg"> --}}
                         </a>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                             aria-labelledby="userDropdown">
-                            <a class="dropdown-item" href="#">
+                            {{-- <a class="dropdown-item" href="#">
                                 <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                Profile
-                            </a>
-                            <a class="dropdown-item" href="#">
+                                ข้อมูลส่วนตัว
+                            </a> --}}
+                            {{-- <a class="dropdown-item" href="#">
                                 <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Settings
-                            </a>
-                            <a class="dropdown-item" href="#">
+                            </a> --}}
+                            {{-- <a class="dropdown-item" href="#">
                                 <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Activity Log
-                            </a>
+                            </a> --}}
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                Logout
-    
-                     
+                               ออกจากระบบ
+
+
                             </a>
                         </div>
                     </li>
-    
+
                 </ul>
-    
+
             </nav>
 
 
@@ -352,28 +352,29 @@ aria-hidden="true">
 <div class="modal-dialog" role="document">
     <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+            <h5 class="modal-title" id="exampleModalLabel">คุณแน่ใจที่จะออกจากระบบ?</h5>
             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">×</span>
             </button>
         </div>
         <!-- <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div> -->
         <div class="modal-footer text-center">
-            <button class="btn btn-secondary " type="button" data-dismiss="modal">Cancel</button>
-          
-              
-           
+            <button class="btn btn-secondary " type="button" data-dismiss="modal">ยกเลิก</button>
+
+
+
             <a class="btn btn-primary" href="{{ route('logout') }}"
                     onclick="event.preventDefault();
                                   document.getElementById('logout-form').submit();">
-                     {{ __('Logout') }}
+                     {{ __('ออกจากระบบ') }}
+
                  </a><form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                   @csrf
               </form>
         </div>
     </div>
 
-   
+
 </div>
 </div>
 </body>

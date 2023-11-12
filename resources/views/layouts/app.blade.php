@@ -52,14 +52,18 @@
                                 </li>
                             @endif
                         @else
-                        
+
                         @if (Route::has('register1'))
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('register1') }}">{{ __('register1') }}</a>
                         </li>
                     @endif
-                
-                            <li class="nav-item dropdown">
+
+
+                </div>
+            </div>
+        </nav>
+<li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
@@ -78,10 +82,6 @@
                             </li>
                         @endguest
                     </ul>
-                </div>
-            </div>
-        </nav>
-
         <main class="py-4">
             @yield('content')
         </main>

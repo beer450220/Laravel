@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
  use Illuminate\Foundation\Auth\User as Authenticatable;
+ use Illuminate\Auth\Authenticatable as AuthenticableTrait;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Casts\Attribute;
@@ -19,8 +20,9 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     public $table="users";
-    public$primarykey="id";
+    public $primarykey="user_id";
     protected $fillable = [
+        'user_id',
         'name',
         'username',
         'email',
