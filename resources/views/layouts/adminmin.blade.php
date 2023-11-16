@@ -9,23 +9,23 @@
     {{-- <title>@yield('titlebar')</title> --}}
 </head>
 <body>
-    
+
     {{-- <div class="be-wrapper"> --}}
-@include('layouts.admincss') 
+@include('layouts.admincss')
 @include('layouts.adminsidebsr')
  @include('layouts.admintop')
 
 
-  
-     
+
+
 
     @yield('content')
 {{-- <div class="be-content">
     <div class="main-content container-fluid">
-    
+
     </div>
   </div> --}}
-        
+
   {{-- <script src="/assets/lib/jquery/jquery.min.js" type="text/javascript"></script>
   <script src="/assets/lib/perfect-scrollbar/js/perfect-scrollbar.min.js" type="text/javascript"></script>
   <script src="/assets/lib/bootstrap/dist/js/bootstrap.bundle.min.js" type="text/javascript"></script>
@@ -35,9 +35,9 @@
         //-initialize the javascript
         App.init();
     });
-    
+
   </script> --}}
 
-  
+
 </body>
 </html>

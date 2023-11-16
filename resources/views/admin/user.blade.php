@@ -145,12 +145,12 @@
 
 
 
-                                            <td>{{$row->user_fname}}</td>
-                                            <td>{{$row->username}}</td>
+                                            <td>{{$row->code_id}}</td>
+                                            <td>{{$row->fname}}</td>
                                             <td>{{$row->email}}</td>
 
                                             {{-- <td></td> --}}
-                                            <td><img src="/รูปโปรไฟล์/{{ $row->images }}" class="img-responsive" style="max-height: 100px; max-width: 100px;" alt="" srcset=""></td>
+                                            <td><img src="/รูปโปรไฟล์/{{ $row->images }}" class="rounded" style="max-height: 100px; max-width: 100px;" alt="" srcset=""></td>
                                             <td>{{$row->role}}</td>
 
                                             <td>{{Carbon\Carbon::parse($row->created_at)->diffForHumans()}}</td>

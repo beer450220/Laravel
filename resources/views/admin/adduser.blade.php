@@ -18,14 +18,24 @@
 
                 <div class="card-body">
                     {{-- <form method="POST" action="{{ route('register') }}"> --}}
-                        <form method="POST" action="{{ route('adduser') }}" >
+                        <form method="POST" action="{{ route('adduser') }}" enctype="multipart/form-data">
                         @csrf
 <h4 class="text-primary">ข้อมูลส่วนตัว</h4>
+{{-- @foreach ($errors->all() as $error)
+<li>{{ $error }}</li>
+@endforeach
+</ul>
+
+@if(session("error"))
+<div class="alert alert-danger col-6">{{session('error')}}
+@endif --}}
+
+
                         <div class="row mb-3">
                             <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('รหัสประจำตัว') }}</label>
 
                             <div class="col-md-6">
-                                <input id="code_id" type="text" class="form-control @error('code_id') is-invalid @enderror" name="code_id" value="{{ old('code_id') }}" required autocomplete="Identification_code" autofocus>
+                                <input id="code_id" type="text" class="form-control @error('code_id') is-invalid @enderror" name="code_id" value="{{ old('code_id') }}" required autocomplete="code_id" autofocus>
 
                                 @error('code_id')
                                     <span class="invalid-feedback" role="alert">
@@ -35,12 +45,12 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="user_fname" class="col-md-4 col-form-label text-md-end">{{ __('ชื่อ') }}</label>
+                            <label for="fname" class="col-md-4 col-form-label text-md-end">{{ __('ชื่อ') }}</label>
 
                             <div class="col-md-6">
-                                <input id="user_fname" type="text" class="form-control @error('user_fname') is-invalid @enderror" name="user_fname" value="{{ old('user_fname') }}" required autocomplete="user_fname">
+                                <input id="fname" type="text" class="form-control @error('fname') is-invalid @enderror" name="fname" value="{{ old('fname') }}" required autocomplete="fname">
 
-                                @error('user_fname')
+                                @error('fname')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -48,12 +58,12 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="user_surname" class="col-md-4 col-form-label text-md-end">{{ __('นามสกุล') }}</label>
+                            <label for="surname" class="col-md-4 col-form-label text-md-end">{{ __('นามสกุล') }}</label>
 
                             <div class="col-md-6">
-                                <input id="user_surname" type="user_surname" class="form-control @error('user_surname') is-invalid @enderror" name="user_surname" value="{{ old('user_surname') }}" required autocomplete="user_surname">
+                                <input id="surname" type="surname" class="form-control @error('surname') is-invalid @enderror" name="surname" value="{{ old('surname') }}" required autocomplete="surname">
 
-                                @error('user_surname')
+                                @error('surname')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -101,14 +111,14 @@
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('หลักสูตร') }}</label>
 
                             <div class="col-md-6">
-                                <input id="telephonenumber" type="text" class="form-control" name="telephonenumber" required autocomplete="telephonenumber">
+                                <input id="telephonenumber" type="text" class="form-control" name="major_id" required autocomplete="major_id">
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('เกรดเฉลี่ย') }}</label>
 
                             <div class="col-md-6">
-                                <input id="telephonenumber" type="text" class="form-control" name="telephonenumber" required autocomplete="telephonenumber">
+                                <input id="telephonenumber" type="text" class="form-control" name="GPA" required autocomplete="GPA">
                             </div>
                         </div>
 
@@ -117,28 +127,28 @@
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('ชื่อผู้ปกครอง') }}</label>
 
                             <div class="col-md-6">
-                                <input id="telephonenumber" type="text" class="form-control" name="telephonenumber" required autocomplete="telephonenumber">
+                                <input id="telephonenumber" type="text" class="form-control" name="Parent_name" required autocomplete="Parent_name">
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('เบอร์โทรผู้ปกครอง') }}</label>
 
                             <div class="col-md-6">
-                                <input id="telephonenumber" type="text" class="form-control" name="telephonenumber" required autocomplete="telephonenumber">
+                                <input id="telephonenumber" type="text" class="form-control" name="Parent_phonenumber" required autocomplete="Parent_phonenumber">
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('ความเกี่ยวข้อง') }}</label>
 
                             <div class="col-md-6">
-                                <input id="telephonenumber" type="text" class="form-control" name="telephonenumber" required autocomplete="telephonenumber">
+                                <input id="telephonenumber" type="text" class="form-control" name="Relevance" required autocomplete="Relevance">
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('ที่อยู่ผู้ปกครอง') }}</label>
 
                             <div class="col-md-6">
-                                <input id="telephonenumber" type="text" class="form-control" name="telephonenumber" required autocomplete="telephonenumber">
+                                <input id="telephonenumber" type="text" class="form-control" name="Parent_address" required autocomplete="Parent_address">
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -155,13 +165,13 @@
 
                             <div class="col-md-6">
 
-                            <select class="form-control" aria-label="Default select example"@error('name') is-invalid @enderror name="name"value="{{ old('name') }}" required autocomplete="name">
+                            <select class="form-control" aria-label="Default select example"@error('role') is-invalid @enderror name="role"value="{{ old('role') }}" required autocomplete="role">
                             <option selected>เลือกสถานะผู้ใช้งาน</option>
                                 <option value="student">นักศึกษา</option>
                             <option value="teacher">อาจาร์ยนิเทศ</option>
                             <option value="officer">เจ้าหน้าที่</option>
                             </select>
-                                @error('name')
+                                @error('role')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -173,7 +183,7 @@
                                 <a href="/user" type="submit" class="btn btn-primary">
                                     {{ __('ย้อมกลับ') }}
                                 </a>
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary"onclick="return confirm('ยืนยันการเพิ่มข้อมูล !!');">
                                     {{ __('ตกลง') }}
                                 </button>
 

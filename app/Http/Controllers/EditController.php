@@ -15,7 +15,7 @@ use App\Models\advisor;
 use App\Models\schedule;
 use App\Models\Evaluationdocument;
 use App\Models\report_results;
-
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
@@ -1661,18 +1661,44 @@ $post->update
    }
     $post->update
     ([
-       "username" =>$request->username,
-        //"establishment"=>$request->establishment,
-       //  "term"=>$request->term,
-       // "annotation"=>$request->annotation,
-         "images"=>$post->images
-        // "presentation"=>$post->presentation,
-        // "appointmenttime"=>$post->appointmenttime,
-       // "Status_acceptance"=>$request->Status_acceptance,
-       // "projects" =>$imageName,
-       // "presentation" =>$image,
-      //  "poster" =>$images,
-       // "projectsummary" =>$images1,
+       //"username" =>$request->username,
+
+
+       "code_id" =>$request->code_id,
+       "major_id" =>$request->major_id,
+    //    "establishment_id" =>$request->establishment_id,
+       "fname" =>$request->fname,
+       "surname" =>$request->surname,
+       "telephonenumber" =>$request->telephonenumber,
+       "address" =>$request->address,
+       "GPA" =>$request->GPA,
+       "Parent_name" =>$request->Parent_name,
+       "Parent_address" =>$request->Parent_address,
+       "Parent_phonenumber" =>$request->Parent_phonenumber,
+       "Relevance" =>$request->Relevance,
+       "email" =>$request->email,
+
+       "password" => Hash::make($request->password),
+         "images"=>$post->images,
+       "role" =>$request->role,
+       "status" =>$request->status,
+
+        // $user->establishment_id = "ยังไม่มีสถานประกอบการ";
+
+
+
+
+
+
+
+
+
+
+        // $user->username = $request->username;
+
+        // $user->password = Hash::make($request->password);
+
+        //  $user-> status = "ยังไม่ได้ยืนยันตัวตน";
     ]);
 
 

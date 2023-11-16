@@ -304,7 +304,7 @@
 
 
 
-                            <h4 class="mt-4">{{ Auth::user()->user_fname }}{{ Auth::user()->user_surname }}</h4>
+                            <h4 class="mt-4">{{ Auth::user()->fname }}{{ Auth::user()->surname }}</h4>
                             @if (session('status'))
                             <div class="alert alert-success" role="alert">
                                 {{ session('status') }}

@@ -15,12 +15,35 @@ class users extends Authenticatable
     public $table="users";
     public $primarykey="user_id";
     protected $fillable=[
-        'username',
+        // 'username',
+        'code_id',
         'user_id',
         'GPA',
         'images',
         'Status',
-        'establishment'
+        'establishment_id',
+        'major_id',
+        'fname',
+        'surname',
+        'telephonenumber',
+        'address',
+        'Parent_name',
+        'Parent_address',
+        'Parent_phonenumber',
+        'Relevance',
+        'email',
+        'password',
+        'role',
+
+
+
+
+
+
+
+
+
+
     ];
     public function Users(){
         return $this->hasOne(Users::class,'user_id','name');
