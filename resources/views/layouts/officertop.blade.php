@@ -274,8 +274,8 @@
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                             aria-labelledby="userDropdown">
                             <a class="dropdown-item" href="#">
-
-                               {{ Auth::user()->name }}
+                                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                               {{ Auth::user()->fname }}
                             </a>
                             <a class="dropdown-item" href="#">
                                 <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>

@@ -49,7 +49,7 @@
                 )
             }}">
               <td class="col-1 text center">{{$registers->firstItem()+$loop->index}}</td>
-              <td>{{ $row->name }}</td>
+              <td>{{ $row->fname }}</td>
               <td>{{ $row->namefile }}</td>
               {{-- <td><img src="/file/{{ $row->filess }}" class="img-responsive" style="max-height: 100px; max-width: 100px;" alt="" srcset=""></td> --}}
               <td>

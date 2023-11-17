@@ -243,6 +243,7 @@ Route::middleware(['auth','user-role:officer'])->group(function()
     Route::get("/officer/home",[HomeController::class,'officerHome'])->name('officer.officerhome');
     Route::get("/officer/user1",[HomeController::class,'user1'])->name('officer.user1');
 
+    //สถานประกอบการ
     Route::get("/officer/establishmentuser1",[HomeController::class,'establishmentuser1'])->name('officer.establishmentuser1');
     Route::post('/officer/establishmentuser1', [AddController::class,'addestablishment'])->name('addestablishment');
     Route::get('/officer/establishmentuser1/{id}', [EditController::class,'editestablishment'])->name('editestablishment');
@@ -252,6 +253,19 @@ Route::middleware(['auth','user-role:officer'])->group(function()
     Route::delete('/deleteimage/{id}',[EditController::class,'deleteimage'])->name('deleteimage');
     Route::get('/officer/view/{id}', [HomeController::class,'viewestablishment'])->name('viewestablishment');
     Route::get('/officer/search', [HomeController::class,'searchestablishment'])->name('searchestablishment');
+
+    //หลักสูตรสาขา
+    Route::get("/officer/major",[HomeController::class,'major'])->name('major');
+    Route::get("/officer/addmajor",[addController::class,'addmajor'])->name('addmajor');
+    Route::post("/officer/addmajor1",[addController::class,'addmajor1'])->name('addmajor1');
+    Route::get("/officer/editmajor/{major_id}",[EditController::class,'editmajor'])->name('editmajor');
+    Route::post("/officer/updatmajor/{major_id}",[EditController::class,'updatmajor'])->name('updatmajor');
+
+    Route::get('/officer/deletmajor/{major_id}', [EditController::class,'delmajor'])->name('delmajor');
+
+
+
+
 
 
     Route::get("/officer/register1",[HomeController::class,'register1'])->name('officer.register1');

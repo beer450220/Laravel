@@ -15,6 +15,7 @@ use App\Models\advisor;
 use App\Models\schedule;
 use App\Models\Evaluationdocument;
 use App\Models\report_results;
+use App\Models\major;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -953,6 +954,69 @@ $post->update
 
  ##officer
 
+
+//หลักสูตรสาขา
+ public function editmajor($major_id) {
+
+     $major=major::find($major_id);
+
+    //dd($acceptances);
+     // dd($supervisions);
+     return view('officer.edit.editmajor',compact('major'));
+
+ }
+ public function   updatmajor(Request $request,$major_id) {
+    //ตรวจสอบข้อมูล
+
+    ///dd($request);
+
+    $request->validate([
+        // 'images' => ['required','mimes:jpg,jpeg,png'],
+        // 'name' => ['required','min:5'],
+        // 'filess' => 'required|mimes:pdf',
+        // 'establishment' => 'required',
+    ],[
+            //'establishment.required' => "กรุณา",
+
+        ]
+    );
+    // $post=Event::findOrFail($id);
+    // $post->user_id = Auth::user()->id;
+    // $post->Status ="รอตรวจสอบ";
+    // $post->Status ="รอตรวจสอบ";
+   //dd($request->Status);
+   $post=major::findOrFail($major_id);
+  // $post->user_id = Auth::user()->id;
+  // $post->Status ="รอตรวจสอบ";
+
+     // dd($post);
+
+    $post->update
+    ([
+       "name_major" =>$request->name_major,
+
+
+        "faculty"=>$request->faculty,
+
+    ]);
+
+
+    return redirect('/officer/major')->with('success', 'ยืนยันข้อมูลสำเร็จ.');
+ }
+
+
+ public function delmajor($major_id) {
+    //ตรวจสอบข้อมูล
+    //dd();
+    // $establishments=establishment::find($id);
+    // DB::table('establishment')->where('id',$id)->delete();
+
+    $posts=major::findOrFail($major_id);
+    //  dd($posts);
+     $posts->delete();
+    //  return view('officer.editestablishmentuser1',compact('establishments'));
+     return redirect()->back()->with('success1', 'ลบข้อมูลสำเร็จ.');
+ }
 
  public function editexperiencereport2($report_id) {
     //ตรวจสอบข้อมูล

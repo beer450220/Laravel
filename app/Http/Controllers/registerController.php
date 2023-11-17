@@ -6,7 +6,8 @@ use App\Models\Users;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-
+use App\Models\major;
+use Illuminate\Support\Facades\DB;
 
 
 class registerController extends Controller
@@ -43,7 +44,10 @@ class registerController extends Controller
     }
     public function index2() {
         $data['add'] = User::orderBy('id', 'asc')->paginate(5);
-        return view('admin.adduser');
+        $major=DB::table('major')
+
+        ->paginate(5);
+        return view('admin.adduser',compact('major'));
     }
 
     public function adduser(Request $request) {

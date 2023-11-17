@@ -32,8 +32,16 @@
 
 
                 <span>จัดการผู้ใช้งาน</span></a>
-        </li>  --}}
+        </li> --}}
 
+        <li class="nav-item">
+            <a class="nav-link"href="/officer/major">
+
+           <i class="fa fa-user" aria-hidden="true"></i>
+
+
+                <span>หลักสูตรสาขา</span></a>
+        </li>
 
         <li class="nav-item">
             <a class="nav-link"href="/officer/establishmentuser1">

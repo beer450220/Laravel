@@ -51,7 +51,7 @@
                 )
             }}">
                 <td class="col-1 text-center">{{ $informdetails->firstItem() + $loop->index }}</td>
-                <td>{{ $row->name }}</td>
+                <td>{{ $row->fname }}</td>
                 <td>{{ $row->establishment }}</td>
                 <td>{{ $row->namefile }}</td>
                 <td><img src="/fileinformdetails/{{ $row->files }}" class="img-responsive" style="max-height: 100px; max-width: 100px;" alt="" srcset=""></td>

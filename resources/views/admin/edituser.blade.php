@@ -189,7 +189,18 @@
                                                                 <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('หลักสูตร') }}</label>
 
                                                                 <div class="col-md-6">
-                                                                    <input id="telephonenumber"value="{{$users->major_id}}" type="text" class="form-control" name="major_id" required autocomplete="major_id">
+                                                                    {{-- <input id="telephonenumber"value="{{$users->major_id}}" type="text" class="form-control" name="major_id" required autocomplete="major_id"> --}}
+                                                                    <select class="form-select select2" id="validationSelect1" name="major_id" >
+                                                                        <option value="">กรุณาเลือกหลักสูตร</option>
+                                                                        <option value="-"@if($users->major_id=="-") selected @endif required>-</option>
+                                                                        @foreach ($major as $row)
+                                                                        {{-- <optgroup label="Mountain Time Zone"> --}}
+                                                                          <option value="{{$row->major_id}}"{{$row->major_id==$users->major_id ?'selected':''}}>{{$row->name_major}}  ({{$row->faculty}})</option>
+                                                                          {{-- <option value="{{$row->major_id}}">{{$row->major}}</option> --}}
+                                                                        </optgroup>
+
+                                                                        @endforeach
+                                                                      </select>
                                                                 </div>
                                                             </div>
                                                             <div class="row mb-3">

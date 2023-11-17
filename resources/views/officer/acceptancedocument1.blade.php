@@ -44,7 +44,7 @@
             <tr>
               @foreach ($acceptances as $row)
               <td>{{$acceptances->firstItem()+$loop->index}}</td>
-              <td>{{$row->name}}</td>
+              <td>{{$row->fname}}</td>
               <td>{{$row->namefile}}</td>
               <td>{{$row->Status_acceptance	}}</td>
               <td>{{$row->annotation}}</td>

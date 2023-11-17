@@ -34,7 +34,7 @@
               <th>หมายเหตุ</th>
               <th>สถานะ</th>
               <th>ตรวจสอบ</th>
-            
+
             </tr>
           </thead>
           <tbody>
@@ -48,7 +48,7 @@
               <td>{{$row->Status_supervision}}</td>
               <td>{{$row->Status_supervision}}</td>
               <td><a href="/officer/editEvaluate/{{$row->supervision_id}} "type="button" class="btn btn-outline-secondary fa-solid fa-pen-to-square fe-16"></a></td>
-              
+
             </tr>
 
             @endforeach
@@ -56,7 +56,7 @@
         </table>
       </div>
     </div>
-  </div> 
+  </div>
 </div>  --}}
 
 
@@ -110,7 +110,7 @@
             <tr>
               <td>{{$supervision->firstItem()+$loop->index}}</td>
               <td>
-                {{$row->name}}</td>
+                {{$row->fname}}</td>
               <td>{{$row->address}}</td>
               <td>{{$row->score}}</td>
               <td>{{$row->Status_supervision}}</td>
@@ -122,11 +122,11 @@
             @endforeach
           </tbody>
         </table>
-        
-        
+
+
          </div>
-      <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab"> 
-        
+      <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+
         <table class="table table-hover">
           <thead class="thead-dark">
             <tr>
@@ -157,9 +157,9 @@
             @endforeach
           </tbody>
         </table>
-      
+
       </div>
-      <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab"> 
+      <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
 
 
         <table class="table table-hover">

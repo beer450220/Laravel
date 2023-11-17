@@ -9,6 +9,7 @@ use App\Models\schedule;
 use App\Models\Evaluationdocument;
 use App\Models\registers;
 use Carbon\Carbon;
+use App\Models\major;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\registerController;
 use Illuminate\Support\Facades\File;
@@ -572,11 +573,23 @@ dd($request->$name);
     {
         $registers=DB::table('registers')
         ->join('users','registers.user_id','users.id')
-        ->select('registers.*','users.name')
+        ->select('registers.*','users.fname')
         ->paginate(5);
 
         return view('officer.register1',compact('registers'));
     }
+
+//หลักสูตรสาขา
+    public function major()
+    {
+        $major=DB::table('major')
+        // ->join('users','registers.user_id','users.id')
+        // ->select('registers.*','users.fname')
+        ->paginate(5);
+
+        return view('officer.major',compact('major'));
+    }
+
     public function timeline2()
     {
         $timelines=DB::table('timeline')
@@ -591,7 +604,7 @@ dd($request->$name);
         $acceptances=DB::table('acceptance')
         ->join('users','acceptance.user_id','users.id')
         ->join('establishment','acceptance.establishment_id','establishment.id')
-        ->select('acceptance.*','users.name','establishment.address')
+        ->select('acceptance.*','users.fname','establishment.address')
         ->paginate(5);
         return view('officer.acceptancedocument1',compact('acceptances'));
     }
@@ -599,7 +612,7 @@ dd($request->$name);
     {
         $informdetails=DB::table('informdetails')
         ->join('users','informdetails.user_id','users.id')
-        ->select('informdetails.*','users.name')
+        ->select('informdetails.*','users.fname')
         ->paginate(5);
         return view('officer.informdetails2',compact('informdetails'));
     }
@@ -612,7 +625,7 @@ dd($request->$name);
     {
         $report=DB::table('report')
         ->join('users','report.user_id','users.id')
-        ->select('report.*','users.name')
+        ->select('report.*','users.fname')
         ->paginate(5);
 
         return view('officer.experiencereport2',compact('report'));
@@ -637,8 +650,8 @@ dd($request->$name);
     {
         $supervision=DB::table('supervision')
         ->join('users','supervision.user_id','users.id')
-        ->join('establishment','establishment.id','=','establishment_id')
-        ->select('supervision.*','users.name','establishment.address')
+        ->join('establishment','supervision.user_id','establishment.id')
+        ->select('supervision.*','users.fname','establishment.address')
         //->select('supervision.*')
        // ->where('establishment.establishment_id')
         ->paginate(5);
@@ -1033,7 +1046,12 @@ dd($request->$name);
     public function edituser($id)
     {
         $users=Users::find($id);
-        return view('admin.edituser',compact('users'),["msg"=>"I am Admin role"]);
+        $major=DB::table('major')
+        // ->join('users','acceptance.user_id','users.id')
+        // ->join('establishment','acceptance.establishment_id','establishment.id')
+        // ->select('acceptance.*','users.name','establishment.address')
+        ->paginate(5);
+        return view('admin.edituser',compact('users','major'),["msg"=>"I am Admin role"]);
 
     }
 

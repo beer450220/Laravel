@@ -114,7 +114,7 @@
               @foreach ($report as $row)
               <tr>
                 <td>{{$report->firstItem()+$loop->index}}</td>
-                <td>{{$row->name}} </td>
+                <td>{{$row->fname}} </td>
                 <td  >{{$row->namefile}}</td>
                 <td><a href="/รายงานโครงการ/{{ $row->namefile }}" class="btn btn-outline-primary fa-regular fa-circle-down"></a> </td>
                 <td>{{$row->annotation}}</td>
@@ -148,7 +148,7 @@
               @foreach ($report as $row)
               <tr>
                 <td>{{$report->firstItem()+$loop->index}}</td>
-                <td>{{$row->name}} </td>
+                <td>{{$row->fname}} </td>
                 <td  >{{$row->namefile}}</td>
                 <td><a href="/รายงานโครงการ/{{ $row->namefile }}" class="btn btn-outline-primary fa-regular fa-circle-down"></a> </td>
                 <td>{{$row->annotation}}</td>
@@ -182,7 +182,7 @@
               @foreach ($report as $row)
               <tr>
                 <td>{{$report->firstItem()+$loop->index}}</td>
-                <td>{{$row->name}} </td>
+                <td>{{$row->fname}} </td>
                 <td  >{{$row->namefile}}</td>
                 <td><a href="/รายงานโครงการ/{{ $row->namefile }}" class="btn btn-outline-primary fa-regular fa-circle-down"></a> </td>
                 <td>{{$row->annotation}}</td>

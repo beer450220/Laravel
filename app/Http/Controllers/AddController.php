@@ -16,6 +16,8 @@ use App\Models\Event;
 use App\Models\schedule;
 use App\Models\Evaluationdocument;
 use App\Models\report_results;
+use App\Models\major;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
@@ -89,7 +91,7 @@ class AddController extends Controller
      }
 
 
-     public function saddestablishment(Request $request) {
+     public function addestablishment(Request $request) {
         //ตรวจสอบข้อมูล
         //  dd($request->images);
         $request->validate([
@@ -697,6 +699,57 @@ public function addacceptancedocument1()
         return view('officer.add.addacceptancedocument1',compact('users'),compact('establishment'));
     }
 
+//หลักสูตรสาขา
+    public function addmajor()
+    {
+     // $users=users::all()->where('role',"student");
+      //$users=users::all()->where('role',"student");
+     // $users=DB::table('users')
+    //  ->where('role',"student")
+      //->join('establishment','establishment.id',"=",'users.id')
+      //->select('users.*','establishment.*')
+      //->get();
+      //$establishment=DB::table('establishment')
+      //->where('role',"student")
+     // ->get();
+     // dd($users);
+     // ->paginate(5);
+        return view('officer.add.addmajor');
+    }
+
+
+    public function addmajor1(Request $request) {
+        //ตรวจสอบข้อมูล
+        // dd($request);
+
+         $request->validate([
+          //  'name' => 'required|unique:name',
+          //  'test' => 'required|unique:test',
+      ]
+    ,[
+
+      // 'name.required'=>"กรุณากรอกชื่อ",
+      // 'test.required'=>"กรุณาเทส",
+    ]
+
+  );
+      $post =new major
+      ([
+          "name_major" => $request->name_major,
+          "faculty" => $request->faculty,
+
+
+
+      ]);
+     // $post->Status ="รอตรวจสอบ";
+      $post->save();
+        //  $data =array();
+        //  $data["test"]= $request->test;
+      //    $data["test"]= $request->test;
+      // DB::table('test')->insert($data);
+         return redirect('/officer/major')->with('success', 'สมัครสำเร็จ.');
+
+      }
 
     public function addacceptancedocument(Request $request) {
       //ตรวจสอบข้อมูล
