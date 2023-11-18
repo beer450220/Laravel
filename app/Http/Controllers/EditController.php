@@ -31,8 +31,9 @@ class EditController extends Controller
         // $establishments=establishment::find($id);
         $establishments=DB::table('establishment')->find($id);
         //  dd($establishments);
+        $major=DB::table('major')->paginate(5);
 
-         return view('officer.editestablishmentuser1',compact('establishments'));
+         return view('officer.editestablishmentuser1',compact('establishments','major'));
          // return redirect("/welcome")->with('success', 'Company has been created successfully.');
      }
 
@@ -103,9 +104,16 @@ class EditController extends Controller
     //   $data =
         //]);
         $post->update([
-            "name" =>$request->name,
-            "address"=>$request->address,
-            "phone"=>$request->phone,
+            "em_name" => $request->em_name,
+            "em_address" => $request->em_address,
+            'em_telephone' => $request->em_telephone,
+            "em_email" => $request->em_email,
+            'em_contact_name' => $request->em_contact_name,
+            "em_Contact_email" => $request->em_Contact_email,
+            'em_contactposition' => $request->em_contactposition,
+            "em_job" => $request->em_job,
+            "status" =>'0',
+            "user_id" =>'0',
             "images"=>$post->images,
         ]);
 

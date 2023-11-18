@@ -11,10 +11,17 @@ class establishment extends Model
     public $table="establishment";
     public$primarykey="id";
     protected $fillable=[
-        'address',
-        'name',
-        'phone',
+        'user_id',
         'images',
+        "em_name",
+        "em_address",
+        'em_telephone',
+        "em_email",
+        'em_contact_name',
+        "em_Contact_email",
+        'em_contactposition',
+        "em_job",
+        'status'
     ];
     public function Users(){
         return $this->hasOne(Users::class,'id','name');

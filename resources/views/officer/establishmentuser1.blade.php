@@ -92,7 +92,7 @@
                         <tr>
 
                           <td >{{$establishments->firstItem()+$loop->index}}</td>
-                          <td>{{$row->name}}</td>
+                          <td>{{$row->em_name}}</td>
                          {{--  <td>{{$row->address}}</td>
                           <td>{{$row->phone}}</td>--}}
                           {{-- <td><img src="/image/{{ $row->images }}" class="img-responsive" style="max-height: 100px; max-width: 100px;" alt="" srcset=""></td> --}}
@@ -143,43 +143,73 @@
                         <div class="row">
                           <div class="col-md-4">
                             <label for="recipient-name" class="col-form-label">ชื่อสถานประกอบการ</label>
-                            <input type="text" class="form-control" name="name" placeholder="First name" aria-label="First name">
+                            <input type="text" class="form-control " name="em_name" placeholder="" aria-label="First name "required autocomplete="fname">
                           </div>
                           <div class="col-md-4">
                             <label for="recipient-name" class="col-form-label">ที่อยู่</label>
-                            <input type="text" class="form-control"	name="address" placeholder="Last name" aria-label="Last name">
+                            <input type="text" class="form-control"	name="em_address" placeholder="" aria-label="Last name"required autocomplete="fname">
                           </div>
                           <div class="col-md-4">
                             <label for="recipient-name" class="col-form-label">เบอร์โทร</label>
-                            <input type="text" class="form-control" name="phone" placeholder="Last name" aria-label="Last name">
+                            <input type="text" class="form-control" name="em_telephone" placeholder="" aria-label="Last name"required autocomplete="fname">
                           </div>
                         </div>
                         <br>
                         <div class="row">
                           <div class="col-md-4">
-                            <label for="recipient-name" class="col-form-label">เบอร์โทร</label>
-                            <input type="text" class="form-control" placeholder="First name" aria-label="First name">
+                            <label for="recipient-name" class="col-form-label">อีเมล์</label>
+                            <input type="email" class="form-control" placeholder=""name="em_email" aria-label="First name"required autocomplete="fname">
                           </div>
                           <div class="col-md-4">
-                            <label for="recipient-name" class="col-form-label">เบอร์โทร</label>
-                            <input type="text" class="form-control" placeholder="Last name" aria-label="Last name">
+                            <label for="recipient-name" class="col-form-label">ชื่อผู้ติดต่อ</label>
+                            <input type="text" class="form-control" placeholder=""name="em_contact_name" aria-label="Last name"required autocomplete="fname">
+                          </div>
+                          <div class="col-md-4">
+                            <label for="recipient-name" class="col-form-label">อีเมล์ผู้ติดต่อ</label>
+                            <input type="text" class="form-control" placeholder="" name="em_Contact_email" aria-label="Last name"required autocomplete="fname">
                           </div>
 
                         </div>
                         <div class="row">
                           <div class="col-md-4">
-                            <label for="recipient-name" class="col-form-label">รูปหน่วยงาน</label>
-                            <input type="file" class="form-control"name="images" placeholder="First name" aria-label="First name">
+                            <label for="recipient-name" class="col-form-label">รูปภาพสถานประกอบการ</label>
+                            <input type="file" class="form-control"name="images" placeholder="" aria-label="First name"required autocomplete="fname">
                           </div>
                           @error('images')
                           <span class="invalid-feedback" >
                               {{ $message }}
                           </span>
                       @enderror
-                        </div>
-                    </div>
+                      <div class="col-md-4">
+                            <label for="recipient-name" class="col-form-label">ตำแหน่งผู้ติดต่อ</label>
+                            <input type="text" class="form-control" placeholder=""name="em_contactposition" aria-label="Last name"required autocomplete="fname">
+                          </div>
+                          <div class="col-md-4">
+                            <label for="recipient-name" class="col-form-label">หลักสูตร</label>
+                            <select class="form-control" id="validationSelect1" name="major_id" >
+                                <option value="">กรุณาเลือกหลักสูตร</option>
+                                @foreach ($major as $row)
+                                {{-- <optgroup label="Mountain Time Zone"> --}}
+                                  <option value="{{$row->major_id}}">{{$row->name_major}}  ({{$row->faculty}})</option>
+                                  {{-- <option value="{{$row->major_id}}">{{$row->major}}</option> --}}
+                                </optgroup>
 
+                                @endforeach
+                              </select>
+                          </div>
+
+
+                        </div>
+                        <div class="row">
+  <div class="col-md-4">
+                            <label for="recipient-name" class="col-form-label">รายละเอียดงาน</label>
+                            <textarea rows="4" cols="50" name="em_job"  >
+                                </textarea>
+                          </div>
+                    </div>
+                </div>
                     <div class="modal-footer">
+
                       <button type="reset" class="btn mb-2 btn-secondary" >ยกเลิก</button>
                       <button type="submit" class="btn mb-2 btn-primary">ตกลง</button>
                     </div></form>

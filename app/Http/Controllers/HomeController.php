@@ -522,8 +522,8 @@ class HomeController extends Controller
     public function establishmentuser1()
     {
         $establishments=DB::table('establishment')->paginate(5);
-
-        return view('officer.establishmentuser1',compact('establishments'),["msg"=>"I am Editor role"]);
+        $major=DB::table('major')->paginate(5);
+        return view('officer.establishmentuser1',compact('establishments','major'),["msg"=>"I am Editor role"]);
     }
 
 

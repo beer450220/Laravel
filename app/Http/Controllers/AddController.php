@@ -93,7 +93,7 @@ class AddController extends Controller
 
      public function addestablishment(Request $request) {
         //ตรวจสอบข้อมูล
-        //  dd($request->images);
+        //  dd($request);
         $request->validate([
           'images' => 'required|mimes:jpg,jpeg,png',
 
@@ -105,9 +105,16 @@ class AddController extends Controller
 
           $post =new establishment([
 
-                "name" => $request->name,
-             "address" => $request->address,
-             'phone' => $request->phone,
+                "em_name" => $request->em_name,
+             "em_address" => $request->em_address,
+             'em_telephone' => $request->em_telephone,
+             "em_email" => $request->em_email,
+             'em_contact_name' => $request->em_contact_name,
+             "em_Contact_email" => $request->em_Contact_email,
+             'em_contactposition' => $request->em_contactposition,
+             "em_job" => $request->em_job,
+             "user_id" =>'0',
+             "status" =>'0',
               "images" =>$imageName,
           ]); // dd($request->id);
          $post->save();
