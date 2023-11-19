@@ -14,12 +14,13 @@ class acceptance extends Model
     protected $fillable=[
         'term',
         'Status_acceptance',
-        'establishment_id',
+        // 'establishment_id',
         // 'Status',
         'year',
         // 'score',
         'filess',
         'annotation',
         'user_id',
+        'namefile'
     ];
 }

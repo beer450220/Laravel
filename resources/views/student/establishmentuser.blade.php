@@ -555,7 +555,7 @@
                                                   </div>
                                                   <div class="card-text my-2">
                                                     <strong class="card-title my-0">ชื่อสถานประกอบการ </strong>
-                                                    <p class="small text-muted mb-0">{{ $row->establishment}}</p>
+                                                    <p class="small text-muted mb-0">{{ $row->establishment_id}}</p>
                                                     <p class="small"><span class="badge badge-light text-muted"></span></p>
                                                   </div>
                                                 </div> <!-- ./card-text -->

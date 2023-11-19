@@ -145,7 +145,7 @@ class HomeController extends Controller
         $users=DB::table('establishment')->paginate(5);
         $users1=DB::table('users')->paginate(5);
         // $users=users::paginate(5);
-        $establishments=DB::table('establishment') ->orderBy('name','desc')
+        $establishments=DB::table('establishment') ->orderBy('em_name','desc')
 
         ->paginate(6);
 
@@ -234,67 +234,67 @@ class HomeController extends Controller
         //$registers=DB::table('registers')->paginate(5);
         $registers=DB::table('registers')
         ->join('users','registers.user_id','users.id')
-        ->select('registers.*','users.name')->where('user_id', auth()->id())
+        ->select('registers.*','users.fname')->where('user_id', auth()->id())
         ->paginate(5);
 
         $registers1=DB::table('registers')
         ->join('users','registers.user_id','users.id')
-        ->select('registers.*','users.name')
+        ->select('registers.*','users.fname')
         ->where('registers.namefile', 'แบบพิจารณาคุณสมบัตินักศึกษาสหกิจศึกษา(สก01)','')
         ->where('user_id', auth()->id())
         ->paginate(5);
 
         $registers2=DB::table('registers')
         ->join('users','registers.user_id','users.id')
-        ->select('registers.*','users.name')
+        ->select('registers.*','users.fname')
         ->where('registers.namefile', 'ใบสมัครงานสหกิจศึกษา(สก03)')
         ->where('user_id', auth()->id())
         ->paginate(5);
 
         $registers3=DB::table('registers')
         ->join('users','registers.user_id','users.id')
-        ->select('registers.*','users.name')
+        ->select('registers.*','users.fname')
         ->where('registers.namefile', 'แบบคำรองขอหนังสือขอความอนุเคราะหรับนักศึกษาสหกิจศึกษา(สก04)')
         ->where('user_id', auth()->id())
         ->paginate(5);
 
         $registers4=DB::table('registers')
         ->join('users','registers.user_id','users.id')
-        ->select('registers.*','users.name')
+        ->select('registers.*','users.fname')
         ->where('registers.namefile', 'บัตรประชาชน')
         ->where('user_id', auth()->id())
         ->paginate(5);
 
         $registers5=DB::table('registers')
         ->join('users','registers.user_id','users.id')
-        ->select('registers.*','users.name')
+        ->select('registers.*','users.fname')
         ->where('registers.namefile', 'บัตรนักศึกษา')
         ->where('user_id', auth()->id())
         ->paginate(5);
 
         $registers6=DB::table('registers')
         ->join('users','registers.user_id','users.id')
-        ->select('registers.*','users.name')
+        ->select('registers.*','users.fname')
         ->where('registers.namefile', 'ผลการเรียน')
         ->where('user_id', auth()->id())
         ->paginate(5);
         $registers7=DB::table('registers')
         ->join('users','registers.user_id','users.id')
-        ->select('registers.*','users.name')
+        ->select('registers.*','users.fname')
         ->where('registers.namefile', 'ประวัติส่วนตัว(resume)')
         ->where('user_id', auth()->id())
         ->paginate(5);
 
         $registers8=DB::table('acceptance')
         ->join('users','acceptance.user_id','users.id')
-        ->select('acceptance.*','users.name')
+        ->select('acceptance.*','users.fname')
         ->where('acceptance.namefile','แบบตอบรับและเสนองานนักศึกสหกิจศึกษา')
         ->where('user_id', auth()->id())
         ->paginate(5);
 
         $studentinformations=DB::table('studentinformation')
         ->join('users','studentinformation.user_id','users.id')
-        ->select('studentinformation.*','users.name')->where('user_id', auth()->id())
+        ->select('studentinformation.*','users.fname')->where('user_id', auth()->id())
         ->paginate(5);
 
 
@@ -319,26 +319,26 @@ class HomeController extends Controller
     {
         $informdetails=DB::table('informdetails')
         ->join('users','informdetails.user_id','users.id')
-        ->select('informdetails.*','users.name')->where('user_id', auth()->id())
+        ->select('informdetails.*','users.fname')->where('user_id', auth()->id())
         ->paginate(5);
 
         $informdetails1=DB::table('informdetails')
         ->join('users','informdetails.user_id','users.id')
-        ->select('informdetails.*','users.name')
+        ->select('informdetails.*','users.fname')
         ->where('informdetails.namefile', 'แบบแจ้งรายละเอียดการปฏิบัติงาน(สก.07)')
         ->where('user_id', auth()->id())
         ->paginate(5);
 
         $informdetails2=DB::table('informdetails')
         ->join('users','informdetails.user_id','users.id')
-        ->select('informdetails.*','users.name')
+        ->select('informdetails.*','users.fname')
         ->where('informdetails.namefile', 'แบบแจ้งแผนปฏิบัติงานสหกิจศึกษา(สก.08)')
         ->where('user_id', auth()->id())
         ->paginate(5);
 
         $informdetails3=DB::table('informdetails')
         ->join('users','informdetails.user_id','users.id')
-        ->select('informdetails.*','users.name')
+        ->select('informdetails.*','users.fname')
         ->where('informdetails.namefile', 'แบบแจ้งโครงร่างรายงานการปฏิบัติงานสหกิจศึกษา(สก.09)')
         ->where('user_id', auth()->id())
         ->paginate(5);
@@ -365,32 +365,32 @@ class HomeController extends Controller
     {
         $report=DB::table('report')
         ->join('users','report.user_id','users.id')
-        ->select('report.*','users.name')->where('user_id', auth()->id())
+        ->select('report.*','users.fname')->where('user_id', auth()->id())
         ->paginate(5);
 
 
         $report1=DB::table('report')
         ->join('users','report.user_id','users.id')
-        ->select('report.*','users.name')
+        ->select('report.*','users.fname')
         ->where('report.namefile', 'รายงานโครงการ')
         ->where('user_id', auth()->id())
         ->paginate(5);
 
         $report2=DB::table('report')
         ->join('users','report.user_id','users.id')
-        ->select('report.*','users.name')
+        ->select('report.*','users.fname')
         ->where('report.namefile', 'PowerPoint การนำเสนอ')
         ->where('user_id', auth()->id())
         ->paginate(5);
         $report3=DB::table('report')
         ->join('users','report.user_id','users.id')
-        ->select('report.*','users.name')
+        ->select('report.*','users.fname')
         ->where('report.namefile', 'Onepage ของโครงการ (โปสเตอร์)')
         ->where('user_id', auth()->id())
         ->paginate(5);
         $report4=DB::table('report')
         ->join('users','report.user_id','users.id')
-        ->select('report.*','users.name')
+        ->select('report.*','users.fname')
         ->where('report.namefile', 'รายงานสรุปโครงการ(ไม่เกิน 5 หน้า)')
         ->where('user_id', auth()->id())
         ->paginate(5);
@@ -406,7 +406,7 @@ class HomeController extends Controller
     {
         $events=DB::table('events')
         ->join('users','events.user_id','users.id')
-        ->select('events.*','users.name')->where('user_id', auth()->id())
+        ->select('events.*','users.fname')->where('user_id', auth()->id())
         ->paginate(5);
         return view('student.calendar2confirm',compact('events'));
     }
@@ -603,8 +603,8 @@ dd($request->$name);
     {
         $acceptances=DB::table('acceptance')
         ->join('users','acceptance.user_id','users.id')
-        ->join('establishment','acceptance.establishment_id','establishment.id')
-        ->select('acceptance.*','users.fname','establishment.address')
+       // ->join('establishment','acceptance.establishment_id','establishment.id')
+        ->select('acceptance.*','users.fname')
         ->paginate(5);
         return view('officer.acceptancedocument1',compact('acceptances'));
     }
@@ -742,6 +742,18 @@ dd($request->$name);
         ->paginate(5);
         return view('officer.schedule',compact('schedules'));
     }
+
+    public function viewschedule($schedule_id) {
+        //ตรวจสอบข้อมูล
+        // $advisors=advisor::find($advisor_id);
+        // $establishments=establishment::find($id);
+        $establishments=schedule::find($schedule_id);
+        //  dd($establishments);
+
+         return view('officer.viwe.viewschedule',compact('establishments'));
+         // return redirect("/welcome")->with('success', 'Company has been created successfully.');
+     }
+
 
     public function Evaluationdocuments()
     {
@@ -894,19 +906,19 @@ dd($request->$name);
     {
         $events=DB::table('events')
         ->join('users','events.user_id','users.id')
-        ->select('events.*','users.name')
+        ->select('events.*','users.fname')
         //->where('user_id', auth()->id())
         ->paginate(3);
         $report_results=DB::table('report_results')
         ->join('users','report_results.user_id','users.id')
-        ->select('report_results.*','users.name')
+        ->select('report_results.*','users.fname')
         ->where('report_results.namefile', 'แบบบันทึกการนิเทศงานสหกิจศึกษา(สก12)','')
         ->where('user_id', auth()->id())
         ->paginate(5);
 
         $report_results1=DB::table('report_results')
         ->join('users','report_results.user_id','users.id')
-        ->select('report_results.*','users.name')
+        ->select('report_results.*','users.fname')
         ->where('report_results.namefile', 'แบบประเมินรายงานนักศึกษาสหกิจศึกษา(สก15)','')
         ->where('user_id', auth()->id())
         ->paginate(5);

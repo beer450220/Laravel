@@ -402,7 +402,7 @@
                                     @foreach ($events as $row)
                                   <tr>
                                     <td>{{$events->firstItem()+$loop->index}}</td>
-                                    <td>{{$row->name}}</td>
+                                    <td>{{$row->fname}}</td>
                                     <td></td>
                                     <td><a href="/fileinformdetails/" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td>
                                     <td class="text-danger"></td>

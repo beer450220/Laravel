@@ -760,7 +760,7 @@ public function addacceptancedocument1()
 
     public function addacceptancedocument(Request $request) {
       //ตรวจสอบข้อมูล
-      // dd($request);
+       //dd($request);
 
        $request->validate([
         //  'name' => 'required|unique:name',
@@ -785,12 +785,12 @@ if($request->hasFile("filess"))
     ([
         "user_id" => $request->user_id,
         "term" => $request->term,
-        'establishment_id' => $request->establishment_id,
+        // 'establishment_id' => $request->establishment_id,
         "year" => $request->year,
         'annotation' => $request->annotation,
         "filess" =>$imageName,
         'Status_acceptance'=>$request->Status_acceptance,
-
+        'namefile' => $request->namefile ,
     ]);
    // $post->Status ="รอตรวจสอบ";
     $post->save();
@@ -952,7 +952,7 @@ public function addsupervision()
     ([
         "title" => $request->title,
         "start" => $request->start,
-        'end' => $request->end,
+        'details' => $request->details,
         "term" => $request->term,
         "year" => $request->year,
 

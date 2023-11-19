@@ -266,7 +266,7 @@ Route::middleware(['auth','user-role:officer'])->group(function()
 
 
 
-
+//ลงทะเบียน
 
     Route::get("/officer/register1",[HomeController::class,'register1'])->name('officer.register1');
     Route::get("/officer/editregister1/{id}",[EditController::class,'editregister1'])->name('editregister1');
@@ -277,6 +277,7 @@ Route::middleware(['auth','user-role:officer'])->group(function()
     Route::get("/officer/timeline2",[HomeController::class,'timeline2']);
     Route::get("/officer/viwetimeline2/{timeline_id}",[EditController::class,'viwetimeline2'])->name('viwetimeline2');
 
+    //ตอบรับนักศึกษา
     Route::get("/officer/acceptancedocument1",[HomeController::class,'acceptancedocument1']);
     Route::get("/officer/addacceptancedocument1",[addController::class,'addacceptancedocument1'])->name('addacceptancedocument1');
     Route::post("/officer/addacceptancedocument1",[addController::class,'addacceptancedocument'])->name('addacceptancedocument');
@@ -284,11 +285,12 @@ Route::middleware(['auth','user-role:officer'])->group(function()
     Route::post("/officer/updateacceptance/{acceptance_id}",[EditController::class,'updateacceptance'])->name('updateacceptance');
     Route::get('/officer/deletacceptance/{acceptance_id}', [EditController::class,'delacceptance'])->name('delacceptance');
 
-
+//เอกสารแจ้งรายละเอียดการปฎิบัติงาน
     Route::get("/officer/informdetails2",[HomeController::class,'informdetails2']);
     Route::get("/officer/editinformdetails2/{informdetails_id}",[EditController::class,'editinformdetails2'])->name('editinformdetails2');
     Route::post("/officer/updateinformdetails2/{informdetails_id}",[EditController::class,'updateinformdetails2'])->name('updateinformdetails2');
 
+    
     Route::get("/officer/record2",[HomeController::class,'record2']);
 
     Route::get("/officer/experiencereport2",[HomeController::class,'experiencereport2']);
@@ -333,15 +335,15 @@ Route::middleware(['auth','user-role:officer'])->group(function()
 
 
 
-
+//กำหนดการปฏิทินสหกิจ
     Route::get("/officer/schedule",[HomeController::class,'schedule']);
-
     Route::get("/officer/addschedule",[addController::class,'addschedule'])->name('addschedule');
     Route::post("/officer/addschedule1",[addController::class,'addschedule1'])->name('addschedule1');
     Route::get("/officer/editschedule1/{schedule_id}",[EditController::class,'editschedule1'])->name('editschedule1');
     Route::post("/officer/updateschedule1/{schedule_id}",[EditController::class,'updateschedule1'])->name('updateschedule1');
-
     Route::get('/officer/deleschedule1/{schedule_id}', [EditController::class,'delschedule1'])->name('delschedule1');
+
+    Route::get('/officer/viewschedule/{schedule_id}', [HomeController::class,'viewschedule'])->name('viewschedule');
 
     Route::get("/officer/Evaluationdocuments",[HomeController::class,'Evaluationdocuments']);
 

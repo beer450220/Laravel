@@ -44,11 +44,11 @@
             @foreach ($schedules as $row)
             <tr>
               <td class="col-1 text center">{{$schedules->firstItem()+$loop->index}}</td>
-              <td>{{$row->title}}</td>
-              <td>{{$row->title}}</td>
               <td>{{$row->start}}</td>
-              <td>{{$row->end}}</td>
               <td>{{$row->title}}</td>
+              <td><a href="/officer/viewschedule/{{$row->schedule_id}}" type="button" class="btn btn-outline-secondary fa-solid fa-eye fe-16"></a></td>
+              <td>{{$row->year}}</td>
+              <td>{{$row->term}}</td>
               <td><a href="/officer/editschedule1/{{$row->schedule_id}}" type="button" class="btn btn-outline-secondary fa-solid fa-pen-to-square fe-16"></a></td>
               <td><a href="/officer/deleschedule1/{{$row->schedule_id}}"type="button" class="btn btn-outline-danger fa-solid fa-trash-can"onclick="return confirm('ยืนยันการลบข้อมูล !!');"></td>
             </tr>

@@ -31,7 +31,8 @@
                 <th>ชื่อนักศึกษา</th>
                 <th>ชื่อสถานประกอบการ</th>
                 <th>ชื่อไฟล์</th>
-                <th>รูปภาพ</th>
+                <th>ปีการศึกษา</th>
+                <th>ภาคเรียน</th>
                 <th>สถานะ</th>
                 <th>หมายเหตุ</th>
                 <th style="width:10%">ดูไฟล์เอกสาร</th>
@@ -44,23 +45,25 @@
 
 
               <tr class="{{
-                $row->Status_informdetails === 'รอตรวจสอบ' ? 'table-warning' : (
-                    $row->Status_informdetails === 'ตรวจสอบแล้ว' ? 'table-success' : (
-                        $row->Status_informdetails === 'ไม่ผ่าน' ? 'table-danger' : ''
+                $row->Status_informdetails === 'รอตรวจสอบเอกสาร' ? 'table-warning' : (
+                    $row->Status_informdetails === 'ตรวจสอบเอกสารแล้ว' ? 'table-success' : (
+                        $row->Status_informdetails === 'เอกสารไม่ผ่าน' ? 'table-danger' : ''
                     )
                 )
             }}">
                 <td class="col-1 text-center">{{ $informdetails->firstItem() + $loop->index }}</td>
                 <td>{{ $row->fname }}</td>
-                <td>{{ $row->establishment }}</td>
+                <td></td>
                 <td>{{ $row->namefile }}</td>
-                <td><img src="/fileinformdetails/{{ $row->files }}" class="img-responsive" style="max-height: 100px; max-width: 100px;" alt="" srcset=""></td>
+                <td>{{ $row->year }}</td>
+                <td>{{ $row->term }}</td>
+
                 <td>
-                    @if ($row->Status_informdetails === 'รอตรวจสอบ')
+                    @if ($row->Status_informdetails === 'รอตรวจสอบเอกสาร')
                         <span class="badge badge-pill badge-warning">{{ $row->Status_informdetails }}</span>
-                    @elseif ($row->Status_informdetails === 'ตรวจสอบแล้ว')
+                    @elseif ($row->Status_informdetails === 'ตรวจสอบเอกสารแล้ว')
                         <span class="badge badge-pill badge-success">{{ $row->Status_informdetails}}</span>
-                    @elseif ($row->Status_informdetails === 'ไม่ผ่าน')
+                    @elseif ($row->Status_informdetails === 'เอกสารไม่ผ่าน')
                         <span class="badge badge-pill badge-danger">{{ $row->Status_informdetails}}</span>
                     @endif
                 </td>

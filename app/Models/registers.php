@@ -20,7 +20,8 @@ class registers extends Model
        'user_id' ,
 
        "annotation",
-
+       'term',
+       'year',
         "Status_registers",
 
     //     // 'images',

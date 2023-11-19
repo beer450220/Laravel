@@ -30,6 +30,8 @@
                 <th>ลำดับ</th>
                 <th>ชื่อนักศึกษา</th>
                 <th>ชื่อไฟล์</th>
+                <th>ปีการศึกษา</th>
+                <th>ภาคเรียน</th>
                 {{-- <th>รูปภาพ</th> --}}
                <th>สถานะ</th>
                <th>หมายเหตุ</th>
@@ -46,6 +48,8 @@
               <td>{{$acceptances->firstItem()+$loop->index}}</td>
               <td>{{$row->fname}}</td>
               <td>{{$row->namefile}}</td>
+              <td>{{ $row->year}}</td>
+              <td>{{ $row->term}}</td>
               <td>{{$row->Status_acceptance	}}</td>
               <td>{{$row->annotation}}</td>
               <td><a href="/ไฟล์เอกสารตอบรับนักศึกษา(สก.02)/{{ $row->filess }}" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td>

@@ -158,7 +158,7 @@
               <option value="">Select state</option>
               @foreach ($users as $row)
               {{-- <optgroup label="Mountain Time Zone"> --}}
-                <option value="{{$row->id}}">{{$row->name}}</option>
+                <option value="{{$row->id}}">{{$row->fname}}</option>
 
               </optgroup>
 
@@ -173,6 +173,7 @@
           </div>
 
         </div>
+        <input type="hidden" id="custId" name="namefile" value="แบบตอบรับและเสนองานนักศึกสหกิจศึกษา(สก.02)">
           <div class="row">
           <div class=" col-md-4">
             <label for="recipient-name" class="col-form-label">ไฟล์เอกสารตอบรับ (สก.02)</label>
@@ -221,13 +222,13 @@
     <option value="">กรุณาเลือกปีการศึกษา</option>
     @php
     $currentYear = date('Y') + 543; // ปีปัจจุบัน
-    $startYear = 2500; // ปีเริ่มต้น
-    $endYear = $currentYear + 100; // ปีสิ้นสุด
+    $startYear = 2566; // ปีเริ่มต้น
+    $endYear = $currentYear + 50; // ปีสิ้นสุด
 @endphp
 
 @for ($i = $endYear; $i >= $startYear; $i--)
     @for ($j = 1; $j <= 1; $j++)
-        <option value="{{ $i }}-{{ $j }}">{{ $i }}</option>
+        <option value="{{ $i }}">{{ $i }}</option>
     @endfor
 @endfor
 </select>

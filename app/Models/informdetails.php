@@ -16,11 +16,12 @@ class informdetails extends Model
         'informdetails_id',
         'user_id',
         'files',
-        'establishment',
+        // 'establishment',
         //'Status',
         "annotation" ,
         "namefile",
          "Status_informdetails",
+         'term','year'
     ];
     public function Users(){
         return $this->hasOne(Users::class,'id','name');

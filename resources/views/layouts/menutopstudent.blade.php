@@ -14,7 +14,7 @@
             <i class="fe fe-sun fe-16"></i>
           </a> --}}
         </li>
-      
+
         <li class="nav-item nav-notif">
           <a class="nav-link text-muted my-2" href="./#" data-toggle="modal" data-target=".modal-notif">
             <span class="fe fe-bell fe-16"></span>
@@ -23,39 +23,39 @@
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-muted pr-0" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-           {{ Auth::user()->Student_ID }} 
-           
+           {{ Auth::user()->Student_ID }}
+
            <span class="avatar avatar-sm mt-2">
               <img src="/รูปโปรไฟล์/{{ Auth::user()->images }}" alt="..." class="avatar-img rounded-circle">
               {{-- <img src="" class="img-responsive" style="max-height: 100px; max-width: 100px;" alt="" srcset=""> --}}
-           
+
             </span>
           </a>
           <div class="dropdown-menu dropdown-menu-right " aria-labelledby="navbarDropdownMenuLink">
-            
+
                             @if (session('status'))
                             <div class="alert alert-success" role="alert">
                                 {{ session('status') }}
                             </div>
                         @endif
                         <a class="dropdown-item " href="">{{ Auth::user()->Student_ID }}</a>
-                        <a class="dropdown-item " href="">{{ Auth::user()->name }}</a>
+                        <a class="dropdown-item " href="">{{ Auth::user()->fname }}</a>
             {{-- <a class="dropdown-item" href="#">Profile</a>
             <a class="dropdown-item" href="#">Settings</a>
             <a class="dropdown-item" href="#">Activities</a> --}}
             <a class="dropdown-item" href="{{ route('logout') }}"
             onclick="event.preventDefault();
                           document.getElementById('logout-form').submit();">
-            
+
              <i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i> {{ __('Logout') }}</a>
 
          <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
              @csrf
-         </form> 
+         </form>
           </div>
         </li>
       </ul>
     </nav>
-   
+
   <!-- .wrapper -->  <!-- main -->
   {{-- </div>  </main> --}}

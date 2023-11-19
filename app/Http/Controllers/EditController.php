@@ -1153,7 +1153,8 @@ $post->update
       //->select('users.*','establishment.*')
       //->get();
     // $establishments=establishment::find($id);
-    $informdetails=DB::table('informdetails')->first();
+    // $informdetails=DB::table('informdetails')->first();
+    $informdetails=informdetails::find($informdetails_id);
     //$establishment=DB::table('establishment')
     // ->join('supervision','supervision.supervision_id')
      //->join('supervision', 'establishments.id', '=', 'supervision.id')
@@ -1206,15 +1207,18 @@ $post->update
 
 
 
- public function editregister1($_id) {
+ public function editregister1($id) {
     //ตรวจสอบข้อมูล
+ // dd($id);
     //$users=DB::table('users')
       //->where('role',"student")
       //->join('establishment','establishment.id',"=",'users.id')
       //->select('users.*','establishment.*')
       //->get();
     // $establishments=establishment::find($id);
-    $registers=DB::table('registers')->first();
+   // $registers=DB::table('registers')->first();
+
+    $registers=registers::find($id);
     //$establishment=DB::table('establishment')
     // ->join('supervision','supervision.supervision_id')
      //->join('supervision', 'establishments.id', '=', 'supervision.id')
@@ -1240,25 +1244,44 @@ $post->update
 
         ]
     );
-    // $post=Event::findOrFail($id);
-    // $post->user_id = Auth::user()->id;
-    // $post->Status ="รอตรวจสอบ";
+    if($request->hasFile("filess")){
+        // if (File::exists(public_path("file/".$post->filess))) {
+        //     File::delete(public_path("file/".$post->filess));
+        // }
+        if (File::exists("file/".$post->filess)) {
+            File::delete("file/".$post->filess);
+        }
+        $file=$request->file("filess");
+        $post->filess=time()."_".$file->getClientOriginalName();
+        $file->move(\public_path("/file"),$post->filess);
+        $request['filess']=$post->filess;
+        // $file = $request->file("filess");
+        // $post->filess = time() . "_" . $file->getClientOriginalName();
+        // $file->move(public_path("/file"), $post->filess);
+    }
+//     $post=[
+//             "annotation" =>$request->annotation,
 
-   //dd($request->Status);
+//          "Status_registers"=>$request->Status_registers,
+//     ] ;
+// DB::table('registers')->where('id',$id)->update($post);
    $post=registers::findOrFail($id);
-  // $post->user_id = Auth::user()->id;
-   //$post->Status ="รอตรวจสอบ";
 
-    $post->update
 
-    ([
+$post->update
+([
+    // "name" =>$request->name,
+    // "establishment"=>$request->establishment,
 
-       "annotation" =>$request->annotation,
-        //"establishment"=>$request->establishment,
-         "Status_registers"=>$request->Status_registers,
+    // "filess"=>$request->filess,
+    "filess"=>$post->filess,
+    //"namefile" => $request->namefile,
+    "annotation" =>$request->annotation,
 
-    ]);
-     // dd($request);
+        "Status_registers"=>$request->Status_registers,
+    // "filess" => $post->filess
+]);
+
 
     return redirect('/officer/register1')->with('success', 'ยืนยันข้อมูลสำเร็จ.');
  }
@@ -1306,7 +1329,8 @@ $post->update
    // ->get();
     //dd($acceptances);
      // dd($supervisions);
-     return view('officer.edit.editacceptancedocument1',compact('acceptances'));
+     $user=DB::table('users') ->paginate(5);
+     return view('officer.edit.editacceptancedocument1',compact('acceptances','user'));
 
  }
 
@@ -1346,6 +1370,7 @@ $post->update
     $post->update
     ([
        "year" =>$request->year,
+       "user_id" =>$request->user_id,
         //"establishment"=>$request->establishment,
          "term"=>$request->term,
         "annotation"=>$request->annotation,
@@ -1572,7 +1597,7 @@ $post->update
        "term" =>$request->term,
        "title" =>$request->title,
          "start"=>$request->start,
-        "end"=>$request->end,
+        "details"=>$request->details,
         "year"=>$request->year,
 
     ]);
