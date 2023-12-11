@@ -673,23 +673,23 @@
 
                                 <br>
                                 <br>
-{{-- <main role="main" class="">
+{{----}} <main role="main" class="">
     <div class="container-fluid">
       <div class="row justify-content-center">
         <div class="col-12">
 <div class="col-md-12 my-4">
     <div class="card shadow">
       <div class="card-body">
-        <h5 class="card-title">รายงานผลการฝึกประสบการณ์</h5>
+        <h5 class="card-title">รายการผลการฝึกประสบการณ์</h5>
         <div class="container">
             <div class="row">
               <div class="col-10">
                 <p class="card-text"> <tbody>
                 </p>
               </div>
-              <div class="col col-lg-2">
+              {{-- <div class="col col-lg-2">
                 <a href="/studenthome/addreport2" type="button" class=" btn btn-outline-success">เพิ่มข้อมูล</a>
-              </div>
+              </div> --}}
             </div>
 
         </div>
@@ -718,7 +718,7 @@
                 )
             }}">
                 <td class="col-1 text-center">{{ $report->firstItem() + $loop->index }}</td>
-                <td>{{ $row->name }}</td>
+                <td></td>
                 <td>{{ $row->namefile }}</td>
                 <td><img src="/ไฟล์เอกสารฝึกประสบการณ์/{{ $row->filess }}" class="img-responsive" style="max-height: 100px; max-width: 100px;" alt="" srcset=""></td>
                 <td>
@@ -743,7 +743,7 @@
           </tbody>
         </table>
       </div>
-    </div> --}}
+    </div>
   </div> <!-- Bordered table -->
 </div> <!-- end section -->
 

@@ -1916,7 +1916,7 @@ $post->update
  public function   establishmentstatusupdate(Request $request,$id) {
     //ตรวจสอบข้อมูล
 
-   //dd($request);
+  // dd($request);
 
     $request->validate([
         // 'images' => ['required','mimes:jpg,jpeg,png'],
@@ -1936,7 +1936,7 @@ $post->update
     // $post->establishment ="ยืนยันได้สถานประกอบการแล้ว";
     $post->update
     ([
-        "establishment" =>$request->establishment,
+        "establishment_id" =>$request->establishment_id,
 
     ]);
 

@@ -641,22 +641,9 @@
 
                                       </div>
                                     </div>
-                                    <main role="main" class="">
-                                        <div class="container-fluid">
-                                      <div class="row justify-content-center">
-                                        <div class="col-md-12 my-4 " >
-                                       </div>
 
 
-                                      </div></div></div></div> <div class="d-grid gap-2">
-
-                                        <h2>ขั้นตอนต่อไป</h2>
-                                        </div>   <a href="/studenthome/calendar2confirm"  id="show-alert" class="btn btn-outline-warning " type="button">>คลิกที่นี่<</a>
-                                  </div>
-                                <br>
-                                <br>
-
-{{-- <main role="main" class="">
+{{----}} <main role="main" class="">
     <div class="container-fluid">
       <div class="row justify-content-center">
         <div class="col-12">
@@ -671,7 +658,7 @@
 <div class="col-md-12 my-4">
     <div class="card shadow">
       <div class="card-body">
-        <h5 class="card-title">เอกสารแจ้งรายละเอียดการปฎิบัติงาน</h5>
+        <h5 class="card-title">รายการแจ้งรายละเอียดการปฎิบัติงาน</h5>
 
 
         <div class="container">
@@ -680,12 +667,12 @@
                 <p class="card-text"> <tbody>
                 </p>
               </div>
-              <div class="d-grid gap-2 d-md-block">
+              {{-- <div class="d-grid gap-2 d-md-block">
                 <a href="/studenthome/documents1" type="button" class="btn btn-outline-primary"data-bs-toggle="modal" data-bs-target="#exampleModal">ดาวน์โหลดไฟล์เอกสาร</a>
 
                 <a href="/studenthome/addinformdetail"  class=" btn btn-outline-success">เพิ่มข้อมูล</a>
 
-              </div>
+              </div> --}}
             </div>
 
         </div>
@@ -699,7 +686,7 @@
             <tr>
               <th>#</th>
               <th>ชื่อนักศึกษา</th>
-              <th>ชื่อสถานประกอบการ</th>
+
               <th>ชื่อไฟล์</th>
               <th>รูปภาพ</th>
               <th>สถานะ</th>
@@ -720,8 +707,8 @@
                 )
             }}">
                 <td class="col-1 text-center">{{ $informdetails->firstItem() + $loop->index }}</td>
-                <td>{{ $row->name }}</td>
-                <td>{{ $row->establishment }}</td>
+                <td></td>
+
                 <td>{{ $row->namefile }}</td>
                 <td><img src="/fileinformdetails/{{ $row->files }}" class="img-responsive" style="max-height: 100px; max-width: 100px;" alt="" srcset=""></td>
                 <td>
@@ -741,11 +728,24 @@
           </tbody>
         </table>
       </div>
-    </div> --}}
+    </div>
   </div> <!-- Bordered table -->
-</div> <!-- end section -->
 
 
+<main role="main" class="">
+    <div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-md-12 my-4 " >
+   </div>
+
+
+  </div></div></div></div> <div class="d-grid gap-2">
+
+    <h2>ขั้นตอนต่อไป</h2>
+    </div>   <a href="/studenthome/calendar2confirm"  id="show-alert" class="btn btn-outline-warning " type="button">>คลิกที่นี่<</a>
+</div>
+<br>
+<br>
 
 {{-- เพิ่มข้อมูล --}}
 <div class="col-md-4 mb-4">

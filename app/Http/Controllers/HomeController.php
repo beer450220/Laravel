@@ -172,9 +172,14 @@ class HomeController extends Controller
     //  auth()->id())
    // $events1 = users::pluck('establishment', 'id');
      $events1=DB::table('users')->paginate(5);
-        $users = establishment::pluck('name', 'id'); // ดึงรายชื่อของผู้ใช้และ ID จากฐานข้อมูล
+        // $users = establishment::pluck('em_name', 'id'); // ดึงรายชื่อของผู้ใช้และ ID จากฐานข้อมูล
 
+        $users=DB::table('establishment')
 
+        ->paginate(5);
+        $major=DB::table('users')
+
+        ->paginate(5);
 
     //     $users = DB::table('users')
     //     ->select('users.id', 'users.establishment', 'establishment.name')
@@ -183,13 +188,42 @@ class HomeController extends Controller
     //    // ->where('users.otherThing', '=', 'otherThing')
     //     ->get();
         // $users=users::paginate(5);
-        $establishments=DB::table('users') ->orderBy('name','desc')
+        $establishments=DB::table('users') ->orderBy('fname','desc')
 
         ->paginate(6);
-        return view('student.establishmentstatus',compact('users','establishments','events','users1','events1' ));
+        return view('student.establishmentstatus',compact('users','establishments','events','users1','events1','major' ));
     }
 
+    public function editestablishmentstatus(Request $request,$id)
+    {
+       // dd($request);
+        // $users=DB::table('users')->get();
+        // $users=DB::table('establishment')->paginate(5);
+        $users1=users::find($id);
+    // dd($request);
+     $events=DB::table('users')->find($id);
+    //  $events1=users::pluck('establishment', 'id'); ->where('id',
+    //  auth()->id())
+   // $events1 = users::pluck('establishment', 'id');
+     $events1=DB::table('users')->paginate(5);
+        $users = establishment::pluck('em_name', 'id'); // ดึงรายชื่อของผู้ใช้และ ID จากฐานข้อมูล
 
+        $major=DB::table('establishment')
+
+        ->paginate(5);
+
+    //     $users = DB::table('users')
+    //     ->select('users.id', 'users.establishment', 'establishment.name')
+    //     ->join('establishment', 'users.id', '=', 'establishment.id')
+    //    // ->where('users.something', '=', 'something')
+    //    // ->where('users.otherThing', '=', 'otherThing')
+    //     ->get();
+        // $users=users::paginate(5);
+        $establishments=DB::table('users') ->orderBy('fname','desc')
+
+        ->paginate(6);
+        return view('student.edit.editestablishmentstatus',compact('users','establishments','events','users1','events1','major' ));
+    }
     public function establishmentuser4()
     {
         // $users=DB::table('users')->get();

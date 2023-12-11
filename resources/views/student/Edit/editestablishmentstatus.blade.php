@@ -73,10 +73,10 @@
 
                                   <option selected>กรุณาเลือก</option>
 
-                                  @foreach($users as $row )
+                                  @foreach($major as $row )
                                   {{-- @if($events1->establishment==$name) selected @endif required --}}
-                                      {{-- <option value="{{ $name }}" {{ old('id') == $name ? 'selected' : '' }}>{{ $name }}</option> --}}
-                                      <option value="{{$row->id}}">{{$row->em_name}}  </option>
+                                      {{-- <option value="{{ $name }}" {{ old('name') == $name ? 'selected' : '' }}>{{ $name }}</option> --}}
+                                      <option value="{{$row->id}}"{{$row->id==$events->id ?'selected':''}}>{{$row->em_name}}  </option>
                                       {{-- <option value="{{ $name }}" {{ (old('name') == $name || $events1->establishment == $name) ? 'selected' : '' }}>{{ $name }}</option> --}}
                                       {{-- <option value="{{ $id }}" {{ old('establishment') == $id ? 'selected' : '' }}>{{ $name }}</option> --}}
                                       {{-- <option value="{{ $name }}" {{ old('name') == $name || ($events1->establishment == $name && $events1->establishment == $name) ? 'selected' : '' }}>{{ $name }}</option> --}}

@@ -1067,19 +1067,7 @@
 
 
 
-                                  <main role="main" class="">
-                                    <div class="container-fluid">
-                                  <div class="row justify-content-center">
-                                    <div class="col-md-12 my-4 " >
-                                   </div>
 
-
-                                  </div></div></div></div> <div class="d-grid gap-2">
-
-                                    <h2>ขั้นตอนต่อไป</h2>
-                                    </div>   <a href=""  id="show-alert" class="btn btn-outline-warning " type="button">>คลิกที่นี่<</a>
-                                  <br>
-<br>
 
 
 
@@ -1106,7 +1094,7 @@ $(document).ready(function () {
     });
 </script>
 
-{{-- <main role="main" class="">
+{{----}} <main role="main" class="">
     <div class="container-fluid">
       <div class="row justify-content-center">
         <div class="col-12">
@@ -1121,7 +1109,7 @@ $(document).ready(function () {
 <div class="col-md-12 my-4">
     <div class="card shadow">
       <div class="card-body">
-        <h5 class="card-title">ลงทะเบียน</h5>
+        <h5 class="card-title">รายการการอนุมัติลงทะเบียน</h5>
         <div class="container">
             <div class="row">
               <div class="col-9">
@@ -1129,11 +1117,11 @@ $(document).ready(function () {
                 </p>
               </div>
 
-            <div class="d-grid gap-2 d-md-block">
+            {{-- <div class="d-grid gap-2 d-md-block">
                 <a href="/studenthome/Announcement"  class=" btn btn-outline-primary">ประกาศผลการตอบรับ</a>
                 <a href="/studenthome/documents" type="button" class="btn btn-outline-primary"data-bs-toggle="modal" data-bs-target="#exampleModal">ดาวน์โหลดไฟล์เอกสาร</a>
 
-                <a href="/studenthome/addregister"  class=" btn btn-outline-success">ลงทะเบียนใหม่</a>
+                <a href="/studenthome/addregister"  class=" btn btn-outline-success">ลงทะเบียนใหม่</a> --}}
 
               </div>
             </div>
@@ -1170,7 +1158,7 @@ $(document).ready(function () {
                 )
             }}">
                 <td class="col-1 text-center">{{ $registers->firstItem() + $loop->index }}</td>
-                <td>{{ $row->name }}</td>
+                <td></td>
                 <td>{{ $row->namefile }}</td>
                 <td><img src="/file/{{ $row->filess }}" class="img-responsive" style="max-height: 100px; max-width: 100px;" alt="" srcset=""></td>
                 <td>
@@ -1191,14 +1179,26 @@ $(document).ready(function () {
             @endforeach
           </tbody>
         </table>
-        {!!$registers->links('pagination::bootstrap-5')!!}
+        {{-- {!!$registers->links('pagination::bootstrap-5')!!} --}}
       </div>
-    </div> --}}
+    </div>
   </div> <!-- Bordered table -->
-</div> <!-- end section -->
 
 
 
+<main role="main" class="">
+    <div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-md-12 my-4 " >
+   </div>
+
+
+  </div></div></div></div> <div class="d-grid gap-2">
+
+    <h2>ขั้นตอนต่อไป</h2>
+    </div>   <a href=""  id="show-alert" class="btn btn-outline-warning " type="button">>คลิกที่นี่<</a>
+  <br>
+<br>
 
 
 

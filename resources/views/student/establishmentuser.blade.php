@@ -565,7 +565,7 @@
                                                       <small>
                                                         {{-- <span class="dot dot-lg bg-success mr-1"></span> Online </small> --}}
                                                         {{-- <td><a href="../fileinformdetails/{{ $row->files }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down "></a></td> --}}
-                                                        <td><a href="/studenthome/establishmentstatus/{{ $row->id }}" type="button" class="btn btn-outline-secondary fa-regular fe fe-edit "></a></td>
+                                                        <td><a href="/studenthome/editestablishmentstatus/{{ $row->id }}" type="button" class="btn btn-outline-secondary fa-regular fe fe-edit "></a></td>
                                                       </div>
 
                                                     <div class="col-auto">

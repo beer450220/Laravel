@@ -94,7 +94,11 @@ Route::middleware(['auth','user-role:student'])->group(function()
 
          //ยืนยันสถานประกอบการ
          Route::get("/studenthome/establishmentstatus/{id}",[HomeController::class,'establishmentstatus'])->name('establishmentstatus');
-            Route::post("/studenthome/establishmentstatusupdate/{id}",[EditController::class,'establishmentstatusupdate'])->name('establishmentstatusupdate');
+
+         Route::get("/studenthome/editestablishmentstatus/{id}",[HomeController::class,'editestablishmentstatus'])->name('editestablishmentstatus');
+
+
+         Route::post("/studenthome/establishmentstatusupdate/{id}",[EditController::class,'establishmentstatusupdate'])->name('establishmentstatusupdate');
             // Route::get("/studenthome/establishmentstatusedit/{id}",[EditController::class,'statusedit'])->name('statusedit');
             Route::get("/studenthome/test/{id}",[EditController::class,'test'])->name('test');
     // Route::get('/studenthome/view/{id}', [HomeController::class,'viewestablishmentuser'])->name('viewestablishmentuser');
@@ -290,7 +294,7 @@ Route::middleware(['auth','user-role:officer'])->group(function()
     Route::get("/officer/editinformdetails2/{informdetails_id}",[EditController::class,'editinformdetails2'])->name('editinformdetails2');
     Route::post("/officer/updateinformdetails2/{informdetails_id}",[EditController::class,'updateinformdetails2'])->name('updateinformdetails2');
 
-    
+
     Route::get("/officer/record2",[HomeController::class,'record2']);
 
     Route::get("/officer/experiencereport2",[HomeController::class,'experiencereport2']);
