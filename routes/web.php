@@ -249,10 +249,16 @@ Route::middleware(['auth','user-role:officer'])->group(function()
 
     //สถานประกอบการ
     Route::get("/officer/establishmentuser1",[HomeController::class,'establishmentuser1'])->name('officer.establishmentuser1');
+//เพิ่ม
+    Route::get("/officer/addestablishmentuser1",[addController::class,'addestablishmentuser1'])->name('addestablishmentuser1');
     Route::post('/officer/establishmentuser1', [AddController::class,'addestablishment'])->name('addestablishment');
+
     Route::get('/officer/establishmentuser1/{id}', [EditController::class,'editestablishment'])->name('editestablishment');
  // Route::post('/officer/update/{id}', [EditController::class,'updateestablishment'])->name('updateestablishment');
-    Route::post('/officer/update/{id}', [EditController::class,'updateestablishment'])->name('updateestablishment');
+
+
+
+ Route::post('/officer/update/{id}', [EditController::class,'updateestablishment'])->name('updateestablishment');
     Route::get('/officer/delete/{id}', [EditController::class,'delestablishment'])->name('delestablishment');
     Route::delete('/deleteimage/{id}',[EditController::class,'deleteimage'])->name('deleteimage');
     Route::get('/officer/view/{id}', [HomeController::class,'viewestablishment'])->name('viewestablishment');
@@ -402,11 +408,14 @@ Route::middleware(['auth','user-role:teacher'])->group(function()
     Route::get("/teacher/record1",[HomeController::class,'record1'])->name('teacher.record1');
     Route::get("/teacher/listofteachers1",[HomeController::class,'listofteachers1'])->name('teacher.listofteachers1');
 
+//เอกสารประเมิน
     Route::get("/teacher/estimate1",[HomeController::class,'estimate1'])->name('teacher.estimate1');
     Route::get("/teacher/addestimate1",[addController::class,'addestimate1'])->name('addestimate1');
     Route::post("/teacher/addestimate",[addController::class,'addestimate'])->name('addestimate');
     Route::get("/teacher/editestimate1/{supervision_id}",[EditController::class,'editestimate1'])->name('editestimate1');
     Route::post("/studenthome/updateestimate1/{supervision_id}",[EditController::class,'updateestimate1'])->name('updateestimate1');
+
+
 
     Route::get("/teacher/calendar2",[HomeController::class,'calendar3'])->name('calendar3');
 
@@ -418,6 +427,17 @@ Route::middleware(['auth','user-role:teacher'])->group(function()
     Route::get("/teacher/advisor1",[HomeController::class,'advisor1'])->name('teacher.advisor1');
     Route::get("/teacher/reportresults1",[HomeController::class,'reportresults1'])->name('teacher.reportresults1');
 
+
+//นิเทศงาน
+    Route::get("/teacher/supervision",[HomeController::class,'supervision1']);
+    // Route::get('/officer/pdf', [FileController::class, 'createPDF'])->name('createPDF');
+     //Route::get('/teacher/Excel', [FileController::class, 'export1'])->name('export1');
+     Route::get('/teacher/Excel', [FileController::class, 'exportUsers'])->name(' exportUsers');
+
+    Route::get("/teacher/addsupervision",[addController::class,'addsupervision01'])->name('addsupervision01');
+    Route::post("/teacher/addsupervision02",[addController::class,'addsupervision02'])->name('addsupervision02');
+    Route::get("/teacher/editsupervision02/{id}",[EditController::class,'editsupervision02'])->name('editsupervision02');
+    Route::post("/teacher/updatesupervision02/{id}",[EditController::class,'updatesupervision02'])->name('updatesupervision02');
 
 });
 

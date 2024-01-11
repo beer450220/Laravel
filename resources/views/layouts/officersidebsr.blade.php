@@ -34,24 +34,23 @@
                 <span>จัดการผู้ใช้งาน</span></a>
         </li> --}}
 
-        <li class="nav-item">
+        {{-- <li class="nav-item">
             <a class="nav-link"href="/officer/major">
 
            <i class="fa fa-user" aria-hidden="true"></i>
 
 
                 <span>หลักสูตรสาขา</span></a>
-        </li>
+        </li> --}}
 
-        <li class="nav-item">
+        {{-- <li class="nav-item">
             <a class="nav-link"href="/officer/establishmentuser1">
 
            <i class="fa fa-user" aria-hidden="true"></i>
 
 
                 <span>สถานประกอบการ</span></a>
-        </li>
-
+        </li> --}}
         <li class="nav-item">
             <a class="nav-link"href="/officer/schedule">
 
@@ -60,6 +59,25 @@
 
                 <span>กำหนดการปฏิทินสหกิจ</span></a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo2"
+                aria-expanded="true" aria-controls="collapseTwo">
+                <i class="fa fa-file"></i>
+                <span>ข้อมูลสถานประกอบการ</span>
+            </a>
+            <div id="collapseTwo2" class="collapse" aria-labelledby="headingTwo2" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header"></h6>
+
+                    {{-- <a class="collapse-item "href="/officer/schedule">ตารางกำหนดการปฏิทินสหกิจ</a> --}}
+                    {{-- <a class="collapse-item "href="/officer/calendar6">กำหนดการปฏิทินสหกิจ</a> --}}
+                    <a class="collapse-item "href="/officer/establishmentuser1">สถานประกอบการ</a>
+                    <a class="collapse-item "href="/officer/acceptancedocument1">หนวดหมู่</a>
+                    <a class="collapse-item "href="/officer/major">หลักสูตรสาขา</a>
+                </div>
+            </div>
+        </li>
+
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                 aria-expanded="true" aria-controls="collapseTwo">
@@ -116,7 +134,7 @@
             <div id="collapse2" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header"></h6>
-                    <a class="collapse-item "href="/officer/supervision">ตารางนิเทศงาน </a>
+                    {{-- <a class="collapse-item "href="/officer/supervision">ตารางนิเทศงาน </a> --}}
                     {{-- <a class="collapse-item "href="/officer/calendar5">ปฏิทินนิเทศงานสหกิจ</a> --}}
 
                     {{-- <a class="collapse-item "href="/officer/Supervise">รายชื่ออาจารย์นิเทศงาน</a> --}}

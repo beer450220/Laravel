@@ -53,13 +53,13 @@
             @foreach ($events as $row)
             <tr>
               <td class="col-1 text center">{{$events->firstItem()+$loop->index}}</td>
-              <td>{{$row->title}}</td>
+              <td>{{$row->start}}</td>
               <td><a href="/officer/editsupervision1/{{$row->id}}" type="button" class="btn btn-outline-secondary fa-solid fa-pen-to-square fe-16"></a></td>
 
 
-              <td>{{$row->end}}</td>
-              <td></a></td>
-              <td>{{$row->title}}</td>
+              <td>{{$row->start}}</td>
+              <td></a>{{$row->student_name}}</td>
+              <td>{{$row->fname }}  {{$row->surname }}</td>
               <td><a href="/officer/editsupervision1/{{$row->id}}" type="button" class="btn btn-outline-secondary fa-solid fa-pen-to-square fe-16"></a></td>
               <td><a href="/officer/deletSupervise/{{$row->id}}"type="button" class="btn btn-outline-danger fa-solid fa-trash-can"onclick="return confirm('ยืนยันการลบข้อมูล !!');"></td>
             </tr>

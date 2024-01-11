@@ -159,11 +159,11 @@
                         </div>
                         <div class="col-md-4">
                             <label for="recipient-name" class="col-form-label">หลักสูตร</label>
-                            <select class="form-control" id="validationSelect1" name="major_id" >
+                            <select class="form-select" id="validationSelect1" name="major_id" >
                                 <option value="">กรุณาเลือกหลักสูตร</option>
                                 @foreach ($major as $row)
                                 {{-- <optgroup label="Mountain Time Zone"> --}}
-                                  <option value="{{$row->major_id}}">{{$row->name_major}}  ({{$row->faculty}})</option>
+                                  <option value="{{$row->major_id}}"{{$row->major_id==$establishments->major_id ?'selected':''}}>{{$row->name_major}}  ({{$row->faculty}})</option>
                                   {{-- <option value="{{$row->major_id}}">{{$row->major}}</option> --}}
                                 </optgroup>
 
@@ -203,7 +203,7 @@
               </div>
                 <div class="modal-footer">
                     <a href="/officer/establishmentuser1" class="btn mb-2 btn-primary">ย้อนกลับ</a>
-                  <a href="reset"  class="btn mb-2 btn-secondary" data-dismiss="modal">ยกเลิก</a>
+                  <a href="" type="reset"  class="btn mb-2 btn-secondary" data-dismiss="modal">ยกเลิก</a>
                   <button type="submit" class="btn mb-2 btn-primary"onclick="return confirm('ยืนยันการแก้ไขข้อมูล !!');">ตกลง</button>
                 </div></form>
               </div>

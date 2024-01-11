@@ -5,7 +5,7 @@
 
 
 
-@extends('layouts.officermin')
+@extends('layouts.officermin1')
 
 @section('content')
 @yield('content')
@@ -97,20 +97,25 @@
 </div>
 </div>
 </div> --}}
-<main role="main" class="main-content">
-  <div class="container-fluid">
-    <div class="row justify-content-center">
-      <div class="col-12">
+<div class="col-md-12 mb-12">
 
 
-<div class="row">
-  <div class="col-md-12">
-    <div class="card shadow mb-4">
-      <div class="card-header">
-        <strong class="card-title">เพิ่มข้อมูล</strong>
+
+
+
+  <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-content ">
+      <div class="modal-header bg-dark text-white ">
+        <h5 class="modal-title text center " id="varyModalLabel">ข้อมูลนิเทศงาน</h5>
+        {{-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button> --}}
       </div>
-      <div class="card-body">
-        <form method="POST" action="{{ route('addsupervision1') }}"enctype="multipart/form-data">
+
+
+      <div class="modal-body">
+
+        <form method="POST" action="{{url('/teacher/updatesupervision02/'.$supervisions->id)}}"enctype="multipart/form-data">
           @csrf
           @if ($errors->any())
           <div class="alert alert-danger col-md-4">
@@ -134,135 +139,51 @@
           </div>
            <div class="row">
             <div class="form-group col-md-4">
-              <label for="inputAddress">วันเวลาการนิเทศงาน</label>
-       <input class="form-control" id="example-date" type="datetime-local" name="start"  autofocus placeholder="title">
-
-
+              {{-- <label for="inputAddress">หัวเรื่อง</label> --}}
+       {{-- <input type="text" class="form-control" @error('title') is-invalid @enderror name="title"   autofocus placeholder="title"> --}}
+       <label for="inputAddress">วันเวลาการนิเทศงาน</label>
+       <input class="form-control" id="example-date" type="datetime-local" name="start"value="{{$supervisions->start}} "  autofocus placeholder="title">
+       {{$supervisions->start}}
               @error('name')
               <span class="invalid-feedback" >
                   {{ $message }}
               </span>
           @enderror
-
-
-
-
-
             </div>
-
-          {{-- <div class="form-group col-md-4">
+          <div class="form-group col-md-4">
             <label for="inputAddress">ชื่อสถานประกอบการ</label>
-
-            <select class="form-control select2" id="validationSelect1" name="" >
+            {{-- <input type="text" class="form-control" @error('name') is-invalid @enderror name="name" value="{{ old('name') }}"  autofocus placeholder="name"> --}}
+            <select class="form-control select2" id="validationSelect1" name="establishment_name" >
               <option value="">Select state</option>
-
-
-              </optgroup>
-
-
-            </select>
-
-
-
-
-          </div> --}}
-
-          <div class="col-md-4">
-            <label for="inputAddress" >ชื่อสถานประกอบการ</label>
-            {{-- <input type="text" class="form-control" @error('test') is-invalid @enderror name="test" value="{{ old('test') }}"  autofocus placeholder="test" placeholder="Last name" aria-label="Last name"> --}}
-            <select class="form-control select2" id="validationSelect2" name="" >
-              <option value="">Select state</option>
-              {{-- @foreach ($users as $row) --}}
+              @foreach ($establishment as $row)
               {{-- <optgroup label="Mountain Time Zone"> --}}
-                {{-- <option value="{{$row->id}}">{{$row->name}}</option> --}}
+                <option value="{{$row->em_name}}"{{$row->em_name==$supervisions->establishment_name ?'selected':''}}>{{$row->em_name}}</option>
 
               </optgroup>
 
-              {{-- @endforeach --}}
+              @endforeach
             </select>
 
-            @error('test')
+
+            @error('name')
             <span class="invalid-feedback" >
                 {{ $message }}
             </span>
         @enderror
           </div>
+
           <div class="col-md-4">
             <label for="inputAddress" >ชื่อนักศึกษา</label>
             {{-- <input type="text" class="form-control" @error('test') is-invalid @enderror name="test" value="{{ old('test') }}"  autofocus placeholder="test" placeholder="Last name" aria-label="Last name"> --}}
-            <select class="form-control select2" id="multiple-select-field" data-placeholder="Choose anything" multiple name="student_name[]" >
+            <select class="form-control select2" id="validationSelect2" name="student_name" >
               <option value="">Select state</option>
-              {{-- @foreach ($users as $row) --}}
+              @foreach ($users1 as $row)
               {{-- <optgroup label="Mountain Time Zone"> --}}
-                {{-- <option value="{{$row->id}}">{{$row->name}}</option> --}}
-                @foreach ($major as $row)
-                {{-- <optgroup label="Mountain Time Zone"> --}}
-                  <option value="{{$row->id}}">{{$row->fname}}({{$row->surname}})</option>
-                  {{-- <option value="{{$row->major_id}}">{{$row->major}}</option> --}}
-
-
-                @endforeach
-              </optgroup>
-
-              {{-- @endforeach --}}
-            </select>
-            <script>
-				$(document).ready(function() {
-			$('.select2').select2({
-			closeOnSelect: false
-			});
-			});
-
-
-            $( '#multiple-select-field' ).select2( {
-    theme: "bootstrap-5",
-    width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
-    placeholder: $( this ).data( 'placeholder' ),
-    closeOnSelect: false,
-} );
-			</script>
-
-
-
-
-
-<!-- Styles -->
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" />
-
-<!-- Or for RTL support -->
-
-<!-- Scripts -->
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.0/dist/jquery.slim.min.js"></script>
-
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-
-
-
-
-            <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
-
-            @error('test')
-            <span class="invalid-feedback" >
-                {{ $message }}
-            </span>
-        @enderror
-          </div>
-          <div class="col-md-4">
-            <label for="inputAddress" >ชื่ออาจาร์ยนิเทศ</label>
-            {{-- <input type="text" class="form-control" @error('test') is-invalid @enderror name="test" value="{{ old('test') }}"  autofocus placeholder="test" placeholder="Last name" aria-label="Last name"> --}}
-            <select class="form-control select2" id="validationSelect2" name="" >
-              <option value="">Select state</option>
-              {{-- @foreach ($users as $row) --}}
-              {{-- <optgroup label="Mountain Time Zone"> --}}
-                {{-- <option value="{{$row->id}}">{{$row->name}}</option> --}}
+                <option value="{{$row->id}}"{{$row->id==$supervisions->student_name ?'selected':''}}>{{$row->fname}}</option>
 
               </optgroup>
 
-              {{-- @endforeach --}}
+              @endforeach
             </select>
 
             @error('test')
@@ -271,36 +192,14 @@
             </span>
         @enderror
           </div>
-          <div class="col-md-4">
-            <label for="inputAddress" >ชื่อผู้บริหาร</label>
-            <input type="text" class="form-control" @error('test') is-invalid @enderror name="test" value="{{ old('test') }}"  autofocus placeholder="" placeholder="Last name" aria-label="Last name">
 
-
-            @error('test')
-            <span class="invalid-feedback" >
-                {{ $message }}
-            </span>
-        @enderror
-          </div>
-
-          <div class="col-md-4">
-            <label for="inputAddress" >ชื่อผู้ติดต่อ</label>
-            <input type="text" class="form-control" @error('test') is-invalid @enderror name="test" value="{{ old('test') }}"  autofocus placeholder="" placeholder="Last name" aria-label="Last name">
-
-
-            @error('test')
-            <span class="invalid-feedback" >
-                {{ $message }}
-            </span>
-        @enderror
-          </div>
         </div>
           <div class="row">
 
 
-        <div class="col-md-3">
+        <div class="col-md-4">
           <label for="inputAddress"class="col-form-label ">รับทราบและยืนยันเวลานัดนิเทศ</label>
-          <select class="form-control select2" id="validationSelect2" name="" >
+          <select class="form-control select" id="validationSelect2" name="" >
             <option value="">กรุณาเลือก</option>
             {{-- @foreach ($users as $row) --}}
             {{-- <optgroup label="Mountain Time Zone"> --}}
@@ -317,9 +216,9 @@
         <select class="form-control "  name="term">
           <option value="">กรุณาเลือกภาคเรียน</option>
 
-        <option value="ภาคเรียนที่1">ภาคเรียนที่:1 </option>
-          <option value="ภาคเรียนที่2">ภาคเรียนที่:2 </option>
 
+           <option value="ภาคเรียนที่1"@if($supervisions->term=="ภาคเรียนที่1") selected @endif required>ภาคเรียนที่1</option>
+          <option value="ภาคเรียนที่2"@if($supervisions->term=="ภาคเรียนที่2") selected @endif required>ภาคเรียนที่2</option>
 
 
 
@@ -340,9 +239,10 @@
 
 @for ($i = $endYear; $i >= $startYear; $i--)
     @for ($j = 1; $j <= 1; $j++)
-        <option value="{{ $i }}">{{ $i }}</option>
+        <option value="{{ $i }}"@if($supervisions->year==$i ) selected @endif>{{ $i }}</option>
     @endfor
 @endfor
+
 </select>
 
 
@@ -351,19 +251,46 @@
   </div>
   <div class="col-md-2">
     <label for="inputAddress"class="col-form-label ">หมายเหตุ</label>
-     <input type="text" class="form-control" @error('annotation') is-invalid @enderror name="" value=""  autofocus placeholder="annotation" placeholder="Last name" aria-label="Last name">
+     <input type="text" class="form-control" @error('annotation') is-invalid @enderror name="" value="{{$supervisions->annotation}} " autofocus placeholder="annotation" placeholder="Last name" aria-label="Last name">
 </div>
+<div class="row">
+ <div class="col-md-4">
+  <label for="inputAddress"class="col-form-label ">เริ่มต้น</label>
+  <input class="form-control" id="example-date" type="datetime-local" name="start"value="{{$supervisions->start}}">
 
 
+</div>
+{{-- <div class="col-md-2">
+
+  <label for="inputAddress"class="col-form-label ">เวลาเริ่มต้น</label>
+  <input class="form-control" id="example-date" type="date" name="date">
+  <input class="form-control col-form-label" id="example-date" type="time" name="">
+</div> --}}
+
+<div class="col-md-4">
+
+  <label for="inputAddress"class="col-form-label ">สิ้นสุด</label>
+  <input class="form-control" id="example-date" type="datetime-local" name="end"value="{{$supervisions->end}}">
+  {{-- <input class="form-control col-form-label" id="example-date" type="time" name="time"> --}}
+</div>
+{{-- <div class="col-md-2">
+
+  <label for="inputAddress"class="col-form-label ">เวลาสิ้นสุด</label>
+  <input class="form-control" id="example-date" type="date" name="date">
+  <input class="form-control col-form-label" id="example-date" type="time" name="">
+  <br>
+</div> --}}
 
 </div>
       </div>
       <br>
       <br>
           <div class="modal-footer">
-            <a href="/officer/supervision" type="submit" class="btn mb-2 btn-success" >ย้อนกลับ</a>
-            <button type="reset" class="btn mb-2 btn-danger" >ยกเลิก</button>
-            <button type="submit" class="btn mb-2 btn-primary">ตกลง</button>
+            <a href="/teacher/supervision" type="submit" class="btn mb-2 btn-secondary" >ย้อนกลับ</a>
+
+
+
+            <button type="submit" class="btn mb-2 btn-primary"onclick="return confirm('ยืนยันการแก้ไขข้อมูล !!');">อัพเดท</button>
           </div>
         </form>
       </div> <!-- /. card-body -->

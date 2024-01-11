@@ -28,8 +28,10 @@ class EditController extends Controller
     public function editestablishment($id) {
         //ตรวจสอบข้อมูล
 
+        $establishments=establishment::find($id);
+        // $major=DB::table('major')
         // $establishments=establishment::find($id);
-        $establishments=DB::table('establishment')->find($id);
+        // $establishments=DB::table('establishment')->find($id);
         //  dd($establishments);
         $major=DB::table('major')->paginate(5);
 
@@ -73,7 +75,7 @@ class EditController extends Controller
 
      public function   updateestablishment(Request $request,$id) {
         //ตรวจสอบข้อมูล
-
+//dd($request);
         // $establishments=establishment::find($id);
         // $establishments=DB::table('establishment')->find($id);
         //  dd($id,$request);
@@ -87,7 +89,12 @@ class EditController extends Controller
             // 'images' => ['required','mimes:jpg,jpeg,png'],
             // 'name' => ['required','min:5'],
         ]);
+
+
+
+
         $post=establishment::findOrFail($id);
+
         if($request->hasFile("images")){
             if (File::exists("image/".$post->images)) {
                 File::delete("image/".$post->images);
@@ -97,26 +104,29 @@ class EditController extends Controller
             $file->move(\public_path("/image"),$post->images);
             $request['images']=$post->images;
         }
-    //    DB::table('establishment')->where('id',$id)->update([
-    //     'name'=> $request->name,
-    //     'address'=> $request->address,
-    //     'phone'=> $request->phone
-    //   $data =
-        //]);
-        $post->update([
-            "em_name" => $request->em_name,
-            "em_address" => $request->em_address,
-            'em_telephone' => $request->em_telephone,
-            "em_email" => $request->em_email,
-            'em_contact_name' => $request->em_contact_name,
-            "em_Contact_email" => $request->em_Contact_email,
-            'em_contactposition' => $request->em_contactposition,
-            "em_job" => $request->em_job,
-            "status" =>'0',
-            "user_id" =>'0',
-            "images"=>$post->images,
+
+
+        $post->update
+        ([
+            // "major_id" =>$request->major_id,
+           //"username" =>$request->username,
+           "em_name" => $request->em_name,
+           "em_address" => $request->em_address,
+           'em_telephone' => $request->em_telephone,
+           "em_email" => $request->em_email,
+           'em_contact_name' => $request->em_contact_name,
+           "em_Contact_email" => $request->em_Contact_email,
+           'em_contactposition' => $request->em_contactposition,
+           "em_job" => $request->em_job,
+           "status" =>'0',
+           "user_id" =>'0',
+
+ $post->major_id = $request->major_id,
+           "images"=>$post->images,
         ]);
 
+
+     //   $post->major_id = $request->major_id;
 
     //   DB::table('establishment')($data);
         return redirect('/officer/establishmentuser1')->with('success', 'แก้ไขข้อมูลสำเร็จ.');
@@ -720,15 +730,25 @@ $post->update
       //->select('users.*','establishment.*')
       //->get();
     // $establishments=establishment::find($id);
-    $supervisions=DB::table('supervision')->first();
+
+    //$supervisions=DB::table('supervision')->first();
+     $supervisions=supervision::find($supervision_id);
+    $users=DB::table('users')
+    ->where('role',"student")
+    ->get();
+
+    $major=DB::table('major')
+
+    ->paginate(5);
+
     $establishment=DB::table('establishment')
     // ->join('supervision','supervision.supervision_id')
      //->join('supervision', 'establishments.id', '=', 'supervision.id')
     // ->select('supervision.*','establishment.*')
     ->get();
     //dd($establishment);
-     // dd($supervisions);
-     return view('teacher.edit.editestimate1', compact('supervisions'),compact('establishment'));
+     //dd($supervisions);
+     return view('teacher.edit.editestimate1', compact('supervisions','users','major'));
 
  }
 
@@ -872,20 +892,22 @@ $post->update
     // $post->Status ="รอตรวจสอบ";
    //dd($request->Status);
    $post=supervision::findOrFail($supervision_id);
-   $post->user_id = Auth::user()->id;
-   $post->Status ="รอตรวจสอบ";
+//    $post->user_id = Auth::user()->id;
+   $post->Status_supervision ="รอตรวจสอบ";
    if($request->hasFile("filess")){
-       if (File::exists("ไฟล์เอกสารประเมิน(สก.12)/".$post->filess)) {
-           File::delete("ไฟล์เอกสารประเมิน(สก.12)/".$post->filess);
+       if (File::exists("ไฟล์เอกสารประเมิน/".$post->filess)) {
+           File::delete("ไฟล์เอกสารประเมิน/".$post->filess);
        }
        $file=$request->file("filess");
         $post->filess=time()."_".$file->getClientOriginalName();
-        $file->move(\public_path("/ไฟล์เอกสารประเมิน(สก.12)"),$post->filess);
+        $file->move(\public_path("/ไฟล์เอกสารประเมิน"),$post->filess);
         $request['filess']=$post->filess;
      // dd($post);
    }
     $post->update
     ([
+        "namefile" =>$request->namefile,
+        "user_id" =>$request->user_id,
        "year" =>$request->year,
         //"establishment"=>$request->establishment,
          "term"=>$request->term,
@@ -1504,6 +1526,36 @@ $post->update
 
  }
 
+ public function editsupervision02($id) {
+    //ตรวจสอบข้อมูล
+    //$users=DB::table('users')
+      //->where('role',"student")
+      //->join('establishment','establishment.id',"=",'users.id')
+      //->select('users.*','establishment.*')
+      //->get();
+
+     $supervisions=Event::find($id);
+     $users1=DB::table('users')
+      ->where('role',"student")
+      //->join('establishment','establishment.id',"=",'users.id')
+      //->select('users.*','establishment.*')
+      ->get();
+      $establishment=DB::table('establishment')
+      //->where('role',"student")
+      ->get();
+   // $acceptances=DB::table('acceptance')->first();
+    //$establishment=DB::table('establishment')
+    // ->join('supervision','supervision.supervision_id')
+     //->join('supervision', 'establishments.id', '=', 'supervision.id')
+    // ->select('supervision.*','establishment.*')
+   // ->get();
+  //dd($supervisions);
+     // dd($supervisions);
+     return view('teacher.edit.editsupervision',compact('supervisions','establishment','users1'));
+
+ }
+
+
  public function   updatesupervision1(Request $request,$id) {
     //ตรวจสอบข้อมูล
 
@@ -1542,6 +1594,46 @@ $post->update
 
 
     return redirect('/officer/supervision')->with('success', 'ยืนยันข้อมูลสำเร็จ.');
+ }
+
+ public function   updatesupervision02(Request $request,$id) {
+    //ตรวจสอบข้อมูล
+
+    //dd($request);
+
+    $request->validate([
+        // 'images' => ['required','mimes:jpg,jpeg,png'],
+        // 'name' => ['required','min:5'],
+        // 'filess' => 'required|mimes:pdf',
+        // 'establishment' => 'required',
+    ],[
+            //'establishment.required' => "กรุณา",
+
+        ]
+    );
+    // $post=Event::findOrFail($id);
+    // $post->user_id = Auth::user()->id;
+    // $post->Status ="รอตรวจสอบ";
+    // $post->Status ="รอตรวจสอบ";
+   //dd($request->Status);
+   $post=Event::findOrFail($id);
+  // $post->user_id = Auth::user()->id;
+  // $post->Status ="รอตรวจสอบ";
+
+     // dd($post);
+
+    $post->update
+    ([
+       "term" =>$request->term,
+       "establishment_name" =>$request->establishment_name,
+         "start"=>$request->start,
+        // "end"=>$request->end,
+        "year"=>$request->year,
+
+    ]);
+
+
+    return redirect('/teacher/supervision')->with('success', 'ยืนยันข้อมูลสำเร็จ.');
  }
 
  public function editschedule1($schedule_id) {
@@ -1781,15 +1873,6 @@ $post->update
        "status" =>$request->status,
 
         // $user->establishment_id = "ยังไม่มีสถานประกอบการ";
-
-
-
-
-
-
-
-
-
 
         // $user->username = $request->username;
 

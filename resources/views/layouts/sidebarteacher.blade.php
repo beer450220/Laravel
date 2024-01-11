@@ -112,6 +112,16 @@
       </li>
     </ul>
 
+    {{-- <ul class="navbar-nav flex-fill w-100 mb-2">
+        <li class="nav-item ">
+          <a href="/teacher/supervision"  class=" nav-link">
+            <i class="fe fe-box fe-16"></i>
+            <span class="ml-3 item-text">นิเทศงาน</span>
+          </a>
+
+
+        </li>
+      </ul> --}}
 
     {{-- <p class="text-muted nav-heading mt-4 mb-1">
       <span>บันทึกการปฏิบัติงานรายวัน</span>
@@ -125,11 +135,11 @@
 
 
 
-{{--
-    <p class="text-muted nav-heading mt-4 mb-1">
+
+    {{-- <p class="text-muted nav-heading mt-4 mb-1">
       <span>นิเทศงาน</span>
     </p> --}}
-    {{-- <ul class="navbar-nav flex-fill w-100 mb-2">
+   <ul class="navbar-nav flex-fill w-100 mb-2">
       <li class="nav-item dropdown">
         <a href="#ui-elementss3" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
           <i class="fe fe-box fe-16"></i>
@@ -137,17 +147,18 @@
         </a>
         <ul class="collapse list-unstyled pl-4 w-100" id="ui-elementss3">
              <li class="nav-item">
-            <a class="nav-link pl-3" href="/teacher/calendar2"><span class="ml-1 item-text">ปฏิทินนิเทศงานสหกิจ</span></a>
+            <a class="nav-link pl-3" href="/teacher/supervision"><span class="ml-1 item-text">ตารางนิเทศงาน</span></a>
           </li>
 
 
-          <li class="nav-item">
+          {{-- <li class="nav-item">
             <a class="nav-link pl-3" href="/teacher/listofteachers1"><span class="ml-1 item-text"> จัดอาจารย์นิเทศงาน</span>
             </a>
-          </li>
+          </li> --}}
       </li>
       <li class="nav-item">
-        <a class="nav-link pl-3" href="/teacher/estimate1"><span class="ml-1 item-text">   รายงานผลการนิเทศ </span>
+        <a class="nav-link pl-3" href="/teacher/estimate1"><span class="ml-1 item-text">   รายงานผลประเมิน
+            (สก12,สก.15,สก.13,สก.14) </span>
         </a>
       </li>
   </li>
@@ -155,7 +166,7 @@
 
 
       </li>
-    </ul> --}}
+    </ul>
 
     <ul class="navbar-nav flex-fill w-100 mb-2">
       <li class="nav-item dropdown">

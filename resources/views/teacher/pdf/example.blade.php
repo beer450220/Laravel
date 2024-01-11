@@ -39,7 +39,7 @@
    body,html {
        font-family: "THSarabunNew";
        font-size: 16pt;
-
+       
    }table
    {
 border-collapse: collapse;
@@ -48,43 +48,43 @@ border-collapse: collapse;
       border:1px solid;
       font-family: "THSarabunNew";
       text-align: center;}
-
+      
    th,{
     background-color:lightgray;
     border:1px solid;
     font-family: "THSarabunNew";
    }
-
+   
 </style>
 
   ตารางนิเทศงาน
   <br>
-
+  
         <table >
-
+        
             <tr>
               <th>ลำดับ</th>
               <th>หัวเรื่อง</th>
               <th>ชื่อนักศึกษา</th>
               <th>ชื่อสถานประกอบการ</th>
               <th>สถานะ</th>
-
+            
             </tr>
-
-
+         
+          
             @foreach ($users as $users)
             <tr>
               <td >{{$users->id}}</td>
-              <td></td>
+              <td>{{$users->title}}</td>
               <td>{{$users->start}}</td>
-              <td></td>
-              <td></td>
-
+              <td>{{$users->end}}</td>
+              <td>{{$users->title}}</td>
+             
             </tr>
 
             @endforeach
-
+        
         </table>
-
+     
 </body>
 </html>

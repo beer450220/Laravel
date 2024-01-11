@@ -703,10 +703,25 @@ dd($request->$name);
     public function supervision()
     {
         $events=DB::table('events')
-        // ->join('users','events.user_id','users.id')
-        // ->select('events.*','users.name')
+        ->join('users','events.user_id','users.id')
+        ->select('events.*','users.fname','users.surname')
         ->paginate(5);
         return view('officer.supervision',compact('events'));
+    }
+
+
+    public function supervision1()
+    {
+        $events=DB::table('events')
+        // ->join('users','events.student_name','=','users.id')
+        // ->select('events.*','users.*')
+        ->paginate(5);
+        $major=DB::table('users')->paginate(5);
+        $studentNameFromDatabase = $events; // ให้เปลี่ยนเป็นการดึงจากฐานข้อมูลตามการใช้งานของคุณ
+
+        // แปลง JSON string เป็น PHP array
+        $phpArrayFromDatabase = json_decode($studentNameFromDatabase);
+        return view('teacher.supervision',compact('events','major','phpArrayFromDatabase'));
     }
 
 
@@ -830,7 +845,7 @@ dd($request->$name);
     {
         $informdetails=DB::table('informdetails')
         ->join('users','informdetails.user_id','users.id')
-        ->select('informdetails.*','users.name')
+        ->select('informdetails.*','users.fname')
         ->paginate(5);
 
         //return view('student.informdetails',compact('informdetails'));
@@ -848,9 +863,10 @@ dd($request->$name);
     public function estimate1()
     {
         $supervision=DB::table('supervision')
-        ->join('users','users.id','=','student_id',)
-        ->join('establishment','establishment.id','=','establishment_id')
-        ->select('supervision.*','users.name','establishment.address')
+       // ->join('users','users.id','=','users.id')
+        ->join('users','supervision.user_id','users.id')
+        // ->join('establishment','establishment.id','=','establishment_id')
+        ->select('supervision.*','users.fname')
         //->select('supervision.*')
        // ->where('establishment.establishment_id')
         ->paginate(5);
@@ -864,7 +880,7 @@ dd($request->$name);
     {
         $report=DB::table('report')
         ->join('users','report.user_id','users.id')
-        ->select('report.*','users.name')
+        ->select('report.*','users.fname')
         ->paginate(5);
         return view('teacher.reportresults1',compact('report'));
     }

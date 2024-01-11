@@ -51,7 +51,8 @@
                             <a href=""  type="button"  class=" btn btn-outline-warning">ค้นหาข้อมูล</a>
                           </div>
                           <div class="col col-lg-2">
-                            <a href="ss"  type="button"  class=" btn btn-outline-success"data-toggle="modal" data-target="#varyModal" data-whatever="@mdo">เพิ่มข้อมูล</a>
+                            {{-- <a href="/officer/addestablishmentuser1"  type="button"  class=" btn btn-outline-success"data-toggle="modal" data-target="#varyModal" data-whatever="@mdo">เพิ่มข้อมูล</a> --}}
+                            <a href="/officer/addestablishmentuser1"  type="button"  class=" btn btn-outline-success">เพิ่มข้อมูล</a>
                           </div>
                         </div>
                         </form>

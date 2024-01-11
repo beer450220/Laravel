@@ -5,7 +5,7 @@
 
 
 
-@extends('layouts.officermin')
+@extends('layouts.appteacher')
 
 @section('content')
 @yield('content')
@@ -110,7 +110,7 @@
         <strong class="card-title">เพิ่มข้อมูล</strong>
       </div>
       <div class="card-body">
-        <form method="POST" action="{{ route('addsupervision1') }}"enctype="multipart/form-data">
+        <form method="POST" action="{{ route('addsupervision02') }}"enctype="multipart/form-data">
           @csrf
           @if ($errors->any())
           <div class="alert alert-danger col-md-4">
@@ -170,15 +170,15 @@
           <div class="col-md-4">
             <label for="inputAddress" >ชื่อสถานประกอบการ</label>
             {{-- <input type="text" class="form-control" @error('test') is-invalid @enderror name="test" value="{{ old('test') }}"  autofocus placeholder="test" placeholder="Last name" aria-label="Last name"> --}}
-            <select class="form-control select2" id="validationSelect2" name="" >
+            <select class="form-control select2" id="multiple-select-optgroup-field"data-placeholder="เลือกสถานประกอบการ"  multiple name="establishment_name" >
               <option value="">Select state</option>
-              {{-- @foreach ($users as $row) --}}
+              @foreach ($establishment as $row)
               {{-- <optgroup label="Mountain Time Zone"> --}}
-                {{-- <option value="{{$row->id}}">{{$row->name}}</option> --}}
+                <option value="{{$row->em_name}}">{{$row->em_name}}</option>
 
               </optgroup>
 
-              {{-- @endforeach --}}
+              @endforeach
             </select>
 
             @error('test')
@@ -190,14 +190,14 @@
           <div class="col-md-4">
             <label for="inputAddress" >ชื่อนักศึกษา</label>
             {{-- <input type="text" class="form-control" @error('test') is-invalid @enderror name="test" value="{{ old('test') }}"  autofocus placeholder="test" placeholder="Last name" aria-label="Last name"> --}}
-            <select class="form-control select2" id="multiple-select-field" data-placeholder="Choose anything" multiple name="student_name[]" >
-              <option value="">Select state</option>
+            <select class="form-control select2" id="multiple-select-field" data-placeholder="เลือกรายชื่อ" multiple name="student_name[]" >
+              <option value="">เลือกรายชื่อ</option>
               {{-- @foreach ($users as $row) --}}
               {{-- <optgroup label="Mountain Time Zone"> --}}
                 {{-- <option value="{{$row->id}}">{{$row->name}}</option> --}}
                 @foreach ($major as $row)
                 {{-- <optgroup label="Mountain Time Zone"> --}}
-                  <option value="{{$row->id}}">{{$row->fname}}({{$row->surname}})</option>
+                  <option value="{{$row->fname}} {{$row->surname}}">({{$row->fname}} {{$row->surname}})</option>
                   {{-- <option value="{{$row->major_id}}">{{$row->major}}</option> --}}
 
 
@@ -252,7 +252,7 @@
         @enderror
           </div>
           <div class="col-md-4">
-            <label for="inputAddress" >ชื่ออาจาร์ยนิเทศ</label>
+            <label for="inputAddress" >ชื่ออาจารย์นิเทศ</label>
             {{-- <input type="text" class="form-control" @error('test') is-invalid @enderror name="test" value="{{ old('test') }}"  autofocus placeholder="test" placeholder="Last name" aria-label="Last name"> --}}
             <select class="form-control select2" id="validationSelect2" name="" >
               <option value="">Select state</option>
@@ -300,7 +300,7 @@
 
         <div class="col-md-3">
           <label for="inputAddress"class="col-form-label ">รับทราบและยืนยันเวลานัดนิเทศ</label>
-          <select class="form-control select2" id="validationSelect2" name="" >
+          <select class="form-control select" id="validationSelect2" name="" >
             <option value="">กรุณาเลือก</option>
             {{-- @foreach ($users as $row) --}}
             {{-- <optgroup label="Mountain Time Zone"> --}}
@@ -361,7 +361,7 @@
       <br>
       <br>
           <div class="modal-footer">
-            <a href="/officer/supervision" type="submit" class="btn mb-2 btn-success" >ย้อนกลับ</a>
+            <a href="/teacher/supervision" type="submit" class="btn mb-2 btn-success" >ย้อนกลับ</a>
             <button type="reset" class="btn mb-2 btn-danger" >ยกเลิก</button>
             <button type="submit" class="btn mb-2 btn-primary">ตกลง</button>
           </div>

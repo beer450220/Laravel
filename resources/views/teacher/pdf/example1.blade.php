@@ -75,10 +75,10 @@ border-collapse: collapse;
             @foreach ($users as $users)
             <tr>
               <td >{{$users->id}}</td>
-              <td></td>
+              <td>{{$users->title}}</td>
               <td>{{$users->start}}</td>
-              <td></td>
-              <td></td>
+              <td>{{$users->end}}</td>
+              <td>{{$users->title}}</td>
 
             </tr>
 

@@ -21,7 +21,8 @@ class establishment extends Model
         "em_Contact_email",
         'em_contactposition',
         "em_job",
-        'status'
+        'status',
+       ' major_id',
     ];
     public function Users(){
         return $this->hasOne(Users::class,'id','name');

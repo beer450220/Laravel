@@ -91,9 +91,28 @@ class AddController extends Controller
      }
 
 
+//สถานประกอบการ
+     public function addestablishmentuser1()
+     {
+      // $users=users::all()->where('role',"student");
+       //$users=users::all()->where('role',"student");
+      // $users=DB::table('users')
+     //  ->where('role',"student")
+       //->join('establishment','establishment.id',"=",'users.id')
+       //->select('users.*','establishment.*')
+       //->get();
+       //$establishment=DB::table('establishment')
+       //->where('role',"student")
+      // ->get();
+      // dd($users);
+      // ->paginate(5);
+      $major=DB::table('major')->paginate(5);
+         return view('officer.add.addestablishmentuser1',compact('major'));
+     }
+
      public function addestablishment(Request $request) {
         //ตรวจสอบข้อมูล
-        //  dd($request);
+         // dd($request);
         $request->validate([
           'images' => 'required|mimes:jpg,jpeg,png',
 
@@ -106,6 +125,7 @@ class AddController extends Controller
           $post =new establishment([
 
                 "em_name" => $request->em_name,
+
              "em_address" => $request->em_address,
              'em_telephone' => $request->em_telephone,
              "em_email" => $request->em_email,
@@ -115,8 +135,11 @@ class AddController extends Controller
              "em_job" => $request->em_job,
              "user_id" =>'0',
              "status" =>'0',
+            //  "major_id" =>$request->major_id,
               "images" =>$imageName,
-          ]); // dd($request->id);
+          ]);
+           $post->major_id = $request->major_id;
+           // dd($request->id);
          $post->save();
       }
 
@@ -662,21 +685,23 @@ if($request->hasFile("filess"))
       {
         $file=$request->file("filess");
          $imageName=time().'_'.$file->getClientOriginalName();
-        $file->move(\public_path("/ไฟล์เอกสารประเมิน(สก.12)"),$imageName);
+        $file->move(\public_path("/ไฟล์เอกสารประเมิน"),$imageName);
     // $post=Event::findOrFail($id);
 
     $post =new supervision
     ([
-        "student_id" => $request->student_id,
+        "user_id" => $request->user_id,
         "term" => $request->term,
-        'establishment_id' => $request->establishment_id,
+        'namefile' => $request->namefile,
         "year" => $request->year,
         'score' => $request->score,
         "filess" =>$imageName,
 
 
     ]);
-    $post->Status ="รอตรวจสอบ";
+
+    $post->annotation ="-";
+    $post->Status_supervision ="รอตรวจสอบ";
     $post->save();
       //  $data =array();
       //  $data["test"]= $request->test;
@@ -819,9 +844,33 @@ public function addsupervision()
       ->get();
      // dd($users);
      // ->paginate(5);
-        return view('officer.add.addsupervision',compact('users'),compact('establishment'));
+     $major=DB::table('users')->paginate(5);
+        return view('officer.add.addsupervision',compact('users'),compact('establishment','major'));
     }
 
+
+    public function addsupervision01()
+    {
+     // $users=users::all()->where('role',"student");
+      //$users=users::all()->where('role',"student");
+      $users=DB::table('users')
+      ->where('role',"student")
+      //->join('establishment','establishment.id',"=",'users.id')
+      //->select('users.*','establishment.*')
+      ->get();
+      $users1=DB::table('users')
+      ->where('role',"student")
+      //->join('establishment','establishment.id',"=",'users.id')
+      //->select('users.*','establishment.*')
+      ->get();
+      $establishment=DB::table('establishment')
+      //->where('role',"student")
+      ->get();
+     // dd($users);
+     // ->paginate(5);
+     $major=DB::table('users')->paginate(5);
+        return view('teacher.add.addsupervision',compact('users'),compact('establishment','major'));
+    }
 
     public function addsupervision1(Request $request) {
       //ตรวจสอบข้อมูล
@@ -840,14 +889,20 @@ public function addsupervision()
 );
     $post =new Event
     ([
-        "title" => $request->title,
+        // "title" => $request->title,
         "start" => $request->start,
-        'end' => $request->end,
+        // 'end' => $request->end,
         "term" => $request->term,
         "year" => $request->year,
+        // "student_name" => $request->student_name,
 
 
-    ]);
+
+    ]); $post->user_id = "0";
+    $post-> Statusevents = "student";
+    $post-> List_teacher = "List_teacher";
+    $post-> Statustime = "List_teacher";
+    $post['student_name'] = json_encode($request->student_name);
    // $post->Status ="รอตรวจสอบ";
     $post->save();
       //  $data =array();
@@ -858,7 +913,52 @@ public function addsupervision()
 
     }
 
+    public function addsupervision02(Request $request) {
+        //ตรวจสอบข้อมูล
+        // dd($request);
 
+         $request->validate([
+          //  'name' => 'required|unique:name',
+          //  'test' => 'required|unique:test',
+      ]
+    ,[
+
+      // 'name.required'=>"กรุณากรอกชื่อ",
+      // 'test.required'=>"กรุณาเทส",
+    ]
+
+  );
+      $post =new Event
+      ([
+          // "title" => $request->title,
+          "start" => $request->start,
+          // 'end' => $request->end,
+          "term" => $request->term,
+          "year" => $request->year,
+          "establishment_name" => $request->establishment_name,
+
+          // "student_name" => $request->student_name,
+
+
+
+      ]);
+    //    $post->user_id = "0";  // $post->Status ="รอตรวจสอบ";
+      $post-> Statusevents = "student";
+      $post-> List_teacher = "List_teacher";
+      $post-> Statustime = "List_teacher";
+      $post['student_name'] = json_encode($request->student_name);
+
+     //$data['tags'] = json_encode($request->tags);
+    //  $post = Event::create($data);
+
+      $post->save();
+        //  $data =array();
+        //  $data["test"]= $request->test;
+      //    $data["test"]= $request->test;
+      // DB::table('test')->insert($data);
+         return redirect('/teacher/supervision')->with('success', 'สมัครสำเร็จ.');
+
+      }
 
 
     public function addSupervise()
