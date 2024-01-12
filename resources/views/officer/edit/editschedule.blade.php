@@ -150,8 +150,8 @@
           @enderror
             </div>
           <div class="form-group col-md-4">
-            <label for="inputAddress">วันเวลาการปฏิทินสหกิจ</label>
-            <input type="text" class="form-control" @error('start') is-invalid @enderror name="start" value="{{$schedules->start}}"  autofocus placeholder="">
+            <label for="inputAddress">กำหนดการปฏิทินสหกิจ</label>
+            <input type="file" class="form-control" @error('start') is-invalid @enderror name="filess" value="{{$schedules->start}}"  autofocus placeholder="">
 
 
             @error('name')
@@ -166,11 +166,6 @@
           <div class="row">
 
 
-        <div class="col-md-4">
-
-          <label for="recipient-name" class="col-form-label">รายละเอียด</label>
-          <textarea rows="4" cols="50" name="details"  >
-            {{$schedules->details}}  </textarea>
 
 
       </div>

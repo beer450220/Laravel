@@ -31,7 +31,7 @@ Route::get('/', function () {
 Route::get('/register1', [registerController::class,'index'])->name('register1');
 Route::post('/register1/add', [registerController::class,'register2'])->name('register2');
 
-
+Route::get('/login', [HomeController::class,'login01'])->name('login01');
 Route::get('/establishment', [HomeController::class,'establishment'])->name('establishment');
 Route::get('/cooperative', [HomeController::class,'cooperative'])->name('cooperative');
 
@@ -258,7 +258,7 @@ Route::middleware(['auth','user-role:officer'])->group(function()
 
 
 
- Route::post('/officer/update/{id}', [EditController::class,'updateestablishment'])->name('updateestablishment');
+    Route::post('/officer/update/{id}', [EditController::class,'updateestablishment'])->name('updateestablishment');
     Route::get('/officer/delete/{id}', [EditController::class,'delestablishment'])->name('delestablishment');
     Route::delete('/deleteimage/{id}',[EditController::class,'deleteimage'])->name('deleteimage');
     Route::get('/officer/view/{id}', [HomeController::class,'viewestablishment'])->name('viewestablishment');
@@ -270,22 +270,20 @@ Route::middleware(['auth','user-role:officer'])->group(function()
     Route::post("/officer/addmajor1",[addController::class,'addmajor1'])->name('addmajor1');
     Route::get("/officer/editmajor/{major_id}",[EditController::class,'editmajor'])->name('editmajor');
     Route::post("/officer/updatmajor/{major_id}",[EditController::class,'updatmajor'])->name('updatmajor');
-
     Route::get('/officer/deletmajor/{major_id}', [EditController::class,'delmajor'])->name('delmajor');
 
 
 
 
 //ลงทะเบียน
-
     Route::get("/officer/register1",[HomeController::class,'register1'])->name('officer.register1');
     Route::get("/officer/editregister1/{id}",[EditController::class,'editregister1'])->name('editregister1');
     Route::post("/officer/updateregister1/{id}",[EditController::class,'updateregister1'])->name('updateregister1');
 
 
 
-    Route::get("/officer/timeline2",[HomeController::class,'timeline2']);
-    Route::get("/officer/viwetimeline2/{timeline_id}",[EditController::class,'viwetimeline2'])->name('viwetimeline2');
+    // Route::get("/officer/timeline2",[HomeController::class,'timeline2']);
+    // Route::get("/officer/viwetimeline2/{timeline_id}",[EditController::class,'viwetimeline2'])->name('viwetimeline2');
 
     //ตอบรับนักศึกษา
     Route::get("/officer/acceptancedocument1",[HomeController::class,'acceptancedocument1']);
@@ -301,30 +299,32 @@ Route::middleware(['auth','user-role:officer'])->group(function()
     Route::post("/officer/updateinformdetails2/{informdetails_id}",[EditController::class,'updateinformdetails2'])->name('updateinformdetails2');
 
 
-    Route::get("/officer/record2",[HomeController::class,'record2']);
+    // Route::get("/officer/record2",[HomeController::class,'record2']);
 
+//เอกสารฝึกประสบการณ์
     Route::get("/officer/experiencereport2",[HomeController::class,'experiencereport2']);
     Route::get("/teacher/editexperiencereport2/{report_id}",[EditController::class,'editexperiencereport2'])->name('editexperiencereport2');
     Route::post("/teacher/updateexperiencereport2/{report_id}",[EditController::class,'updateexperiencereport2'])->name('updateexperiencereport2');
 
 
-    Route::get("/officer/assessmentreport2",[HomeController::class,'assessmentreport2']);
-    Route::get("/officer/advisor2",[HomeController::class,'advisor2']);
-    Route::get("/officer/practice",[HomeController::class,'practice']);
-    Route::get("/officer/documents2",[HomeController::class,'documents2']);
+    // Route::get("/officer/assessmentreport2",[HomeController::class,'assessmentreport2']);
+    // Route::get("/officer/advisor2",[HomeController::class,'advisor2']);
+    // Route::get("/officer/practice",[HomeController::class,'practice']);
+    // Route::get("/officer/documents2",[HomeController::class,'documents2']);
 
+//เอกสารประเมินผล
     Route::get("/officer/Evaluate",[HomeController::class,'Evaluate']);
     Route::get("/officer/editEvaluate/{supervision_id}",[EditController::class,'editEvaluate'])->name('editEvaluate');
     Route::post("/officer/updateEvaluate/{supervision_id}",[EditController::class,'updateEvaluate'])->name('updateEvaluate');
 
 
 
-    Route::get("/officer/Supervise",[HomeController::class,'Supervise']);
-    Route::get("/officer/addSupervise",[addController::class,'addSupervise'])->name('addSupervise');
-    Route::post("/officer/addSupervise1",[addController::class,'addSupervise1'])->name('addSupervise1');
-    Route::get("/officer/editSupervise/{advisor_id}",[EditController::class,'editSupervise'])->name('editSupervise');
-    Route::post("/officer/updatSupervise/{advisor_id}",[EditController::class,'updateSupervise'])->name('updatSupervise');
-    Route::get('/officer/deletSupervise/{advisor_id}', [EditController::class,'delSupervise'])->name('delSupervise');
+    // Route::get("/officer/Supervise",[HomeController::class,'Supervise']);
+    // Route::get("/officer/addSupervise",[addController::class,'addSupervise'])->name('addSupervise');
+    // Route::post("/officer/addSupervise1",[addController::class,'addSupervise1'])->name('addSupervise1');
+    // Route::get("/officer/editSupervise/{advisor_id}",[EditController::class,'editSupervise'])->name('editSupervise');
+    // Route::post("/officer/updatSupervise/{advisor_id}",[EditController::class,'updateSupervise'])->name('updatSupervise');
+    // Route::get('/officer/deletSupervise/{advisor_id}', [EditController::class,'delSupervise'])->name('delSupervise');
 
 
 
@@ -333,15 +333,15 @@ Route::middleware(['auth','user-role:officer'])->group(function()
     Route::get('/officer/pdf', [FileController::class, 'createPDF'])->name('createPDF');
     Route::get('/officer/Excel', [FileController::class, 'export'])->name('export');
 
-    Route::get("/officer/addsupervision",[addController::class,'addsupervision'])->name('addsupervision');
-    Route::post("/officer/addsupervision1",[addController::class,'addsupervision1'])->name('addsupervision1');
-    Route::get("/officer/editsupervision1/{id}",[EditController::class,'editsupervision1'])->name('editsupervision1');
-    Route::post("/officer/updatesupervision1/{id}",[EditController::class,'updatesupervision1'])->name('updatesupervision1');
+    // Route::get("/officer/addsupervision",[addController::class,'addsupervision'])->name('addsupervision');
+    // Route::post("/officer/addsupervision1",[addController::class,'addsupervision1'])->name('addsupervision1');
+    // Route::get("/officer/editsupervision1/{id}",[EditController::class,'editsupervision1'])->name('editsupervision1');
+    // Route::post("/officer/updatesupervision1/{id}",[EditController::class,'updatesupervision1'])->name('updatesupervision1');
 
-    Route::get('/officer/deletacceptance/{acceptance_id}', [EditController::class,'delacceptance'])->name('delacceptance');
+    // Route::get('/officer/deletacceptance/{acceptance_id}', [EditController::class,'delacceptance'])->name('delacceptance');
 
-    Route::get("/officer/calendar5",[HomeController::class,'calendar5']);
-    Route::get("/officer/calendar6",[HomeController::class,'calendar6']);
+    // Route::get("/officer/calendar5",[HomeController::class,'calendar5']);
+    // Route::get("/officer/calendar6",[HomeController::class,'calendar6']);
 
 
 
@@ -353,16 +353,16 @@ Route::middleware(['auth','user-role:officer'])->group(function()
     Route::post("/officer/updateschedule1/{schedule_id}",[EditController::class,'updateschedule1'])->name('updateschedule1');
     Route::get('/officer/deleschedule1/{schedule_id}', [EditController::class,'delschedule1'])->name('delschedule1');
 
-    Route::get('/officer/viewschedule/{schedule_id}', [HomeController::class,'viewschedule'])->name('viewschedule');
+    // Route::get('/officer/viewschedule/{schedule_id}', [HomeController::class,'viewschedule'])->name('viewschedule');
 
-    Route::get("/officer/Evaluationdocuments",[HomeController::class,'Evaluationdocuments']);
+    // Route::get("/officer/Evaluationdocuments",[HomeController::class,'Evaluationdocuments']);
 
-    Route::get("/officer/addEvaluationdocuments",[addController::class,'addEvaluationdocuments'])->name('addEvaluationdocuments');
-    Route::post("/officer/addEvaluationdocument",[addController::class,'addEvaluationdocument'])->name('addEvaluationdocument');
-    Route::get("/officer/editEvaluationdocument/{Evaluationdocument_id}",[EditController::class,'editEvaluationdocument'])->name('editEvaluationdocument');
-    Route::post("/officer/updateEvaluationdocument/{Evaluationdocument_id}",[EditController::class,'updateEvaluationdocument'])->name('updateEvaluationdocument');
+    // Route::get("/officer/addEvaluationdocuments",[addController::class,'addEvaluationdocuments'])->name('addEvaluationdocuments');
+    // Route::post("/officer/addEvaluationdocument",[addController::class,'addEvaluationdocument'])->name('addEvaluationdocument');
+    // Route::get("/officer/editEvaluationdocument/{Evaluationdocument_id}",[EditController::class,'editEvaluationdocument'])->name('editEvaluationdocument');
+    // Route::post("/officer/updateEvaluationdocument/{Evaluationdocument_id}",[EditController::class,'updateEvaluationdocument'])->name('updateEvaluationdocument');
 
-    Route::get('/officer/deleEvaluationdocument/{Evaluationdocument_id}', [EditController::class,'deleEvaluationdocument'])->name('deleEvaluationdocument');
+    // Route::get('/officer/deleEvaluationdocument/{Evaluationdocument_id}', [EditController::class,'deleEvaluationdocument'])->name('deleEvaluationdocument');
 
 
 });
@@ -373,40 +373,40 @@ Route::middleware(['auth','user-role:teacher'])->group(function()
 {
     Route::get("/teacher/home",[HomeController::class,'teacherHome'])->name('teacher.teacherhome');
 
-    Route::get("/teacher/edituser2/{id}",[EditController::class,'edituser2'])->name('edituser2');
+    // Route::get("/teacher/edituser2/{id}",[EditController::class,'edituser2'])->name('edituser2');
 
-    Route::post("/teacher/updateuser4/{id}",[EditController::class,'updateuser4'])->name('updateuser4');
+    // Route::post("/teacher/updateuser4/{id}",[EditController::class,'updateuser4'])->name('updateuser4');
 
     //ยืยยันตัวตน
-   Route::get("/teacher/updateuser2/{id}",[EditController::class,'updateuser3'])->name('updateuser3');
+  // Route::get("/teacher/updateuser2/{id}",[EditController::class,'updateuser3'])->name('updateuser3');
 
    //นิเทศงาน
-    Route::get("/teacher/calendar5confirm",[HomeController::class,'calendar5confirm'])->name('calendar5confirm');
+  //  Route::get("/teacher/calendar5confirm",[HomeController::class,'calendar5confirm'])->name('calendar5confirm');
 
  // แบบบันทึกการนิเทศงานสหกิจศึกษา(สก12)
 
- Route::get("/teacher/addSuperviseteacher",[AddController::class,'addSuperviseteacher'])->name('addSuperviseteacher');
- Route::post("/teacher/addSuperviseteacheruser",[AddController::class,'addSuperviseteacheruser'])->name('addSuperviseteacheruser');
- Route::get("/teacher/edit2Superviseteacheruser/{id}",[EditController::class,'edit2Superviseteacheruser'])->name('edit2Superviseteacheruser');
- Route::post("/teacher/update/{id}",[EditController::class,'updateSuperviseteacheruser'])->name('updateSuperviseteacheruser');
+//  Route::get("/teacher/addSuperviseteacher",[AddController::class,'addSuperviseteacher'])->name('addSuperviseteacher');
+//  Route::post("/teacher/addSuperviseteacheruser",[AddController::class,'addSuperviseteacheruser'])->name('addSuperviseteacheruser');
+//  Route::get("/teacher/edit2Superviseteacheruser/{id}",[EditController::class,'edit2Superviseteacheruser'])->name('edit2Superviseteacheruser');
+//  Route::post("/teacher/update/{id}",[EditController::class,'updateSuperviseteacheruser'])->name('updateSuperviseteacheruser');
 
  // แบบประเมินรายงานนักศึกษาสหกิจศึกษา(สก15)
- Route::get("/teacher/addSuperviseteacher1",[AddController::class,'addSuperviseteacher1'])->name('addSuperviseteacher1');
- Route::post("/teacher/addSuperviseteacheruser1",[AddController::class,'addSuperviseteacheruser1'])->name('addSuperviseteacheruser1');
- Route::get("/teacher/edit2Superviseteacheruser1/{id}",[EditController::class,'edit2Superviseteacheruser1'])->name('edit2Superviseteacheruser1');
- Route::post("/teacher/update1/{id}",[EditController::class,'updateSuperviseteacheruser1'])->name('updateSuperviseteacheruser1');
+//  Route::get("/teacher/addSuperviseteacher1",[AddController::class,'addSuperviseteacher1'])->name('addSuperviseteacher1');
+//  Route::post("/teacher/addSuperviseteacheruser1",[AddController::class,'addSuperviseteacheruser1'])->name('addSuperviseteacheruser1');
+//  Route::get("/teacher/edit2Superviseteacheruser1/{id}",[EditController::class,'edit2Superviseteacheruser1'])->name('edit2Superviseteacheruser1');
+//  Route::post("/teacher/update1/{id}",[EditController::class,'updateSuperviseteacheruser1'])->name('updateSuperviseteacheruser1');
 
 
-    Route::get("/teacher/documents1",[HomeController::class,'documents1'])->name('teacher.documents1');
+    // Route::get("/teacher/documents1",[HomeController::class,'documents1'])->name('teacher.documents1');
 
-    Route::get("/teacher/timeline1",[HomeController::class,'timeline1'])->name('teacher.documents1');
-    Route::get("/teacher/viwetimeline/{timeline_id}",[EditController::class,'viwetimeline'])->name('viwetimeline');
+    // Route::get("/teacher/timeline1",[HomeController::class,'timeline1'])->name('teacher.documents1');
+    // Route::get("/teacher/viwetimeline/{timeline_id}",[EditController::class,'viwetimeline'])->name('viwetimeline');
 
     Route::get("/teacher/informdetails1",[HomeController::class,'informdetails1'])->name('teacher.informdetails1');
     Route::get("/teacher/viewinformdetails1/{informdetails_id}",[EditController::class,'viewinformdetails1'])->name('viewinformdetails1');
 
-    Route::get("/teacher/record1",[HomeController::class,'record1'])->name('teacher.record1');
-    Route::get("/teacher/listofteachers1",[HomeController::class,'listofteachers1'])->name('teacher.listofteachers1');
+    // Route::get("/teacher/record1",[HomeController::class,'record1'])->name('teacher.record1');
+    // Route::get("/teacher/listofteachers1",[HomeController::class,'listofteachers1'])->name('teacher.listofteachers1');
 
 //เอกสารประเมิน
     Route::get("/teacher/estimate1",[HomeController::class,'estimate1'])->name('teacher.estimate1');

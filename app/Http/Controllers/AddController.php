@@ -1035,7 +1035,7 @@ public function addsupervision()
 
     public function addschedule1(Request $request) {
       //ตรวจสอบข้อมูล
-      // dd($request);
+      //dd($request);
 
        $request->validate([
         //  'name' => 'required|unique:name',
@@ -1048,13 +1048,21 @@ public function addsupervision()
   ]
 
 );
-    $post =new schedule
+if($request->hasFile("filess"))
+      {
+        $file=$request->file("filess");
+         $imageName=time().'_'.$file->getClientOriginalName();
+        $file->move(\public_path("/กำหนดการปฏิทิน"),$imageName);
+    // $post=Event::findOrFail($id);
+
+    $post =new  schedule
     ([
         "title" => $request->title,
-        "start" => $request->start,
-        'details' => $request->details,
+
         "term" => $request->term,
         "year" => $request->year,
+
+        "filess" =>$imageName,
 
 
     ]);
@@ -1064,9 +1072,13 @@ public function addsupervision()
       //  $data["test"]= $request->test;
     //    $data["test"]= $request->test;
     // DB::table('test')->insert($data);
-       return redirect('/officer/schedule')->with('success', 'สมัครสำเร็จ.');
-
+    return redirect('/officer/schedule')->with('success', 'สมัครสำเร็จ.');
+       // return redirect("/welcome")->with('success', 'Company has been created successfully.');
     }
+}
+
+
+
 
 
     public function addEvaluationdocuments()

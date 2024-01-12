@@ -145,8 +145,8 @@
           @enderror
             </div>
             <div class="form-group col-md-4">
-                <label for="inputAddress">วันเวลาการปฏิทินสหกิจ</label>
-         <input type="text" class="form-control" @error('start') is-invalid @enderror name="start" value="{{ old('start') }}"  autofocus placeholder="">
+                <label for="inputAddress">กำหนดการปฏิทินสหกิจ</label>
+         <input type="file" class="form-control" @error('files') is-invalid @enderror name="filess" value=""  autofocus placeholder="">
 
 
                 @error('start')
@@ -157,19 +157,15 @@
               </div>
   </div>
 
-            <div class="row">
 
-          <div class=" col-md-4">
-            <label for="recipient-name" class="col-form-label">รายละเอียด</label>
-            <textarea rows="4" cols="50" name="details"  >
-                </textarea>
+
 
 
 
 
 
           <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-3">
         <label for="inputAddress"class="col-form-label ">ภาคเรียน</label>
         <select class="form-control "  name="term">
           <option value="">กรุณาเลือกภาคเรียน</option>
@@ -178,7 +174,7 @@
           <option value="ภาคเรียนที่2">ภาคเรียนที่:2 </option>
         </select>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-3">
       <label for="inputAddress"class="col-form-label ">ปีการศึกษา</label>
       <select class="form-control "  name="year" >
         {{-- @foreach(range(date('Y'), date('Y') + 100) as $year)

@@ -683,9 +683,9 @@ dd($request->$name);
     public function Evaluate()
     {
         $supervision=DB::table('supervision')
-        ->join('users','supervision.user_id','users.id')
-        ->join('establishment','supervision.user_id','establishment.id')
-        ->select('supervision.*','users.fname','establishment.address')
+        // ->join('users','supervision.user_id','users.id')
+        // ->join('establishment','supervision.user_id','establishment.id')
+        // ->select('supervision.*','users.fname','establishment.address')
         //->select('supervision.*')
        // ->where('establishment.establishment_id')
         ->paginate(5);
@@ -1254,7 +1254,7 @@ dd($request->$name);
     public function establishment()
     {
 
-        $establishments=DB::table('establishment') ->orderBy('name','desc')
+        $establishments=DB::table('establishment') ->orderBy('em_name','desc')
         //->pluck('name')
    // ->implode(', ');
         //->select('name')
@@ -1266,7 +1266,21 @@ dd($request->$name);
         return view('cooperative.establishment',compact('establishments'));
 
     }
+    public function login01()
+    {
 
+        $establishments=DB::table('establishment') ->orderBy('em_name','desc')
+        //->pluck('name')
+   // ->implode(', ');
+        //->select('name')
+        ->paginate(6);
+        //->get();
+        //  dd($establishments);
+         // $users=DB::table('users')->get();
+
+        return view('login',compact('establishments'));
+
+    }
 
     public function changeStatus2(Request $request)
     {

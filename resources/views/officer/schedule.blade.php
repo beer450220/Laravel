@@ -28,9 +28,9 @@
           <thead class="thead-dark">
             <tr>
               <th>ลำดับ</th>
-              <th>วันเวลาการปฏิทินสหกิจ</th>
+
               <th>หัวเรื่อง</th>
-               <th>รายละเอียด</th>
+               <th>ไฟล์เอกสาร</th>
               <th>ปีการศึกษา</th>
               <th>ภาคเรียน</th>
 
@@ -44,9 +44,9 @@
             @foreach ($schedules as $row)
             <tr>
               <td class="col-1 text center">{{$schedules->firstItem()+$loop->index}}</td>
-              <td>{{$row->start}}</td>
+
               <td>{{$row->title}}</td>
-              <td><a href="/officer/viewschedule/{{$row->schedule_id}}" type="button" class="btn btn-outline-secondary fa-solid fa-eye fe-16"></a></td>
+              <td><a href="../กำหนดการปฏิทิน/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td>
               <td>{{$row->year}}</td>
               <td>{{$row->term}}</td>
               <td><a href="/officer/editschedule1/{{$row->schedule_id}}" type="button" class="btn btn-outline-secondary fa-solid fa-pen-to-square fe-16"></a></td>

@@ -1683,16 +1683,28 @@ $post->update
   // $post->Status ="รอตรวจสอบ";
 
      // dd($post);
+     if($request->hasFile("filess")){
+        if (File::exists("กำหนดการปฏิทิน/".$post->filess)) {
+            File::delete("กำหนดการปฏิทิน/".$post->filess);
+        }
+        $file=$request->file("filess");
+         $post->filess=time()."_".$file->getClientOriginalName();
+         $file->move(\public_path("/กำหนดการปฏิทิน"),$post->filess);
+         $request['filess']=$post->filess;
+      // dd($post);
+    }
+     $post->update
+     ([
+        "year" =>$request->year,
+ "title" =>$request->title,
+          "term"=>$request->term,
 
-    $post->update
-    ([
-       "term" =>$request->term,
-       "title" =>$request->title,
-         "start"=>$request->start,
-        "details"=>$request->details,
-        "year"=>$request->year,
+          "filess"=>$post->filess,
 
-    ]);
+
+
+     ]);
+
 
 
     return redirect('/officer/schedule')->with('success', 'ยืนยันข้อมูลสำเร็จ.');

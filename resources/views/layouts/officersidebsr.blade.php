@@ -123,37 +123,26 @@
 
                 <span>บันทึกการปฏิบัติงานรายวัน</span></a>
         </li>  --}}
+        <li class="nav-item">
+            <a class="nav-link"href="/officer/Evaluate">
+
+           <i class="fa fa-file" aria-hidden="true"></i>
+
+
+                <span>เอกสารประเมินผล</span></a>
+        </li>
+
 
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse2"
-                aria-expanded="true" aria-controls="collapse2">
-                <i class="fa fa-file"></i>
-                <span>นิเทศงาน</span>
-            </a>
-            <div id="collapse2" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header"></h6>
-                    {{-- <a class="collapse-item "href="/officer/supervision">ตารางนิเทศงาน </a> --}}
-                    {{-- <a class="collapse-item "href="/officer/calendar5">ปฏิทินนิเทศงานสหกิจ</a> --}}
+            <a class="nav-link"href="/officer/experiencereport2">
 
-                    {{-- <a class="collapse-item "href="/officer/Supervise">รายชื่ออาจารย์นิเทศงาน</a> --}}
-                    <a class="collapse-item "href="/officer/Evaluate">รายงานผลการนิเทศ </a>
-                    {{-- <a class="collapse-item "href="/officer/documents2">เอกสารขออนุญาตนิเทศงาน </a> --}}
+           <i class="fa fa-file" aria-hidden="true"></i>
 
-                </div>
-            </div>
+
+                <span>เอกสารฝึกประสบการณ์</span></a>
         </li>
-
-        {{-- <li class="nav-item">
-            <a class="nav-link"href="/officer/assessmentreport2">
-
-           <i class="fa fa-user" aria-hidden="true"></i>
-
-
-                <span>รายงานผลปฏิบัติงาน</span></a>
-        </li> --}}
-
+{{--
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse3"
                 aria-expanded="true" aria-controls="collapse3">
@@ -164,11 +153,11 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header"></h6>
 
-                    {{-- <a class="collapse-item "href="/officer/assessmentreport2">ประเมินผลรายงานฝึกประสบการณ์</a> --}}
+
                     <a class="collapse-item "href="/officer/experiencereport2">เอกสารฝึกประสบการณ์</a>
                     <a class="collapse-item "href="/officer/Evaluationdocuments">เอกสารประเมิน</a>
 
                 </div>
             </div>
-        </li>
+        </li>--}}
     </ul>
