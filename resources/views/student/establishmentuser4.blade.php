@@ -769,9 +769,9 @@
                                                         <img src="{{ asset('/image') }}/{{ $row->images }}" class="rounded mx-auto d-block" style="width:200px;height:200px; text-align:center;">
                                                         <hr>
                                                         <div class="caption card-body">
-                                                            <h4 class="card-title">ชื่อ:{{ $row->name }}</h4>
-                                                            <p  class="card-text"><strong>รายละเอียด:</strong>{{ $row->name }}</p>
-                                                            <p  class="card-text"><strong>สาขาวิชา: </strong> ${{ $row->name }}</p>
+                                                            <h4 class="card-title">ชื่อ:{{ $row->em_name }}</h4>
+                                                            <p  class="card-text"><strong>รายละเอียด:</strong>{{ $row->em_name }}</p>
+                                                            <p  class="card-text"><strong>สาขาวิชา: </strong> ${{ $row->em_name }}</p>
                                                             <p class="btn-holder text-center"><a href="/studenthome/establishmentuseredit/{{ $row->id }}" class="btn btn-primary btn-block text-center" role="button">ดูข้อมูล</a>
                                                                 <p class="btn-holder"><a href="{{ route('add_to_cart', $row->id) }}" class=" text-center" role="button">
                                                                     <span> <i

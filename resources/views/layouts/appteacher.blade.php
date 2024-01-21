@@ -1,11 +1,12 @@
-   
-   
+
+
      <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
         {{-- <title>@yield('titlebar')</title> --}}
     </head>
     <body>
@@ -26,10 +27,10 @@
    <!-- App CSS -->
    <link rel="stylesheet" href="../student/css/app-light.css" id="lightTheme">
    <link rel="stylesheet" href="../student/css/app-dark.css" id="darkTheme" disabled>
-  
 
-   
-   
+
+
+
 
 
 
@@ -37,18 +38,18 @@
 <!-- FullCalendar CSS -->
    <link rel="stylesheet" href="../student/css/fullcalendar.css">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  
+
 
     <!-- Date Range Picker CSS -->
    <link rel="stylesheet" href="../student/css/daterangepicker.css">
-    @include('layouts.menutopteacher') 
+    @include('layouts.menutopteacher')
         @include('layouts.sidebarteacher')
-        
+
     {{-- @include('layouts.cssstudent') --}}
 
 {{-- @include('layouts.scriptsstudent') --}}
      @yield('content')
-    
+
      <script src="../student/js/jquery.min.js"></script>
      <script src="../student/js/popper.min.js"></script>
      <script src="../student/js/moment.min.js"></script>
@@ -64,7 +65,7 @@
      <script src="../student/js/datamaps-zoomto.js"></script>
      <script src="../student/js/datamaps.custom.js"></script>
      <script src="../student/js/Chart.min.js"></script>
- 
+
      <script>
          /* defind global options */
          Chart.defaults.global.defaultFontFamily = base.defaultFontFamily;
@@ -82,8 +83,8 @@
        <script src='../student/js/dropzone.min.js'></script>
        <script src='../student/js/uppy.min.js'></script>
        <script src='../student/js/quill.min.js'></script>
- 
- 
+
+
        <script>
          /** full calendar */
          var calendarEl = document.getElementById('calendar');
@@ -97,15 +98,15 @@
                timeZone: 'Asia/Bangkok',
                themeSystem: 'bootstrap',
                locale:'th',
-       
-             
+
+
                header:
                {
                  left: 'prev,next , today',
                  center: 'title',
-                 
+
                  right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
-       
+
                },
                buttonIcons:
                {
@@ -137,11 +138,11 @@
            singleDatePicker: true,
            timePicker: false,
            showDropdowns: true,
-           
+
            locale:
            {
              format: 'MM/DD/YYYY',
-             
+
            }
          });
          $('.time-input').timepicker(
@@ -165,7 +166,7 @@
          }
          var start = moment().subtract(29, 'days');
          var end = moment();
-       
+
          function cb(start, end)
          {
            $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
@@ -332,7 +333,7 @@
        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-56159088-1"></script>
        <script>
          window.dataLayer = window.dataLayer || [];
-       
+
          function gtag()
          {
            dataLayer.push(arguments);
@@ -341,6 +342,6 @@
          gtag('config', 'UA-56159088-1');
        </script>
 
-   
+
 </body>
 </html>

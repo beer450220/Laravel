@@ -62,7 +62,7 @@
                                 <br>
                                 {{-- @foreach ($events as $row)
                                 {{$events->firstItem()+$loop->index}} --}}
-                                {{$establishments->name}}
+                                {{$establishments->em_name}}
                                 {{-- @endforeach --}}
                               </div>
                               {{-- <div class="mb-3">
@@ -80,7 +80,7 @@
 
                           </div>
                           <div class="modal-footer">
-                            <a href="/studenthome/establishmentuser"  class="btn mb-2 btn-secondary" data-dismiss="modal">ย้อนกลับ</a>
+                            <a href="/studenthome/establishmentuser4"  class="btn mb-2 btn-secondary" data-dismiss="modal">ย้อนกลับ</a>
                             {{-- <button type="submit" class="btn mb-2 btn-primary"onclick="return confirm('ยืนยันการแก้ไขข้อมูล !!');">อัพเดท</button> --}}
                         </form>  </div>
                         </div>

@@ -15,6 +15,9 @@ use App\Http\Controllers\registerController;
 use Illuminate\Support\Facades\File;
 use App\Models\test;
 use App\Models\establishment;
+use App\Models\informdetails;
+use App\Models\report;
+
 
 
 class HomeController extends Controller
@@ -123,11 +126,11 @@ class HomeController extends Controller
 //dd($request);
                 // สร้างคำสั่งคิวรีเพื่อค้นหาข้อมูล
                 $establishments = establishment::query()
-                    ->where('name', 'LIKE', '%' . $keyword . '%')
+                    ->where('em_name', 'LIKE', '%' . $keyword . '%')
                     //->get();
                     ->paginate(6);
 
-                return view('student.establishmentuser', ['establishments' => $establishments]);
+                return view('student.establishmentuser4', ['establishments' => $establishments]);
 
            // return view('student.establishmentuser',compact('establishments','search'));
 
@@ -229,7 +232,7 @@ class HomeController extends Controller
         // $users=DB::table('users')->get();
         $users=DB::table('establishment')->paginate(5);
         // $users=users::paginate(5);
-        $establishments=DB::table('establishment') ->orderBy('name','desc')
+        $establishments=DB::table('establishment') ->orderBy('em_name','desc')
 
         ->paginate(6);
         return view('student.establishmentuser4',compact('users','establishments'));
@@ -439,8 +442,8 @@ class HomeController extends Controller
     public function calendar2confirm()
     {
         $events=DB::table('events')
-        ->join('users','events.user_id','users.id')
-        ->select('events.*','users.fname')->where('user_id', auth()->id())
+        // ->join('users','events.user_id','users.id')
+        // ->select('events.*','users.fname')->where('user_id', auth()->id())
         ->paginate(5);
         return view('student.calendar2confirm',compact('events'));
     }
@@ -524,7 +527,8 @@ class HomeController extends Controller
     $users = registers::select(DB::raw("COUNT(DISTINCT user_id) as count"), DB::raw("YEAR(created_at) as year_name"))
     ->groupBy(DB::raw("YEAR(created_at)"))
     ->pluck('count', 'year_name');
-
+    $users1 = registers::select(DB::raw("COUNT(DISTINCT id) as count"))
+    ->get();
     // $users = registers::select(DB::raw("COUNT(DISTINCT user_id) as count"), DB::raw("YEAR(created_at ) AS year_name "))
     // ->groupBy(DB::raw("YEAR(created_at)"))
     // ->pluck('count', 'year_name');
@@ -545,7 +549,7 @@ class HomeController extends Controller
         //$data = $users->values();
         $data = $users->values();
 
-        return view('officer.officerhome',compact('users'), compact('labels','data'),["msg"=>"I am Editor role"]);
+        return view('officer.officerhome',compact('users','users1'), compact('labels','data'),["msg"=>"I am Editor role"]);
     }
 
     public function user1()
@@ -822,7 +826,22 @@ dd($request->$name);
 // teacherHome
     public function teacherHome()
     {
-        return view('teacher.teacherhome',["msg"=>"I am teacher role"]);
+        //นิเทศงาน
+        $users1 = Event::select(DB::raw("COUNT(DISTINCT id) as count"))
+    ->get();
+    $users2 = Event::select(DB::raw("COUNT(*) as count"))
+    ->where('Statusevents', 'ยังไม่ได้รับทราบและยืนยันเวลานัดนิเทศ')
+    ->get();
+    $users3 = Event::select(DB::raw("COUNT(*) as count"))
+    ->where('Statusevents', 'รับทราบและยืนยันเวลานัดนิเทศแล้ว')
+    ->get();
+//เอกสารแจ้งรายละเอียด
+    $users4 = informdetails::select(DB::raw("COUNT(DISTINCT informdetails_id) as count"))
+    ->get();
+    //เอกสารแจ้งรายละเอียด
+    $users5 = report::select(DB::raw("COUNT(DISTINCT report_id) as count"))
+    ->get();
+        return view('teacher.teacherhome',compact('users1','users2','users3','users4','users5'),["msg"=>"I am teacher role"]);
     }
     public function documents1()
     {

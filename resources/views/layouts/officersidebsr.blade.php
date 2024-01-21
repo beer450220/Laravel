@@ -6,8 +6,11 @@
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../Admin/">
             <div class="sidebar-brand-icon rotate-n-15">
-                <i class="fas fa-laugh-wink"></i>
+                <i class=" fas fa-laugh-wink"src="/icons/1.png "></i>
+
             </div>
+            {{-- <span class="avatar avatar-sm mt-2">
+                    <img src="/icons/1.png " sizes="16x16" alt="..." class="avatar-img rounded-circle"></span> --}}
             <div class="sidebar-brand-text mx-3">officer </div>
         </a>
 
