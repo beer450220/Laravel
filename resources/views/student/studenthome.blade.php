@@ -289,8 +289,9 @@
 
 
 
-                        @endif </li></a>
-                        <a  href="/studenthome/establishmentuser">  <li id="personal" ><strong>สถานประกอบการ</strong><br><br>
+                        @endif
+                    </li></a>
+                        {{-- <a  href="/studenthome/establishmentuser">  <li id="personal" ><strong>สถานประกอบการ</strong><br><br>
                            <br>   @if (Auth::user()->statusestablishment === 'ยืนยันได้สถานประกอบการแล้ว')
                             <span class="circle circle-sm bg-success-light">
 
@@ -310,7 +311,7 @@
 
 
 
-                        @endif</li></a>
+                        @endif</li></a> --}}
                           <a  href="/studenthome/register">  <li id="payment"><strong>ลงทะเบียน</strong><br><br><br>
                             @if (Auth::user()->status === 'ยืนยันตัวตนแล้ว')
                             <span class="circle circle-sm bg-success-light">

@@ -17,7 +17,7 @@ use App\Models\test;
 use App\Models\establishment;
 use App\Models\informdetails;
 use App\Models\report;
-
+use App\Models\teacher;
 
 
 class HomeController extends Controller
@@ -443,7 +443,8 @@ class HomeController extends Controller
     {
         $events=DB::table('events')
         // ->join('users','events.user_id','users.id')
-        // ->select('events.*','users.fname')->where('user_id', auth()->id())
+        // ->select('events.*','users.fname')
+        ->where('student_name', auth()->id())
         ->paginate(5);
         return view('student.calendar2confirm',compact('events'));
     }
@@ -717,15 +718,17 @@ dd($request->$name);
     public function supervision1()
     {
         $events=DB::table('events')
-        // ->join('users','events.student_name','=','users.id')
-        // ->select('events.*','users.*')
+        // ->join('users', 'events.student_name', '=', 'users.id')
+        //  ->select('events.*', 'users.fname', 'users.surname')
         ->paginate(5);
+        $users=DB::table('users')
+      ->where('role',"student")->paginate(5);
         $major=DB::table('users')->paginate(5);
         $studentNameFromDatabase = $events; // ให้เปลี่ยนเป็นการดึงจากฐานข้อมูลตามการใช้งานของคุณ
 
         // แปลง JSON string เป็น PHP array
         $phpArrayFromDatabase = json_decode($studentNameFromDatabase);
-        return view('teacher.supervision',compact('events','major','phpArrayFromDatabase'));
+        return view('teacher.supervision',compact('events','major','phpArrayFromDatabase','users'));
     }
 
 
@@ -830,10 +833,10 @@ dd($request->$name);
         $users1 = Event::select(DB::raw("COUNT(DISTINCT id) as count"))
     ->get();
     $users2 = Event::select(DB::raw("COUNT(*) as count"))
-    ->where('Statusevents', 'ยังไม่ได้รับทราบและยืนยันเวลานัดนิเทศ')
+    ->where('Status_events', 'ยังไม่ได้รับทราบและยืนยันเวลานัดนิเทศ')
     ->get();
     $users3 = Event::select(DB::raw("COUNT(*) as count"))
-    ->where('Statusevents', 'รับทราบและยืนยันเวลานัดนิเทศแล้ว')
+    ->where('Status_events', 'รับทราบและยืนยันเวลานัดนิเทศแล้ว')
     ->get();
 //เอกสารแจ้งรายละเอียด
     $users4 = informdetails::select(DB::raw("COUNT(DISTINCT informdetails_id) as count"))
@@ -891,6 +894,22 @@ dd($request->$name);
         ->paginate(5);
         return view('teacher.estimate1',compact('supervision'));
     }
+
+
+    public function teacher01()
+    {
+        $supervision=DB::table('teacher')
+       // ->join('users','users.id','=','users.id')
+        // ->join('users','supervision.user_id','users.id')
+        // ->join('establishment','establishment.id','=','establishment_id')
+        // ->select('supervision.*','users.fname')
+        //->select('supervision.*')
+       // ->where('establishment.establishment_id')
+        ->paginate(5);
+        return view('teacher.teacher1',compact('supervision'));
+    }
+
+
     public function advisor1()
     {
         return view('teacher.advisor1');

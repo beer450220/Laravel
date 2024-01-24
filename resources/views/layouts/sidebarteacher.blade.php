@@ -157,6 +157,11 @@
             (สก12,สก.15,สก.13,สก.14) </span>
         </a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link pl-3" href="/teacher/teacher01"><span class="ml-1 item-text">   รายชื่ออาจารย์
+            </span>
+        </a>
+      </li>
   </li>
 
 

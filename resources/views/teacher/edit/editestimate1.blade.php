@@ -169,6 +169,7 @@
         {{-- @foreach(range(date('Y'), date('Y') + 100) as $year)
         <option value="{{ $year }}">{{ $year }}</option>
     @endforeach --}}
+    <option value="">กรุณาเลือกปีการศึกษา</option>
     @php
     $currentYear = date('Y') + 543; // ปีปัจจุบัน
     $startYear = 2500; // ปีเริ่มต้น

@@ -16,11 +16,13 @@ use App\Models\schedule;
 use App\Models\Evaluationdocument;
 use App\Models\report_results;
 use App\Models\major;
+use App\Models\teacher;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use RealRashid\SweetAlert\Facades\Alert;
+use Carbon\Carbon;
 class EditController extends Controller
 {
 
@@ -616,6 +618,26 @@ $post->update
 
  }
 
+ public function deletsupervision($id) {
+    //ตรวจสอบข้อมูล
+    //dd();
+    // $establishments=establishment::find($id);
+    // DB::table('establishment')->where('id',$id)->delete();
+
+    $posts=Event::findOrFail($id);
+
+    //  if (File::exists("ไฟล์เอกสารตอบรับนักศึกษา(สก.02)/".$posts->filess)) {
+    //      File::delete("ไฟล์เอกสารตอบรับนักศึกษา(สก.02)/".$posts->filess);
+    //  }
+
+    //  dd($posts);
+     $posts->delete();
+    //  return view('officer.editestablishmentuser1',compact('establishments'));
+     return redirect()->back()->with('success1', 'ลบข้อมูลสำเร็จ.');
+ }
+
+
+
  public function   updateuser4(Request $request,$id) {
     //ตรวจสอบข้อมูล
 
@@ -749,6 +771,42 @@ $post->update
     //dd($establishment);
      //dd($supervisions);
      return view('teacher.edit.editestimate1', compact('supervisions','users','major'));
+
+ }
+ public function editteacher1($id) {
+    //ตรวจสอบข้อมูล
+    //$users=DB::table('users')
+      //->where('role',"student")
+      //->join('establishment','establishment.id',"=",'users.id')
+      //->select('users.*','establishment.*')
+      //->get();
+    // $establishments=establishment::find($id);
+// dd($teacher_id);
+    //$supervisions=DB::table('supervision')->first();
+    // $establishments=DB::table('teacher')->find($teacher_id);
+    //  $teacher=teacher::find($teacher_id);
+    // $major=major::find($major_id);
+    $major=teacher::find($id);
+    //  $teacher = DB::table('teacher')
+    //  //->get();
+    //  ->find($teacher_id);
+    //  $major=major::find($major_id);
+    // $users=DB::table('users')
+    // ->where('role',"student")
+    // ->get();
+
+    // $major=DB::table('major')
+
+    // ->paginate(5);
+
+    // $establishment=DB::table('establishment')
+    // // ->join('supervision','supervision.supervision_id')
+    //  //->join('supervision', 'establishments.id', '=', 'supervision.id')
+    // // ->select('supervision.*','establishment.*')
+    // ->get();
+    //dd($establishment);
+     //dd($supervisions);
+     return view('teacher.edit.editteacher1', compact('major'));
 
  }
 
@@ -925,7 +983,38 @@ $post->update
 
     return redirect('/teacher/estimate1')->with('success', 'ยืนยันข้อมูลสำเร็จ.');
  }
+ public function   updateteacher1(Request $request,$id) {
+    //ตรวจสอบข้อมูล
 
+    //dd($request);
+
+    $request->validate([
+        // 'images' => ['required','mimes:jpg,jpeg,png'],
+        // 'name' => ['required','min:5'],
+        // 'filess' => 'required|mimes:pdf',
+        // 'establishment' => 'required',
+    ],[
+            //'establishment.required' => "กรุณา",
+
+        ]
+    );
+    // $post=Event::findOrFail($id);
+    // $post->user_id = Auth::user()->id;
+    // $post->Status ="รอตรวจสอบ";
+    // $post->Status ="รอตรวจสอบ";
+   //dd($request->Status);
+   $post=teacher::findOrFail($id);
+//    $post->user_id = Auth::user()->id;
+
+    $post->update
+    ([
+        "name" =>$request->name,
+
+    ]);
+
+
+    return redirect('/teacher/teacher01')->with('success', 'ยืนยันข้อมูลสำเร็จ.');
+ }
 
  public function edit2Superviseteacheruser($id) {
     //ตรวจสอบข้อมูล
@@ -1047,7 +1136,18 @@ $post->update
     //  return view('officer.editestablishmentuser1',compact('establishments'));
      return redirect()->back()->with('success1', 'ลบข้อมูลสำเร็จ.');
  }
+ public function delteacher($id) {
+    //ตรวจสอบข้อมูล
+    dd($id);
+    // $establishments=establishment::find($id);
+    // DB::table('establishment')->where('id',$id)->delete();
 
+    $posts=teacher::findOrFail($id);
+    //  dd($posts);
+     $posts->delete();
+    //  return view('officer.editestablishmentuser1',compact('establishments'));
+     return redirect()->back()->with('success1', 'ลบข้อมูลสำเร็จ.');
+ }
  public function editexperiencereport2($report_id) {
     //ตรวจสอบข้อมูล
     //$users=DB::table('users')
@@ -1533,12 +1633,16 @@ $post->update
       //->join('establishment','establishment.id',"=",'users.id')
       //->select('users.*','establishment.*')
       //->get();
-
+    //   $startFormatted = Carbon::parse($supervisions->start)->format('Y-m-d\TH:i');
      $supervisions=Event::find($id);
      $users1=DB::table('users')
       ->where('role',"student")
       //->join('establishment','establishment.id',"=",'users.id')
       //->select('users.*','establishment.*')
+      ->get();
+      $users2=DB::table('teacher')
+
+
       ->get();
       $establishment=DB::table('establishment')
       //->where('role',"student")
@@ -1551,7 +1655,7 @@ $post->update
    // ->get();
   //dd($supervisions);
      // dd($supervisions);
-     return view('teacher.edit.editsupervision',compact('supervisions','establishment','users1'));
+     return view('teacher.edit.editsupervision',compact('supervisions','establishment','users1','users2'));
 
  }
 
@@ -1624,12 +1728,27 @@ $post->update
 
     $post->update
     ([
-       "term" =>$request->term,
-       "establishment_name" =>$request->establishment_name,
-         "start"=>$request->start,
-        // "end"=>$request->end,
-        "year"=>$request->year,
+    //    "term" =>$request->term,
+    //    "establishment_name" =>$request->establishment_name,
+    //      "start"=>$request->start,
+    //     // "end"=>$request->end,
+    //     "year"=>$request->year,
+    //     "student_name" => implode(",",$request->student_name),
 
+        "start" => $request->start,
+          // 'end' => $request->end,
+          "term" => $request->term,
+          "year" => $request->year,
+          "appointment_time" => $request->appointment_time,
+          "executive_name" => $request->executive_name,
+          "contact_person" => $request->contact_person,
+          "establishment_name" => $request->establishment_name,
+        "Status_events" => $request->Status_events,
+
+           "student_name" => implode(",",$request->student_name),
+           //$request->student_name,
+           "teacher_name" => implode(",",$request->teacher_name),
+        //    "teacher_name" => $request->teacher_name,
     ]);
 
 

@@ -37,7 +37,7 @@
               <th>ชื่อเอกสาร</th>
               <th>ชื่อนักศึกษา</th>
               <th>เอกสารแจ้ง</th>
-              <th>สถานะ</th>
+              {{-- <th>สถานะ</th> --}}
               {{-- <th>ดูข้อมูล</th> --}}
               {{-- <th>ลบ</th> --}}
             </tr>
@@ -49,7 +49,7 @@
               <td>{{$row->namefile}}</td>
               <td>{{$row->fname}}</td>
               <td><a href="/fileinformdetails/{{ $row->files }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td>
-              <td class="text-danger">{{$row->Status_informdetails}}</td>
+              {{-- <td class="text-danger">{{$row->Status_informdetails}}</td> --}}
               {{-- <td><a href="/teacher/viewinformdetails1/{{$row->informdetails_id}}" type="button" class="btn btn-outline-secondary fa-regular fa-eye fe-16"></a></td> --}}
 
               {{-- <td><button type="button" class="btn btn-outline-danger fe fe-trash-2 fe-16"></td> --}}

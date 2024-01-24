@@ -415,6 +415,13 @@ Route::middleware(['auth','user-role:teacher'])->group(function()
     Route::get("/teacher/editestimate1/{supervision_id}",[EditController::class,'editestimate1'])->name('editestimate1');
     Route::post("/studenthome/updateestimate1/{supervision_id}",[EditController::class,'updateestimate1'])->name('updateestimate1');
 
+//รายชื่ออาจารย์
+    Route::get("/teacher/teacher01",[HomeController::class,'teacher01'])->name('teacher01');
+    Route::get("/teacher/addteacher1",[addController::class,'addteacher1'])->name('addteacher1');
+    Route::post("/teacher/addteacher",[addController::class,'addteacher'])->name('addteacher');
+    Route::get("/teacher/editteacher1/{id}",[EditController::class,'editteacher1'])->name('editteacher1');
+    Route::post("/teacher/updateteacher1/{id}",[EditController::class,'updateteacher1'])->name('updateteacher1');
+    Route::get('/teacher/deletteacher/{id}', [EditController::class,'delteacher'])->name('delteacher');
 
 
     Route::get("/teacher/calendar2",[HomeController::class,'calendar3'])->name('calendar3');
@@ -438,7 +445,7 @@ Route::middleware(['auth','user-role:teacher'])->group(function()
     Route::post("/teacher/addsupervision02",[addController::class,'addsupervision02'])->name('addsupervision02');
     Route::get("/teacher/editsupervision02/{id}",[EditController::class,'editsupervision02'])->name('editsupervision02');
     Route::post("/teacher/updatesupervision02/{id}",[EditController::class,'updatesupervision02'])->name('updatesupervision02');
-
+    Route::get('/teacher/deletsupervision/{id}', [EditController::class,'deletsupervision'])->name('deletsupervision');
 });
 
 

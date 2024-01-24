@@ -6,7 +6,7 @@
 
 
 @extends('layouts.officermin1')
-
+{{-- @extends('layouts.appteacher3') --}}
 @section('content')
 @yield('content')
 
@@ -142,8 +142,9 @@
               {{-- <label for="inputAddress">หัวเรื่อง</label> --}}
        {{-- <input type="text" class="form-control" @error('title') is-invalid @enderror name="title"   autofocus placeholder="title"> --}}
        <label for="inputAddress">วันเวลาการนิเทศงาน</label>
-       <input class="form-control" id="example-date" type="datetime-local" name="start"value="{{$supervisions->start}} "  autofocus placeholder="title">
-       {{$supervisions->start}}
+       <input class="form-control" id="example-date" type="datetime-local" name="start"value="{{ \Carbon\Carbon::parse($supervisions->start)->format('Y-m-d\TH:i') }}"  autofocus placeholder="title">
+       {{-- $startFormatted = Carbon::parse($supervisions->start)->format('Y-m-d\TH:i'); --}}
+       {{-- {{$supervisions->start}} --}}
               @error('name')
               <span class="invalid-feedback" >
                   {{ $message }}
@@ -153,7 +154,7 @@
           <div class="form-group col-md-4">
             <label for="inputAddress">ชื่อสถานประกอบการ</label>
             {{-- <input type="text" class="form-control" @error('name') is-invalid @enderror name="name" value="{{ old('name') }}"  autofocus placeholder="name"> --}}
-            <select class="form-control select2" id="validationSelect1" name="establishment_name" >
+            <select class="form-control select2" id="small-bootstrap-class-single-field" data-placeholder="Choose one thing" name="establishment_name" >
               <option value="">Select state</option>
               @foreach ($establishment as $row)
               {{-- <optgroup label="Mountain Time Zone"> --}}
@@ -175,13 +176,111 @@
           <div class="col-md-4">
             <label for="inputAddress" >ชื่อนักศึกษา</label>
             {{-- <input type="text" class="form-control" @error('test') is-invalid @enderror name="test" value="{{ old('test') }}"  autofocus placeholder="test" placeholder="Last name" aria-label="Last name"> --}}
-            <select class="form-control select2" id="validationSelect2" name="student_name" >
+            <select class="form-control select2"data-placeholder="Choose anything" id="small-select2-options-multiple-field" multiple name="student_name[]" >
               <option value="">Select state</option>
+
               @foreach ($users1 as $row)
+
               {{-- <optgroup label="Mountain Time Zone"> --}}
-                <option value="{{$row->id}}"{{$row->id==$supervisions->student_name ?'selected':''}}>{{$row->fname}}</option>
+                {{-- <option value="{{$row->id}}"{{$row->id==$supervisions->student_name ?'selected':''}}>{{$row->fname}}</option> --}}
+
+                @php
+                $selectedIds = explode(',', $supervisions->student_name);
+            @endphp
+            <option value="{{ $row->fname }}" {{ in_array($row->fname, $selectedIds) ? 'selected' : '' }}>
+                {{ $row->fname }}
+            </option>
+
 
               </optgroup>
+
+              @endforeach
+            </select>
+
+          <script > $( '#small-select2-options-multiple-field' ).select2( {
+            theme: "bootstrap-5",
+            width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
+            placeholder: $( this ).data( 'placeholder' ),
+            closeOnSelect: false,
+            selectionCssClass: 'select2--small',
+            dropdownCssClass: 'select2--small',
+        } );
+
+
+
+
+$( '#small-bootstrap-class-single-field' ).select2( {
+    theme: "bootstrap-5",
+    width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
+    placeholder: $( this ).data( 'placeholder' ),
+    dropdownParent: $( '#small-bootstrap-class-single-field' ).parent(),
+} );
+
+$( '#multiple-select-field' ).select2( {
+    theme: "bootstrap-5",
+    width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
+    placeholder: $( this ).data( 'placeholder' ),
+    closeOnSelect: false,
+} );
+
+
+
+            </script>
+            @error('test')
+            <span class="invalid-feedback" >
+                {{ $message }}
+            </span>
+        @enderror
+          </div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
+<!-- Or for RTL support -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.rtl.min.css" />
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.0/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.full.min.js"></script>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@2.0.1/dist/css/multi-select-tag.css">
+<script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@2.0.1/dist/js/multi-select-tag.js"></script>
+</div>
+
+<script>
+ new MultiSelectTag('countries', {
+    rounded: true,    // default true
+    shadow: true,      // default false
+    placeholder: 'Search',  // default Search...
+    tagColor: {
+        textColor: '#327b2c',
+        borderColor: '#92e681',
+        bgColor: '#eaffe6',
+    }
+    onChange: function(values) {
+        console.log(values)
+    }
+})
+</script>
+        <div class="col-md-4">
+            <label for="inputAddress" >ชื่ออาจารย์นิเทศ</label>
+            {{-- <input type="text" class="form-control" @error('test') is-invalid @enderror name="test" value="{{ old('test') }}"  autofocus placeholder="test" placeholder="Last name" aria-label="Last name"> --}}
+            {{-- <select class="form-select form-select-sm " id="small-bootstrap-class-multiple-field" multiple data-placeholder="เลือกรายชื่อ" name="teacher_name" > --}}
+                <select class="form-select" id="countries"   name="teacher_name[]">
+                <option value="">Select state</option>
+              @foreach ($users2 as $row)
+              {{-- <optgroup label="Mountain Time Zone"> --}}
+                @php
+                $selectedIds = explode(',', $supervisions->teacher_name);
+            @endphp
+            <option value="{{ $row->name }}" {{ in_array($row->name, $selectedIds) ? 'selected' : '' }}>{{$row->name}}
+                {{-- <option value="{{$row->name}}">{{$row->name}}</option> --}}
+ {{-- <option value="">หห</option> --}}
+              {{-- </optgroup> --}}
 
               @endforeach
             </select>
@@ -191,20 +290,47 @@
                 {{ $message }}
             </span>
         @enderror
+
+        <script>
+$( '#multiple-select-field1' ).select2( {
+    theme: "bootstrap-5",
+    width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
+    placeholder: $( this ).data( 'placeholder' ),
+    closeOnSelect: false,
+} );
+
+        </script>
+
+
+
+          </div>
+          <div class="col-md-4">
+            <label for="inputAddress" >  ขอเปลี่ยนเวลานัดนิเทศ</label>
+            {{-- <input type="text" class="form-control" @error('test') is-invalid @enderror name="test" value="{{ old('test') }}"  autofocus placeholder="test" placeholder="Last name" aria-label="Last name"> --}}
+
+            <input class="form-control" id="example-date" type="datetime-local" name="appointment_time"value="{{ \Carbon\Carbon::parse($supervisions->appointment_time)->format('Y-m-d\TH:i') }}"  autofocus placeholder="title">
+            @error('test')
+            <span class="invalid-feedback" >
+                {{ $message }}
+            </span>
+        @enderror
           </div>
 
+
         </div>
+
+
           <div class="row">
 
 
         <div class="col-md-4">
           <label for="inputAddress"class="col-form-label ">รับทราบและยืนยันเวลานัดนิเทศ</label>
-          <select class="form-control select" id="validationSelect2" name="" >
+          <select class="form-control select" id="validationSelect2" name="Status_events" >
             <option value="">กรุณาเลือก</option>
             {{-- @foreach ($users as $row) --}}
             {{-- <optgroup label="Mountain Time Zone"> --}}
-              <option value="รอรับทราบและยืนยันเวลานัดนิเทศ">รอรับทราบและยืนยันเวลานัดนิเทศ</option>
-              <option value="รับทราบและยืนยันเวลานัดแล้ว">รับทราบและยืนยันเวลานัดแล้ว</option>
+              <option value="รอรับทราบและยืนยันเวลานัดนิเทศ"@if($supervisions->Status_events=="รอรับทราบและยืนยันเวลานัดนิเทศ") selected @endif required>รอรับทราบและยืนยันเวลานัดนิเทศ</option>
+              <option value="รับทราบและยืนยันเวลานัดแล้ว"@if($supervisions->Status_events=="รับทราบและยืนยันเวลานัดแล้ว") selected @endif required>รับทราบและยืนยันเวลานัดแล้ว</option>
             </optgroup>
 
 
@@ -213,7 +339,7 @@
       </div>
       <div class="col-md-2">
         <label for="inputAddress"class="col-form-label ">ภาคเรียน</label>
-        <select class="form-control "  name="term">
+        <select class="form-select "  name="term">
           <option value="">กรุณาเลือกภาคเรียน</option>
 
 
@@ -226,7 +352,7 @@
     </div>
     <div class="col-md-2">
       <label for="inputAddress"class="col-form-label ">ปีการศึกษา</label>
-      <select class="form-control "  name="year" >
+      <select class="form-select "  name="year" >
         {{-- @foreach(range(date('Y'), date('Y') + 100) as $year)
         <option value="{{ $year }}">{{ $year }}</option>
     @endforeach --}}
@@ -245,21 +371,47 @@
 
 </select>
 
-
+</div>
 
       </select>
-  </div>
-  <div class="col-md-2">
+      <div class="row-2">
+        <div class="col-md-3">
+          <label for="inputAddress"class="col-form-label ">ชื่อผู้บริหาร</label>
+
+          {{-- <input type="text" class="form-control" @error('test') is-invalid @enderror name="test" value="{{ old('test') }}"  autofocus placeholder="" placeholder="Last name" aria-label="Last name"> --}}
+          <textarea rows="4" cols="50" name="executive_name" >{{$supervisions->executive_name}}
+          </textarea>
+
+          @error('test')
+          <span class="invalid-feedback" >
+              {{ $message }}
+          </span>
+      @enderror
+        </div>
+        <div class="col-md-3">
+          {{-- <label for="inputAddress" >ชื่อผู้ติดต่อ</label> --}}
+          <label for="inputAddress"class="col-form-label ">ชื่อผู้ติดต่อ</label>
+          {{-- <input type="text" class="form-control" @error('test') is-invalid @enderror name="test" value="{{ old('test') }}"  autofocus placeholder="" placeholder="Last name" aria-label="Last name"> --}}
+          <textarea rows="4" cols="50" name="contact_person" > {{$supervisions->contact_person}}
+          </textarea>
+
+          @error('test')
+          <span class="invalid-feedback" >
+              {{ $message }}
+          </span>
+      @enderror
+        </div>
+  {{-- <div class="col-md-2">
     <label for="inputAddress"class="col-form-label ">หมายเหตุ</label>
      <input type="text" class="form-control" @error('annotation') is-invalid @enderror name="" value="{{$supervisions->annotation}} " autofocus placeholder="annotation" placeholder="Last name" aria-label="Last name">
-</div>
-<div class="row">
+</div> --}}
+{{-- <div class="row">
  <div class="col-md-4">
   <label for="inputAddress"class="col-form-label ">เริ่มต้น</label>
   <input class="form-control" id="example-date" type="datetime-local" name="start"value="{{$supervisions->start}}">
 
 
-</div>
+</div> --}}
 {{-- <div class="col-md-2">
 
   <label for="inputAddress"class="col-form-label ">เวลาเริ่มต้น</label>
@@ -267,12 +419,12 @@
   <input class="form-control col-form-label" id="example-date" type="time" name="">
 </div> --}}
 
-<div class="col-md-4">
+{{-- <div class="col-md-4">
 
   <label for="inputAddress"class="col-form-label ">สิ้นสุด</label>
   <input class="form-control" id="example-date" type="datetime-local" name="end"value="{{$supervisions->end}}">
   {{-- <input class="form-control col-form-label" id="example-date" type="time" name="time"> --}}
-</div>
+{{-- </div> --}}
 {{-- <div class="col-md-2">
 
   <label for="inputAddress"class="col-form-label ">เวลาสิ้นสุด</label>

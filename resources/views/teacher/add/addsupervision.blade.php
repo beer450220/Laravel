@@ -195,9 +195,9 @@
               {{-- @foreach ($users as $row) --}}
               {{-- <optgroup label="Mountain Time Zone"> --}}
                 {{-- <option value="{{$row->id}}">{{$row->name}}</option> --}}
-                @foreach ($major as $row)
+                @foreach ($users as $row)
                 {{-- <optgroup label="Mountain Time Zone"> --}}
-                  <option value="{{$row->fname}} {{$row->surname}}">({{$row->fname}} {{$row->surname}})</option>
+                  <option value="{{$row->fname}} ">{{$row->fname}} </option>
                   {{-- <option value="{{$row->major_id}}">{{$row->major}}</option> --}}
 
 
@@ -215,6 +215,12 @@
 
 
             $( '#multiple-select-field' ).select2( {
+    theme: "bootstrap-5",
+    width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
+    placeholder: $( this ).data( 'placeholder' ),
+    closeOnSelect: false,
+} );
+$( '#multiple-select-field1' ).select2( {
     theme: "bootstrap-5",
     width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
     placeholder: $( this ).data( 'placeholder' ),
@@ -254,15 +260,15 @@
           <div class="col-md-4">
             <label for="inputAddress" >ชื่ออาจารย์นิเทศ</label>
             {{-- <input type="text" class="form-control" @error('test') is-invalid @enderror name="test" value="{{ old('test') }}"  autofocus placeholder="test" placeholder="Last name" aria-label="Last name"> --}}
-            <select class="form-control select2" id="validationSelect2" name="" >
+            <select class="form-control select2" id="multiple-select-optgroup-field1"data-placeholder="เลือกรายชื่อ" multiple name="teacher_name" >
               <option value="">Select state</option>
-              {{-- @foreach ($users as $row) --}}
+              @foreach ($users2 as $row)
               {{-- <optgroup label="Mountain Time Zone"> --}}
-                {{-- <option value="{{$row->id}}">{{$row->name}}</option> --}}
+                <option value="{{$row->name}}">{{$row->name}}</option>
 
               </optgroup>
 
-              {{-- @endforeach --}}
+              @endforeach
             </select>
 
             @error('test')
@@ -272,21 +278,9 @@
         @enderror
           </div>
           <div class="col-md-4">
-            <label for="inputAddress" >ชื่อผู้บริหาร</label>
-            <input type="text" class="form-control" @error('test') is-invalid @enderror name="test" value="{{ old('test') }}"  autofocus placeholder="" placeholder="Last name" aria-label="Last name">
-
-
-            @error('test')
-            <span class="invalid-feedback" >
-                {{ $message }}
-            </span>
-        @enderror
-          </div>
-
-          <div class="col-md-4">
-            <label for="inputAddress" >ชื่อผู้ติดต่อ</label>
-            <input type="text" class="form-control" @error('test') is-invalid @enderror name="test" value="{{ old('test') }}"  autofocus placeholder="" placeholder="Last name" aria-label="Last name">
-
+            <label for="inputAddress" >  ขอเปลี่ยนเวลานัดนิเทศ</label>
+            {{-- <input type="text" class="form-control" @error('test') is-invalid @enderror name="test" value="{{ old('test') }}"  autofocus placeholder="test" placeholder="Last name" aria-label="Last name"> --}}
+            <input class="form-control" id="example-date" type="datetime-local" name="appointment_time"  autofocus placeholder="title">
 
             @error('test')
             <span class="invalid-feedback" >
@@ -294,13 +288,15 @@
             </span>
         @enderror
           </div>
+
+
         </div>
           <div class="row">
 
 
         <div class="col-md-3">
           <label for="inputAddress"class="col-form-label ">รับทราบและยืนยันเวลานัดนิเทศ</label>
-          <select class="form-control select" id="validationSelect2" name="" >
+          <select class="form-control select" id="validationSelect2" name="Status_events" >
             <option value="">กรุณาเลือก</option>
             {{-- @foreach ($users as $row) --}}
             {{-- <optgroup label="Mountain Time Zone"> --}}
@@ -349,15 +345,45 @@
 
       </select>
   </div>
-  <div class="col-md-2">
+  {{-- <div class="col-md-2">
     <label for="inputAddress"class="col-form-label ">หมายเหตุ</label>
      <input type="text" class="form-control" @error('annotation') is-invalid @enderror name="" value=""  autofocus placeholder="annotation" placeholder="Last name" aria-label="Last name">
-</div>
+</div> --}}
 
 
 
 </div>
       </div>
+      <div class="row-2">
+      <div class="col-md-3">
+        <label for="inputAddress"class="col-form-label ">ชื่อผู้บริหาร</label>
+
+        {{-- <input type="text" class="form-control" @error('test') is-invalid @enderror name="test" value="{{ old('test') }}"  autofocus placeholder="" placeholder="Last name" aria-label="Last name"> --}}
+        <textarea rows="4" cols="50" name="executive_name"  >
+        </textarea>
+
+        @error('test')
+        <span class="invalid-feedback" >
+            {{ $message }}
+        </span>
+    @enderror
+      </div>
+      <div class="col-md-3">
+        {{-- <label for="inputAddress" >ชื่อผู้ติดต่อ</label> --}}
+        <label for="inputAddress"class="col-form-label ">ชื่อผู้ติดต่อ</label>
+        {{-- <input type="text" class="form-control" @error('test') is-invalid @enderror name="test" value="{{ old('test') }}"  autofocus placeholder="" placeholder="Last name" aria-label="Last name"> --}}
+        <textarea rows="4" cols="50" name="contact_person"  >
+        </textarea>
+
+        @error('test')
+        <span class="invalid-feedback" >
+            {{ $message }}
+        </span>
+    @enderror
+      </div> </div>
+
+
+
       <br>
       <br>
           <div class="modal-footer">

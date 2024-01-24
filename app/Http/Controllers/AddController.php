@@ -17,7 +17,7 @@ use App\Models\schedule;
 use App\Models\Evaluationdocument;
 use App\Models\report_results;
 use App\Models\major;
-
+use App\Models\teacher;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
@@ -663,7 +663,22 @@ public function addestimate1()
         return view('teacher.add.addestimate1',compact('users'),compact('establishment'));
     }
 
-
+    public function addteacher1()
+    {
+     // $users=users::all()->where('role',"student");
+      //$users=users::all()->where('role',"student");
+      $users=DB::table('users')
+      ->where('role',"student")
+      //->join('establishment','establishment.id',"=",'users.id')
+      //->select('users.*','establishment.*')
+      ->get();
+      $establishment=DB::table('establishment')
+      //->where('role',"student")
+      ->get();
+     // dd($users);
+     // ->paginate(5);
+        return view('teacher.add.addteacher1',compact('users'),compact('establishment'));
+    }
 
     public function addestimate(Request $request) {
       //ตรวจสอบข้อมูล
@@ -711,6 +726,48 @@ if($request->hasFile("filess"))
        // return redirect("/welcome")->with('success', 'Company has been created successfully.');
     }
 }
+
+
+
+
+public function addteacher(Request $request) {
+    //ตรวจสอบข้อมูล
+     //dd($request);
+
+     $request->validate([
+      //  'name' => 'required|unique:name',
+      //  'test' => 'required|unique:test',
+  ]
+,[
+
+  // 'name.required'=>"กรุณากรอกชื่อ",
+  // 'test.required'=>"กรุณาเทส",
+]
+
+);
+
+
+
+  $post =new teacher
+  ([
+
+      'name' => $request->name,
+
+
+
+  ]);
+
+
+  $post->save();
+    //  $data =array();
+    //  $data["test"]= $request->test;
+  //    $data["test"]= $request->test;
+  // DB::table('test')->insert($data);
+     return redirect('/teacher/teacher01')->with('success', 'สมัครสำเร็จ.');
+     // return redirect("/welcome")->with('success', 'Company has been created successfully.');
+  }
+
+
 
 #officer
 
@@ -858,6 +915,10 @@ public function addsupervision()
       //->join('establishment','establishment.id',"=",'users.id')
       //->select('users.*','establishment.*')
       ->get();
+      $users2=DB::table('teacher')
+    //   ->where('role',"student")
+
+      ->get();
       $users1=DB::table('users')
       ->where('role',"student")
       //->join('establishment','establishment.id',"=",'users.id')
@@ -869,7 +930,7 @@ public function addsupervision()
      // dd($users);
      // ->paginate(5);
      $major=DB::table('users')->paginate(5);
-        return view('teacher.add.addsupervision',compact('users'),compact('establishment','major'));
+        return view('teacher.add.addsupervision',compact('users','users2'),compact('establishment','major'));
     }
 
     public function addsupervision1(Request $request) {
@@ -915,7 +976,7 @@ public function addsupervision()
 
     public function addsupervision02(Request $request) {
         //ตรวจสอบข้อมูล
-        // dd($request);
+         //dd($request);
 
          $request->validate([
           //  'name' => 'required|unique:name',
@@ -935,18 +996,22 @@ public function addsupervision()
           // 'end' => $request->end,
           "term" => $request->term,
           "year" => $request->year,
+          "appointment_time" => $request->appointment_time,
+          "executive_name" => $request->executive_name,
+          "contact_person" => $request->contact_person,
           "establishment_name" => $request->establishment_name,
+        "Status_events" => $request->Status_events,
+           "student_name" => implode(",",$request->student_name),
+           //$request->student_name,
 
-          // "student_name" => $request->student_name,
-
-
+           "teacher_name" => $request->teacher_name,
 
       ]);
     //    $post->user_id = "0";  // $post->Status ="รอตรวจสอบ";
-      $post-> Statusevents = "student";
-      $post-> List_teacher = "List_teacher";
-      $post-> Statustime = "List_teacher";
-      $post['student_name'] = json_encode($request->student_name);
+    //   $post-> Statusevents = "student";
+      //$post-> List_teacher = "List_teacher";
+    //   $post-> Statustime = "List_teacher";
+      //$post['student_name'] = json_encode($request->student_name);
 
      //$data['tags'] = json_encode($request->tags);
     //  $post = Event::create($data);
