@@ -18,6 +18,9 @@ use App\Models\Evaluationdocument;
 use App\Models\report_results;
 use App\Models\major;
 use App\Models\teacher;
+use App\Models\permission;
+use App\Models\category;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
@@ -663,6 +666,22 @@ public function addestimate1()
         return view('teacher.add.addestimate1',compact('users'),compact('establishment'));
     }
 
+    public function addes1()
+    {
+     // $users=users::all()->where('role',"student");
+      //$users=users::all()->where('role',"student");
+      $users=DB::table('users')
+      ->where('role',"student")
+      //->join('establishment','establishment.id',"=",'users.id')
+      //->select('users.*','establishment.*')
+      ->get();
+      $establishment=DB::table('establishment')
+      //->where('role',"student")
+      ->get();
+     // dd($users);
+     // ->paginate(5);
+        return view('teacher.add.addes1',compact('users'),compact('establishment'));
+    }
     public function addteacher1()
     {
      // $users=users::all()->where('role',"student");
@@ -727,7 +746,52 @@ if($request->hasFile("filess"))
     }
 }
 
+public function addes2(Request $request) {
+    //ตรวจสอบข้อมูล
+     //dd($request);
 
+     $request->validate([
+      //  'name' => 'required|unique:name',
+      //  'test' => 'required|unique:test',
+  ]
+,[
+
+  // 'name.required'=>"กรุณากรอกชื่อ",
+  // 'test.required'=>"กรุณาเทส",
+]
+
+);
+
+if($request->hasFile("filess"))
+    {
+      $file=$request->file("filess");
+       $imageName=time().'_'.$file->getClientOriginalName();
+      $file->move(\public_path("/ไฟล์เอกสารขออนุญาตนิเทศงาน"),$imageName);
+  // $post=Event::findOrFail($id);
+
+  $post =new permission
+  ([
+    //   "user_id" => $request->user_id,
+      "term" => $request->term,
+      'namefile' => $request->namefile,
+      "year" => $request->year,
+    //   'score' => $request->score,
+      "filess" =>$imageName,
+
+
+  ]);
+
+  $post->annotation ="-";
+  $post->status ="รอตรวจสอบ";
+  $post->save();
+    //  $data =array();
+    //  $data["test"]= $request->test;
+  //    $data["test"]= $request->test;
+  // DB::table('test')->insert($data);
+     return redirect('/teacher/es1')->with('success', 'สมัครสำเร็จ.');
+     // return redirect("/welcome")->with('success', 'Company has been created successfully.');
+  }
+}
 
 
 public function addteacher(Request $request) {
@@ -805,7 +869,23 @@ public function addacceptancedocument1()
      // ->paginate(5);
         return view('officer.add.addmajor');
     }
-
+//หลักสูตรสาขา
+public function addcategory()
+{
+ // $users=users::all()->where('role',"student");
+  //$users=users::all()->where('role',"student");
+ // $users=DB::table('users')
+//  ->where('role',"student")
+  //->join('establishment','establishment.id',"=",'users.id')
+  //->select('users.*','establishment.*')
+  //->get();
+  //$establishment=DB::table('establishment')
+  //->where('role',"student")
+ // ->get();
+ // dd($users);
+ // ->paginate(5);
+    return view('officer.add.addcategory');
+}
 
     public function addmajor1(Request $request) {
         //ตรวจสอบข้อมูล
@@ -839,7 +919,38 @@ public function addacceptancedocument1()
          return redirect('/officer/major')->with('success', 'สมัครสำเร็จ.');
 
       }
+      public function addcategory1(Request $request) {
+        //ตรวจสอบข้อมูล
+        // dd($request);
 
+         $request->validate([
+          //  'name' => 'required|unique:name',
+          //  'test' => 'required|unique:test',
+      ]
+    ,[
+
+      // 'name.required'=>"กรุณากรอกชื่อ",
+      // 'test.required'=>"กรุณาเทส",
+    ]
+
+  );
+      $post =new category
+      ([
+          "name" => $request->name,
+
+
+
+
+      ]);
+     // $post->Status ="รอตรวจสอบ";
+      $post->save();
+        //  $data =array();
+        //  $data["test"]= $request->test;
+      //    $data["test"]= $request->test;
+      // DB::table('test')->insert($data);
+         return redirect('/officer/category')->with('success', 'สมัครสำเร็จ.');
+
+      }
     public function addacceptancedocument(Request $request) {
       //ตรวจสอบข้อมูล
        //dd($request);

@@ -119,7 +119,7 @@
               {{-- <a type="button" href="{{ route('register1') }}" class="btn btn-warning">Sign-up</a> --}}
 
               {{-- <a type="button" href="{{ route('register1') }}" class="btn btn-outline-warning me-2">สมัครสมาชิก</a> --}}
-              {{-- <a type="button" href="/login" class="btn btn-outline-warning me-2">ล็อกอิน</a> --}}
+              <a type="button" href="/login" class="btn btn-outline-warning me-2">ล็อกอิน</a>
             </div>
           </div>
         </div>
@@ -128,6 +128,330 @@
 
 <br>
    <br>
+
+
+   <div class="row">
+    <!-- Striped rows -->
+    <div class="col-md-12 my-4">
+
+      <div class="card shadow">
+        <div class="card-body">
+          <div class="toolbar row mb-3">
+            <div class="col">
+              {{-- <form class="form-inline"> --}}
+                <form class="">
+                {{-- <div class="form-row"> --}}
+                    <div class="">
+                  <div class="form-group col-auto">
+                    {{-- <form method="get" action="/search">
+
+                        <div class="input-group">
+                            <input class="form-control" name="search" placeholder="Search..." value="{{ isset($search) ? $search : ''}}">
+                            <button type="submit" class="btn btn-primary">Search</button>
+                        </div>--}}
+                    </form>
+                    <div class="container ">
+
+                <div >
+                    <div >
+                        <div >
+                    <form action="{{ route('search1') }}" method="GET">
+                        <div class="form-group col-12">
+                            {{-- <label for="keyword">คำค้นหา:</label> --}}
+                            <input type="text" name="keyword" id="keyword" class="form-control" value="{{ request('keyword') }}">
+                        </div>
+                        {{-- <button type="submit" class="btn btn-primary">ค้นหา</button> --}}
+                        </form>
+                  </div>
+                  <div class="col-3">
+                  <div class="form-group col-auto ml-3">
+                    {{-- <label class="my-1 mr-2 sr-only" for="inlineFormCustomSelectPref">Status</label> --}}
+                    {{-- <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+                      <option selected>Choose...</option>
+                      <option value="1">Processing</option>
+                      <option value="2">Success</option>
+                      <option value="3">Pending</option>
+                      <option value="3">Hold</option>
+                    </select> --}}
+                  </div>
+                </div>
+               </div>
+            </div>
+
+          </div>
+<br>
+
+
+        {{-- หมวดหมู่ --}}
+
+
+        <div class="container ">
+            <div class="row gx-8">
+              <div class="col">
+               <div class="p-3 border bg-light">หมวดหมู่</div>
+
+               <br>
+ <div >
+    <div >
+        <div >
+            <div >
+          {{-- <div class="shopee-header-section__header"><div class="shopee-header-section__header__title"><h3>หมวดหมู่</h3></div> --}}
+          <br>
+
+          <div class="row">
+            <div class="col-md-3">
+              <div class="card shadow mb-4">
+                <div class="card-body text-center">
+                  <div class="avatar avatar-lg mt-4 "style="background-image: url(&quot;https://down-th.img.susercontent.com/file/c1c3ef22b08e9e92a820238900edc982_tn&quot;); background-size: contain; background-repeat: ">
+                    <a href="">
+                      <img src="url(&quot;https://down-th.img.susercontent.com/file/c1c3ef22b08e9e92a820238900edc982_tn&quot;)" alt="..." class="avatar-img rounded-circle">
+                    </a>
+                  </div>
+                  <div class="card-text my-2">
+                    {{-- <strong class="card-title my-0">Bass Wendy </strong>
+                    <p class="small text-muted mb-0">Accumsan Consulting</p>
+                    <p class="small"><span class="badge badge-light text-muted">New York, USA</span></p> --}}
+                  </div>
+                </div> <!-- ./card-text -->
+                <div class="card-footer">
+                  <div class="row align-items-center justify-content-between">
+                    <div class="col-auto">
+                      <small>
+                        <span class="dot dot-lg bg-success mr-1"></span> คอมพิวเตอร์ </small>
+                    </div>
+                    <div class="col-auto">
+
+                    </div>
+                  </div>
+                </div> <!-- /.card-footer -->
+              </div>
+            </div> <!-- .col -->
+            <div class="col-md-3">
+              <div class="card shadow mb-4">
+                <div class="card-body text-center">
+                  <div class="avatar avatar-lg mt-4">
+                    <a href="">
+                      <img src="./assets/avatars/face-1.jpg" alt="..." class="avatar-img rounded-circle">
+                    </a>
+                  </div>
+                  <div class="card-text my-2">
+
+                  </div>
+                </div> <!-- ./card-text -->
+                <div class="card-footer">
+                  <div class="row align-items-center justify-content-between">
+                    <div class="col-auto">
+                      <small>
+                        <span class="dot dot-lg bg-secondary mr-1"></span> Offline </small>
+                    </div>
+
+                  </div>
+                </div> <!-- /.card-footer -->
+              </div>
+            </div> <!-- .col -->
+            <div class="col-md-3">
+              <div class="card shadow mb-4">
+                <div class="card-body text-center">
+                  <div class="avatar avatar-lg mt-4">
+                    <a href="">
+                      <img src="./assets/avatars/face-5.jpg" alt="..." class="avatar-img rounded-circle">
+                    </a>
+                  </div>
+                  <div class="card-text my-2">
+                    {{-- <strong class="card-title my-0">Higgins Uriah</strong>
+                    <p class="small text-muted mb-0">Suspendisse LLC</p>
+                    <p class="small"><span class="badge badge-light text-muted">Canada</span></p> --}}
+                  </div>
+                </div> <!-- ./card-text -->
+                <div class="card-footer">
+                  <div class="row align-items-center justify-content-between">
+                    <div class="col-auto">
+                      <small>
+                        <span class="dot dot-lg bg-success mr-1"></span> Online </small>
+                    </div>
+
+                  </div>
+                </div> <!-- /.card-footer -->
+              </div>
+            </div> <!-- .col -->
+            <div class="col-md-3">
+              <div class="card shadow mb-4">
+                <div class="card-body text-center">
+                  <div class="avatar avatar-lg mt-4">
+                    <a href="">
+                      <img src="./assets/avatars/face-3.jpg" alt="..." class="avatar-img rounded-circle">
+                    </a>
+                  </div>
+                  <div class="card-text my-2">
+                    {{-- <strong class="card-title my-0">Brown Asher</strong>
+                    <p class="small text-muted mb-0">Orci Luctus Et Inc.</p>
+                    <p class="small"><span class="badge badge-dark">USA</span></p> --}}
+                  </div>
+                </div> <!-- ./card-text -->
+                <div class="card-footer">
+                  <div class="row align-items-center justify-content-between">
+                    <div class="col-auto">
+                      <small>
+                        <span class="dot dot-lg bg-success mr-1"></span> Online </small>
+                    </div>
+                    {{-- <div class="col-auto">
+                      <div class="file-action">
+                        <button type="button" class="btn btn-link dropdown-toggle more-vertical p-0 text-muted mx-auto" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <span class="text-muted sr-only">Action</span>
+                        </button>
+                        <div class="dropdown-menu m-2">
+                          <a class="dropdown-item" href="#"><i class="fe fe-meh fe-12 mr-4"></i>Profile</a>
+                          <a class="dropdown-item" href="#"><i class="fe fe-message-circle fe-12 mr-4"></i>Chat</a>
+                          <a class="dropdown-item" href="#"><i class="fe fe-mail fe-12 mr-4"></i>Contact</a>
+                          <a class="dropdown-item" href="#"><i class="fe fe-delete fe-12 mr-4"></i>Delete</a>
+                        </div>
+                      </div>
+                    </div> --}}
+                  </div>
+                </div> <!-- /.card-footer -->
+              </div>
+            </div> <!-- .col -->
+            {{-- <div class="col-md-3">
+              <div class="card shadow mb-4">
+                <div class="card-body text-center">
+                  <div class="avatar avatar-lg mt-4">
+                    <a href="">
+                      <img src="./assets/avatars/face-4.jpg" alt="..." class="avatar-img rounded-circle">
+                    </a>
+                  </div>
+                  <div class="card-text my-2">
+                    <strong class="card-title my-0">Bass Wendy </strong>
+                    <p class="small text-muted mb-0">Accumsan Consulting</p>
+                    <p class="small"><span class="badge badge-light text-muted">New York, USA</span></p>
+                  </div>
+                </div> <!-- ./card-text -->
+                <div class="card-footer">
+                  <div class="row align-items-center justify-content-between">
+                    <div class="col-auto">
+                      <small>
+                        <span class="dot dot-lg bg-success mr-1"></span> Online </small>
+                    </div>
+                    <div class="col-auto">
+                      <div class="file-action">
+                        <button type="button" class="btn btn-link dropdown-toggle more-vertical p-0 text-muted mx-auto" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <span class="text-muted sr-only">Action</span>
+                        </button>
+                        <div class="dropdown-menu m-2">
+                          <a class="dropdown-item" href="#"><i class="fe fe-meh fe-12 mr-4"></i>Profile</a>
+                          <a class="dropdown-item" href="#"><i class="fe fe-message-circle fe-12 mr-4"></i>Chat</a>
+                          <a class="dropdown-item" href="#"><i class="fe fe-mail fe-12 mr-4"></i>Contact</a>
+                          <a class="dropdown-item" href="#"><i class="fe fe-delete fe-12 mr-4"></i>Delete</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div> <!-- /.card-footer -->
+              </div>
+            </div> <!-- .col -->
+            <div class="col-md-3">
+              <div class="card shadow mb-4">
+                <div class="card-body text-center">
+                  <div class="avatar avatar-lg mt-4">
+                    <a href="">
+                      <img src="./assets/avatars/face-1.jpg" alt="..." class="avatar-img rounded-circle">
+                    </a>
+                  </div>
+                  <div class="card-text my-2">
+                    <strong class="card-title my-0">Leblanc Yoshio</strong>
+                    <p class="small text-muted mb-0">Tristique Ltd</p>
+                    <p class="small"><span class="badge badge-light text-muted">United Kingdom</span></p>
+                  </div>
+                </div> <!-- ./card-text -->
+                <div class="card-footer">
+                  <div class="row align-items-center justify-content-between">
+                    <div class="col-auto">
+                      <small>
+                        <span class="dot dot-lg bg-secondary mr-1"></span> Offline </small>
+                    </div>
+                    <div class="col-auto">
+                      <div class="file-action">
+                        <button type="button" class="btn btn-link dropdown-toggle more-vertical p-0 text-muted mx-auto" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <span class="text-muted sr-only">Action</span>
+                        </button>
+                        <div class="dropdown-menu m-2">
+                          <a class="dropdown-item" href="#"><i class="fe fe-meh fe-12 mr-4"></i>Profile</a>
+                          <a class="dropdown-item" href="#"><i class="fe fe-message-circle fe-12 mr-4"></i>Chat</a>
+                          <a class="dropdown-item" href="#"><i class="fe fe-mail fe-12 mr-4"></i>Contact</a>
+                          <a class="dropdown-item" href="#"><i class="fe fe-delete fe-12 mr-4"></i>Delete</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div> <!-- /.card-footer -->
+              </div>
+            </div> <!-- .col -->
+            <div class="col-md-3">
+              <div class="card shadow mb-4">
+                <div class="card-body text-center">
+                  <div class="avatar avatar-lg mt-4">
+                    <a href="">
+                      <img src="./assets/avatars/face-5.jpg" alt="..." class="avatar-img rounded-circle">
+                    </a>
+                  </div>
+                  <div class="card-text my-2">
+                    <strong class="card-title my-0">Higgins Uriah</strong>
+                    <p class="small text-muted mb-0">Suspendisse LLC</p>
+                    <p class="small"><span class="badge badge-light text-muted">Canada</span></p>
+                  </div>
+                </div> <!-- ./card-text -->
+                <div class="card-footer">
+                  <div class="row align-items-center justify-content-between">
+                    <div class="col-auto">
+                      <small>
+                        <span class="dot dot-lg bg-success mr-1"></span> Online </small>
+                    </div>
+
+                  </div>
+                </div> <!-- /.card-footer -->
+              </div>
+            </div> <!-- .col -->
+            <div class="col-md-3">
+              <div class="card shadow mb-4">
+                <div class="card-body text-center">
+                  <div class="avatar avatar-lg mt-4">
+                    <a href="">
+                      <img src="./assets/avatars/face-3.jpg" alt="..." class="avatar-img rounded-circle">
+                    </a>
+                  </div>
+                  <div class="card-text my-2">
+                    <strong class="card-title my-0">Brown Asher</strong>
+                    <p class="small text-muted mb-0">Orci Luctus Et Inc.</p>
+                    <p class="small"><span class="badge badge-dark">USA</span></p>
+                  </div>
+                </div> <!-- ./card-text -->
+                <div class="card-footer">
+                  <div class="row align-items-center justify-content-between">
+                    <div class="col-auto">
+                      <small>
+                        <span class="dot dot-lg bg-success mr-1"></span> Online </small>
+                    </div>
+                    <div class="col-auto">
+                      <div class="file-action">
+                        <button type="button" class="btn btn-link dropdown-toggle more-vertical p-0 text-muted mx-auto" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <span class="text-muted sr-only">Action</span>
+                        </button>
+                        <div class="dropdown-menu m-2">
+                          <a class="dropdown-item" href="#"><i class="fe fe-meh fe-12 mr-4"></i>Profile</a>
+                          <a class="dropdown-item" href="#"><i class="fe fe-message-circle fe-12 mr-4"></i>Chat</a>
+                          <a class="dropdown-item" href="#"><i class="fe fe-mail fe-12 mr-4"></i>Contact</a>
+                          <a class="dropdown-item" href="#"><i class="fe fe-delete fe-12 mr-4"></i>Delete</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div> <!-- /.card-footer -->
+              </div>
+            </div> <!-- .col --> --}}
+            <div class="col-md-9">
+            </div> <!-- .col -->
+          </div>
+        </div>
+
 
         <div class="container ">
             <div class="row gx-8">

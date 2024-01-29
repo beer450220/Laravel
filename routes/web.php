@@ -34,6 +34,7 @@ Route::post('/register1/add', [registerController::class,'register2'])->name('re
 Route::get('/login', [HomeController::class,'login01'])->name('login01');
 Route::get('/establishment', [HomeController::class,'establishment'])->name('establishment');
 Route::get('/cooperative', [HomeController::class,'cooperative'])->name('cooperative');
+Route::get('/search1',[HomeController::class,'search1'])->name('search1');
 
 Route::get('/test4', [HomeController::class,'changeStatus1'])->name('changeStatus1') ;
 Route::POST("/test5",[HomeController::class,'changeStatus2'])->name('changeStatus2');
@@ -273,6 +274,14 @@ Route::middleware(['auth','user-role:officer'])->group(function()
     Route::get('/officer/deletmajor/{major_id}', [EditController::class,'delmajor'])->name('delmajor');
 
 
+     //หมวดหมู่
+     Route::get("/officer/category",[HomeController::class,'category'])->name('category');
+     Route::get("/officer/addcategory",[addController::class,'addcategory'])->name('addcategory');
+     Route::post("/officer/addcategory1",[addController::class,'addcategory1'])->name('addcategory1');
+     Route::get("/officer/editcategory/{category_id}",[EditController::class,'editcategory'])->name('editcategory');
+     Route::post("/officer/updatcategory/{category_id}",[EditController::class,'updatcategory'])->name('updatcategory');
+     Route::get('/officer/deletcategory/{category_id}', [EditController::class,'delcategory'])->name('delcategory');
+
 
 
 //ลงทะเบียน
@@ -365,6 +374,15 @@ Route::middleware(['auth','user-role:officer'])->group(function()
     // Route::get('/officer/deleEvaluationdocument/{Evaluationdocument_id}', [EditController::class,'deleEvaluationdocument'])->name('deleEvaluationdocument');
 
 
+//เอกสารขออนุญาตนิเทศงาน(สก10)
+Route::get("/officer/es1",[HomeController::class,'es2'])->name('es2');
+// Route::get("/teacher/addes1",[addController::class,'addes1'])->name('addes1');
+// Route::post("/teacher/addes2",[addController::class,'addes2'])->name('addes2');
+Route::get("/officer/edites1/{id}",[EditController::class,'edites2'])->name('edites2');
+Route::post("officer/updatees2/{id}",[EditController::class,'updatees2'])->name('updatees2');
+Route::get('/teacher/deletes1/{id}', [EditController::class,'deles1'])->name('deles1');
+
+
 });
 
 
@@ -446,6 +464,18 @@ Route::middleware(['auth','user-role:teacher'])->group(function()
     Route::get("/teacher/editsupervision02/{id}",[EditController::class,'editsupervision02'])->name('editsupervision02');
     Route::post("/teacher/updatesupervision02/{id}",[EditController::class,'updatesupervision02'])->name('updatesupervision02');
     Route::get('/teacher/deletsupervision/{id}', [EditController::class,'deletsupervision'])->name('deletsupervision');
+
+
+//เอกสารขออนุญาตนิเทศงาน(สก10)
+Route::get("/teacher/es1",[HomeController::class,'es1'])->name('es1');
+Route::get("/teacher/addes1",[addController::class,'addes1'])->name('addes1');
+Route::post("/teacher/addes2",[addController::class,'addes2'])->name('addes2');
+Route::get("/teacher/edites1/{id}",[EditController::class,'edites1'])->name('edites1');
+Route::post("teacher/updatees1/{id}",[EditController::class,'updatees1'])->name('updatees1');
+Route::get('/teacher/deletes1/{id}', [EditController::class,'deles1'])->name('deles1');
+
+
+
 });
 
 

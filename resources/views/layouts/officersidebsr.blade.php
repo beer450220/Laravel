@@ -75,7 +75,7 @@
                     {{-- <a class="collapse-item "href="/officer/schedule">ตารางกำหนดการปฏิทินสหกิจ</a> --}}
                     {{-- <a class="collapse-item "href="/officer/calendar6">กำหนดการปฏิทินสหกิจ</a> --}}
                     <a class="collapse-item "href="/officer/establishmentuser1">สถานประกอบการ</a>
-                    <a class="collapse-item "href="/officer/acceptancedocument1">หนวดหมู่</a>
+                    <a class="collapse-item "href="/officer/category">หนวดหมู่</a>
                     <a class="collapse-item "href="/officer/major">หลักสูตรสาขา</a>
                 </div>
             </div>
@@ -116,6 +116,16 @@
 
 
                 <span>เอกสารแจ้งรายละเอียด</span></a>
+        </li>
+
+
+        <li class="nav-item">
+            <a class="nav-link"href="/officer/es1">
+
+           <i class="fa fa-user" aria-hidden="true"></i>
+
+
+                <span>เอกสารขออนุญาตนิเทศงาน</span></a>
         </li>
 
         {{-- <li class="nav-item">

@@ -152,8 +152,13 @@
             </a>
           </li> --}}
       </li>
+       <li class="nav-item">
+        <a class="nav-link pl-3" href="/teacher/es1"><span class="ml-1 item-text">เอกสารขออนุญาตนิเทศงาน(สก10)
+            </span>
+        </a>
+      </li>
       <li class="nav-item">
-        <a class="nav-link pl-3" href="/teacher/estimate1"><span class="ml-1 item-text">   รายงานผลประเมิน
+        <a class="nav-link pl-3" href="/teacher/estimate1"><span class="ml-1 item-text">   เอกสารรายงานผลประเมิน
             (สก12,สก.15,สก.13,สก.14) </span>
         </a>
       </li>
@@ -162,6 +167,7 @@
             </span>
         </a>
       </li>
+
   </li>
 
 

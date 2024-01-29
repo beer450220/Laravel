@@ -135,7 +135,38 @@ class HomeController extends Controller
            // return view('student.establishmentuser',compact('establishments','search'));
 
     }
+    public function search1(Request $request){
 
+
+        //$search = $request->input('search');
+
+        // $establishments =establishment::where(function($query) use ($search){
+
+        //     $query->where('name','like',"%$search%")
+        //     ->orWhere('address','like',"%$search%");
+
+        //     })
+
+        //     ->get();
+
+
+                // $establishments =establishment::where('name','like',"%$search%")
+                // ->orWhere('address','like',"%$search%")->get();
+
+
+                $keyword = $request->input('keyword');
+//dd($request);
+                // สร้างคำสั่งคิวรีเพื่อค้นหาข้อมูล
+                $establishments = establishment::query()
+                    ->where('em_name', 'LIKE', '%' . $keyword . '%')
+                    //->get();
+                    ->paginate(6);
+
+                return view('cooperative.establishment', ['establishments' => $establishments]);
+
+           // return view('student.establishmentuser',compact('establishments','search'));
+
+    }
 
     public function  Student()
     {
@@ -628,7 +659,16 @@ dd($request->$name);
 
         return view('officer.major',compact('major'));
     }
+//หมวด
+public function category()
+{
+    $major=DB::table('category')
+    // ->join('users','registers.user_id','users.id')
+    // ->select('registers.*','users.fname')
+    ->paginate(5);
 
+    return view('officer.category',compact('major'));
+}
     public function timeline2()
     {
         $timelines=DB::table('timeline')
@@ -893,6 +933,31 @@ dd($request->$name);
        // ->where('establishment.establishment_id')
         ->paginate(5);
         return view('teacher.estimate1',compact('supervision'));
+    }
+    public function es1()
+    {
+        $supervision=DB::table('permission')
+       // ->join('users','users.id','=','users.id')
+        // ->join('users','supervision.user_id','users.id')
+        // ->join('establishment','establishment.id','=','establishment_id')
+        // ->select('supervision.*','users.fname')
+        //->select('supervision.*')
+       // ->where('establishment.establishment_id')
+        ->paginate(5);
+        return view('teacher.es1',compact('supervision'));
+    }
+
+    public function es2()
+    {
+        $supervision=DB::table('permission')
+       // ->join('users','users.id','=','users.id')
+        // ->join('users','supervision.user_id','users.id')
+        // ->join('establishment','establishment.id','=','establishment_id')
+        // ->select('supervision.*','users.fname')
+        //->select('supervision.*')
+       // ->where('establishment.establishment_id')
+        ->paginate(5);
+        return view('officer.es1',compact('supervision'));
     }
 
 
