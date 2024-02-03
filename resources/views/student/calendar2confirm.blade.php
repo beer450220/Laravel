@@ -283,7 +283,7 @@
 
                     <ul id="progressbar">
                       <a  href="/studenthome"><li class="active" id="account"><strong>ข้อมูลส่วนตัว</strong></li></a>
-                      <a  href="/studenthome/establishmentuser">  <li class="active" id="personal"><strong>สถานประกอบการ</strong></li></a>
+                      {{-- <a  href="/studenthome/establishmentuser">  <li class="active" id="personal"><strong>สถานประกอบการ</strong></li></a> --}}
                         <a  href="/studenthome/register">  <li class="active" id="payment"><strong>ลงทะเบียน</strong></li></a>
                           <a  href="/studenthome/informdetails"> <li class="active" id="confirm"><strong>รายงานสถานะการเข้าปฏิบัติงาน</strong></li></a>
                             <a  href="/studenthome/calendar2confirm"> <li class="active" id="confirm"><strong>นิเทศงาน</strong></li></a>
@@ -372,12 +372,12 @@
                                         </span>
                                        <h5 class="card-title"> <span> @foreach ($events as $row)
 
-                                            @if ($row->Statusevents === 'ยังไม่ได้รับทราบและยืนยันเวลานัดนิเทศ')
+                                            @if ($row->Status_events === 'ยังไม่ได้รับทราบและยืนยันเวลานัดนิเทศ')
                                             <span class="circle circle-sm bg-warning-light"><i class="fe fe-16 fe-alert-triangle text-white "></i></span>
-                                        @elseif ($row->Statusevents === 'รับทราบและยืนยันเวลานัดนิเทศแล้ว')
+                                        @elseif ($row->Status_events === 'รับทราบและยืนยันเวลานัดนิเทศแล้ว')
                                             <span class="circle circle-sm bg-success-light "><i class="fe fe-16 fe-check text-white "></i></span>
-                                        @elseif ($row->Statusevents === 'ไม่ผ่าน')
-                                            <span class="badge badge-pill badge-danger">{{ $row->Statusevents }}
+                                        @elseif ($row->Status_events === 'ไม่ผ่าน')
+                                            <span class="badge badge-pill badge-danger">{{ $row->Status_events }}
                                         @endif
                                         @endforeach
                                         ตารางการนิเทศนักศึกษาฝึกปฏิบัติงานสหกิจศึกษา</span></h5>
@@ -389,7 +389,7 @@
                             </div> <!-- end section -->
                             <br>
                             @foreach ($events as $row)
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <div class="card shadow mb-4">
                                   <div class="card-body text-center">
                                     <div class="avatar avatar-lg mt-4">
@@ -399,17 +399,17 @@
 
                                     </div>
                                     <div class="card-text my-2">
-                                      <strong class="card-title my-0">วันเวลาการนิเทศ: </strong>
-                                      <p class="small text-muted mb-0">สถานประกอบการ:</p>
-                                      <p class="small"><span class="badge badge-light text-muted">อาจารย์นิเทศ:<a href="/studenthome/calendar2confirmview/{{$row->id}}"  class=" btn btn-outline-success fa-solid fa-eye fe-5"></a></span></p>
-                                      <p class="small text-muted mb-0">รับทราบและยืนยันเวลานัดนิเทศ:@if ($row->Statusevents === 'ยังไม่ได้รับทราบและยืนยันเวลานัดนิเทศ')
-                                        <span class="badge badge-pill badge-warning">{{ $row->Statusevents }}</span>
-                                    @elseif ($row->Statusevents === 'รับทราบและยืนยันเวลานัดนิเทศแล้ว')
-                                        <span class="badge badge-pill badge-success">{{ $row->Statusevents}}</span>
-                                    @elseif ($row->Statusevents === 'ไม่ผ่าน')
-                                        <span class="badge badge-pill badge-danger">{{ $row->Statusevents}}</span>
+                                      <strong class="card-title my-0">วันเวลาการนิเทศ: {{ $row->start}} </strong>
+                                      <p class="small text-muted mb-0">สถานประกอบการ: {{ $row->establishment_name }}</p>
+                                      <p class="small"><span class="badge badge-light text-muted">อาจารย์นิเทศ:{{ $row->teacher_name }}</span></p>
+                                      <p class="small text-muted mb-0">รับทราบและยืนยันเวลานัดนิเทศ:@if ($row->Status_events === 'รอรับทราบและยืนยันเวลานัดนิเทศ')
+                                        <span class="badge badge-pill badge-warning">{{ $row->Status_events }}ss</span>
+                                    @elseif ($row->Status_events === 'รับทราบและยืนยันเวลานัดนิเทศแล้ว')
+                                        <span class="badge badge-pill badge-success">{{ $row->Status_events}}</span>
+                                    @elseif ($row->Status_events === 'ไม่ผ่าน')
+                                        <span class="badge badge-pill badge-danger">{{ $row->Status_events}}</span>
                                     @endif</p>
-                                      <p class="small text-muted mb-0">ขอเปลี่ยนเวลานัดนิเทศ:{{ $row->Statustime}}</p>
+                                      <p class="small text-muted mb-0">ขอเปลี่ยนเวลานัดนิเทศ:{{ $row->appointment_time}}</p>
 
                                     </div>
                                   </div> <!-- ./card-text -->
@@ -458,7 +458,7 @@
                                       </div></div></div></div> <div class="d-grid gap-2">
 
                                         <h2>ขั้นตอนต่อไป</h2>
-                                        </div>   <a href="/studenthome/calendar2confirm"  id="show-alert" class="btn btn-outline-warning " type="button">>คลิกที่นี่<</a>
+                                        </div>   <a href="/studenthome/report"  id="show-alert" class="btn btn-outline-warning " type="button">>คลิกที่นี่<</a>
                                   </div>
                                 <br>
                                 <br>
@@ -528,9 +528,9 @@
           <tbody>
             @foreach ($events as $row)
             <tr class="{{
-                $row->Statusevents === 'ยังไม่ได้รับทราบและยืนยันเวลานัดนิเทศ' ? 'table-warning' : (
-                    $row->Statusevents === 'รับทราบและยืนยันเวลานัดนิเทศ' ? 'table-success' : (
-                        $row->Statusevents === 'ไม่ผ่าน' ? 'table-danger' : ''
+                $row->Status_events === 'ยังไม่ได้รับทราบและยืนยันเวลานัดนิเทศ' ? 'table-warning' : (
+                    $row->Status_events === 'รับทราบและยืนยันเวลานัดนิเทศ' ? 'table-success' : (
+                        $row->Status_events === 'ไม่ผ่าน' ? 'table-danger' : ''
                     )
                 )
             }}">
@@ -565,12 +565,12 @@
         <td><a href="/studenthome/calendar2confirmview/{{$row->id}}" type="button" class="btn btn-outline-primary  fa-regular fa-eye fe-16"></a>  </td>
 
 
-              <td> @if ($row->Statusevents === 'ยังไม่ได้รับทราบและยืนยันเวลานัดนิเทศ')
-                <span class="badge badge-pill badge-warning">{{ $row->Statusevents }}</span>
-            @elseif ($row->Statusevents === 'รับทราบและยืนยันเวลานัดนิเทศ')
-                <span class="badge badge-pill badge-success">{{ $row->Statusevents}}</span>
-            @elseif ($row->Statusevents === 'ไม่ผ่าน')
-                <span class="badge badge-pill badge-danger">{{ $row->Statusevents}}</span>
+              <td> @if ($row->Status_events === 'ยังไม่ได้รับทราบและยืนยันเวลานัดนิเทศ')
+                <span class="badge badge-pill badge-warning">{{ $row->Status_events }}</span>
+            @elseif ($row->Status_events === 'รับทราบและยืนยันเวลานัดนิเทศ')
+                <span class="badge badge-pill badge-success">{{ $row->Status_events}}</span>
+            @elseif ($row->Status_events === 'ไม่ผ่าน')
+                <span class="badge badge-pill badge-danger">{{ $row->Status_events}}</span>
             @endif
             <br><a href="/studenthome/updateconfirm/{{$row->id}}" type="button"onclick="return confirm('ยืนยันข้อมูล !!');" class="btn btn-outline-success  fa-solid fa-check fe-16"></a></td> --}}
 

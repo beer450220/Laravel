@@ -271,17 +271,18 @@
                   <form id="msform">
                       <!-- progressbar -->
 
-                      <ul id="progressbar">
+                      {{-- <ul id="progressbar">
                         <a  href="/personal"><li class="active" id="account"><strong>ข้อมูลส่วนตัว</strong></li></a>
                         <a  href="/studenthome">  <li id="personal"><strong>สถานประกอบการ</strong></li></a>
                           <a  href="/studenthome">  <li id="payment"><strong>ลงทะเบียน</strong></li></a>
                             <a  href="/studenthome"> <li id="confirm"><strong>รายงานสถานะการเข้าปฏิบัติงาน</strong></li></a>
                               <a  href="/studenthome"> <li id="confirm"><strong>นิเทศงาน</strong></li></a>
                                 <a  href="/studenthome"> <li id="payment"><strong>รายงานผลการปฏิบัติงาน</strong></li></a>
-                      </ul>
-                      <div class="progress">
+                      </ul> --}}
+                      {{-- <div class="progress">
                           <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div> <br> <!-- fieldsets -->
+                      </div> --}}
+                      <br> <!-- fieldsets -->
                       <fieldset>
                           <div class="form-card">
                               <div class="row">
@@ -295,8 +296,8 @@
                               <div class="accordion" id="accordionExample">
                                 <div class="accordion-item">
                                   <h2 class="accordion-header" id="headingOne">
-                                    <div class="col-8">
-                                            <h2 class="steps">ตรวจสอบข้อมูลและทำการยืนยันข้อมูล
+                                    <div class="col-7">
+                                            <h2 class="steps">ตรวจสอบข้อมูล
                                               @if(session("success"))
                                           <div class="alert alert-success col-4">{{session('success')}}
                               @endif
@@ -344,16 +345,16 @@
                                                     <div class="form-group mb-3">
                                               {{-- <form method="POST" action="{{url('/studenthome/updateuser2/'.Auth::user()->id)}}" enctype="multipart/form-data">
                                                 @csrf --}}
-                                                      <label for="simpleinput">รหัสนักศึกษา</label>
-                                                      <input type="text"value="{{ Auth::user()->Student_ID }}" disabled="" id="simpleinput" class="form-control">
+                                                      <label for="simpleinput">ชื่อผู้ใช้งาน</label>
+                                                      <input type="text"value="{{ Auth::user()->code_id }}" disabled="" id="simpleinput" class="form-control">
                                                     </div>
                                                     <div class="form-group mb-3">
-                                                      <label for="example-email">Email</label>
+                                                      <label for="example-email">อีเมล์</label>
                                                       <input type="email" id="example-email"value="{{ Auth::user()->email }}" disabled="" name="example-email" class="form-control" placeholder="Email">
                                                     </div>
                                                     <div class="form-group mb-3">
-                                                      <label for="example-password">Password</label>
-                                                      <input type="password" id="example-password" class="form-control" value="password">
+                                                      <label for="example-password">ชื่อจริง นามสกุล</label>
+                                                      <input type="text" id="example-password" class="form-control" value="{{ Auth::user()->fname }}{{ Auth::user()->surname }}">
                                                     </div>
                                                     <div class="form-group mb-3">
                                                       <label for="example-palaceholder">ผู้ใช้งาน</label>
@@ -415,7 +416,7 @@
                                                 <div class="d-grid gap-2 d-md-flex   ">
                                                     <a href="/studenthome"  class="btn btn-outline-primary fe-16" type="button">ย้อนกลับ</a>
                                                     &nbsp;&nbsp;
-                                                    <a href="/studenthome/updateuser2/{{Auth::user()->id}}"name="next" class="btn btn-outline-success me-md-2 success btn2" onclick="return confirm('แน่ใจจะยืนยันตัวตน?')"  type="button">ยืนยันข้อมูล</a>
+                                                    {{-- <a href="/studenthome/updateuser2/{{Auth::user()->id}}"name="next" class="btn btn-outline-success me-md-2 success btn2" onclick="return confirm('แน่ใจจะยืนยันตัวตน?')"  type="button">ยืนยันข้อมูล</a> --}}
                                                       &nbsp;&nbsp;
                                                       {{-- <a href="/studenthome/updateuser2/{{Auth::user()->id}}" class="btn btn-outline-success me-md-2 success edit_employee_form "   type="button">ยืนยันข้อมูล</a> --}}
 

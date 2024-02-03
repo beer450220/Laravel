@@ -659,6 +659,18 @@ public function edit3register($id) {
      // return redirect("/welcome")->with('success', 'Company has been created successfully.');
  }
 
+ public function edit9register($id) {
+    //ตรวจสอบข้อมูล
+
+    // $establishments=establishment::find($id);
+    $establishments=DB::table('registers')->find($id);
+    //  dd($establishments);
+
+     return view('student.Edit.edit9register',compact('establishments'));
+     // return redirect("/welcome")->with('success', 'Company has been created successfully.');
+ }
+
+
  public function edit4register($id) {
     //ตรวจสอบข้อมูล
 

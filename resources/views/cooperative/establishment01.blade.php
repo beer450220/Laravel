@@ -201,7 +201,7 @@
 
 
             <div class="avatar avatar-lg mt-4 "style="background-image: url(; background-size: contain; background-repeat: ">
-                <a href="/establishment/edit03/{{ $row->category_id }}">
+                <a href="">
                     <img src="{{ asset('/หมวดหมู่') }}/{{ $row->images }}" class="rounded mx-auto d-block" style="width:100px;height:100px; text-align:center;">
                 </a>
               </div><br>
@@ -219,12 +219,8 @@
         </div>
     </div>
 </div>
-{{-- {{ $row->name }} --}}
 @endforeach
-{{-- <div class="text-center"style="margin-top:15px;   margin-right: 550px;">
-    {!!$registers1->links('pagination::bootstrap-5')!!}</div>
-</div>
-</div></div> --}}
+
 
 
         <div class="container ">
@@ -240,7 +236,7 @@
                <div class="container ">
                <div class="row ">
 
-                @foreach ($establishments as $row)
+                @foreach ($establishmentsWithSameCategory as $row)
 
 
                     <div  class="col-xs-20 col-sm-3 col-md-3 card  " style="margin-top:15px;  margin-left: 65px;">
@@ -250,19 +246,11 @@
                             <div class="caption card-body">
                                 <h4 class="card-title">ชื่อ:{{ $row->em_name }}</h4>
                                 <p>ที่อยู่:{{ $row->em_address }}</p>
-                                <p  class="card-text"><strong>หลักสูตร: </strong>
-                                     {{-- @foreach ($registers2 as $row1) --}}
-                                    {{-- {{ $row->major_id}}</p>  @if($establishments->major_id =="รอตรวจสอบ") selected @endif --}}
-
-                                 {{-- {{$row->major_id }}{{$row->major_id==$supervisions->user_id ?'selected':''}}>{{$row->name_major}}
-                                    @endforeach --}}
-
-                                    @foreach ($registers2 as $row1)
+                                <p  class="card-text"><strong>หลักสูตร  @foreach ($registers2 as $row1)
                                     @if ($row->major_id == $row1->major_id)
                                         {{ $row1->name_major }}
                                     @endif
-                                @endforeach
-
+                                @endforeach </strong> </p>
                                 <p class="btn-holder text-center"><a href="/establishment/edit/{{ $row->id }}" class="btn btn-primary btn-block text-center" role="button">ดูข้อมูล</a>
                                  </p><br>
                             </div>
@@ -276,7 +264,12 @@
     </div>
 </div>
 </div>
-          <div class="text-center"style="margin-top:15px;   margin-right: 550px;">
+          {{-- <div class="text-center"style="margin-top:15px;   margin-right: 550px;">
                 {!!$establishments->links('pagination::bootstrap-5')!!}</div>
-            </div>
+            </div> --}}
 
+
+            {{-- @foreach ($establishmentsWithSameCategory as $row)
+  <p>{{ $row->em_name }}</p>
+
+            @endforeach --}}

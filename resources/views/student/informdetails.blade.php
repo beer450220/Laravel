@@ -283,7 +283,7 @@
 
                     <ul id="progressbar">
                       <a  href="/studenthome"><li class="active" id="account"><strong>ข้อมูลส่วนตัว</strong></li></a>
-                      <a  href="/studenthome/establishmentuser">  <li class="active" id="personal"><strong>สถานประกอบการ</strong></li></a>
+                      {{-- <a  href="/studenthome/establishmentuser">  <li class="active" id="personal"><strong>สถานประกอบการ</strong></li></a> --}}
                         <a  href="/studenthome/register">  <li class="active" id="payment"><strong>ลงทะเบียน</strong></li></a>
                           <a  href="/studenthome/informdetails"> <li class="active" id="confirm"><strong>รายงานสถานะการเข้าปฏิบัติงาน</strong></li></a>
                             <a  href="/studenthome/calendar2confirm"> <li id="confirm"><strong>นิเทศงาน</strong></li></a>
@@ -300,7 +300,7 @@
 
                                 </div>
                                 <div class="col-4">
-                                    <h2 class="steps">ขั้นตอน 4 - 6</h2>
+                                    <h2 class="steps">ขั้นตอน 3 - 5</h2>
                                 </div>
                             </div><div class="col-6">
                               <div class=" alert alert-primary  " role="alert">
@@ -359,57 +359,100 @@
 
                                             <a href="/studenthome/addstudent"  class=" btn btn-outline-success">ดาวห์โหลด</a>
                                         </div> --}}
-                                        <div class="col-9">
-                                            <div class="card-header" id="heading1">
-                                                <a role="button" href="#collapses" data-toggle="collapse" data-target="#collapses" aria-expanded="false" aria-controls="collapses" class="collapsed ">
+                                        <p>
+                                            <a class="btn btn-outline-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                                ปฏิทินสหกิจ
+                                            </a>
+                                            <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2">
+                                                ดาวน์โหลดไฟล์เอกสาร
+                                            </button>
+                                            <hr>
+                                          </p>
+                                          <div class="collapse" id="collapseExample">
+                                            <div class="card card-body">
+                                                <table class="table table-hover">
+                                                    <thead class="thead-dark">
+                                                      <tr>
+                                                          <th></th>
+                                                            <th>ปฏิทินสหกิจ</th>
 
 
-                                     <strong class="btn btn-outline-primary">ปฏิทินสหกิจ</strong> </a>
+                                                        <th></th>
 
 
-                                            <a href="/studenthome/documents1"  class=" btn btn-outline-primary">ดาวน์โหลดไฟล์เอกสาร</a>
-                                            {{-- <a href="/studenthome/documents1" type="button" class="btn btn-outline-primary">ดาวน์โหลดไฟล์เอกสาร</a> --}}
-                                            <div id="collapses" class="collapse" aria-labelledby="heading1" data-parent="#accordion1" style="">
-                                                <br>
-                                                                                                    <table class="table table-hover">
-                                                                                                        <thead class="thead-dark">
-                                                                                                          <tr>
-                                                                                                              <th>ลำดับ</th>
-                                                                                                            <th>วันเวลาการสหกิจ</th>
-                                                                                                            <th>ชื่อเรื่อง</th>
-                                                                                                            <th>รายละเอียด</th>
+                                                      </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                      @foreach ($activity as $row)
+                                                      <tr>
+                                                        <td class="col-1 text-center">{{ $activity->firstItem() + $loop->index }}.</td>
+                                                        <td><a class="text-dark  "style="text-decoration: none;" href="/กำหนดการปฏิทิน/{{ $row->filess }}" target="_blank">{{$row->title}}  {{$row->term}} {{$row->year}}</a></td>
 
 
-                                                                                                          </tr>
-                                                                                                        </thead>
-                                                                                                        <tbody>
-                                                                                                          @foreach ($activity as $row)
-                                                                                                          <tr>
-                                                                                                            <td class="col-1 text-center">{{ $activity->firstItem() + $loop->index }}</td>
 
-                                                                                                            <td>{{$row->business}}</td>
-                                                                                                           <td>{{$row->title}}</td>
+                                                       <td></td>
+                                  {{-- download --}}<i class=" "></i>
+                                                      </tr>
+                                                      @endforeach
 
-                                                                                                           <td><a href="{{ $row->activity_id }}" ><i class="fa-solid fa-eye fe-24"></i></a></td>
-                                                                                      {{-- download --}}<i class=" "></i>
-                                                                                                          </tr>
-                                                                                                          @endforeach
-
-                                                                                                        </tbody>
-                                                                                                      </table>
-
-
-                                                                                                </div>
-                                                                                            </div>
-
-
-                                                                                                </div>
-
-
+                                                    </tbody>
+                                                  </table>
+                                            </div>
                                           </div>
+
+                                          <div class="collapse" id="collapseExample2">
+                                            <div class="card card-body">
+                                                <table class="table table-hover">
+                                                    <thead class="thead-dark">
+                                                        <tr class="">
+                                                            <th>#</th>
+                                                            <th>ชื่อฟอร์ม</th>
+                                                            <th class="text-center">ดาวน์โหลด</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                                                                                                                                <tr>
+                                                                <th scope="row">1</th>
+                                                                    <td>สก. 01 แบบพิจารณาคุณสมบัตินักศึกษาสหกิจศึกษา (สำหรับนักศึกษา)</td>
+                                                                    <td class="text-center"><a href="ไฟล์เอกสารดาวน์โหลด/สก.01.pdf" target="_blank"> <i class="fa fa-download" aria-hidden="true"></i></a></td>
+                                                                </tr>
+                                                                                                                    <tr>
+                                                                <th scope="row">2</th>
+                                                                    <td>สก.03 ใบสมัครงานสหกิจศึกษา (สำหรับนักศึกษา)</td>
+                                                                    <td class="text-center"> <a href="ไฟล์เอกสารดาวน์โหลด/สก.03.pdf" target="_blank"><i class="fa fa-download" aria-hidden="true"></i></a></td>
+                                                                </tr>
+                                                                                                                    <tr>
+                                                                <th scope="row">3</th>
+                                                                    <td>สก 04 แบบคำขอหนักงสือขอความอนุเคราะห์รับนักศึกษา (สำหรับนักศึกษา)</td>
+                                                                    <td class="text-center"> <a href="ไฟล์เอกสารดาวน์โหลด/สก.04.pdf" target="_blank"><i class="fa fa-download" aria-hidden="true"></i></a></td>
+                                                                </tr>
+                                                                                                                    <tr>
+                                                                <th scope="row">4</th>
+                                                                    <td>สก 07 แบบแจ้งรายละเอียดการปฏิบัติงาน (สำหรับนักศึกษา)</td>
+                                                                    <td class="text-center"> <a href="ไฟล์เอกสารดาวน์โหลด/สก.07.pdf" target="_blank"><i class="fa fa-download" aria-hidden="true"></i></a></td>
+                                                                </tr>
+                                                                                                                    <tr>
+                                                                <th scope="row">5</th>
+                                                                    <td>สก 08 แบบแจ้งแผนปฏิบัติงานสหกิจศึกษา (สำหรับนักศึกษา)</td>
+                                                                    <td class="text-center"> <a href="ไฟล์เอกสารดาวน์โหลด/สก.01.pdf" target="_blank"><i class="fa fa-download" aria-hidden="true"></i></a></td>
+                                                                </tr>
+                                                                                                                    <tr>
+                                                                <th scope="row">6</th>
+                                                                    <td>สก 09 แบบแจ้งโครงร่างรายงานการปฏิบัติงานสหกิจศึกษา (สำหรับนักศึกษา)</td>
+                                                                    <td class="text-center"> <a href="ไฟล์เอกสารดาวน์โหลด/สก.01.pdf" target="_blank"><i class="fa fa-download" aria-hidden="true"></i></a></td>
+                                                                </tr>
+                                                    </tbody>
+                                                  </table>
+                                            </div>
+                                          </div>
+        </div>
+
+
+                                                    </div>
+                                            </div>
+
                                         </div>
 
-                                    </div>
                                     <br>
 
 
@@ -422,7 +465,7 @@
                                     <div class="accordion w-100" id="accordion1">
                                       <div class="card shadow">
                                         <div class="card-header" id="heading1">
-                                          <a role="button" href="#collapse1" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapse1" class="collapsed">
+                                          {{-- <a role="button" href="#collapse1" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapse1" class="collapsed"> --}}
                                   @foreach ($informdetails1 as $row)
 
                                          @if ($row->Status_informdetails === 'รอตรวจสอบ')
@@ -451,7 +494,7 @@
                                                 @endif
                                             @endforeach</H2>
 
-
+                                            <a href="/studenthome/addinformdetail"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a>
 
                                             </span>
 
@@ -499,7 +542,7 @@
                                       </div>
                                       <div class="card shadow">
                                         <div class="card-header" id="heading1">
-                                          <a role="button" href="#collapse2" data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                                          {{-- <a role="button" href="#collapse2" data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="collapse2"> --}}
                                             <span>  @foreach ($informdetails2 as $row)
 
                                             @if ($row->Status_informdetails === 'รอตรวจสอบ')
@@ -524,6 +567,7 @@
                                               <span class="text-Secondary">ยังไม่ได้อัปโหลดเอกสาร (กรุณาให้อัปโหลดไฟล์)</span>
                                           @endif
                                       @endforeach</h2>
+                                      <a href="/studenthome/addinformdetail1"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a>
                                         </div>
                                         <div id="collapse2" class="collapse" aria-labelledby="heading2" data-parent="#accordion1">
                                           <div class="card-body"> <a href="/studenthome/addinformdetail1"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a></div>
@@ -573,7 +617,7 @@
 
                                       <div class="card shadow">
                                         <div class="card-header" id="heading1">
-                                          <a role="button" href="#collapse3" data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                                          {{-- <a role="button" href="#collapse3" data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="collapse3"> --}}
                                             <span>  @foreach ($informdetails3 as $row)
 
                                                 @if ($row->Status_informdetails === 'รอตรวจสอบ')
@@ -599,6 +643,7 @@
                                               <span class="text-Secondary">ยังไม่ได้อัปโหลดเอกสาร (กรุณาให้อัปโหลดไฟล์)</span>
                                           @endif
                                       @endforeach</h2>
+                                      <a href="/studenthome/addinformdetail2"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a>
                                         </div>
                                         <div id="collapse3" class="collapse" aria-labelledby="heading3" data-parent="#accordion1">
                                           <div class="card-body"> <a href="/studenthome/addinformdetail2"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> </div>
@@ -660,7 +705,9 @@
       <div class="card-body">
         <h5 class="card-title">รายการแจ้งรายละเอียดการปฎิบัติงาน</h5>
 
-
+        {{-- @foreach ($informdetails as $row)    @endforeach --}}
+        {{-- <td><a href="/fileinformdetails/{{ $row->files }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td>
+        <td><a href="/studenthome/editinformdetails/{{ $row->informdetails_id}}" type="button" class="btn btn-outline-secondary fe fe-edit fe-16"></a></td> --}}
         <div class="container">
             <div class="row">
               <div class="col-9">
@@ -681,57 +728,57 @@
 
 
 
-        <table class="table table-hover text-center">
-          <thead class="thead-dark ">
-            <tr>
-              <th>#</th>
-              <th>ชื่อนักศึกษา</th>
+<div class="container ">
+    <div class="row ">
 
-              <th>ชื่อไฟล์</th>
-              <th>รูปภาพ</th>
-              <th>สถานะ</th>
-              <th>หมายเหตุ</th>
-              <th style="width:10%">ดูไฟล์เอกสาร</th>
-              <th>แก้ไข</th>
+     @foreach ($informdetails as $row)
 
-            </tr>
-          </thead>
-          <tbody>
-            @foreach ($informdetails as $row)
 
-            <tr class="{{
-                $row->Status_informdetails === 'รอตรวจสอบ' ? 'table-warning' : (
-                    $row->Status_informdetails === 'ตรวจสอบแล้ว' ? 'table-success' : (
-                        $row->Status_informdetails === 'ไม่ผ่าน' ? 'table-danger' : ''
-                    )
-                )
-            }}">
-                <td class="col-1 text-center">{{ $informdetails->firstItem() + $loop->index }}</td>
-                <td></td>
+         <div  class="col-xs-20 col-sm-3 col-md-3 card  " style="margin-top:15px;  margin-left: 65px;">
+             <div class="img_thumbnail productlist"><br>
+                 {{-- <img src="{{ asset('/image') }}/" class="rounded mx-auto d-block" style="width:200px;height:200px; text-align:center;"> --}}
+                 <h4 class="card-title text-center">ชื่อเอกสาร </h4>
+                 <hr>
+                 <div class="caption card-body">
+                     {{-- <h4 class="card-title">:{{ $row->namefile }}</h4> --}}
+                     <p>{{ $row->namefile }}</p>
+                     {{-- <p  class="card-text"><strong>หลักสูตร --}}
+                         {{-- @foreach ($registers2 as $row1)
+                         @if ($row->major_id == $row1->major_id)
+                             {{ $row1->name_major }}
+                         @endif
+                     @endforeach --}}
+                    {{-- </strong> </p> --}}
+                    <div class="card-footer">
+                    <div class="d-grid gap-2 d-md-block">
+                        <p class="">
+                            <a href="/studenthome/editinformdetails0/{{$row->informdetails_id}}" type="button" class="btn btn-outline-secondary fa-regular fe fe-edit "> </a>
 
-                <td>{{ $row->namefile }}</td>
-                <td><img src="/fileinformdetails/{{ $row->files }}" class="img-responsive" style="max-height: 100px; max-width: 100px;" alt="" srcset=""></td>
-                <td>
-                    @if ($row->Status_informdetails === 'รอตรวจสอบ')
-                        <span class="badge badge-pill badge-warning">{{ $row->Status_informdetails }}</span>
-                    @elseif ($row->Status_informdetails === 'ตรวจสอบแล้ว')
-                        <span class="badge badge-pill badge-success">{{ $row->Status_informdetails}}</span>
-                    @elseif ($row->Status_informdetails === 'ไม่ผ่าน')
-                        <span class="badge badge-pill badge-danger">{{ $row->Status_informdetails}}</span>
-                    @endif
-                </td>
-                <td>{{ $row->annotation }}</td>
-                <td><a href="/fileinformdetails/{{ $row->files }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td>
-                <td><a href="/studenthome/editinformdetails/{{ $row->informdetails_id}}" type="button" class="btn btn-outline-secondary fe fe-edit fe-16"></a></td>
-            </tr>
-            @endforeach
-          </tbody>
-        </table>
-      </div>
+                            {{-- @foreach ($registers as $row)
+                            @if ($row->namefile === 'แบบพิจารณาคุณสมบัตินักศึกษาสหกิจศึกษา(สก01)')
+                            <a href="/studenthome/edit2register/{{ $row->id }}" type="button" class="btn btn-outline-secondary fa-regular fe fe-edit "></a>
+                            @elseif ($row->namefile === 'ใบสมัครงานสหกิจศึกษา(สก03)')
+                            <a href="/studenthome/edit3register/{{ $row->id }}" type="button" class="btn btn-outline-secondary fa-regular fe fe-edit "></a>
+
+                                @elseif ($row->namefile === 'ประวัติส่วนตัว(resume)')
+                                <a href="/studenthome/edit8register/{{ $row->id }}" type="button" class="btn btn-outline-secondary fa-regular fe fe-edit "></a>
+                                @else (Auth::user()->Status_acceptance)
+
+                            @endif
+                        @endforeach --}}
+
+
+                            <a href="../fileinformdetails/{{ $row->files }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down "></a>
+                      </div>
+                     {{-- <p class="btn-holder text-center"><a href="/establishment/edit/" class="btn btn-primary btn-block text-center" role="button">ดูข้อมูล</a>
+                        </p><br> --}}
+                 </div>    </div>
+             </div>
+         </div>
+     @endforeach
     </div>
-  </div> <!-- Bordered table -->
-
-
+</div>
+<br>
 <main role="main" class="">
     <div class="container-fluid">
   <div class="row justify-content-center">
@@ -739,7 +786,7 @@
    </div>
 
 
-  </div></div></div></div> <div class="d-grid gap-2">
+  </div></div></div></div><br> <div class="d-grid gap-2">
 
     <h2>ขั้นตอนต่อไป</h2>
     </div>   <a href="/studenthome/calendar2confirm"  id="show-alert" class="btn btn-outline-warning " type="button">>คลิกที่นี่<</a>

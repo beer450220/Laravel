@@ -311,7 +311,7 @@
 
                     @endif
                     </li></a>
-                      <a  href="/studenthome/establishmentuser">  <li class="active" id="personal"><strong>สถานประกอบการ</strong>
+                      {{-- <a  href="/studenthome/establishmentuser">  <li class="active" id="personal"><strong>สถานประกอบการ</strong>
 
                         <br><br>
                         <br>   @if (Auth::user()->statusestablishment === 'ยืนยันได้สถานประกอบการแล้ว')
@@ -327,13 +327,13 @@
                             <i class="fe fe-16 fe-alert-triangle text-white mb-0"></i>
                             {{-- <i class="fe fe-16 fe-alert-triangle text-white "></i> --}}
 
-                            @else (Auth::user()->statusestablishment === 'ยังไม่ได้ยืนยันตัวตน')
+                            {{-- @else (Auth::user()->statusestablishment === 'ยังไม่ได้ยืนยันตัวตน')
                             <span class="circle circle-sm bg-warning-light">
 
-                                <i class="fe fe-16 fe-alert-triangle text-white mb-0"></i>
-
-                    @endif
-                    </li></a>
+                                <i class="fe fe-16 fe-alert-triangle text-white mb-0"></i> --}}
+--}}
+                    {{-- @endif
+                    </li></a> --}}
                         <a  href="/studenthome/register">  <li class="active" id="payment"><strong>ลงทะเบียน</strong></li></a>
                           <a  href="/studenthome/informdetails"> <li id="confirm"><strong>รายงานสถานะการเข้าปฏิบัติงาน</strong></li></a>
                             <a  href="/studenthome/calendar2confirm"> <li id="confirm"><strong>นิเทศงาน</strong></li></a>
@@ -350,11 +350,11 @@
 
                                 </div>
                                 <div class="col-4">
-                                    <h2 class="steps">ขั้นตอน 3 - 6</h2>
+                                    <h2 class="steps">ขั้นตอน 2 - 6</h2>
                                 </div>
                             </div><div class="col-6">
                               <div class=" alert alert-primary  " role="alert">
-                                  <b>ขั้นตอนที่ 3 ลงทะเบียน:</b>
+                                  <b>ขั้นตอนที่ 2 ลงทะเบียน:</b>
                                       <br> ให้อัพโหลดไฟล์เอกสารเพื่อลงทะเบียนให้เรียบร้อย
                                       {{-- <br>  <a href="/studenthome/informdetails"  class="btn btn-outline-warning " type="button">>คลิกที่นี่<</a>เพื่อขั้นตอนต่อไป --}}
                                                               </div>   <br>   <br>
@@ -410,58 +410,109 @@
                                             {{-- <a href="/studenthome/Announcement"  class=" btn btn-outline-primary">ปฏิทินสหกิจ</a> --}}
 
 
-                                             <div class="card-header" id="heading1">
-                                                    <a role="button" href="#collapses" data-toggle="collapse" data-target="#collapses" aria-expanded="false" aria-controls="collapses" class="collapsed ">
 
 
-                                         <strong class="btn btn-outline-primary">ปฏิทินสหกิจ</strong> </a>
+
+ {{-- <a href="/studenthome/documents"  class=" btn btn-outline-primary">ดาวน์โหลดไฟล์เอกสาร</a> --}}
 
 
- <a href="/studenthome/documents"  class=" btn btn-outline-primary">ดาวน์โหลดไฟล์เอกสาร</a>
-                                                <div id="collapses" class="collapse" aria-labelledby="heading1" data-parent="#accordion1" style="">
-<br>
-                                                    <table class="table table-hover">
-                                                        <thead class="thead-dark">
-                                                          <tr>
-                                                              <th>ลำดับ</th>
-                                                            <th>วันเวลาการสหกิจ</th>
-                                                            <th>ชื่อเรื่อง</th>
-                                                            <th>รายละเอียด</th>
+                                    <p>
+                                        <a class="btn btn-outline-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                            ปฏิทินสหกิจ
+                                        </a>
+                                        <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2">
+                                            ดาวน์โหลดไฟล์เอกสาร
+                                        </button>
+                                        <hr>
+                                      </p>
+                                      <div class="collapse" id="collapseExample">
+                                        <div class="card card-body">
+                                            <table class="table table-hover">
+                                                <thead class="thead-dark">
+                                                  <tr>
+                                                      <th></th>
+                                                        <th>ปฏิทินสหกิจ</th>
 
 
-                                                          </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                          @foreach ($activity as $row)
-                                                          <tr>
-                                                            <td class="col-1 text-center">{{ $activity->firstItem() + $loop->index }}</td>
-
-                                                            <td>{{$row->business}}</td>
-                                                           <td>{{$row->title}}</td>
-
-                                                           <td><a href="{{ $row->activity_id }}" ><i class="fa-solid fa-eye fe-24"></i></a></td>
-                                      {{-- download --}}<i class=" "></i>
-                                                          </tr>
-                                                          @endforeach
-
-                                                        </tbody>
-                                                      </table>
+                                                    <th></th>
 
 
-                                                </div>
-                                            </div>
+                                                  </tr>
+                                                </thead>
+                                                <tbody>
+                                                  @foreach ($activity as $row)
+                                                  <tr>
+                                                    <td class="col-1 text-center">{{ $activity->firstItem() + $loop->index }}.</td>
+                                                    <td><a class="text-dark  "style="text-decoration: none;" href="/กำหนดการปฏิทิน/{{ $row->filess }}" target="_blank">{{$row->title}}  {{$row->term}} {{$row->year}}</a></td>
+
+
+
+                                                   <td></td>
+                              {{-- download --}}<i class=" "></i>
+                                                  </tr>
+                                                  @endforeach
+
+                                                </tbody>
+                                              </table>
+                                        </div>
+                                      </div>
+
+                                      <div class="collapse" id="collapseExample2">
+                                        <div class="card card-body">
+                                            <table class="table table-hover">
+                                                <thead class="thead-dark">
+                                                    <tr class="">
+                                                        <th>#</th>
+                                                        <th>ชื่อฟอร์ม</th>
+                                                        <th class="text-center">ดาวน์โหลด</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                                                                                                                            <tr>
+                                                            <th scope="row">1</th>
+                                                                <td>สก. 01 แบบพิจารณาคุณสมบัตินักศึกษาสหกิจศึกษา (สำหรับนักศึกษา)</td>
+                                                                <td class="text-center"><a href="ไฟล์เอกสารดาวน์โหลด/สก.01.pdf" target="_blank"> <i class="fa fa-download" aria-hidden="true"></i></a></td>
+                                                            </tr>
+                                                                                                                <tr>
+                                                            <th scope="row">2</th>
+                                                                <td>สก.03 ใบสมัครงานสหกิจศึกษา (สำหรับนักศึกษา)</td>
+                                                                <td class="text-center"> <a href="ไฟล์เอกสารดาวน์โหลด/สก.03.pdf" target="_blank"><i class="fa fa-download" aria-hidden="true"></i></a></td>
+                                                            </tr>
+                                                                                                                <tr>
+                                                            <th scope="row">3</th>
+                                                                <td>สก 04 แบบคำขอหนักงสือขอความอนุเคราะห์รับนักศึกษา (สำหรับนักศึกษา)</td>
+                                                                <td class="text-center"> <a href="ไฟล์เอกสารดาวน์โหลด/สก.04.pdf" target="_blank"><i class="fa fa-download" aria-hidden="true"></i></a></td>
+                                                            </tr>
+                                                                                                                <tr>
+                                                            <th scope="row">4</th>
+                                                                <td>สก 07 แบบแจ้งรายละเอียดการปฏิบัติงาน (สำหรับนักศึกษา)</td>
+                                                                <td class="text-center"> <a href="ไฟล์เอกสารดาวน์โหลด/สก.07.pdf" target="_blank"><i class="fa fa-download" aria-hidden="true"></i></a></td>
+                                                            </tr>
+                                                                                                                <tr>
+                                                            <th scope="row">5</th>
+                                                                <td>สก 08 แบบแจ้งแผนปฏิบัติงานสหกิจศึกษา (สำหรับนักศึกษา)</td>
+                                                                <td class="text-center"> <a href="ไฟล์เอกสารดาวน์โหลด/สก.01.pdf" target="_blank"><i class="fa fa-download" aria-hidden="true"></i></a></td>
+                                                            </tr>
+                                                                                                                <tr>
+                                                            <th scope="row">6</th>
+                                                                <td>สก 09 แบบแจ้งโครงร่างรายงานการปฏิบัติงานสหกิจศึกษา (สำหรับนักศึกษา)</td>
+                                                                <td class="text-center"> <a href="ไฟล์เอกสารดาวน์โหลด/สก.01.pdf" target="_blank"><i class="fa fa-download" aria-hidden="true"></i></a></td>
+                                                            </tr>
+                                                </tbody>
+                                              </table>
+                                        </div>
+                                      </div>
+    </div>
 
 
                                                 </div>
                                         </div>
 
                                     </div>
-                                    <br>
 
 
-                                </div> <!-- end section -->
-                            </div> <!-- end section -->
-                                <br>
+
+
                                 <br>
 
 
@@ -470,7 +521,7 @@
                                     <div class="accordion w-100" id="accordion1">
                                       <div class="card shadow">
                                         <div class="card-header" id="heading1">
-                                          <a role="button" href="#collapse1" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapse1" class="collapsed">
+                                          {{-- <a role="button" href="" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapse1" class="collapsed"> --}}
                                  @foreach ($registers1 as $row)
 
                                          @if ($row->Status_registers === 'รอตรวจสอบ')
@@ -499,56 +550,27 @@
 
                                                     @endif
                                             @endforeach</H2>
-
+                                            <a href="/studenthome/addregister"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a>
                                             </span>
 
 
                                         </div>
                                         <div id="collapse1" class="collapse" aria-labelledby="heading1" data-parent="#accordion1" style="">
-                                          <div class="card-body">  <a href="/studenthome/addregister"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> </div>
+                                          <div class="card-body">
+                                            {{-- <a href="/studenthome/addregister"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> --}}
+                                        </div>
                                         <br>
 
-                                        @foreach ($registers1 as $row)
 
-                                        <div class="col-md-3">
-                                            <div class="card shadow mb-4">
-                                              <div class="card-body text-center">
-                                                <div class="avatar avatar-lg mt-4">
-                                                  {{-- <a href="">
-                                                    <img src="./assets/avatars/face-4.jpg" alt="..." class="avatar-img rounded-circle">
-                                                  </a> --}}
-                                                </div>
-                                                <div class="card-text my-2">
-                                                  <strong class="card-title my-0">ชื่อเอกสาร </strong>
-                                                  <p class="small text-muted mb-0">{{ $row->namefile}}</p>
-                                                  <p class="small"><span class="badge badge-light text-muted">New York, USA</span></p>
-                                                </div>
-                                              </div> <!-- ./card-text -->
-                                              <div class="card-footer">
-                                                <div class="row align-items-center justify-content-between">
-                                                  <div class="col-auto">
-                                                    <small>
-                                                      {{-- <span class="dot dot-lg bg-success mr-1"></span> Online </small> --}}
-                                                      <td><a href="../file/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down "></a></td>
-                                                      <td><a href="/studenthome/edit2register/{{ $row->id }}" type="button" class="btn btn-outline-secondary fa-regular fe fe-edit "></a></td>
-                                                    </div>
-
-                                                  <div class="col-auto">
-
-                                                  </div>
-                                                </div>
-                                              </div> <!-- /.card-footer -->
-                                            </div>
-                                          </div>
-                                          @endforeach
                                           </div>
 
                                         </div>
                                       </div>
                                       <div class="card shadow">
                                         <div class="card-header" id="heading1">
-                                          <a role="button" href="#collapse2" data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
-                                            <span>  @foreach ($registers2 as $row)
+                                          {{-- <a role="button" href="#collapse2" data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="collapse2"> --}}
+                                            <span>
+                                                @foreach ($registers2 as $row)
 
 
 
@@ -577,53 +599,21 @@
                                                 <span class="text-Secondary">ยังไม่ได้อัปโหลดเอกสาร (กรุณาให้อัปโหลดไฟล์)</span>
                                             @endif
                                         @endforeach</h2>
-
+<a href="/studenthome/addregister2"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a>
                                     </span>
                                         </div>
                                         <div id="collapse2" class="collapse" aria-labelledby="heading2" data-parent="#accordion1">
                                           <div class="card-body"> <a href="/studenthome/addregister2"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a></div>
 
                                           <br>
-                                          @foreach ($registers2 as $row)
 
-
-                                          <div class="col-md-3">
-                                              <div class="card shadow mb-4">
-                                                <div class="card-body text-center">
-                                                  <div class="avatar avatar-lg mt-4">
-                                                    {{-- <a href="">
-                                                      <img src="./assets/avatars/face-4.jpg" alt="..." class="avatar-img rounded-circle">
-                                                    </a> --}}
-                                                  </div>
-                                                  <div class="card-text my-2">
-                                                    <strong class="card-title my-0">ชื่อเอกสาร </strong>
-                                                    <p class="small text-muted mb-0">{{ $row->namefile}}</p>
-                                                    <p class="small"><span class="badge badge-light text-muted">New York, USA</span></p>
-                                                  </div>
-                                                </div> <!-- ./card-text -->
-                                                <div class="card-footer">
-                                                  <div class="row align-items-center justify-content-between">
-                                                    <div class="col-auto">
-                                                      <small>
-                                                        {{-- <span class="dot dot-lg bg-success mr-1"></span> Online </small> --}}
-                                                        <td><a href="../file/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down "></a></td>
-                                                        <td><a href="/studenthome/edit3register/{{ $row->id }}" type="button" class="btn btn-outline-secondary fa-regular fe fe-edit "></a></td>
-                                                      </div>
-
-                                                    <div class="col-auto">
-
-                                                    </div>
-                                                  </div>
-                                                </div> <!-- /.card-footer -->
-                                              </div>
-                                            </div>@endforeach
 
                                         </div>
                                       </div>
 
                                       <div class="card shadow">
                                         <div class="card-header" id="heading1">
-                                          <a role="button" href="#collapse3" data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                                          {{-- <a role="button" href="#collapse3" data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="collapse3"> --}}
                                             <span>  @foreach ($registers3 as $row)
                                                 @if (empty($row->Status_registers))
                                             <!-- แสดงข้อความเมื่อ $row->Status_registers ไม่มีค่า (null) -->
@@ -648,53 +638,22 @@
                                           @elseif ($row->Status_registers === 'ไม่ผ่าน')
                                               <span class="text-Danger ">ไม่ผ่าน&nbsp;&nbsp;{{$row->annotation}}</span>
                                           @else
-                                              <span class="text-Secondary">ยังไม่ได้อัปโหลดเอกสาร (กรุณาให้อัปโหลดไฟล์)</span>
+                                              <span class="text-Secondary">ยังไม่ได้อัปโหลดเอกสาร (กรุณาให้อัปโหลดไฟล์)
+                                                </span>
                                           @endif
                                       @endforeach</h2>
-
+<a href="/studenthome/addregister3"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a>
                                         </div>
                                         <div id="collapse3" class="collapse" aria-labelledby="heading3" data-parent="#accordion1">
                                           <div class="card-body"> <a href="/studenthome/addregister3"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> </div>
 
                                           <br>
-                                          @foreach ($registers3 as $row)
 
-
-                                          <div class="col-md-3">
-                                              <div class="card shadow mb-4">
-                                                <div class="card-body text-center">
-                                                  <div class="avatar avatar-lg mt-4">
-                                                    {{-- <a href="">
-                                                      <img src="./assets/avatars/face-4.jpg" alt="..." class="avatar-img rounded-circle">
-                                                    </a> --}}
-                                                  </div>
-                                                  <div class="card-text my-2">
-                                                    <strong class="card-title my-0">ชื่อเอกสาร </strong>
-                                                    <p class="small text-muted mb-0">{{ $row->namefile}}</p>
-                                                    <p class="small"><span class="badge badge-light text-muted">New York, USA</span></p>
-                                                  </div>
-                                                </div> <!-- ./card-text -->
-                                                <div class="card-footer">
-                                                  <div class="row align-items-center justify-content-between">
-                                                    <div class="col-auto">
-                                                      <small>
-                                                        {{-- <span class="dot dot-lg bg-success mr-1"></span> Online </small> --}}
-                                                        <td><a href="../file/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down "></a></td>
-                                                        <td><a href="/studenthome/edit4register/{{ $row->id }}" type="button" class="btn btn-outline-secondary fa-regular fe fe-edit "></a></td>
-                                                      </div>
-
-                                                    <div class="col-auto">
-
-                                                    </div>
-                                                  </div>
-                                                </div> <!-- /.card-footer -->
-                                              </div>
-                                            </div>@endforeach
                                         </div>
                                       </div>
                                       <div class="card shadow">
                                         <div class="card-header" id="heading1">
-                                          <a role="button" href="#collapse4" data-toggle="collapse" data-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                                          {{-- <a role="button" href="#collapse4" data-toggle="collapse" data-target="#collapse4" aria-expanded="false" aria-controls="collapse4"> --}}
                                             <span>  @foreach ($registers4 as $row)
                                                 @if (empty($row->Status_registers))
                                             <!-- แสดงข้อความเมื่อ $row->Status_registers ไม่มีค่า (null) -->
@@ -723,48 +682,17 @@
                                               <span class="text-Secondary">ยังไม่ได้อัปโหลดเอกสาร (กรุณาให้อัปโหลดไฟล์)</span>
                                           @endif
                                       @endforeach</h2>
+                                      <a href="/studenthome/addregister4"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a>
                                         </div>
                                         <div id="collapse4" class="collapse" aria-labelledby="heading4" data-parent="#accordion1">
                                           <div class="card-body"><a href="/studenthome/addregister4"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a></div>
                                           <br>
-                                          @foreach ($registers4 as $row)
 
-
-                                          <div class="col-md-3">
-                                              <div class="card shadow mb-4">
-                                                <div class="card-body text-center">
-                                                  <div class="avatar avatar-lg mt-4">
-                                                    {{-- <a href="">
-                                                      <img src="./assets/avatars/face-4.jpg" alt="..." class="avatar-img rounded-circle">
-                                                    </a> --}}
-                                                  </div>
-                                                  <div class="card-text my-2">
-                                                    <strong class="card-title my-0">ชื่อเอกสาร </strong>
-                                                    <p class="small text-muted mb-0">{{ $row->namefile}}</p>
-                                                    <p class="small"><span class="badge badge-light text-muted">New York, USA</span></p>
-                                                  </div>
-                                                </div> <!-- ./card-text -->
-                                                <div class="card-footer">
-                                                  <div class="row align-items-center justify-content-between">
-                                                    <div class="col-auto">
-                                                      <small>
-                                                        {{-- <span class="dot dot-lg bg-success mr-1"></span> Online </small> --}}
-                                                        <td><a href="../file/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down "></a></td>
-                                                        <td><a href="/studenthome/edit5register/{{ $row->id }}" type="button" class="btn btn-outline-secondary fa-regular fe fe-edit "></a></td>
-                                                      </div>
-
-                                                    <div class="col-auto">
-
-                                                    </div>
-                                                  </div>
-                                                </div> <!-- /.card-footer -->
-                                              </div>
-                                            </div>@endforeach
                                         </div>
                                       </div>
                                       <div class="card shadow">
                                         <div class="card-header" id="heading1">
-                                          <a role="button" href="#collapse5" data-toggle="collapse" data-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
+                                          {{-- <a role="button" href="#collapse5" data-toggle="collapse" data-target="#collapse5" aria-expanded="false" aria-controls="collapse5"> --}}
                                             <span>  @foreach ($registers5 as $row)
                                                 @if (empty($row->Status_registers))
                                             <!-- แสดงข้อความเมื่อ $row->Status_registers ไม่มีค่า (null) -->
@@ -782,7 +710,8 @@
 
 
                                             </span> <h2><strong>บัตรนักศึกษา</strong>
-                                          </a>@foreach ($registers5 as $row)
+                                          </a>
+                                          @foreach ($registers5 as $row)
                                           @if ($row->Status_registers === 'รอตรวจสอบ')
                                               <span class="text-warning">รอตรวจสอบเอกสาร</span>
                                           @elseif ($row->Status_registers === 'ตรวจสอบแล้ว')
@@ -793,6 +722,7 @@
                                               <span class="text-Secondary">ยังไม่ได้อัปโหลดเอกสาร (กรุณาให้อัปโหลดไฟล์)</span>
                                           @endif
                                       @endforeach</h2>
+                                      <a href="/studenthome/addregister5"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a>
                                         </div>
                                         <div id="collapse5" class="collapse" aria-labelledby="heading5" data-parent="#accordion1">
                                           <div class="card-body"> <a href="/studenthome/addregister5"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> </div>
@@ -834,7 +764,7 @@
                                       </div>
                                       <div class="card shadow">
                                         <div class="card-header" id="heading1">
-                                          <a role="button" href="#collapse6" data-toggle="collapse" data-target="#collapse6" aria-expanded="false" aria-controls="collapse6">
+                                          {{-- <a role="button" href="#collapse6" data-toggle="collapse" data-target="#collapse6" aria-expanded="false" aria-controls="collapse6"> --}}
                                             <span>  @foreach ($registers6 as $row)
                                                 @if (empty($row->Status_registers))
                                             <!-- แสดงข้อความเมื่อ $row->Status_registers ไม่มีค่า (null) -->
@@ -864,6 +794,7 @@
                                               <span class="text-Secondary">ยังไม่ได้อัปโหลดเอกสาร (กรุณาให้อัปโหลดไฟล์)</span>
                                           @endif
                                       @endforeach</h2>
+                                      <a href="/studenthome/addregister6"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a>
                                         </div>
                                         <div id="collapse6" class="collapse" aria-labelledby="heading6" data-parent="#accordion1">
                                           <div class="card-body"> <a href="/studenthome/addregister6"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> </div>
@@ -905,7 +836,7 @@
                                       </div>
                                       <div class="card shadow">
                                         <div class="card-header" id="heading1">
-                                          <a role="button" href="#collapse7" data-toggle="collapse" data-target="#collapse7" aria-expanded="false" aria-controls="collapse7">
+                                          {{-- <a role="button" href="#collapse7" data-toggle="collapse" data-target="#collapse7" aria-expanded="false" aria-controls="collapse7"> --}}
                                             <span>  @foreach ($registers7 as $row)
                                                 @if (empty($row->Status_registers))
                                             <!-- แสดงข้อความเมื่อ $row->Status_registers ไม่มีค่า (null) -->
@@ -924,7 +855,8 @@
 
 
                                             </span> <H2><strong>ประวัติส่วนตัว(resume)</strong>
-                                          </a> @foreach ($registers7 as $row)
+                                          </a>
+                                           @foreach ($registers7 as $row)
                                           @if ($row->Status_registers === 'รอตรวจสอบ')
                                               <span class="text-warning">รอตรวจสอบเอกสาร</span>
                                           @elseif ($row->Status_registers === 'ตรวจสอบแล้ว')
@@ -935,6 +867,7 @@
                                               <span class="text-Secondary">ยังไม่ได้อัปโหลดเอกสาร (กรุณาให้อัปโหลดไฟล์)</span>
                                           @endif
                                       @endforeach</H2>
+                                      <a href="/studenthome/addregister7"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a>
                                         </div>
                                         <div id="collapse7" class="collapse" aria-labelledby="heading7" data-parent="#accordion1">
                                           <div class="card-body"> <a href="/studenthome/addregister7"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a></div>
@@ -978,8 +911,8 @@
 
                                   </div>
 
-
-                                  <div class="col-md-12 mb-4">
+<br>
+                                  {{-- <div class="col-md-12 mb-4">
                                     <div class="accordion w-100" id="accordion1">
                                       <div class="card shadow">
                                         <div class="card-header" id="heading1">
@@ -993,7 +926,7 @@
                                      @elseif ($row->Status_acceptance === 'ไม่ผ่าน')
                                          <span class="badge badge-pill badge-danger">{{ $row->Status_registers }}</span>
                                      @endif
-                                         {{-- class="circle circle-sm bg-warning-light"> --}}
+
 @endforeach
 
 
@@ -1007,8 +940,7 @@
                                                     <span class="text-Success ">ตอบรับนักศึกษาแล้ว</span>
                                                 @elseif ($row->Status_acceptance === 'ไม่ผ่าน')
                                                     <span class="text-Danger ">{{ $row->Status_acceptance }}</span>
-                                                {{-- @elseif (Auth::user()->Status_acceptance)
-                                                    <span class="text-Secondary">ยังไม่ได้อัปโหลดเอกสาร (กรุณาให้อัปโหลดไฟล์)</span> --}}
+
 
                                                     @else (Auth::user()->Status_acceptance)
                                                     <span class="text-Secondary">ยังไม่ได้ตอบรับนักศึกษา (กรุณารอการตอบรับ)</span>
@@ -1022,7 +954,7 @@
                                         <div id="collapse0" class="collapse" aria-labelledby="heading1" data-parent="#accordion1" style="">
                                           <div class="card-body">
 
-                                            {{-- <a href="/studenthome/addregister"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> --}}
+
                                          </div>
                                         <br>
 
@@ -1032,9 +964,7 @@
                                             <div class="card shadow mb-4">
                                               <div class="card-body text-center">
                                                 <div class="avatar avatar-lg mt-4">
-                                                  {{-- <a href="">
-                                                    <img src="./assets/avatars/face-4.jpg" alt="..." class="avatar-img rounded-circle">
-                                                  </a> --}}
+
                                                 </div>
                                                 <div class="card-text my-2">
                                                   <strong class="card-title my-0">ชื่อเอกสาร </strong>
@@ -1046,9 +976,9 @@
                                                 <div class="row align-items-center justify-content-between">
                                                   <div class="col-auto">
                                                     <small>
-                                                      {{-- <span class="dot dot-lg bg-success mr-1"></span> Online </small> --}}
+
                                                       <td><a href="../ไฟล์เอกสารตอบรับนักศึกษา(สก.02)/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down "></a></td>
-                                                      {{-- <td><a href="/studenthome/edit2register/{{ $row->acceptance_id }}" type="button" class="btn btn-outline-secondary fa-regular fe fe-edit "></a></td> --}}
+
                                                     </div>
 
                                                   <div class="col-auto">
@@ -1058,10 +988,10 @@
                                               </div> <!-- /.card-footer -->
                                             </div>
                                           </div>
-                                          @endforeach
-                                          </div>
+                                          @endforeach --}}
+                                          {{-- </div>
 
-                                        </div>
+                                        </div> --}}
                                       </div>
 
 
@@ -1106,10 +1036,12 @@ $(document).ready(function () {
 @endif
           </div>
           </div>
+          {{-- <td><a href="../file/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td>
+                <td><a href="/studenthome/edit2register/{{ $row->id }}" type="button" class="btn btn-outline-secondary fe fe-edit fe-16"></a></td> --}}
 <div class="col-md-12 my-4">
-    <div class="card shadow">
+    <div class="card shadow  ">
       <div class="card-body">
-        <h5 class="card-title">รายการการอนุมัติลงทะเบียน</h5>
+        <h5 class="card-title p-3 mb-2 bg-dark text-white">รายการการอนุมัติลงทะเบียน</h5>
         <div class="container">
             <div class="row">
               <div class="col-9">
@@ -1128,75 +1060,109 @@ $(document).ready(function () {
 
         </div>
         <br>
-        <table class="table table-hover">
-          <thead class="thead-dark">
-            <tr>
-              <th>ลำดับ</th>
-              <th>ชื่อนักศึกษา</th>
-              <th>ชื่อไฟล์</th>
-              <th>รูปภาพ</th>
-             <th>สถานะ</th>
-             <th>หมายเหตุ</th>
-              <th style="width:10%">ดูไฟล์เอกสาร</th>
 
-              <th style="width:10%">แก้ไข</th>
+        {{-- @foreach ($registers as $row) --}}
+{{--
+        <div class="col-md-3">
+            <div class="card shadow mb-4">
+              <div class="card-body text-center">
+                <div class="avatar avatar-lg mt-4"> --}}
+                  {{-- <a href="">
+                    <img src="./assets/avatars/face-4.jpg" alt="..." class="avatar-img rounded-circle">
+                  </a> --}}
+                {{-- </div>
+                <div class="card-text my-2">
+                  <strong class="card-title my-0">ชื่อเอกสาร </strong> --}}
+                  {{-- <p class="small text-muted mb-0">{{ $row->namefile}}</p> --}}
+                  {{-- <p class="small"><span class="badge badge-light text-muted">New York, USA</span></p>
+                </div> --}}
+              {{-- </div> <!-- ./card-text --> --}}
+              {{-- <div class="card-footer">
+                <div class="row align-items-center justify-content-between">
+                  <div class="col-auto">
+                    <small> --}}
+                      {{-- <span class="dot dot-lg bg-success mr-1"></span> Online </small> --}}
+                      {{-- <td><a href="../file/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down "></a></td>
+                      <td><a href="/studenthome/edit2register/{{ $row->id }}" type="button" class="btn btn-outline-secondary fa-regular fe fe-edit "></a></td> --}}
+                    {{-- </div>
 
-            </tr>
-          </thead>
-          <tbody>
-            @foreach ($registers as $row)
-            <tr>
+                  <div class="col-auto">
 
-
-
-
-            <tr class="{{
-                $row->Status_registers === 'รอตรวจสอบ' ? 'table-warning' : (
-                    $row->Status_registers === 'ตรวจสอบแล้ว' ? 'table-success' : (
-                        $row->Status_registers === 'ไม่ผ่าน' ? 'table-danger' : ''
-                    )
-                )
-            }}">
-                <td class="col-1 text-center">{{ $registers->firstItem() + $loop->index }}</td>
-                <td></td>
-                <td>{{ $row->namefile }}</td>
-                <td><img src="/file/{{ $row->filess }}" class="img-responsive" style="max-height: 100px; max-width: 100px;" alt="" srcset=""></td>
-                <td>
-                    @if ($row->Status_registers === 'รอตรวจสอบ')
-                        <span class="badge badge-pill badge-warning">{{ $row->Status_registers }}</span>
-                    @elseif ($row->Status_registers === 'ตรวจสอบแล้ว')
-                        <span class="badge badge-pill badge-success">{{ $row->Status_registers }}</span>
-                    @elseif ($row->Status_registers === 'ไม่ผ่าน')
-                        <span class="badge badge-pill badge-danger">{{ $row->Status_registers }}</span>
-                    @endif
-                </td>
-                <td>{{ $row->annotation }}</td>
-                <td><a href="../file/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td>
-                <td><a href="/studenthome/edit2register/{{ $row->id }}" type="button" class="btn btn-outline-secondary fe fe-edit fe-16"></a></td>
-            </tr>
+                  </div>
+                </div> --}}
 
 
-            @endforeach
-          </tbody>
-        </table>
-        {{-- {!!$registers->links('pagination::bootstrap-5')!!} --}}
-      </div>
-    </div>
-  </div> <!-- Bordered table -->
+          {{-- @endforeach --}}
+
+        {{-- {!!$registers1->links('pagination::bootstrap-5')!!} --}}
 
 
+        <div class="container ">
+            <div class="row ">
 
-<main role="main" class="">
+             @foreach ($registers as $row)
+
+
+                 <div  class="col-xs-20 col-sm-3 col-md-3 card  " style="margin-top:15px;  margin-left: 65px;">
+                     <div class="img_thumbnail productlist"><br>
+                         {{-- <img src="{{ asset('/image') }}/" class="rounded mx-auto d-block" style="width:200px;height:200px; text-align:center;"> --}}
+                         <h4 class="card-title text-center">ชื่อเอกสาร </h4>
+                         <hr>
+                         <div class="caption card-body">
+                             {{-- <h4 class="card-title">:{{ $row->namefile }}</h4> --}}
+                             <p>{{ $row->namefile }}</p>
+                             {{-- <p  class="card-text"><strong>หลักสูตร --}}
+                                 {{-- @foreach ($registers2 as $row1)
+                                 @if ($row->major_id == $row1->major_id)
+                                     {{ $row1->name_major }}
+                                 @endif
+                             @endforeach --}}
+                            {{-- </strong> </p> --}}
+                            <div class="card-footer">
+                            <div class="d-grid gap-2 d-md-block">
+                                <p class="">
+                                    <a href="/studenthome/edit9register/{{$row->id}}" type="button" class="btn btn-outline-secondary fa-regular fe fe-edit "> </a>
+
+                                    {{-- @foreach ($registers as $row)
+                                    @if ($row->namefile === 'แบบพิจารณาคุณสมบัตินักศึกษาสหกิจศึกษา(สก01)')
+                                    <a href="/studenthome/edit2register/{{ $row->id }}" type="button" class="btn btn-outline-secondary fa-regular fe fe-edit "></a>
+                                    @elseif ($row->namefile === 'ใบสมัครงานสหกิจศึกษา(สก03)')
+                                    <a href="/studenthome/edit3register/{{ $row->id }}" type="button" class="btn btn-outline-secondary fa-regular fe fe-edit "></a>
+
+                                        @elseif ($row->namefile === 'ประวัติส่วนตัว(resume)')
+                                        <a href="/studenthome/edit8register/{{ $row->id }}" type="button" class="btn btn-outline-secondary fa-regular fe fe-edit "></a>
+                                        @else (Auth::user()->Status_acceptance)
+
+                                    @endif
+                                @endforeach --}}
+
+
+                                    <a href="../file/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down "></a>
+                              </div>
+                             {{-- <p class="btn-holder text-center"><a href="/establishment/edit/" class="btn btn-primary btn-block text-center" role="button">ดูข้อมูล</a>
+                                </p><br> --}}
+                         </div>    </div>
+                     </div>
+                 </div>
+             @endforeach
+
+             <br>
+
+     </div>
+
+
+<main role="main" class="text-center">
     <div class="container-fluid">
   <div class="row justify-content-center">
     <div class="col-md-12 my-4 " >
    </div>
 
+  </div></div></div></div>  <br>
+<div class="d-grid gap-2 text-center" >
 
-  </div></div></div></div> <div class="d-grid gap-2">
-
-    <h2>ขั้นตอนต่อไป</h2>
-    </div>   <a href=""  id="show-alert" class="btn btn-outline-warning " type="button">>คลิกที่นี่<</a>
+    <h4>ขั้นตอนต่อไป</h4><a href="/studenthome/informdetails"   class="btn btn-outline-warning " type="button">>คลิกที่นี่<</a>
+    </div>
+    {{-- id="show-alert" --}}
   <br>
 <br>
 

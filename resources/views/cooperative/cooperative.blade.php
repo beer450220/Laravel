@@ -61,6 +61,7 @@
               <li><a href="/" class="nav-link px-2 text-secondary">หน้าแรก</a></li>
               <li><a href="/establishment" class="nav-link px-2 text-white">สถานประกอบการ</a></li>
               <li><a href="/cooperative" class="nav-link px-2 text-white">แบบฟอร์มสหกิจ</a></li>
+              <li><a href="/cooperative" class="nav-link px-2 text-white">คู่มือการใช้งาน</a></li>
               {{-- <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
               <li><a href="#" class="nav-link px-2 text-white">About</a></li> --}}
             </ul>

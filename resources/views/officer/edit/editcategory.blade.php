@@ -153,6 +153,17 @@
                 </span>
             @enderror
               </div>
+              <div class="form-group col-md-4">
+                <label for="inputAddress">รูปภาพ</label>
+         <input type="file" class="form-control" @error('name') is-invalid @enderror name="images" value="{{$major->images}}"  autofocus placeholder="ประเภท">
+
+
+                @error('name_major')
+                <span class="invalid-feedback" >
+                    {{ $message }}
+                </span>
+            @enderror
+              </div>
             {{-- <div class="form-group col-md-4">
               <label for="inputAddress">คณะ</label>
 

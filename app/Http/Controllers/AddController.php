@@ -110,7 +110,8 @@ class AddController extends Controller
       // dd($users);
       // ->paginate(5);
       $major=DB::table('major')->paginate(5);
-         return view('officer.add.addestablishmentuser1',compact('major'));
+      $major1=DB::table('category')->paginate(5);
+         return view('officer.add.addestablishmentuser1',compact('major','major1'));
      }
 
      public function addestablishment(Request $request) {
@@ -142,6 +143,7 @@ class AddController extends Controller
               "images" =>$imageName,
           ]);
            $post->major_id = $request->major_id;
+           $post->category_id = $request->category_id;
            // dd($request->id);
          $post->save();
       }
@@ -345,7 +347,7 @@ class AddController extends Controller
         ([
           // "user_id" => $request->user_id,
             "namefile" => $request->namefile,
-           'establishment' => $request->establishment,
+        //    'establishment' => $request->establishment,
             "files" =>$imageName,
 
 
@@ -353,7 +355,7 @@ class AddController extends Controller
 
       $post->Status_informdetails ="รอตรวจสอบ";
       $post->annotation ="-";
-      $post->establishment ="-";
+    //   $post->establishment ="-";
       $post->user_id = Auth::user()->id;
       $post->save();
       //  $data->save();
@@ -934,16 +936,29 @@ public function addcategory()
     ]
 
   );
-      $post =new category
-      ([
-          "name" => $request->name,
 
+  if($request->hasFile("images"))
+  {
+    $file=$request->file("images");
+     $imageName=time().'_'.$file->getClientOriginalName();
+    $file->move(\public_path("/หมวดหมู่"),$imageName);
+// $post=Event::findOrFail($id);
 
+$post =new category
+([
+    "name" => $request->name,
 
+    "images" =>$imageName,
 
-      ]);
+]);
+}
+
+    //    $user = new Users;
+    // $post = new category;
+    //    $post->name = $request->name;
      // $post->Status ="รอตรวจสอบ";
       $post->save();
+
         //  $data =array();
         //  $data["test"]= $request->test;
       //    $data["test"]= $request->test;

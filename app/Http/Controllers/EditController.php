@@ -39,8 +39,8 @@ class EditController extends Controller
         // $establishments=DB::table('establishment')->find($id);
         //  dd($establishments);
         $major=DB::table('major')->paginate(5);
-
-         return view('officer.editestablishmentuser1',compact('establishments','major'));
+        $major1=DB::table('category')->paginate(5);
+         return view('officer.editestablishmentuser1',compact('establishments','major','major1'));
          // return redirect("/welcome")->with('success', 'Company has been created successfully.');
      }
 
@@ -127,6 +127,7 @@ class EditController extends Controller
            "user_id" =>'0',
 
  $post->major_id = $request->major_id,
+ $post->category_id = $request->category_id,
            "images"=>$post->images,
         ]);
 
@@ -270,7 +271,16 @@ public function   updateregisteruser(Request $request,$id) {
      return view('student.Edit.editinformdetails',compact('informdetails'));
 
  }
+ public function editinformdetails0($informdetails_id) {
+    //ตรวจสอบข้อมูล
+    //dd($informdetails_id);
+    $informdetails=informdetails::find($informdetails_id);
+    //$informdetails=DB::table('informdetails')->where('idinformdetails', $idinformdetails)->find($idinformdetails);
+    //dd($request->informdetails_id);
 
+     return view('student.Edit.editinformdetails0',compact('informdetails'));
+
+ }
  public function   updateinformdetails(Request $request,$informdetails_id) {
     //ตรวจสอบข้อมูล
 
@@ -290,7 +300,7 @@ public function   updateregisteruser(Request $request,$id) {
     $post=informdetails::findOrFail($informdetails_id);
     $post->user_id = Auth::user()->id;
     $post->Status_informdetails ="รอตรวจสอบ";
-    $post->establishment ="-";
+    // $post->establishment ="-";
     $post->annotation ="-";
     if($request->hasFile("files")){
         if (File::exists("fileinformdetails/".$post->files)) {
@@ -352,7 +362,16 @@ public function editreport($report_id) {
      return view('student.Edit.editreport',compact('report'));
 
  }
+ public function editreport6($report_id) {
+    //ตรวจสอบข้อมูล
+    //dd($report_id);
+    $report=report::find($report_id);
+    //$informdetails=DB::table('informdetails')->where('idinformdetails', $idinformdetails)->find($idinformdetails);
+    //dd($request->informdetails_id);
 
+     return view('student.Edit.editreport6',compact('report'));
+
+ }
  public function   updatereport(Request $request,$report_id) {
     //ตรวจสอบข้อมูล
 
@@ -468,7 +487,7 @@ public function editreport($report_id) {
  public function   updatecalendar2confirm(Request $request,$id) {
     //ตรวจสอบข้อมูล
 
-   // dd($request);
+   dd($request);
 
     $request->validate([
         // 'images' => ['required','mimes:jpg,jpeg,png'],
@@ -483,21 +502,21 @@ public function editreport($report_id) {
     $post=Event::findOrFail($id);
 
 
-    $post->user_id = Auth::user()->id;
+    // $post->user_id = Auth::user()->id;
     // $post->Status ="รอตรวจสอบ";
     // $post->Status ="รอตรวจสอบ";
    //dd($request->Status);
 
     $post->update
     ([
-       "name2" =>$request->name2,
+    //    "name2" =>$request->name2,
         //"establishment"=>$request->establishment,
         // "phone"=>$request->phone,
        // "files"=>$request->files,
         // "projects"=>$post->projects,
         // "presentation"=>$post->presentation,
         // "appointmenttime"=>$post->appointmenttime,
-        "Status"=>$request->Status,
+        "appointment_time"=>$request->appointment_time,
        // "projects" =>$imageName,
        // "presentation" =>$image,
       //  "poster" =>$images,
@@ -523,8 +542,8 @@ public function editreport($report_id) {
         ]
     );
     $post=Event::findOrFail($id);
-    $post->user_id = Auth::user()->id;
-     $post->Statusevents ="รับทราบและยืนยันเวลานัดนิเทศแล้ว";
+    // $post->user_id = Auth::user()->id;
+     $post->Status_events ="รับทราบและยืนยันเวลานัดนิเทศแล้ว";
     // $post->Status ="รอตรวจสอบ";
    //dd($request->Status);
 
@@ -551,7 +570,7 @@ public function editreport($report_id) {
 public function   calendar2confirmupdate(Request $request,$id) {
     //ตรวจสอบข้อมูล
 
-   //dd($request);
+   dd($request);
 
     $request->validate([
         // 'images' => ['required','mimes:jpg,jpeg,png'],
@@ -564,14 +583,14 @@ public function   calendar2confirmupdate(Request $request,$id) {
         ]
     );
     $post=Event::findOrFail($id);
-    $post->user_id = Auth::user()->id;
+    // $post->user_id = Auth::user()->id;
      //$post->Statustime ="รับทราบและยืนยันเวลานัดนิเทศ";
     // $post->Status ="รอตรวจสอบ";
    //dd($request->Status);
 $post->update
 
     ([
-     "Statustime" =>$request->Statustime
+     "appointment_time" =>$request->appointment_time
         //"establishment"=>$request->establishment,
         // "phone"=>$request->phone,
        // "files"=>$request->files,
@@ -1331,6 +1350,19 @@ public function editcategory($category_id) {
     // $post->Status ="รอตรวจสอบ";
    //dd($request->Status);
    $post=category::findOrFail($category_id);
+//    $post=acceptance::findOrFail($acceptance_id);
+   // $post->user_id = Auth::user()->id;
+   // $post->Status ="รอตรวจสอบ";
+    if($request->hasFile("images")){
+        if (File::exists("หมวดหมู่/".$post->images)) {
+            File::delete("หมวดหมู่/".$post->images);
+        }
+        $file=$request->file("images");
+         $post->images=time()."_".$file->getClientOriginalName();
+         $file->move(\public_path("/หมวดหมู่"),$post->images);
+         $request['images']=$post->images;
+      // dd($post);
+    }
   // $post->user_id = Auth::user()->id;
   // $post->Status ="รอตรวจสอบ";
 
@@ -1339,7 +1371,7 @@ public function editcategory($category_id) {
     $post->update
     ([
        "name" =>$request->name,
-
+       "images"=>$post->images,
 
 
 

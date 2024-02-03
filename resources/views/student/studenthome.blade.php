@@ -274,7 +274,8 @@
                       <ul id="progressbar">
                         {{-- class="active" --}}
                         <a  href="/studenthome"><li class="active" id="account"><strong>ข้อมูลส่วนตัว</strong><br><br>
-                            <br>   @if (Auth::user()->status === 'ยืนยันตัวตนแล้ว')
+                            <br>
+                            {{-- @if (Auth::user()->status === 'ยืนยันตัวตนแล้ว')
                             <span class="circle circle-sm bg-success-light">
 
                                 <i class="fe fe-16 fe-check text-white mb-0"></i>
@@ -284,12 +285,12 @@
                             @elseif (Auth::user()->status === 'ยังไม่ได้ยืนยันตัวตน')
                             <span class="circle circle-sm bg-warning-light">
 
-                                <i class="fe fe-16 fe-alert-triangle text-white mb-0"></i>
+                                <i class="fe fe-16 fe-alert-triangle text-white mb-0"></i> --}}
                                 {{-- <i class="fe fe-16 fe-alert-triangle text-white "></i> --}}
 
 
 
-                        @endif
+                        {{-- @endif --}}
                     </li></a>
                         {{-- <a  href="/studenthome/establishmentuser">  <li id="personal" ><strong>สถานประกอบการ</strong><br><br>
                            <br>   @if (Auth::user()->statusestablishment === 'ยืนยันได้สถานประกอบการแล้ว')
@@ -313,7 +314,7 @@
 
                         @endif</li></a> --}}
                           <a  href="/studenthome/register">  <li id="payment"><strong>ลงทะเบียน</strong><br><br><br>
-                            @if (Auth::user()->status === 'ยืนยันตัวตนแล้ว')
+                            {{-- @if (Auth::user()->status === 'ยืนยันตัวตนแล้ว')
                             <span class="circle circle-sm bg-success-light">
 
                                 <i class="fe fe-16 fe-check text-white mb-0"></i>
@@ -328,10 +329,11 @@
 
 
 
-                        @endif
+                        @endif --}}
                         </li></a>
                             <a  href="/studenthome/informdetails"> <li id="confirm"><strong>รายงานสถานะการเข้าปฏิบัติงาน</strong>
-                                <br><br>  @if (Auth::user()->status === 'ยืนยันตัวตนแล้ว')
+                                <br><br>
+                                 {{-- @if (Auth::user()->status === 'ยืนยันตัวตนแล้ว')
                                 <span class="circle circle-sm bg-success-light">
 
                                     <i class="fe fe-16 fe-check text-white mb-0"></i>
@@ -346,10 +348,11 @@
 
 
 
-                            @endif
+                            @endif --}}
                             </li></a>
                               <a  href="/studenthome/calendar2confirm"> <li id="confirm"><strong>นิเทศงาน</strong>
-                                <br><br> <br>   @if (Auth::user()->status === 'ยืนยันตัวตนแล้ว')
+                                <br><br> <br>
+                                 {{-- @if (Auth::user()->status === 'ยืนยันตัวตนแล้ว')
                                 <span class="circle circle-sm bg-success-light">
 
                                     <i class="fe fe-16 fe-check text-white mb-0"></i>
@@ -364,10 +367,11 @@
 
 
 
-                            @endif
+                            @endif --}}
                             </li></a>
                             <a  href="/studenthome/report"> <li id="payment"><strong>รายงานผลการปฏิบัติงาน</strong>
-                                <br><br>    @if (Auth::user()->status === 'ยืนยันตัวตนแล้ว')
+                                <br><br>
+                                  {{-- @if (Auth::user()->status === 'ยืนยันตัวตนแล้ว')
                                     <span class="circle circle-sm bg-success-light">
 
                                         <i class="fe fe-16 fe-check text-white mb-0"></i>
@@ -382,7 +386,7 @@
 
 
 
-                                @endif
+                                @endif --}}
                                 </li></a>
                       </ul>
                       <div class="progress">
@@ -397,7 +401,7 @@
                                       <h2 class="fs-title">ข้อมูลส่วนตัว:</h2>
                                   </div>
                                   <div class="col-4">
-                                      <h2 class="steps">ขั้นตอน 1 - 6</h2>
+                                      <h2 class="steps">ขั้นตอน 1 - 5</h2>
                                   </div>
                               </div><div class="col-6">
     <div class=" alert alert-primary  " role="alert">
@@ -413,7 +417,7 @@
 
     <br>
     <h2><span>{{-- <i class="fe fe-16 fe-check text-white mb-0"></i> --}}
-                                   @if (Auth::user()->status === 'ยืนยันตัวตนแล้ว')
+                                   {{-- @if (Auth::user()->status === 'ยืนยันตัวตนแล้ว')
     <span class="circle circle-sm bg-success-light">
 
         <i class="fe fe-16 fe-check text-white mb-0"></i>
@@ -421,15 +425,16 @@
         <!-- เนื้อหาภายใน <span> element ที่ต้องการแสดง -->
     </span>
     @elseif (Auth::user()->status === 'ยังไม่ได้ยืนยันตัวตน')
-    <span class="circle circle-sm bg-warning-light">
+    <span class="circle circle-sm bg-warning-light"> --}}
 {{--
         <i class="fe fe-16 fe-check text-white mb-0"></i> --}}
-        <i class="fe fe-16 fe-alert-triangle text-white mb-0"></i>
+        {{-- <i class="fe fe-16 fe-alert-triangle text-white mb-0"></i>
 
 
 
-@endif </span><span>ขั้นตอนที่ 1 ข้อมูลส่วนตัว:</h1></span>
-                                       <br>ตรวจสอบข้อมูลและทำการยืนยันข้อมูล <br>
+@endif --}}
+ </span><span>ขั้นตอนที่ 1 ข้อมูลส่วนตัว:</h1>ตรวจสอบข้อมูลและทำการยืนยันข้อมูล</span>
+                                       <br> <br>
                                        {{-- <br>ถ้าจะทำการแก้ไขข้อมูลให้ --}}
                                        {{-- <br> <br>ถ้ายืนยันตัวตนแล้วให้ <a href="/studenthome/establishmentuser"  class="btn btn-outline-warning " type="button">>คลิกที่นี่<</a> เพื่อทำขั้นตอนถัดไป --}}
                                     </div>
@@ -482,10 +487,11 @@
     <br>
 
     <div class="col-md-12 mb-4">
-        <div class="accordion w-100" id="accordion1">
+        <div class="accordion w-100" >
+            {{-- id="accordion1" --}}
           <div class="card shadow">
             <div class="card-header" id="heading1">
-              <a role="button" href="#collapse1" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapse1" class="collapsed">
+              {{-- <a role="button" href="#collapse1" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapse1" class="collapsed"> --}}
 
                 <span>
              @if (Auth::user()->status === 'ยังไม่ได้ยืนยันตัวตน')
@@ -501,7 +507,8 @@
 
 
                  </span><h3><strong>ตรวจสอบข้อมูลส่วนตัว</strong> <span class="text-success">
-
+                    <a href="/personal/{{Auth::user()->id}}"name="next" class="btn btn-outline-Warning me-md-2 Warning btn2"   type="button">ดูข้อมูล</a>
+                    <a href="/studenthome/updateuser2/{{Auth::user()->id}}"name="next" class="btn btn-outline-success me-md-2 success btn2" onclick="return confirm('แน่ใจจะยืนยันตัวตน?')"  type="button">ยืนยันข้อมูล</a>
 
 
 
@@ -659,7 +666,7 @@
           </div></div></div></div> <div class="d-grid gap-2">
 
             <h2>ขั้นตอนต่อไป</h2>
-            </div>   <a href="/studenthome/establishmentuser"  id="show-alert" class="btn btn-outline-warning " type="button">>คลิกที่นี่<</a>
+            </div>   <a href="/studenthome/register"  id="show-alert" class="btn btn-outline-warning " type="button">>คลิกที่นี่<</a>
       </div>
     <br>
     <br>

@@ -182,7 +182,24 @@
         </div>
 
 
-      </div>
+      </div>  <div class="row">
+        <div class="col-md-4">
+            <label for="recipient-name" class="col-form-label">หมวดหมู่</label>
+             <select class="form-control" id="validationSelect1" name="category_id" >
+                <option value="">กรุณาเลือกหมวดหมู่</option>
+                @foreach ($major1 as $row)
+                {{-- <optgroup label="Mountain Time Zone"> --}}
+                  <option value="{{$row->category_id}}">{{$row->name}} </option>
+                  {{-- <option value="{{$row->major_id}}">{{$row->major}}</option> --}}
+                    {{-- <option value="{{$row->major_id}}">{{$row->major}}</option> --}}
+                </optgroup>
+
+                @endforeach
+              </select>
+                </div>
+          </div>
+
+
       <div class="row">
 <div class="col-md-4">
           <label for="recipient-name" class="col-form-label">รายละเอียดงาน</label>
@@ -190,6 +207,7 @@
               </textarea>
         </div>
   </div>
+
 </div>
 
 

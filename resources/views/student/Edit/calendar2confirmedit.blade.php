@@ -59,24 +59,25 @@
                               @csrf
                               <div class="mb-3">
                                 <label for="recipient-name" class="col-form-label">ขอเปลี่ยนเวลานัดนิเทศ</label>
-                                <input type="datetime-local" class="form-control" id="recipient-name" name="Statustime" value="{{$events->Statustime}}">
-                              <br>
-                              <label for="recipient-name" class="col-form-label">วันที่</label>
+                                <input type="datetime-local" class="form-control" id="recipient-name" name="appointment_time" value="{{ \Carbon\Carbon::parse($events->appointment_time)->format('Y-m-d\TH:i') }}">
+                                {{-- <input class="form-control" id="example-date" type="datetime-local" name="appointment_time"value="{{ \Carbon\Carbon::parse($events->appointment_time)->format('Y-m-d\TH:i') }}"  autofocus placeholder="title"> --}}
+                                <br>
+                              {{-- <label for="recipient-name" class="col-form-label">วันที่</label> --}}
                               <div class="row">
-                              <div class="col-6"> <span>   <select class="form-control  required" name="Statustime3" >
-                                    <option selected>วัน</option>
+                              {{-- <div class="col-6"> <span>   <select class="form-control  required" name="Statustime3" > --}}
+                                    {{-- <option selected>วัน</option>
                                     <option value="วันจันทร์"@if($events->Statusevents=="วันจันทร์") selected @endif required>วันจันทร์</option>
                                     <option value="วันอังคาร"@if($events->Statusevents=="วันอังคาร") selected @endif required>วันอังคาร</option>
                                     <option value="วันพุทธ"@if($events->Statusevents=="วันพุทธ") selected @endif required>วันพุทธ</option>
                                     <option value="วันพฤหัสบดี"@if($events->Statusevents=="วันพฤหัสบดี") selected @endif required>วันพฤหัสบดี</option>
-                                    <option value="วันศุกร์"@if($events->Statusevents=="วันศุกร์") selected @endif required>วันศุกร์</option>
+                                    <option value="วันศุกร์"@if($events->Statusevents=="วันศุกร์") selected @endif required>วันศุกร์</option> --}}
 
 
 
                                   </select>
-                                  <label for="recipient-name" class="col-form-label">เดือน</label>
+                                  {{-- <label for="recipient-name" class="col-form-label">เดือน</label> --}}
 
-                                  <select class="form-control  required" name="Statustime1" >
+                                  {{-- <select class="form-control  required" name="Statustime1" >
                                     <option selected>เดือน</option>
                                     <option value="มกราคม"@if($events->Statusevents=="มกราคม") selected @endif required>มกราคม</option>
                                     <option value="กุมภาพันธ์"@if($events->Statusevents=="กุมภาพันธ์") selected @endif required>กุมภาพันธ์</option>
@@ -92,16 +93,16 @@
                                     <option value="พฤศจิกายน"@if($events->Statusevents=="พฤศจิกายน") selected @endif required>พฤศจิกายน</option>
                                     <option value="ธันวาคม"@if($events->Statusevents=="ธันวาคม") selected @endif required>ธันวาคม</option>
 
-                                  </select>
+                                  </select> --}}
 
-                                  <label for="recipient-name" class="col-form-label">ปี</label>
-
+                                  {{-- <label for="recipient-name" class="col-form-label">ปี</label> --}}
+{{--
                                   <select class="form-control  required" name="buddhist_year" >
                                     <option selected>ปี</option>
                                     @for ($year = 2550; $year <= 2600; $year++)
-        <option value="{{ $year }}"@if($events->Statusevents==$year) selected @endif>{{ $year }}</option>
+        <option value="{{ $year }}"@if($events->Status_events==$year) selected @endif>{{ $year }}</option>
     @endfor
-                                  </select>
+                                  </select> --}}
                                   </span>
 
                             </div>       </div>

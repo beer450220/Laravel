@@ -18,7 +18,7 @@ use App\Models\establishment;
 use App\Models\informdetails;
 use App\Models\report;
 use App\Models\teacher;
-
+use App\Models\category;
 
 class HomeController extends Controller
 {
@@ -37,6 +37,96 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+
+     public function establishmentedit01($id) {
+        //ตรวจสอบข้อมูล
+
+        // $establishments=establishment::find($id);
+        $establishments=DB::table('establishment')->find($id);
+        //  dd($establishments);
+
+         return view('cooperative.establishmentuserview',compact('establishments'));
+         // return redirect("/welcome")->with('success', 'Company has been created successfully.');
+     }
+
+     public function establishmentedit02($id) {
+        //ตรวจสอบข้อมูล
+
+        // $establishments=establishment::find($id);
+        $establishments=DB::table('establishment')->find($id);
+
+        // $establishments1=DB::table('establishment')->find($id);
+        //  dd($establishments);
+        $registers=DB::table('establishment')
+
+        //  ->join('category', 'establishment.category_id', '=', 'category.id')
+        //  ->select('establishment.*', 'category.name as category_name')
+         ->join('category','establishment.id','category.category_id')
+         ->select('establishment.*','category.name')
+         ->paginate(5);
+
+         $establishmentsWithSameCategory = DB::table('establishment')
+    ->join('category', 'establishment.category_id', '=', 'category.category_id')
+    ->where('establishment.category_id',[$establishments->category_id])
+    ->select('establishment.*', 'category.name as category_name')
+    ->paginate(5);
+//dd($id,$establishmentsWithSameCategory);
+    $registers=DB::table('establishment')
+
+        //  ->join('category', 'establishment.category_id', '=', 'category.id')
+        //  ->select('establishment.*', 'category.name as category_name')
+         ->join('category','establishment.id','category.category_id')
+         ->select('establishment.*','category.name')
+         ->paginate(5);
+         return view('cooperative.establishment01',compact('establishments','registers','establishmentsWithSameCategory'));
+         // return redirect("/welcome")->with('success', 'Company has been created successfully.');
+     }
+
+     public function establishmentedit03($category_id) {
+        //ตรวจสอบข้อมูล
+
+        // $establishments=establishment::find($id);
+        // $establishments=DB::table('category')->find($category_id);
+        $major=category::find($category_id);
+        // $establishments1=DB::table('establishment')->find($id);
+        //  dd($establishments);
+        $registers=DB::table('establishment')
+
+        //  ->join('category', 'establishment.category_id', '=', 'category.id')
+        //  ->select('establishment.*', 'category.name as category_name')
+         ->join('category','establishment.id','category.category_id')
+         ->select('establishment.*','category.name')
+         ->paginate(5);
+
+    //      $establishmentsWithSameCategory = DB::table('establishment')
+    // ->join('category', 'establishment.category_id', '=', 'category.category_id')
+    // ->where('establishment.category_id',[$establishments->category_id])
+    // ->select('establishment.*', 'category.name as category_name')
+    // ->paginate(5);
+
+          $establishmentsWithSameCategory = DB::table('establishment')
+    ->join('category', 'establishment.category_id', '=', 'category.category_id')
+    ->where('establishment.category_id',[$major->category_id])
+    ->select('establishment.*', 'category.name as category_name')
+    ->paginate(5);
+//dd($id,$establishmentsWithSameCategory);
+    $registers=DB::table('establishment')
+
+        //  ->join('category', 'establishment.category_id', '=', 'category.id')
+        //  ->select('establishment.*', 'category.name as category_name')
+         ->join('category','establishment.id','category.category_id')
+         ->select('establishment.*','category.name')
+         ->paginate(5);
+
+         $registers1=DB::table('category')
+         ->paginate(5);
+
+        $registers2=DB::table('major')
+        ->paginate(5);
+         return view('cooperative.establishment01',compact('registers','major','establishmentsWithSameCategory','registers1','registers2'));
+         // return redirect("/welcome")->with('success', 'Company has been created successfully.');
+     }
+
 
 
 //studentHome
@@ -161,8 +251,15 @@ class HomeController extends Controller
                     ->where('em_name', 'LIKE', '%' . $keyword . '%')
                     //->get();
                     ->paginate(6);
+                    $registers=DB::table('establishment')
 
-                return view('cooperative.establishment', ['establishments' => $establishments]);
+
+                     ->join('category','establishment.id','category.category_id')
+                     ->select('establishment.*','category.name')
+                     ->paginate(5);
+                     $registers1=DB::table('category')
+                     ->paginate(5);
+                return view('cooperative.establishment', ['establishments' => $establishments,'registers' => $registers,'registers1' => $registers1]);
 
            // return view('student.establishmentuser',compact('establishments','search'));
 
@@ -366,7 +463,7 @@ class HomeController extends Controller
         ->paginate(5);
 
 
-        $activity=DB::table('activity')
+        $activity=DB::table('schedule')
         // ->join('users','registers.user_id','users.id')
         // ->select('registers.*','users.name')->where('user_id', auth()->id())
         ->paginate(5);
@@ -411,10 +508,11 @@ class HomeController extends Controller
         ->where('user_id', auth()->id())
         ->paginate(5);
 
-        $activity=DB::table('activity')
+        $activity=DB::table('schedule')
         // ->join('users','registers.user_id','users.id')
         // ->select('registers.*','users.name')->where('user_id', auth()->id())
         ->paginate(5);
+       ;
         return view('student.informdetails',compact('informdetails','informdetails1','informdetails2','informdetails3','activity'));
     }
 
@@ -1361,12 +1459,36 @@ public function category()
         //->pluck('name')
    // ->implode(', ');
         //->select('name')
+        // ->join('major','establishment.id','major.major_id')
+        // ->select('establishment.*','major.name_major')
         ->paginate(6);
         //->get();
         //  dd($establishments);
          // $users=DB::table('users')->get();
+         $registers=DB::table('establishment')
 
-        return view('cooperative.establishment',compact('establishments'));
+        //  ->join('category', 'establishment.category_id', '=', 'category.id')
+        //  ->select('establishment.*', 'category.name as category_name')
+         ->join('category','establishment.id','category.category_id')
+         ->select('establishment.*','category.*')
+        //  ->join('category', 'establishment.id', '=', 'category.category_id')
+        //  ->select('establishment.*', 'category.name as category_name')
+         ->paginate(5);
+
+        // //  $registers1=DB::table('registers')
+        // //  ->join('users','registers.user_id','users.id')
+        // //  ->select('registers.*','users.fname')
+//dd($registers);
+        //  ->paginate(5);
+
+
+        $registers1=DB::table('category')
+        ->get();
+         //->paginate(5);
+
+        $registers2=DB::table('major')
+        ->paginate(5);
+        return view('cooperative.establishment',compact('establishments','registers','registers1','registers2'));
 
     }
     public function login01()
