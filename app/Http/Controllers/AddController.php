@@ -238,6 +238,9 @@ class AddController extends Controller
                      "namefile" => $request->namefile,
                     "filess" =>$imageName,
                     "annotation" => "-",
+                    "year" => $request->year,
+                    "term" => $request->term,
+
                     "Status_registers" => "รอตรวจสอบ",
                 ]);
             //   $post->annotation ="-";
