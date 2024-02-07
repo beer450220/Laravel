@@ -1509,7 +1509,8 @@ public function editcategory($category_id) {
       //->select('users.*','establishment.*')
       //->get();
     // $establishments=establishment::find($id);
-    $supervisions=DB::table('supervision')->first();
+    $supervisions=supervision::find($supervision_id);
+    // $supervisions=DB::table('supervision')->first();
     //$establishment=DB::table('establishment')
     // ->join('supervision','supervision.supervision_id')
      //->join('supervision', 'establishments.id', '=', 'supervision.id')
@@ -1517,7 +1518,11 @@ public function editcategory($category_id) {
    // ->get();
    // dd($reports);
      // dd($supervisions);
-     return view('officer.edit.editEvaluate',compact('supervisions'));
+     $users=DB::table('users')
+      ->where('role',"student")
+
+      ->get();
+     return view('officer.edit.editEvaluate',compact('supervisions','users'));
 
  }
 
@@ -1541,19 +1546,44 @@ public function editcategory($category_id) {
     // $post->Status ="รอตรวจสอบ";
 
    //dd($request->Status);
+//    $post=supervision::findOrFail($supervision_id);
    $post=supervision::findOrFail($supervision_id);
+   //    $post->user_id = Auth::user()->id;
+      $post->Status_supervision ="รอตรวจสอบ";
+      if($request->hasFile("filess")){
+          if (File::exists("ไฟล์เอกสารประเมิน/".$post->filess)) {
+              File::delete("ไฟล์เอกสารประเมิน/".$post->filess);
+          }
+          $file=$request->file("filess");
+           $post->filess=time()."_".$file->getClientOriginalName();
+           $file->move(\public_path("/ไฟล์เอกสารประเมิน"),$post->filess);
+           $request['filess']=$post->filess;
+        // dd($post);
+      }
+       $post->update
+       ([
+           "namefile" =>$request->namefile,
+           "user_id" =>$request->user_id,
+          "year" =>$request->year,
+           //"establishment"=>$request->establishment,
+            "term"=>$request->term,
+           "score"=>$request->score,
+            "filess"=>$post->filess,
+           // "presentation"=>$post->presentation,
+           // "appointmenttime"=>$post->appointmenttime,
+           //"Status"=>$request->Status,
+          // "projects" =>$imageName,
+          // "presentation" =>$image,
+         //  "poster" =>$images,
+          // "projectsummary" =>$images1,
+          "annotation" =>$request->annotation,
+          //"establishment"=>$request->establishment,
+           "Status_supervision"=>$request->Status_supervision,
+       ]);
   // $post->user_id = Auth::user()->id;
    //$post->Status ="รอตรวจสอบ";
 
-    $post->update
 
-    ([
-
-       "annotation" =>$request->annotation,
-        //"establishment"=>$request->establishment,
-         "Status_supervision"=>$request->Status_supervision,
-
-    ]);
      // dd($request);
 
     return redirect('/officer/Evaluate')->with('success', 'ยืนยันข้อมูลสำเร็จ.');

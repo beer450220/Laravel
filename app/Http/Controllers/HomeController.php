@@ -19,6 +19,7 @@ use App\Models\informdetails;
 use App\Models\report;
 use App\Models\teacher;
 use App\Models\category;
+use App\Models\supervision;
 
 class HomeController extends Controller
 {
@@ -264,7 +265,155 @@ class HomeController extends Controller
            // return view('student.establishmentuser',compact('establishments','search'));
 
     }
+    public function searchestablishment(Request $request){
+//dd($request);
 
+        //$search = $request->input('search');
+
+        // $establishments =establishment::where(function($query) use ($search){
+
+        //     $query->where('name','like',"%$search%")
+        //     ->orWhere('address','like',"%$search%");
+
+        //     })
+
+        //     ->get();
+
+
+                // $establishments =establishment::where('name','like',"%$search%")
+                // ->orWhere('address','like',"%$search%")->get();
+
+
+                $keyword = $request->input('keyword');
+//dd($request);
+                // สร้างคำสั่งคิวรีเพื่อค้นหาข้อมูล
+                $establishments = establishment::query()
+                    ->where('em_name', 'LIKE', '%' . $keyword . '%')
+                    //->get();
+                    ->paginate(5);
+                    $registers=DB::table('establishment')
+
+
+                     ->join('category','establishment.id','category.category_id')
+                     ->select('establishment.*','category.name')
+                     ->paginate(5);
+                     $registers1=DB::table('category')
+                     ->paginate(5);
+
+                     $searchTerm = $request->input('search');
+
+        // ค้นหาผู้ใช้โดยใช้ Eloquent ORM
+        $users = establishment::where('em_name', 'LIKE', "%{$searchTerm}%")
+                     ->orWhere('em_name', 'LIKE', "%{$searchTerm}%")
+                     ->get();
+
+
+                return view('officer.establishmentuser1', compact('establishments','users'), ['establishments' => $establishments,'registers' => $registers,'registers1' => $registers1]);
+
+           // return view('student.establishmentuser',compact('establishments','search'));
+
+    }
+
+
+    public function searchregister1(Request $request){
+        //dd($request);
+
+                //$search = $request->input('search');
+
+                // $establishments =establishment::where(function($query) use ($search){
+
+                //     $query->where('name','like',"%$search%")
+                //     ->orWhere('address','like',"%$search%");
+
+                //     })
+
+                //     ->get();
+
+
+                        // $establishments =establishment::where('name','like',"%$search%")
+                        // ->orWhere('address','like',"%$search%")->get();
+
+
+                        $keyword = $request->input('keyword');
+        //dd($request);
+                        // สร้างคำสั่งคิวรีเพื่อค้นหาข้อมูล
+                        $registers = registers::query()
+                            ->where('namefile', 'LIKE', '%' . $keyword . '%')
+                            ->get();
+                            //->paginate(5);
+
+                            // $registers1=DB::table('establishment')
+                            //  ->join('category','establishment.id','category.category_id')
+                            //  ->select('establishment.*','category.name')
+                            //  ->paginate(5);
+                            //  $registers1=DB::table('category')
+                            //  ->paginate(5);
+
+                            //  $searchTerm = $request->input('search');
+
+
+
+                             $registers=DB::table('registers')
+                             ->join('users','registers.user_id','users.id')
+                             ->select('registers.*','users.fname')
+                             ->paginate(5);
+                        return view('officer.register1', compact('registers'), ['registers' => $registers,]);
+
+                   // return view('student.establishmentuser',compact('establishments','search'));
+
+            }
+
+            public function searchEvaluate(Request $request){
+                //dd($request);
+
+                        //$search = $request->input('search');
+
+                        // $establishments =establishment::where(function($query) use ($search){
+
+                        //     $query->where('name','like',"%$search%")
+                        //     ->orWhere('address','like',"%$search%");
+
+                        //     })
+
+                        //     ->get();
+
+
+                                // $establishments =establishment::where('name','like',"%$search%")
+                                // ->orWhere('address','like',"%$search%")->get();
+
+
+                                $keyword = $request->input('keyword');
+                //dd($request);
+                                // สร้างคำสั่งคิวรีเพื่อค้นหาข้อมูล
+                                $establishments = supervision::query()
+                                    ->where('namefile', 'LIKE', '%' . $keyword . '%')
+                                    ->get();
+                                    //->paginate(5);
+                                    // $registers=DB::table('supervision')
+
+
+                                    //  ->join('users','supervision.supervision_id','users.id')
+                                    //  ->select('supervision.*','users.fname')
+                                    //  ->paginate(5);
+                                    //  $registers1=DB::table('category')
+                                    //  ->paginate(5);
+
+                                    //  $searchTerm = $request->input('search');
+
+                        // ค้นหาผู้ใช้โดยใช้ Eloquent ORM
+                        // $users = establishment::where('em_name', 'LIKE', "%{$searchTerm}%")
+                        //              ->orWhere('em_name', 'LIKE', "%{$searchTerm}%")
+                        //              ->get();
+
+                        $supervision=DB::table('supervision')
+                        ->join('users','supervision.user_id','users.id')
+                        ->select('supervision.*','users.fname')
+                        ->paginate(5);
+                                return view('officer.Evaluate', compact('establishments','supervision'), ['establishments' => $establishments,'supervision' => $supervision,]);
+
+                           // return view('student.establishmentuser',compact('establishments','search'));
+
+                    }
     public function  Student()
     {
         return view('student.Studentinformation',);
@@ -695,21 +844,6 @@ class HomeController extends Controller
     }
 
 
-    public function searchestablishment(Request $request)
-    {
-        $request->validate([
-            // 'query'=>'required|min:2'
-         ]);
-dd($request->$name);
-         $search_text = $request->input('query');
-         $countries = DB::table('establishment')
-                    ->where('name','LIKE','%'.$search_text.'%')
-                  //   ->orWhere('SurfaceArea','<', 10)
-                  //   ->orWhere('LocalName','like','%'.$search_text.'%')
-                    ->paginate(2);
-
-        // return view('officer.establishmentuser1',compact('establishments'),["msg"=>"I am Editor role"]);
-    }
 
 
 
@@ -831,6 +965,8 @@ public function category()
         // ->select('supervision.*','users.fname','establishment.address')
         //->select('supervision.*')
        // ->where('establishment.establishment_id')
+       ->join('users','supervision.user_id','users.id')
+                        ->select('supervision.*','users.fname')
         ->paginate(5);
         return view('officer.Evaluate',compact('supervision'));
     }

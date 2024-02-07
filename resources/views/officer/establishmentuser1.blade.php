@@ -27,12 +27,16 @@
                     {{-- <div class="toolbar row mb-3"> --}}
                       <div class="col">
                            <h2 class="h4 mb-1">สถานประกอบการ</h2><br>
-                        <form action="{{ route('searchestablishment') }}" method="POST" class="form-inline">
+                        <form action="{{ route('searchestablishment') }}" method="GET" class="form-inline">
+
                           <div class="form-row">
                             <div class="form-group col-auto">
-
+  {{-- <form action="{{ route('search1') }}" method="GET"> --}}
                               <label for="search" class="sr-only">Search</label>
-                              <input type="text" class="form-control" name="query" id="search" value="" placeholder="Search">
+                              <input type="text" class="form-control" name="keyword"  id="keyword" value="{{ request('keyword') }}" placeholder="Search">
+                              {{-- <input type="text" class="form-control" name="search"  id="keyword" value="" placeholder="Search"> --}}
+                            {{-- </form> --}}
+                            {{-- <input type="text" name="keyword" id="keyword" class="form-control" value="{{ request('keyword') }}"placeholder="Search"> --}}
                             </div>
                             {{-- <div class="form-group col-auto ml-3">
                               <label class="my-1 mr-2 sr-only" for="inlineFormCustomSelectPref">Status</label>
@@ -48,7 +52,11 @@
                           </div>
 
                           <div class="">
-                            <a href=""  type="button"  class=" btn btn-outline-warning">ค้นหาข้อมูล</a>
+                            <a href="" name="keyword" value="{{ request('keyword') }}"  type="submit"  class=" btn btn-outline-warning">ค้นหาข้อมูล</a>
+
+
+
+
                           </div>
                           <div class="col col-lg-2">
                             {{-- <a href="/officer/addestablishmentuser1"  type="button"  class=" btn btn-outline-success"data-toggle="modal" data-target="#varyModal" data-whatever="@mdo">เพิ่มข้อมูล</a> --}}
@@ -118,9 +126,8 @@
               </div> <!-- Bordered table -->
             </div> <!-- end section -->
 
-
    {{-- เพิ่มข้อมูล --}}
-            <div class="col-md-4 mb-4">
+            {{-- <div class="col-md-4 mb-4">
 
 
 
@@ -188,15 +195,15 @@
                           <div class="col-md-4">
                             <label for="recipient-name" class="col-form-label">หลักสูตร</label>
                             <select class="form-control" id="validationSelect1" name="major_id" >
-                                <option value="">กรุณาเลือกหลักสูตร</option>
-                                @foreach ($major as $row)
+                                <option value="">กรุณาเลือกหลักสูตร</option> --}}
+                                {{-- @foreach ($major as $row) --}}
                                 {{-- <optgroup label="Mountain Time Zone"> --}}
-                                  <option value="{{$row->major_id}}">{{$row->name_major}}  ({{$row->faculty}})</option>
+                                  {{-- <option value="{{$row->major_id}}">{{$row->name_major}}  ({{$row->faculty}})</option> --}}
                                   {{-- <option value="{{$row->major_id}}">{{$row->major}}</option> --}}
                                 </optgroup>
 
-                                @endforeach
-                              </select>
+                                {{-- @endforeach --}}
+                              {{-- </select>
                           </div>
 
 
@@ -220,7 +227,7 @@
             </div>
           </div>
         </div>
-        </div>
+        </div> --}}
 
 
 

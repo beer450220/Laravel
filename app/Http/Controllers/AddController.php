@@ -670,7 +670,22 @@ public function addestimate1()
      // ->paginate(5);
         return view('teacher.add.addestimate1',compact('users'),compact('establishment'));
     }
-
+    public function addestimate2()
+    {
+     // $users=users::all()->where('role',"student");
+      //$users=users::all()->where('role',"student");
+      $users=DB::table('users')
+      ->where('role',"student")
+      //->join('establishment','establishment.id',"=",'users.id')
+      //->select('users.*','establishment.*')
+      ->get();
+      $establishment=DB::table('establishment')
+      //->where('role',"student")
+      ->get();
+     // dd($users);
+     // ->paginate(5);
+        return view('officer.add.addestimate1',compact('users'),compact('establishment'));
+    }
     public function addes1()
     {
      // $users=users::all()->where('role',"student");
@@ -749,6 +764,53 @@ if($request->hasFile("filess"))
        return redirect('/teacher/estimate1')->with('success', 'สมัครสำเร็จ.');
        // return redirect("/welcome")->with('success', 'Company has been created successfully.');
     }
+}
+
+public function addestimate3(Request $request) {
+    //ตรวจสอบข้อมูล
+     //dd($request);
+
+     $request->validate([
+      //  'name' => 'required|unique:name',
+      //  'test' => 'required|unique:test',
+  ]
+,[
+
+  // 'name.required'=>"กรุณากรอกชื่อ",
+  // 'test.required'=>"กรุณาเทส",
+]
+
+);
+
+if($request->hasFile("filess"))
+    {
+      $file=$request->file("filess");
+       $imageName=time().'_'.$file->getClientOriginalName();
+      $file->move(\public_path("/ไฟล์เอกสารประเมิน"),$imageName);
+  // $post=Event::findOrFail($id);
+
+  $post =new supervision
+  ([
+      "user_id" => $request->user_id,
+      "term" => $request->term,
+      'namefile' => $request->namefile,
+      "year" => $request->year,
+      'score' => $request->score,
+      "filess" =>$imageName,
+
+
+  ]);
+
+  $post->annotation ="-";
+  $post->Status_supervision ="รอตรวจสอบ";
+  $post->save();
+    //  $data =array();
+    //  $data["test"]= $request->test;
+  //    $data["test"]= $request->test;
+  // DB::table('test')->insert($data);
+     return redirect('/officer/Evaluate')->with('success', 'สมัครสำเร็จ.');
+     // return redirect("/welcome")->with('success', 'Company has been created successfully.');
+  }
 }
 
 public function addes2(Request $request) {
