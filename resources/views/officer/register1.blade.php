@@ -99,7 +99,7 @@
 </div> <!-- end section -->
 
 
-@foreach ($registers as $row)
+{{-- @foreach ($registers as $row)
 {{ $row->namefile }}
-@endforeach
+@endforeach --}}
 @endsection

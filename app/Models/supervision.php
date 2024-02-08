@@ -13,7 +13,7 @@ class supervision extends Model
     // protected $primarykey = "";
     protected $fillable=[
         'term',
-'user_id',
+        'user_id',
         'namefile',
         'Status_supervision',
         'year',

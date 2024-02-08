@@ -309,6 +309,8 @@ Route::middleware(['auth','user-role:officer'])->group(function()
     // Route::get("/officer/viwetimeline2/{timeline_id}",[EditController::class,'viwetimeline2'])->name('viwetimeline2');
 
     //ตอบรับนักศึกษา
+    //ค้นหา
+    Route::get('/officer/search3',[HomeController::class,'searchacceptancedocument'])->name('searchacceptancedocument');
     Route::get("/officer/acceptancedocument1",[HomeController::class,'acceptancedocument1']);
     Route::get("/officer/addacceptancedocument1",[addController::class,'addacceptancedocument1'])->name('addacceptancedocument1');
     Route::post("/officer/addacceptancedocument1",[addController::class,'addacceptancedocument'])->name('addacceptancedocument');
@@ -317,6 +319,8 @@ Route::middleware(['auth','user-role:officer'])->group(function()
     Route::get('/officer/deletacceptance/{acceptance_id}', [EditController::class,'delacceptance'])->name('delacceptance');
 
 //เอกสารแจ้งรายละเอียดการปฎิบัติงาน
+//ค้นหา
+    Route::get('/officer/search4',[HomeController::class,'searchinformdetails'])->name('searchinformdetails');
     Route::get("/officer/informdetails2",[HomeController::class,'informdetails2']);
     Route::get("/officer/editinformdetails2/{informdetails_id}",[EditController::class,'editinformdetails2'])->name('editinformdetails2');
     Route::post("/officer/updateinformdetails2/{informdetails_id}",[EditController::class,'updateinformdetails2'])->name('updateinformdetails2');
@@ -325,6 +329,8 @@ Route::middleware(['auth','user-role:officer'])->group(function()
     // Route::get("/officer/record2",[HomeController::class,'record2']);
 
 //เอกสารฝึกประสบการณ์
+//ค้นหา
+Route::get('/officer/search6',[HomeController::class,'searchreport2'])->name('searchreport2');
     Route::get("/officer/experiencereport2",[HomeController::class,'experiencereport2']);
     Route::get("/teacher/editexperiencereport2/{report_id}",[EditController::class,'editexperiencereport2'])->name('editexperiencereport2');
     Route::post("/teacher/updateexperiencereport2/{report_id}",[EditController::class,'updateexperiencereport2'])->name('updateexperiencereport2');
@@ -376,6 +382,8 @@ Route::get('/officer/search2',[HomeController::class,'searchEvaluate'])->name('s
 
 
 //กำหนดการปฏิทินสหกิจ
+//ค้นหา
+Route::get('/officer/search7',[HomeController::class,'searchschedule'])->name('searchschedule');
     Route::get("/officer/schedule",[HomeController::class,'schedule']);
     Route::get("/officer/addschedule",[addController::class,'addschedule'])->name('addschedule');
     Route::post("/officer/addschedule1",[addController::class,'addschedule1'])->name('addschedule1');
@@ -396,6 +404,8 @@ Route::get('/officer/search2',[HomeController::class,'searchEvaluate'])->name('s
 
 
 //เอกสารขออนุญาตนิเทศงาน(สก10)
+//ค้นหา
+Route::get('/officer/search5',[HomeController::class,'searches'])->name('searches');
 Route::get("/officer/es1",[HomeController::class,'es2'])->name('es2');
 // Route::get("/teacher/addes1",[addController::class,'addes1'])->name('addes1');
 // Route::post("/teacher/addes2",[addController::class,'addes2'])->name('addes2');

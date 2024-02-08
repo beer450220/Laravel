@@ -150,6 +150,20 @@
                   {{ $message }}
               </span>
           @enderror
+          <div class="form-group col-md-8">
+            <label for="inputAddress" >  ขอเปลี่ยนเวลานัดนิเทศ</label>
+            {{-- <input type="text" class="form-control" @error('test') is-invalid @enderror name="test" value="{{ old('test') }}"  autofocus placeholder="test" placeholder="Last name" aria-label="Last name"> --}}
+
+            <input class="form-control" id="example-date" type="datetime-local" name="appointment_time"value="{{ \Carbon\Carbon::parse($supervisions->appointment_time)->format('Y-m-d\TH:i') }}"  autofocus placeholder="title">
+            @error('test')
+            <span class="invalid-feedback" >
+                {{ $message }}
+            </span>
+        @enderror
+
+
+
+        </div>
             </div>
           <div class="form-group col-md-4">
             <label for="inputAddress">ชื่อสถานประกอบการ</label>
@@ -195,8 +209,28 @@
               </optgroup>
 
               @endforeach
-            </select>
+            </select><br>
+            <label for="inputAddress" >อาจารย์นิเทศ</label>
+            <select class="form-control select2"data-placeholder="Choose anything" id="small-select2-options-multiple-field1" multiple name="student_name[]" >
+                <option value="">Select state</option>
 
+                @foreach ($users2 as $row)
+
+                {{-- <optgroup label="Mountain Time Zone"> --}}
+                  {{-- <option value="{{$row->id}}"{{$row->id==$supervisions->student_name ?'selected':''}}>{{$row->fname}}</option> --}}
+
+                  @php
+         $selectedIds = explode(',', $supervisions->teacher_name);
+              @endphp
+              <option value="{{ $row->name }}" {{ in_array($row->name, $selectedIds) ? 'selected' : '' }}>
+                  {{ $row->name }}
+              </option>
+
+
+                </optgroup>
+
+                @endforeach
+              </select>
           <script > $( '#small-select2-options-multiple-field' ).select2( {
             theme: "bootstrap-5",
             width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
@@ -205,7 +239,14 @@
             selectionCssClass: 'select2--small',
             dropdownCssClass: 'select2--small',
         } );
-
+        $( '#small-select2-options-multiple-field1' ).select2( {
+            theme: "bootstrap-5",
+            width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
+            placeholder: $( this ).data( 'placeholder' ),
+            closeOnSelect: false,
+            selectionCssClass: 'select2--small',
+            dropdownCssClass: 'select2--small',
+        } );
 
 
 
@@ -223,7 +264,13 @@ $( '#multiple-select-field' ).select2( {
     closeOnSelect: false,
 } );
 
-
+$( '#multiple-select-clear-field' ).select2( {
+    theme: "bootstrap-5",
+    width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
+    placeholder: $( this ).data( 'placeholder' ),
+    closeOnSelect: false,
+    allowClear: true,
+} );
 
             </script>
             @error('test')
@@ -231,6 +278,8 @@ $( '#multiple-select-field' ).select2( {
                 {{ $message }}
             </span>
         @enderror
+
+
           </div>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" />
@@ -265,59 +314,12 @@ $( '#multiple-select-field' ).select2( {
         console.log(values)
     }
 })
+
 </script>
-        <div class="col-md-4">
-            <label for="inputAddress" >ชื่ออาจารย์นิเทศ</label>
-            {{-- <input type="text" class="form-control" @error('test') is-invalid @enderror name="test" value="{{ old('test') }}"  autofocus placeholder="test" placeholder="Last name" aria-label="Last name"> --}}
-            {{-- <select class="form-select form-select-sm " id="small-bootstrap-class-multiple-field" multiple data-placeholder="เลือกรายชื่อ" name="teacher_name" > --}}
-                <select class="form-select" id="countries"   name="teacher_name[]">
-                <option value="">Select state</option>
-              @foreach ($users2 as $row)
-              {{-- <optgroup label="Mountain Time Zone"> --}}
-                @php
-                $selectedIds = explode(',', $supervisions->teacher_name);
-            @endphp
-            <option value="{{ $row->name }}" {{ in_array($row->name, $selectedIds) ? 'selected' : '' }}>{{$row->name}}
-                {{-- <option value="{{$row->name}}">{{$row->name}}</option> --}}
- {{-- <option value="">หห</option> --}}
-              {{-- </optgroup> --}}
-
-              @endforeach
-            </select>
-
-            @error('test')
-            <span class="invalid-feedback" >
-                {{ $message }}
-            </span>
-        @enderror
-
-        <script>
-$( '#multiple-select-field1' ).select2( {
-    theme: "bootstrap-5",
-    width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
-    placeholder: $( this ).data( 'placeholder' ),
-    closeOnSelect: false,
-} );
-
-        </script>
 
 
 
-          </div>
-          <div class="col-md-4">
-            <label for="inputAddress" >  ขอเปลี่ยนเวลานัดนิเทศ</label>
-            {{-- <input type="text" class="form-control" @error('test') is-invalid @enderror name="test" value="{{ old('test') }}"  autofocus placeholder="test" placeholder="Last name" aria-label="Last name"> --}}
 
-            <input class="form-control" id="example-date" type="datetime-local" name="appointment_time"value="{{ \Carbon\Carbon::parse($supervisions->appointment_time)->format('Y-m-d\TH:i') }}"  autofocus placeholder="title">
-            @error('test')
-            <span class="invalid-feedback" >
-                {{ $message }}
-            </span>
-        @enderror
-          </div>
-
-
-        </div>
 
 
           <div class="row">
@@ -373,9 +375,9 @@ $( '#multiple-select-field1' ).select2( {
 
 </div>
 
-      </select>
-      <div class="row-2">
-        <div class="col-md-3">
+
+      <div class="row">
+        <div class="col-md-2">
           <label for="inputAddress"class="col-form-label ">ชื่อผู้บริหาร</label>
 
           {{-- <input type="text" class="form-control" @error('test') is-invalid @enderror name="test" value="{{ old('test') }}"  autofocus placeholder="" placeholder="Last name" aria-label="Last name"> --}}
@@ -388,6 +390,7 @@ $( '#multiple-select-field1' ).select2( {
           </span>
       @enderror
         </div>
+       </div>
         <div class="col-md-3">
           {{-- <label for="inputAddress" >ชื่อผู้ติดต่อ</label> --}}
           <label for="inputAddress"class="col-form-label ">ชื่อผู้ติดต่อ</label>
@@ -433,7 +436,7 @@ $( '#multiple-select-field1' ).select2( {
   <br>
 </div> --}}
 
-</div>
+
       </div>
       <br>
       <br>

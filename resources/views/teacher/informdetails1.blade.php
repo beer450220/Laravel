@@ -30,7 +30,7 @@
 
 
 
-        <table class="table table-hover text-center">
+        <table class="table table-hover ">
           <thead class="thead-dark ">
             <tr>
               <th>#</th>

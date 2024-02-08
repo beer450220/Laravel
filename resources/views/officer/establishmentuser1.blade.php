@@ -61,10 +61,10 @@
                           <div class="col col-lg-2">
                             {{-- <a href="/officer/addestablishmentuser1"  type="button"  class=" btn btn-outline-success"data-toggle="modal" data-target="#varyModal" data-whatever="@mdo">เพิ่มข้อมูล</a> --}}
                             <a href="/officer/addestablishmentuser1"  type="button"  class=" btn btn-outline-success">เพิ่มข้อมูล</a>
-                          </div>
+                          </div> </form>
                         </div>
-                        </form>
-                      </div>
+
+
                       {{-- <div class="col ml-auto">
                         <div class="dropdown float-right">
                           <button class="btn btn-primary float-right ml-3" type="button">Add more +</button>
@@ -76,7 +76,7 @@
                           </div>
                         </div>
                       </div> --}}
-                    </div>
+<br>
 
                     <!-- table -->
                     <table class="table table-bordered ">

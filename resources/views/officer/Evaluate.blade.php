@@ -18,7 +18,7 @@
 {{-- <form action="{{ route('search1') }}" method="GET"> --}}
                 <label for="search" class="sr-only">Search</label>
                 <input type="text" class="form-control" name="keyword"  id="keyword" value="{{ request('keyword') }}" placeholder="Search">
-               </form> {{-- <input type="text" class="form-control" name="search"  id="keyword" value="" placeholder="Search"> --}}
+               {{-- <input type="text" class="form-control" name="search"  id="keyword" value="" placeholder="Search"> --}}
               {{-- </form> --}}
               {{-- <input type="text" name="keyword" id="keyword" class="form-control" value="{{ request('keyword') }}"placeholder="Search"> --}}
               </div>
@@ -39,7 +39,7 @@
               <a href="" name="keyword" value="{{ request('keyword') }}"  type="submit"  class=" btn btn-outline-warning">ค้นหาข้อมูล</a>
 
 
-
+ <a href="/officer/addestimate2" type="button" class=" btn btn-outline-success">เพิ่มข้อมูล</a>
 
             </div>
 
@@ -52,12 +52,13 @@
                 </p>
               </div>
               <div class="col col-lg-2">
-                <a href="/officer/addestimate2" type="button" class=" btn btn-outline-success">เพิ่มข้อมูล</a>
+                {{-- <a href="/officer/addestimate2" type="button" class=" btn btn-outline-success">เพิ่มข้อมูล</a> --}}
               </div>
             </div>
 
         </div>
-        <br>
+ </form>
+ <br>
         <table class="table table-hover">
           <thead class="thead-dark">
             <tr>
@@ -98,9 +99,9 @@
     </div>
   </div>
 </div>
-@foreach ($supervision as $row)
+{{-- @foreach ($supervision as $row)
 {{$row->namefile}}
-@endforeach
+@endforeach --}}
 
 {{-- <div class="container-fluid">
   <div class="row justify-content-center">

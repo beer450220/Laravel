@@ -1964,8 +1964,6 @@ $post->update
       //->select('users.*','establishment.*')
       ->get();
       $users2=DB::table('teacher')
-
-
       ->get();
       $establishment=DB::table('establishment')
       //->where('role',"student")

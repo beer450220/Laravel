@@ -20,6 +20,9 @@ use App\Models\report;
 use App\Models\teacher;
 use App\Models\category;
 use App\Models\supervision;
+use App\Models\acceptance;
+use App\Models\permission;
+use App\Models\schedules;
 
 class HomeController extends Controller
 {
@@ -253,8 +256,6 @@ class HomeController extends Controller
                     //->get();
                     ->paginate(6);
                     $registers=DB::table('establishment')
-
-
                      ->join('category','establishment.id','category.category_id')
                      ->select('establishment.*','category.name')
                      ->paginate(5);
@@ -338,9 +339,16 @@ class HomeController extends Controller
         //dd($request);
                         // สร้างคำสั่งคิวรีเพื่อค้นหาข้อมูล
                         $registers = registers::query()
-                            ->where('namefile', 'LIKE', '%' . $keyword . '%')
-                            ->get();
-                            //->paginate(5);
+                            // ->where('namefile', 'LIKE', '%' . $keyword . '%')
+                            ->where(function($query) use ($keyword) {
+                                $query->where('namefile', 'LIKE', '%' . $keyword . '%')
+                                      ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
+                                      ->orWhere('year', 'LIKE', '%' . $keyword . '%');
+                            })
+                            ->join('users','registers.user_id','users.id')
+                             ->select('registers.*','users.fname')
+                           // ->get();
+                            ->paginate(10);
 
                             // $registers1=DB::table('establishment')
                             //  ->join('category','establishment.id','category.category_id')
@@ -351,69 +359,140 @@ class HomeController extends Controller
 
                             //  $searchTerm = $request->input('search');
 
+ // dd($registers);
 
-
-                             $registers=DB::table('registers')
-                             ->join('users','registers.user_id','users.id')
-                             ->select('registers.*','users.fname')
-                             ->paginate(5);
-                        return view('officer.register1', compact('registers'), ['registers' => $registers,]);
-
+                            //  $registers=DB::table('registers')
+                            //  ->join('users','registers.user_id','users.id')
+                            //  ->select('registers.*','users.fname')
+                            //  ->paginate(5);
+                        return view('officer.register1',  ['registers' => $registers,]);
+// compact('registers'),
                    // return view('student.establishmentuser',compact('establishments','search'));
 
             }
 
             public function searchEvaluate(Request $request){
                 //dd($request);
-
-                        //$search = $request->input('search');
-
-                        // $establishments =establishment::where(function($query) use ($search){
-
-                        //     $query->where('name','like',"%$search%")
-                        //     ->orWhere('address','like',"%$search%");
-
-                        //     })
-
-                        //     ->get();
-
-
-                                // $establishments =establishment::where('name','like',"%$search%")
-                                // ->orWhere('address','like',"%$search%")->get();
-
-
                                 $keyword = $request->input('keyword');
                 //dd($request);
                                 // สร้างคำสั่งคิวรีเพื่อค้นหาข้อมูล
-                                $establishments = supervision::query()
-                                    ->where('namefile', 'LIKE', '%' . $keyword . '%')
-                                    ->get();
-                                    //->paginate(5);
-                                    // $registers=DB::table('supervision')
+                                $supervision= supervision::query()
+                                    // ->where('namefile', 'LIKE', '%' . $keyword . '%',)
+                                    // ->where('users_id', 'LIKE', '%' . $keyword . '%')
+                                    //->get();
+                                    ->where(function($query) use ($keyword) {
+                                        $query->where('namefile', 'LIKE', '%' . $keyword . '%')
+                                              ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
+                                              ->orWhere('year', 'LIKE', '%' . $keyword . '%');
+                                    })
+                                    ->join('users','supervision.user_id','users.id')
+                                     ->select('supervision.*','users.fname')
 
 
-                                    //  ->join('users','supervision.supervision_id','users.id')
-                                    //  ->select('supervision.*','users.fname')
-                                    //  ->paginate(5);
-                                    //  $registers1=DB::table('category')
-                                    //  ->paginate(5);
 
-                                    //  $searchTerm = $request->input('search');
+                                    ->paginate(5);
 
-                        // ค้นหาผู้ใช้โดยใช้ Eloquent ORM
-                        // $users = establishment::where('em_name', 'LIKE', "%{$searchTerm}%")
-                        //              ->orWhere('em_name', 'LIKE', "%{$searchTerm}%")
-                        //              ->get();
 
-                        $supervision=DB::table('supervision')
-                        ->join('users','supervision.user_id','users.id')
-                        ->select('supervision.*','users.fname')
-                        ->paginate(5);
-                                return view('officer.Evaluate', compact('establishments','supervision'), ['establishments' => $establishments,'supervision' => $supervision,]);
-
+                                       // dd($request,$establishments,$supervision);
+                                return view('officer.Evaluate',  ['supervision' => $supervision,]);
+                                // compact('establishments','supervision'),'supervision' => $supervision,
                            // return view('student.establishmentuser',compact('establishments','search'));
 
                     }
+                    public function searchacceptancedocument(Request $request){
+                        //dd($request);
+                                        $keyword = $request->input('keyword');
+                        //dd($request);
+                                        // สร้างคำสั่งคิวรีเพื่อค้นหาข้อมูล
+                                        $acceptances = acceptance::query()
+                                            // ->where('namefile', 'LIKE', '%' . $keyword . '%')
+                                            ->where(function($query) use ($keyword) {
+                                                $query->where('namefile', 'LIKE', '%' . $keyword . '%')
+                                                      ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
+                                                      ->orWhere('year', 'LIKE', '%' . $keyword . '%');
+                                            })
+                                            ->join('users','acceptance.user_id','users.id')
+                                             ->select('acceptance.*','users.fname')
+                                           // ->get();
+                                            ->paginate(10);
+
+
+                                        return view('officer.acceptancedocument1',  ['acceptances' => $acceptances,]);
+
+
+                            }
+                            public function searchinformdetails(Request $request){
+                                //dd($request);
+                                                $keyword = $request->input('keyword');
+                                //dd($request);
+                                                // สร้างคำสั่งคิวรีเพื่อค้นหาข้อมูล
+                                                $informdetails = informdetails::query()
+                                                    // ->where('namefile', 'LIKE', '%' . $keyword . '%')
+                                                    ->where(function($query) use ($keyword) {
+                                                        $query->where('namefile', 'LIKE', '%' . $keyword . '%')
+                                                              ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
+                                                              ->orWhere('year', 'LIKE', '%' . $keyword . '%');
+                                                    })
+                                                    ->join('users','informdetails.user_id','users.id')
+                                                     ->select('informdetails.*','users.fname')
+                                                   // ->get();
+                                                    ->paginate(10);
+                                                return view('officer.informdetails2',  ['informdetails' => $informdetails,]);
+                                    }
+                                    public function searches(Request $request){
+                                        //dd($request);
+                                                        $keyword = $request->input('keyword');
+                                        //dd($request);
+                                                        // สร้างคำสั่งคิวรีเพื่อค้นหาข้อมูล
+                                                        $supervision = permission::query()
+                                                            // ->where('namefile', 'LIKE', '%' . $keyword . '%')
+                                                            ->where(function($query) use ($keyword) {
+                                                                $query->where('namefile', 'LIKE', '%' . $keyword . '%')
+                                                                    //   ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
+                                                                      ->orWhere('year', 'LIKE', '%' . $keyword . '%');
+                                                            })
+                                                            // ->join('users','informdetails.user_id','users.id')
+                                                            //  ->select('informdetails.*','users.fname')
+                                                           // ->get();
+                                                            ->paginate(10);
+                                                        return view('officer.es1',  ['supervision' => $supervision,]);
+                                            }
+                                            public function searchreport2(Request $request){
+                                                //dd($request);
+                                                                $keyword = $request->input('keyword');
+                                                //dd($request);
+                                                                // สร้างคำสั่งคิวรีเพื่อค้นหาข้อมูล
+                                                                $report = report::query()
+                                                                    // ->where('namefile', 'LIKE', '%' . $keyword . '%')
+                                                                    ->where(function($query) use ($keyword) {
+                                                                        $query->where('namefile', 'LIKE', '%' . $keyword . '%')
+                                                                              ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
+                                                                              ->orWhere('year', 'LIKE', '%' . $keyword . '%');
+                                                                    })
+                                                                    ->join('users','report.user_id','users.id')
+                                                                     ->select('report.*','users.fname')
+                                                                   // ->get();
+                                                                    ->paginate(10);
+                                                                return view('officer.experiencereport2',  ['report' => $report,]);
+                                                    }
+     public function searchschedule(Request $request){
+                //dd($request);
+                $keyword = $request->input('keyword');
+                                                        //dd($request);
+                        // สร้างคำสั่งคิวรีเพื่อค้นหาข้อมูล
+                $schedules = schedule::query()
+            // ->where('namefile', 'LIKE', '%' . $keyword . '%')
+                ->where(function($query) use ($keyword) {
+                 $query->where('title', 'LIKE', '%' . $keyword . '%')
+        // ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
+        ->orWhere('year', 'LIKE', '%' . $keyword . '%');
+                             })
+//     ->join('users','schedules.user_id','users.id')
+//  ->select('schedules.*','users.fname')
+                                                                           // ->get();
+    ->paginate(10);
+   return view('officer.schedule',  ['schedules' => $schedules,]);
+ }
     public function  Student()
     {
         return view('student.Studentinformation',);
@@ -873,11 +952,13 @@ class HomeController extends Controller
 
     public function register1()
     {
+
         $registers=DB::table('registers')
+
         ->join('users','registers.user_id','users.id')
         ->select('registers.*','users.fname')
-        ->paginate(5);
-
+        ->paginate(10);
+//dd($registers);
         return view('officer.register1',compact('registers'));
     }
 
