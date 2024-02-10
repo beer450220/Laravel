@@ -11,6 +11,22 @@
     <div class="card shadow">
       <div class="card-body">
         <h5 class="card-title">รายงานผลการฝึกประสบการณ์</h5>
+        <form action="{{ route('searchreportresults') }}" method="GET" class="form-inline">
+
+            <div class="form-row">
+              <div class="form-group col-auto">
+
+                <label for="search" class="sr-only">Search</label>
+                <input type="text" class="form-control" name="keyword"  id="keyword" value="{{ request('keyword') }}" placeholder="Search">
+
+              </div>
+
+            </div>
+
+            <div class="">
+              {{-- <a href="" name="keyword" value="{{ request('keyword') }}"  type="submit"  class=" btn btn-outline-warning">ค้นหาข้อมูล</a> --}}
+            </form>
+            </div>
         <div class="container">
             <div class="row">
               <div class="col-10">

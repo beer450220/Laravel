@@ -349,20 +349,20 @@
                                                       <input type="text"value="{{ Auth::user()->code_id }}" disabled="" id="simpleinput" class="form-control">
                                                     </div>
                                                     <div class="form-group mb-3">
-                                                      <label for="example-email">อีเมล์</label>
-                                                      <input type="email" id="example-email"value="{{ Auth::user()->email }}" disabled="" name="example-email" class="form-control" placeholder="Email">
+                                                      <label for="example-email">ชื่อจริง นามสกุล</label>
+                                                      <input type="email" id="example-email"value="{{ Auth::user()->fname }}{{ Auth::user()->surname }}" disabled="" name="example-email" class="form-control" placeholder="Email">
                                                     </div>
                                                     <div class="form-group mb-3">
-                                                      <label for="example-password">ชื่อจริง นามสกุล</label>
-                                                      <input type="text" id="example-password" class="form-control" value="{{ Auth::user()->fname }}{{ Auth::user()->surname }}">
+                                                      <label for="example-password">อีเมล์</label>
+                                                      <input type="text" id="example-password" class="form-control" value="{{ Auth::user()->email }}">
                                                     </div>
                                                     <div class="form-group mb-3">
-                                                      <label for="example-palaceholder">ผู้ใช้งาน</label>
-                                                      <input type="text" id="example-palaceholder"value="{{ Auth::user()->username }}" disabled="" class="form-control" placeholder="placeholder">
-                                                    </div>
-                                                    <div class="form-group mb-3">
-                                                      <label for="example-palaceholder">เกรดเฉลี่ย(GPA)	</label>
+                                                      <label for="example-palaceholder">เกรดเฉลี่ย(GPA)</label>
                                                       <input type="text" id="example-palaceholder"value="{{ Auth::user()->GPA }}" disabled="" class="form-control" placeholder="placeholder">
+                                                    </div>
+                                                    <div class="form-group mb-3">
+                                                      <label for="example-palaceholder">เบอร์โทรศัพท์	</label>
+                                                      <input type="text" id="example-palaceholder"value="{{ Auth::user()->telephonenumber}}" disabled="" class="form-control" placeholder="placeholder">
                                                     </div>
                                                   <div class="text-primary">
                                                     <input type="text"  readonly=""value="{{ Auth::user()->status}}" disabled="" class="form-control text-success" id="example-static" placeholder="ไม่ได้ยืนยันตัวตน" >
@@ -375,11 +375,11 @@
 
                                                     </div>
                                                     <div class="form-group mb-3">
-                                                      <label for="example-readonly">	รหัสไปรษณีย์	</label>
+                                                      <label for="example-readonly">	ชื่อผู้ปกครอง	</label>
                                                       <input type="text" id="example-readonly"value="{{ Auth::user()->postcode}}" disabled="" class="form-control" readonly="" value="Readonly value">
                                                     </div>
                                                     <div class="form-group mb-3">
-                                                      <label for="example-disable">คณะ</label>
+                                                      <label for="example-disable">เบอร์โทรผู้ปกครอง</label>
                                                       <input type="text" class="form-control"value="{{ Auth::user()->faculty}}" disabled="" id="example-disable" disabled="" value="Disabled value">
                                                     </div>
                                                     <div class="form-group mb-3">
@@ -387,9 +387,13 @@
                                                       <input type="text" readonly=""value="{{ Auth::user()->course}}" disabled="" class="form-control" id="example-static" >
                                                     </div>
                                                     <div class="form-group mb-3">
-                                                      <label for="example-static">เบอร์โทรศัพท์</label>
+                                                      <label for="example-static">ความเกี่ยวข้อง</label>
                                                       <input type="text" readonly=""value="{{ Auth::user()->telephonenumber}}" disabled="" class="form-control" id="example-static" >
                                                     </div>
+                                                    <div class="form-group mb-3">
+                                                        <label for="example-static">ที่อยู่ผู้ปกครอง</label>
+                                                        <input type="text" readonly=""value="{{ Auth::user()->telephonenumber}}" disabled="" class="form-control" id="example-static" >
+                                                      </div>
                                                     <div class="form-group mb-3">
 
 

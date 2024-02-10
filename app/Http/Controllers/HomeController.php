@@ -24,6 +24,7 @@ use App\Models\acceptance;
 use App\Models\permission;
 use App\Models\schedules;
 
+
 class HomeController extends Controller
 {
     /**
@@ -493,6 +494,108 @@ class HomeController extends Controller
     ->paginate(10);
    return view('officer.schedule',  ['schedules' => $schedules,]);
  }
+
+ public function searchinformdetails0(Request $request){
+    //dd($request);
+    $keyword = $request->input('keyword');
+                                            //dd($request);
+            // สร้างคำสั่งคิวรีเพื่อค้นหาข้อมูล
+    $informdetails = informdetails::query()
+// ->where('namefile', 'LIKE', '%' . $keyword . '%')
+    ->where(function($query) use ($keyword) {
+     $query->where('namefile', 'LIKE', '%' . $keyword . '%')
+ ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
+->orWhere('year', 'LIKE', '%' . $keyword . '%');
+                 })
+    ->join('users','informdetails.user_id','users.id')
+  ->select('informdetails.*','users.fname')
+                                                               // ->get();
+->paginate(10);
+return view('teacher.informdetails1',  ['informdetails' => $informdetails,]);
+}
+
+public function searchsupervision0(Request $request){
+    //dd($request);
+    $keyword = $request->input('keyword');
+                                            //dd($request);
+            // สร้างคำสั่งคิวรีเพื่อค้นหาข้อมูล
+    $events = Event::query()
+// ->where('namefile', 'LIKE', '%' . $keyword . '%')
+    ->where(function($query) use ($keyword) {
+     $query->where('student_name', 'LIKE', '%' . $keyword . '%')
+//  ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
+->orWhere('year', 'LIKE', '%' . $keyword . '%');
+                 })
+//     ->join('users','events.student_name','users.id')
+//   ->select('events.*','users.fname')
+                                                               // ->get();
+->paginate(10);
+//dd($events);
+return view('teacher.supervision',  ['events' => $events,]);
+}
+
+public function searches1(Request $request){
+    //dd($request);
+    $keyword = $request->input('keyword');
+                                            //dd($request);
+            // สร้างคำสั่งคิวรีเพื่อค้นหาข้อมูล
+    $supervision = permission::query()
+// ->where('namefile', 'LIKE', '%' . $keyword . '%')
+    ->where(function($query) use ($keyword) {
+     $query->where('namefile', 'LIKE', '%' . $keyword . '%')
+//  ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
+->orWhere('year', 'LIKE', '%' . $keyword . '%');
+                 })
+//     ->join('users','events.student_name','users.id')
+//   ->select('events.*','users.fname')
+                                                               // ->get();
+->paginate(10);
+//dd($events);
+return view('teacher.es1',  ['supervision' => $supervision,]);
+}
+public function searchestimate1(Request $request){
+    //dd($request);
+    $keyword = $request->input('keyword');
+                                            //dd($request);
+            // สร้างคำสั่งคิวรีเพื่อค้นหาข้อมูล
+    $supervision = supervision::query()
+// ->where('namefile', 'LIKE', '%' . $keyword . '%')
+    ->where(function($query) use ($keyword) {
+     $query->where('namefile', 'LIKE', '%' . $keyword . '%')
+  ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
+->orWhere('year', 'LIKE', '%' . $keyword . '%');
+                 })
+
+     ->join('users','supervision.user_id','users.id')
+   ->select('supervision.*','users.fname')
+                                                               // ->get();
+->paginate(10);
+//dd($events);
+return view('teacher.estimate1',  ['supervision' => $supervision,]);
+}
+
+
+public function searchreportresults(Request $request){
+    //dd($request);
+    $keyword = $request->input('keyword');
+                                            //dd($request);
+            // สร้างคำสั่งคิวรีเพื่อค้นหาข้อมูล
+    $report = report::query()
+// ->where('namefile', 'LIKE', '%' . $keyword . '%')
+    ->where(function($query) use ($keyword) {
+     $query->where('namefile', 'LIKE', '%' . $keyword . '%')
+  ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
+->orWhere('year', 'LIKE', '%' . $keyword . '%');
+                 })
+
+     ->join('users','report.user_id','users.id')
+   ->select('report.*','users.fname')
+                                                               // ->get();
+->paginate(10);
+//dd($events);
+return view('teacher.reportresults1',  ['report' => $report,]);
+}
+
     public function  Student()
     {
         return view('student.Studentinformation',);
@@ -685,10 +788,6 @@ class HomeController extends Controller
         ->where('user_id', auth()->id())
         ->paginate(5);
 
-        $studentinformations=DB::table('studentinformation')
-        ->join('users','studentinformation.user_id','users.id')
-        ->select('studentinformation.*','users.fname')->where('user_id', auth()->id())
-        ->paginate(5);
 
 
         $activity=DB::table('schedule')
@@ -696,7 +795,7 @@ class HomeController extends Controller
         // ->select('registers.*','users.name')->where('user_id', auth()->id())
         ->paginate(5);
 
-        return view('student.register',compact('registers','studentinformations','registers1'
+        return view('student.register',compact('registers','registers1'
 
 
         ,'registers2','registers3','registers4','registers5','registers6','registers7','registers8','activity'));
@@ -1076,16 +1175,16 @@ public function category()
         // ->join('users', 'events.student_name', '=', 'users.id')
         //  ->select('events.*', 'users.fname', 'users.surname')
         ->paginate(5);
-        $users=DB::table('users')
-      ->where('role',"student")->paginate(5);
-        $major=DB::table('users')->paginate(5);
-        $studentNameFromDatabase = $events; // ให้เปลี่ยนเป็นการดึงจากฐานข้อมูลตามการใช้งานของคุณ
+    //     $users=DB::table('users')
+    //   ->where('role',"student")->paginate(5);
+        // $major=DB::table('users')->paginate(5);
+        // $studentNameFromDatabase = $events; // ให้เปลี่ยนเป็นการดึงจากฐานข้อมูลตามการใช้งานของคุณ
 
-        // แปลง JSON string เป็น PHP array
-        $phpArrayFromDatabase = json_decode($studentNameFromDatabase);
-        return view('teacher.supervision',compact('events','major','phpArrayFromDatabase','users'));
+        // // แปลง JSON string เป็น PHP array
+        // $phpArrayFromDatabase = json_decode($studentNameFromDatabase);
+        return view('teacher.supervision',compact('events'));
     }
-
+// ,'major','phpArrayFromDatabase','users'
 
 
     public function calendar5(Request $request)
@@ -1246,7 +1345,7 @@ public function category()
         ->select('supervision.*','users.fname')
         //->select('supervision.*')
        // ->where('establishment.establishment_id')
-        ->paginate(5);
+        ->paginate(10);
         return view('teacher.estimate1',compact('supervision'));
     }
     public function es1()

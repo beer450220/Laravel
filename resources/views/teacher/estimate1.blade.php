@@ -10,7 +10,24 @@
 <div class="col-md-12 my-4">
     <div class="card shadow">
       <div class="card-body">
-        <h5 class="card-title">รายงานผลการนิเทศ </h5>
+        <h5 class="card-title">รายงานผลการประเมิน </h5>
+        <form action="{{ route('searchestimate1') }}" method="GET" class="form-inline">
+
+            <div class="form-row">
+              <div class="form-group col-auto">
+
+                <label for="search" class="sr-only">Search</label>
+                <input type="text" class="form-control" name="keyword"  id="keyword" value="{{ request('keyword') }}" placeholder="Search">
+
+              </div>
+
+            </div>
+
+            <div class="">
+              {{-- <a href="" name="keyword" value="{{ request('keyword') }}"  type="submit"  class=" btn btn-outline-warning">ค้นหาข้อมูล</a> --}}
+              <a href="/teacher/addestimate1" type="button" class=" btn btn-outline-success">เพิ่มข้อมูล</a>
+            </form>
+            </div>
         <div class="container">
             <div class="row">
               <div class="col-10">
@@ -18,7 +35,7 @@
                 </p> --}}
               </div>
               <div class="col col-lg-2">
-                <a href="/teacher/addestimate1" type="button" class=" btn btn-outline-success">เพิ่มข้อมูล</a>
+                {{-- <a href="/teacher/addestimate1" type="button" class=" btn btn-outline-success">เพิ่มข้อมูล</a> --}}
               </div>
             </div>
 

@@ -11,7 +11,22 @@
     <div class="card shadow">
       <div class="card-body">
         <h5 class="card-title">เอกสารแจ้งรายละเอียดการปฎิบัติงาน</h5>
+        <form action="{{ route('searchinformdetails0') }}" method="GET" class="form-inline">
 
+            <div class="form-row">
+              <div class="form-group col-auto">
+
+                <label for="search" class="sr-only">Search</label>
+                <input type="text" class="form-control" name="keyword"  id="keyword" value="{{ request('keyword') }}" placeholder="Search">
+
+              </div>
+
+            </div>
+
+            <div class="">
+              {{-- <a href="" name="keyword" value="{{ request('keyword') }}"  type="submit"  class=" btn btn-outline-warning">ค้นหาข้อมูล</a> --}}
+            </form>
+            </div>
 
         <div class="container">
             <div class="row">
@@ -34,8 +49,9 @@
           <thead class="thead-dark ">
             <tr>
               <th>#</th>
+               <th>ชื่อนักศึกษา</th>
               <th>ชื่อเอกสาร</th>
-              <th>ชื่อนักศึกษา</th>
+
               <th>เอกสารแจ้ง</th>
               {{-- <th>สถานะ</th> --}}
               {{-- <th>ดูข้อมูล</th> --}}
@@ -46,8 +62,9 @@
             @foreach ($informdetails as $row)
             <tr>
               <td>{{$informdetails->firstItem()+$loop->index}}</td>
-              <td>{{$row->namefile}}</td>
               <td>{{$row->fname}}</td>
+              <td>{{$row->namefile}}</td>
+
               <td><a href="/fileinformdetails/{{ $row->files }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td>
               {{-- <td class="text-danger">{{$row->Status_informdetails}}</td> --}}
               {{-- <td><a href="/teacher/viewinformdetails1/{{$row->informdetails_id}}" type="button" class="btn btn-outline-secondary fa-regular fa-eye fe-16"></a></td> --}}

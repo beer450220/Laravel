@@ -320,52 +320,67 @@
                                                     <div class="form-group mb-3">
                                                       <form method="POST" action="{{url('/studenthome/updateuser1/'.$users->id)}}" enctype="multipart/form-data">
                                                         @csrf
-                                                      <label for="simpleinput">รหัสนักศึกษา</label>
+                                                      <label for="simpleinput">ชื่อผู้ใช้งาน</label>
                                                       <input type="text"value="{{ Auth::user()->Student_ID }}" disabled="" id="simpleinput" class="form-control">
                                                     </div>
                                                     <div class="form-group mb-3">
-                                                      <label for="example-email">Email</label>
-                                                      <input type="email" id="example-email"value="{{ Auth::user()->email }}"  name="example-email" class="form-control" placeholder="Email">
+                                                      <label for="example-email">ชื่อจริง นามสกุล</label>
+                                                      <input type="email" id="example-email"value=""  name="example-email" class="form-control" placeholder="Email">
                                                     </div>
                                                     {{-- <div class="form-group mb-3">
                                                       <label for="example-password">Password</label>
                                                       <input type="password" id="example-password" class="form-control" value="password">
                                                     </div> --}}
                                                     <div class="form-group mb-3">
-                                                      <label for="example-palaceholder">ผู้ใช้งาน</label>
-                                                      <input type="text" id="example-palaceholder"value="{{ Auth::user()->username }}" disabled="" class="form-control" placeholder="placeholder">
+                                                      <label for="example-palaceholder">อีเมล์</label>
+                                                      <input type="text" id="example-palaceholder"value="{{ Auth::user()->username }}"  class="form-control" placeholder="placeholder">
                                                     </div>
                                                     <div class="form-group mb-3">
                                                       <label for="example-palaceholder">เกรดเฉลี่ย(GPA)	</label>
                                                       <input type="text" id="example-palaceholder"value="{{ Auth::user()->GPA }}" name="GPA"  class="form-control" placeholder="placeholder">
+
                                                     </div>
+                                                    <div class="form-group mb-3">
+                                                        <label for="example-palaceholder">เบอร์โทรศัพท์	</label>
+                                                        <input type="text" id="example-palaceholder"value="{{ Auth::user()->telephonenumber}}"  class="form-control" placeholder="placeholder">
+                                                      </div>
+                                                      <div class="form-group mb-3">
+                                                        <label for="example-static">รูปโปรไฟล์</label>
+                                                        <input type="file" readonly=""value="{{ Auth::user()->images}}" name="images" class="form-control" id="example-static" >
+                                                      </div>
                                                   </div> <!-- /.col -->
                                                   <div class="col-md-6">
                                                     <div class="form-group mb-3">
                                                       <label for="example-helping">ที่อยู่</label>
-                                                      <input type="text" id="example-helping"value="{{ Auth::user()->address }}"  class="form-control" placeholder="Input with helping text">
+                                                      <input type="text" id="example-helping"value=""  class="form-control" placeholder="Input with helping text">
 
                                                     </div>
                                                     <div class="form-group mb-3">
-                                                      <label for="example-readonly">	รหัสไปรษณีย์	</label>
-                                                      <input type="text" id="example-readonly"value="{{ Auth::user()->postcode}}"  class="form-control" readonly="" value="Readonly value">
+                                                      <label for="example-readonly">	ชื่อผู้ปกครอง	</label>
+                                                      <input type="text" id="example-palaceholder"value="{{ Auth::user()->username }}"  class="form-control" placeholder="placeholder">
                                                     </div>
                                                     <div class="form-group mb-3">
-                                                      <label for="example-disable">คณะ</label>
-                                                      <input type="text" class="form-control"value="{{ Auth::user()->faculty}}" disabled="" id="example-disable" disabled="" value="Disabled value">
+                                                      <label for="example-disable">เบอร์โทรผู้ปกครอง</label>
+                                                      <input type="text" id="example-palaceholder"value="{{ Auth::user()->username }}"  class="form-control" placeholder="placeholder">
                                                     </div>
                                                     <div class="form-group mb-3">
                                                       <label for="example-static">หลักสูตร</label>
-                                                      <input type="text" readonly=""value="{{ Auth::user()->course}}" disabled="" class="form-control" id="example-static" >
+                                                      <input type="text" id="example-palaceholder"value="{{ Auth::user()->username }}"  class="form-control" placeholder="placeholder">
                                                     </div>
                                                     <div class="form-group mb-3">
-                                                      <label for="example-static">เบอร์โทรศัพท์</label>
-                                                      <input type="text" readonly=""value="{{ Auth::user()->telephonenumber}}"  class="form-control" id="example-static" >
+                                                      <label for="example-static">ความเกี่ยวข้อง</label>
+                                                      <select class="form-control" id="example-select">
+                                                        <option selected="">กรุณาเลือก</option>
+                                                        <option value="1">บิดา</option>
+                                                        <option value="2">มารดา</option>
+                                                        <option value="3">อื่นๆ</option>
+                                                      </select>
                                                     </div>
                                                     <div class="form-group mb-3">
-                                                        <label for="example-static">รูปโปรไฟล์</label>
-                                                        <input type="file" readonly=""value="{{ Auth::user()->images}}" name="images" class="form-control" id="example-static" >
+                                                        <label for="example-static">ที่อยู่ผู้ปกครอง</label>
+                                                        <input type="text" readonly=""value="{{ Auth::user()->telephonenumber}}"  class="form-control" id="example-static" >
                                                       </div>
+
 
 
 

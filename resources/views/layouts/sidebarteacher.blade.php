@@ -153,15 +153,15 @@
           </li> --}}
       </li>
        <li class="nav-item">
-        <a class="nav-link pl-3" href="/teacher/es1"><span class="ml-1 item-text">เอกสารขออนุญาตนิเทศงาน(สก10)
+        <a class="nav-link pl-3" href="/teacher/es1"><span class="ml-1 item-text">เอกสารขออนุญาตนิเทศงาน
             </span>
         </a>
       </li>
-      <li class="nav-item">
+      {{-- <li class="nav-item">
         <a class="nav-link pl-3" href="/teacher/estimate1"><span class="ml-1 item-text">   เอกสารรายงานผลประเมิน
-            (สก12,สก.15,สก.13,สก.14) </span>
+             </span>
         </a>
-      </li>
+      </li> --}}
       <li class="nav-item">
         <a class="nav-link pl-3" href="/teacher/teacher01"><span class="ml-1 item-text">   รายชื่ออาจารย์
             </span>
@@ -176,6 +176,27 @@
     </ul>
 
     <ul class="navbar-nav flex-fill w-100 mb-2">
+        <li class="nav-item ">
+          <a href="/teacher/estimate1"  class=" nav-link">
+            <i class="fe fe-box fe-16"></i>
+            <span class="ml-3 item-text">เอกสารรายงานผลประเมิน</span>
+          </a>
+
+
+        </li>
+      </ul>
+
+      <ul class="navbar-nav flex-fill w-100 mb-2">
+        <li class="nav-item ">
+          <a href="/teacher/reportresults1"  class=" nav-link">
+            <i class="fe fe-box fe-16"></i>
+            <span class="ml-3 item-text">เอกสารฝึกประสบการณ์</span>
+          </a>
+
+
+        </li>
+      </ul>
+    {{-- <ul class="navbar-nav flex-fill w-100 mb-2">
       <li class="nav-item dropdown">
         <a href="#ui-elementsss3" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
           <i class="fe fe-box fe-16"></i>
@@ -183,9 +204,9 @@
         </a>
         <ul class="collapse list-unstyled pl-4 w-100" id="ui-elementsss3">
              <li class="nav-item">
-            {{-- <a class="nav-link pl-3" href="/teacher/advisor1"><span class="ml-1 item-text">จัดอาจารย์ที่ปรึกษา</span></a> --}}
+
             <a class="nav-link pl-3" href="/teacher/reportresults1"><span class="ml-1 item-text">เอกสารฝึกประสบการณ์</span></a>
-          </li>
+          </li> --}}
 
 
 

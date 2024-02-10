@@ -450,7 +450,8 @@ Route::middleware(['auth','user-role:teacher'])->group(function()
 
     // Route::get("/teacher/timeline1",[HomeController::class,'timeline1'])->name('teacher.documents1');
     // Route::get("/teacher/viwetimeline/{timeline_id}",[EditController::class,'viwetimeline'])->name('viwetimeline');
-
+//ค้นหา
+Route::get('/teacher/search',[HomeController::class,'searchinformdetails0'])->name('searchinformdetails0');
     Route::get("/teacher/informdetails1",[HomeController::class,'informdetails1'])->name('teacher.informdetails1');
     Route::get("/teacher/viewinformdetails1/{informdetails_id}",[EditController::class,'viewinformdetails1'])->name('viewinformdetails1');
 
@@ -458,6 +459,8 @@ Route::middleware(['auth','user-role:teacher'])->group(function()
     // Route::get("/teacher/listofteachers1",[HomeController::class,'listofteachers1'])->name('teacher.listofteachers1');
 
 //เอกสารประเมิน
+//ค้นหา
+Route::get('/teacher/search3',[HomeController::class,'searchestimate1'])->name('searchestimate1');
     Route::get("/teacher/estimate1",[HomeController::class,'estimate1'])->name('teacher.estimate1');
     Route::get("/teacher/addestimate1",[addController::class,'addestimate1'])->name('addestimate1');
     Route::post("/teacher/addestimate",[addController::class,'addestimate'])->name('addestimate');
@@ -481,10 +484,14 @@ Route::middleware(['auth','user-role:teacher'])->group(function()
     Route::get("/teacher/viewregisters/{id}",[EditController::class,'viewregisters'])->name('viewregisters');
 
     Route::get("/teacher/advisor1",[HomeController::class,'advisor1'])->name('teacher.advisor1');
+    //ค้นหา
+    Route::get('/teacher/search4',[HomeController::class,'searchreportresults'])->name('searchreportresults');
     Route::get("/teacher/reportresults1",[HomeController::class,'reportresults1'])->name('teacher.reportresults1');
 
 
 //นิเทศงาน
+//ค้นหา
+Route::get('/teacher/search1',[HomeController::class,'searchsupervision0'])->name('searchsupervision0');
     Route::get("/teacher/supervision",[HomeController::class,'supervision1']);
     // Route::get('/officer/pdf', [FileController::class, 'createPDF'])->name('createPDF');
      //Route::get('/teacher/Excel', [FileController::class, 'export1'])->name('export1');
@@ -498,6 +505,8 @@ Route::middleware(['auth','user-role:teacher'])->group(function()
 
 
 //เอกสารขออนุญาตนิเทศงาน(สก10)
+//ค้นหา
+Route::get('/teacher/search2',[HomeController::class,'searches1'])->name('searches1');
 Route::get("/teacher/es1",[HomeController::class,'es1'])->name('es1');
 Route::get("/teacher/addes1",[addController::class,'addes1'])->name('addes1');
 Route::post("/teacher/addes2",[addController::class,'addes2'])->name('addes2');
