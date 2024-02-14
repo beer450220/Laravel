@@ -102,7 +102,7 @@
             </a>
 
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-              <li><a href="/" class="nav-link px-2 text-secondary">หน้าแรก</a></li>
+              {{-- <li><a href="/" class="nav-link px-2 text-secondary">หน้าแรก</a></li> --}}
               <li><a href="/establishment" class="nav-link px-2 text-white">สถานประกอบการ</a></li>
               <li><a href="/cooperative" class="nav-link px-2 text-white">แบบฟอร์มสหกิจ</a></li>
               <li><a href="/cooperative" class="nav-link px-2 text-white">คู่มือการใช้งาน</a></li>

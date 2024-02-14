@@ -35,10 +35,10 @@
                 </a>
 
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                  <li><a href="/" class="nav-link px-2 text-secondary">หน้าแรก</a></li>
+                  {{-- <li><a href="/" class="nav-link px-2 text-secondary">หน้าแรก</a></li> --}}
                   <li><a href="/establishment" class="nav-link px-2 text-white">สถานประกอบการ</a></li>
                   <li><a href="/cooperative" class="nav-link px-2 text-white">แบบฟอร์มสหกิจ</a></li>
-
+                  <li><a href="/cooperative" class="nav-link px-2 text-white">คู่มือการใช้งาน</a></li>
                   {{-- <li><a href="/test4" class="nav-link px-2 text-white">ทดสอบ</a></li>
                   <li><a href="/test6" class="nav-link px-2 text-white">ทดสอบ2</a></li> --}}
                   {{-- <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
@@ -55,7 +55,7 @@
                   {{-- <a type="button" href="{{ route('register1') }}" class="btn btn-warning">Sign-up</a> --}}
 
                   <a type="button" href="{{ route('register1') }}" class="btn btn-outline-warning me-2">สมัครสมาชิก</a>
-
+                  {{-- <a type="button" href="/login" class="btn btn-outline-warning me-2">ล็อกอิน</a> --}}
                 </div>
               </div>
             </div>

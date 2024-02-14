@@ -76,6 +76,7 @@
               {{-- <a type="button" href="{{ route('register1') }}" class="btn btn-warning">Sign-up</a> --}}
 
               {{-- <a type="button" href="{{ route('register1') }}" class="btn btn-outline-warning me-2">สมัครสมาชิก</a> --}}
+              <a type="button" href="/login" class="btn btn-outline-warning me-2">ล็อกอิน</a>
             </div>
           </div>
         </div>

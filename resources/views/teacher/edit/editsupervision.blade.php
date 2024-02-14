@@ -211,7 +211,7 @@
               @endforeach
             </select><br>
             <label for="inputAddress" >อาจารย์นิเทศ</label>
-            <select class="form-control select2"data-placeholder="Choose anything" id="small-select2-options-multiple-field1" multiple name="student_name[]" >
+            <select class="form-control select2"data-placeholder="Choose anything" id="small-select2-options-multiple-field1" multiple name="teacher_name[]" >
                 <option value="">Select state</option>
 
                 @foreach ($users2 as $row)
