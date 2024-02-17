@@ -101,6 +101,8 @@ class Register2Controller extends Controller
                       "filess" =>$imageName,
                       "annotation" => "-",
                       "Status_registers" => "รอตรวจสอบ",
+                      "year" => $request->year,
+                      "term" => $request->term,
                   ]);
               //   $post->annotation ="-";
               //   $post->Status_registers ="รอตรวจสอบ";
@@ -193,6 +195,8 @@ public function addregisteruser3(Request $request) {
                   "filess" =>$imageName,
                   "annotation" => "-",
                   "Status_registers" => "รอตรวจสอบ",
+                  "year" => $request->year,
+                  "term" => $request->term,
               ]);
           //   $post->annotation ="-";
           //   $post->Status_registers ="รอตรวจสอบ";

@@ -272,7 +272,7 @@
 
                                 </div>
                                 <div class="col-4">
-                                    <h2 class="steps">ขั้นตอน 3 - 6</h2>
+                                    <h2 class="steps">ขั้นตอน 2 - 5</h2>
                                 </div>
                             </div><div class="col-6">
                                  <br>   <br>
@@ -353,9 +353,44 @@
                                                         <label class="custom-file-label" for="customFile">เลือกไฟล์รูป</label>
 
                                                       </div>
+
                                                     {{-- <input type="text"  name="namefile" class="form-control" id="example-static" > --}}
                                                   </div>
                                                 </div>
+  <div class="form-group mb-3">
+                                                    <label for="inputAddress"class="col-form-label ">ปีการศึกษา</label>
+      <select class="form-control "  name="year" >
+        {{-- @foreach(range(date('Y'), date('Y') + 100) as $year)
+        <option value="{{ $year }}">{{ $year }}</option>
+    @endforeach --}}
+    <option value="">กรุณาเลือกปีการศึกษา</option>
+    @php
+    $currentYear = date('Y') + 543; // ปีปัจจุบัน
+    $startYear = 2566; // ปีเริ่มต้น
+    $endYear = $currentYear + 50; // ปีสิ้นสุด
+@endphp
+
+@for ($i = $endYear; $i >= $startYear; $i--)
+    @for ($j = 1; $j <= 1; $j++)
+        <option value="{{ $i }}">{{ $i }}</option>
+    @endfor
+@endfor
+</select>    </div>
+
+
+                                                      {{-- <input type="text"  name="namefile" class="form-control" id="example-static" > --}}
+
+
+
+                                                  <div class="form-group mb-3">
+                                                      <label for="inputAddress"class="col-form-label ">ภาคเรียน</label>
+                                                      <select class="form-control "  name="term">
+                                                        <option value="">กรุณาเลือกภาคเรียน</option>
+
+                                                      <option value="ภาคเรียนที่1">ภาคเรียนที่:1 </option>
+                                                        <option value="ภาคเรียนที่2">ภาคเรียนที่:2 </option>
+                                                      </select>
+                                                  </div>
 
                                             </div> <!-- /.col -->
                                               {{-- <div class="col-md-6">

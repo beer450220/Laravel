@@ -58,8 +58,8 @@
               <th>ชื่อนักศึกษา</th>
               <th>ชื่อสถานประกอบการ</th>
               {{-- <th>ดูข้อมูล</th> --}}
-              <th>สถานะ</th>
-              <th>สถานะขอเปลี่ยนเวลานัดนิเทศ</th>
+              <th>สถานะเวลานัดนิเทศ</th>
+              <th>ขอเปลี่ยนเวลานัดนิเทศ</th>
               <th>แก้ไขข้อมูล</th>
               <th>ลบ</th>
             </tr>
@@ -83,10 +83,10 @@
               {{-- "{{$row->id==$supervisions->user_id }} --}}
               {{-- <td>@foreach ($phpArrayFromDatabase as $item) {
                 {{$item->student_name}}
-            }@endforeach</td> --}}  <td class="text-danger">{{$row->establishment_name}}</td>
+            }@endforeach</td> --}}  <td class="">{{$row->establishment_name}}</td>
             {{-- <td class="text-danger"><a href="/teacher/editsupervision02/{{$row->id}}" type="button" class="btn btn-outline-secondary fa-solid fa-pen-to-square fe-16"></a></td> --}}
               <td class="text-danger">{{$row->Status_events}}</td>
-              <td class="text-danger">{{$row->appointment_time}}</td>
+              <td class="">{{$row->appointment_time}}</td>
               {{-- <td><a href="/teacher/viewinformdetails1/{{$row->id}}" type="button" class="btn btn-outline-secondary fa-regular fa-eye fe-16"></a></td> --}}
               <td><a href="/teacher/editsupervision02/{{$row->id}}" type="button" class="btn btn-outline-secondary fa-solid fa-pen-to-square fe-16"></a></td>
               <td><a href="/teacher/deletsupervision/{{$row->id}}"type="button" class="btn btn-outline-danger fa-solid fa-trash-can"onclick="return confirm('ยืนยันการลบข้อมูล !!');"></td>
