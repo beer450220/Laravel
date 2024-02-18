@@ -70,7 +70,8 @@ class reportController extends Controller
               "namefile" => $request->namefile,
           //    'establishment' => $request->establishment,
               "filess" =>$imageName,
-
+              "year" => $request->year,
+              "term" => $request->term,
 
           ]);// dd($request);dd($request->Status);
 
@@ -119,7 +120,8 @@ class reportController extends Controller
                   "namefile" => $request->namefile,
               //    'establishment' => $request->establishment,
                   "filess" =>$imageName,
-
+                  "year" => $request->year,
+                  "term" => $request->term,
 
               ]);// dd($request);dd($request->Status);
 
@@ -168,7 +170,8 @@ class reportController extends Controller
                       "namefile" => $request->namefile,
                   //    'establishment' => $request->establishment,
                       "filess" =>$imageName,
-
+                      "year" => $request->year,
+                      "term" => $request->term,
 
                   ]);// dd($request);dd($request->Status);
 

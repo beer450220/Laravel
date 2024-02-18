@@ -137,8 +137,9 @@ class AddController extends Controller
              "em_Contact_email" => $request->em_Contact_email,
              'em_contactposition' => $request->em_contactposition,
              "em_job" => $request->em_job,
-             "user_id" =>'0',
-             "status" =>'0',
+
+            //  "user_id" =>'0',
+            //  "status" =>'0',
             //  "major_id" =>$request->major_id,
               "images" =>$imageName,
           ]);
@@ -352,7 +353,8 @@ class AddController extends Controller
             "namefile" => $request->namefile,
         //    'establishment' => $request->establishment,
             "files" =>$imageName,
-
+            "year" => $request->year,
+            "term" => $request->term,
 
         ]);// dd($request);dd($request->Status);
 
@@ -410,7 +412,8 @@ class AddController extends Controller
             "namefile" => $request->namefile,
         //    'establishment' => $request->establishment,
             "filess" =>$imageName,
-
+            "year" => $request->year,
+            "term" => $request->term,
 
         ]);// dd($request);dd($request->Status);
 

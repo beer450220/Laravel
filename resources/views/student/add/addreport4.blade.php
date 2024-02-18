@@ -255,7 +255,7 @@
 
                     <ul id="progressbar">
                       <a  href="/studenthome"><li class="active" id="account"><strong>ข้อมูลส่วนตัว</strong></li></a>
-                      <a  href="/studenthome/establishmentuser">  <li class="active" id="personal"><strong>สถานประกอบการ</strong></li></a>
+                      {{-- <a  href="/studenthome/establishmentuser">  <li class="active" id="personal"><strong>สถานประกอบการ</strong></li></a> --}}
                         <a  href="/studenthome/register">  <li class="active" id="payment"><strong>ลงทะเบียน</strong></li></a>
                         <a  href="/studenthome/informdetails"> <li class="active" id="confirm"><strong>รายงานสถานะการเข้าปฏิบัติงาน</strong></li></a>
                         <a  href="/studenthome/calendar2confirm"> <li class="active" id="confirm"><strong>นิเทศงาน</strong></li></a>
@@ -272,7 +272,7 @@
 
                                 </div>
                                 <div class="col-4">
-                                    <h2 class="steps">ขั้นตอน 6 - 6</h2>
+                                    <h2 class="steps">ขั้นตอน 5 - 5</h2>
                                 </div>
                             </div><div class="col-6">
                                  <br>   <br>
@@ -351,6 +351,40 @@
                                                   </div>
                                                 </div>
 
+                                                <div class="form-group mb-3">
+                                                    <label for="inputAddress"class="col-form-label ">ปีการศึกษา</label>
+      <select class="form-control "  name="year" >
+        {{-- @foreach(range(date('Y'), date('Y') + 100) as $year)
+        <option value="{{ $year }}">{{ $year }}</option>
+    @endforeach --}}
+    <option value="">กรุณาเลือกปีการศึกษา</option>
+    @php
+    $currentYear = date('Y') + 543; // ปีปัจจุบัน
+    $startYear = 2566; // ปีเริ่มต้น
+    $endYear = $currentYear + 50; // ปีสิ้นสุด
+@endphp
+
+@for ($i = $endYear; $i >= $startYear; $i--)
+    @for ($j = 1; $j <= 1; $j++)
+        <option value="{{ $i }}">{{ $i }}</option>
+    @endfor
+@endfor
+</select>    </div>
+
+
+                                                      {{-- <input type="text"  name="namefile" class="form-control" id="example-static" > --}}
+
+
+
+                                                  <div class="form-group mb-3">
+                                                      <label for="inputAddress"class="col-form-label ">ภาคเรียน</label>
+                                                      <select class="form-control "  name="term">
+                                                        <option value="">กรุณาเลือกภาคเรียน</option>
+
+                                                      <option value="ภาคเรียนที่1">ภาคเรียนที่:1 </option>
+                                                        <option value="ภาคเรียนที่2">ภาคเรียนที่:2 </option>
+                                                      </select>
+                                                  </div>
                                             </div> <!-- /.col -->
                                               {{-- <div class="col-md-6">
                                                 <div class="form-group mb-3">

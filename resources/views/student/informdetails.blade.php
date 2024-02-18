@@ -460,7 +460,7 @@
                             </div> <!-- end section -->
                                 <br>
                                 <br>
-
+                                @if ($informdetails1->isEmpty())
                                 <div class="col-md-12 mb-4">
                                     <div class="accordion w-100" id="accordion1">
                                       <div class="card shadow">
@@ -492,7 +492,7 @@
                                                 @else
                                                     <span class="text-Secondary">ยังไม่ได้อัปโหลดเอกสาร (กรุณาให้อัปโหลดไฟล์)</span>
                                                 @endif
-                                            @endforeach</H2>
+                                            @endforeach <span class="badge badge-pill badge-danger">(กรุณาอัปโหลดไฟล์เอกสาร)</span></H2>
 
                                             <a href="/studenthome/addinformdetail"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a>
 
@@ -540,6 +540,166 @@
 
                                         </div>
                                       </div>
+
+
+                                      @else
+                                      @foreach ($informdetails1 as $row)
+   @if ($row->Status_informdetails === 'รอตรวจสอบ')
+   <div class="col-md-12 mb-4">
+    <div class="accordion w-100" id="accordion1">
+      <div class="card shadow">
+        <div class="card-header" id="heading1">
+          {{-- <a role="button" href="#collapse1" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapse1" class="collapsed"> --}}
+  @foreach ($informdetails1 as $row)
+
+         @if ($row->Status_informdetails === 'รอตรวจสอบ')
+         <span class="circle circle-sm bg-warning-light"><i class="fe fe-16 fe-alert-triangle text-white "></i></span>
+     @elseif ($row->Status_informdetails === 'ตรวจสอบแล้ว')
+         <span class="circle circle-sm bg-success warning-light "><i class="fe fe-16 fe-check text-white "></i></span>
+     @elseif ($row->Status_informdetails === 'ไม่ผ่าน')
+         <span class="badge badge-pill badge-danger">{{ $row->Status_informdetails }}</span>
+     @endif
+         {{--  class="circle circle-sm bg-warning-light">
+
+--}}@endforeach
+
+
+
+           <H2>  <strong>แบบแจ้งรายละเอียดการปฏิบัติงาน(สก.07)</strong> <span class="">
+               </a> @foreach ($informdetails1 as $row)
+                @if ($row->Status_informdetails === 'รอตรวจสอบ')
+                    <span class="badge badge-pill badge-warning">รอตรวจสอบเอกสาร</span>
+                @elseif ($row->Status_informdetails === 'ตรวจสอบแล้ว')
+                    <span class="text-Success ">ตรวจสอบแล้ว</span>
+                @elseif ($row->Status_informdetails === 'ไม่ผ่าน')
+                    <span class="text-Danger ">ไม่ผ่าน&nbsp;&nbsp;{{$row->annotation}}</span>
+                @else
+                    <span class="text-Secondary">ยังไม่ได้อัปโหลดเอกสาร (กรุณาให้อัปโหลดไฟล์)</span>
+                @endif
+            @endforeach</H2>
+
+            {{-- <a href="/studenthome/addinformdetail"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> --}}
+
+            </span>
+
+
+        </div>
+        <div id="collapse1" class="collapse" aria-labelledby="heading1" data-parent="#accordion1" style="">
+          <div class="card-body">  <a href="/studenthome/addinformdetail"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> </div>
+          <br>
+
+          </div>
+
+        </div>
+      </div>
+
+                                      @elseif ($row->Status_informdetails === 'ตรวจสอบเอกสารแล้ว')
+
+                                      <div class="col-md-12 mb-4">
+                                        <div class="accordion w-100" id="accordion1">
+                                          <div class="card shadow">
+                                            <div class="card-header" id="heading1">
+                                              {{-- <a role="button" href="#collapse1" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapse1" class="collapsed"> --}}
+                                      @foreach ($informdetails1 as $row)
+
+                                             @if ($row->Status_informdetails === 'รอตรวจสอบ')
+                                             <span class="circle circle-sm bg-warning-light"><i class="fe fe-16 fe-alert-triangle text-white "></i></span>
+                                         @elseif ($row->Status_informdetails === 'ตรวจสอบเอกสารแล้ว')
+                                             <span class="circle circle-sm bg-success warning-light "><i class="fe fe-16 fe-check text-white "></i></span>
+                                         @elseif ($row->Status_informdetails === 'ไม่ผ่าน')
+                                             <span class="badge badge-pill badge-danger">{{ $row->Status_informdetails }}</span>
+                                         @endif
+                                             {{--  class="circle circle-sm bg-warning-light">
+
+                                    --}}@endforeach
+
+
+
+                                               <H2>  <strong>แบบแจ้งรายละเอียดการปฏิบัติงาน(สก.07)</strong> <span class="">
+                                                   </a> @foreach ($informdetails1 as $row)
+                                                    @if ($row->Status_informdetails === 'รอตรวจสอบ')
+                                                        <span class="badge badge-pill badge-warning">รอตรวจสอบเอกสาร</span>
+                                                    @elseif ($row->Status_informdetails === 'ตรวจสอบเอกสารแล้ว')
+                                                        <span class="badge badge-pill badge-success ">ตรวจสอบเอกสารแล้ว</span>
+                                                    @elseif ($row->Status_informdetails === 'ไม่ผ่าน')
+                                                        <span class="text-Danger ">ไม่ผ่าน&nbsp;&nbsp;{{$row->annotation}}</span>
+                                                    @else
+                                                        <span class="text-Secondary">ยังไม่ได้อัปโหลดเอกสาร (กรุณาให้อัปโหลดไฟล์)</span>
+                                                    @endif
+                                                @endforeach</H2>
+
+                                                {{-- <a href="/studenthome/addinformdetail"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> --}}
+
+                                                </span>
+
+
+                                            </div>
+                                            <div id="collapse1" class="collapse" aria-labelledby="heading1" data-parent="#accordion1" style="">
+                                              <div class="card-body">  <a href="/studenthome/addinformdetail"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> </div>
+                                              <br>
+
+                                              </div>
+
+                                            </div>
+                                          </div>
+
+                    @elseif ($row->Status_informdetails === 'ไม่ผ่าน')
+                                      <div class="col-md-12 mb-4">
+                                        <div class="accordion w-100" id="accordion1">
+                                          <div class="card shadow">
+                                            <div class="card-header" id="heading1">
+                                              {{-- <a role="button" href="#collapse1" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapse1" class="collapsed"> --}}
+                                      @foreach ($informdetails1 as $row)
+
+                                             @if ($row->Status_informdetails === 'รอตรวจสอบ')
+                                             <span class="circle circle-sm bg-warning-light"><i class="fe fe-16 fe-alert-triangle text-white "></i></span>
+                                         @elseif ($row->Status_informdetails === 'ตรวจสอบเอกสารแล้ว')
+                                             <span class="circle circle-sm bg-success warning-light "><i class="fe fe-16 fe-check text-white "></i></span>
+                                         @elseif ($row->Status_informdetails === 'ไม่ผ่าน')
+                                             <span class="badge badge-pill badge-danger">{{ $row->Status_informdetails }}</span>
+                                         @endif
+                                             {{--  class="circle circle-sm bg-warning-light">
+
+                                    --}}@endforeach
+
+
+
+                                               <H2>  <strong>แบบแจ้งรายละเอียดการปฏิบัติงาน(สก.07)</strong> <span class="">
+                                                   </a> @foreach ($informdetails1 as $row)
+                                                    @if ($row->Status_informdetails === 'รอตรวจสอบ')
+                                                        <span class="badge badge-pill badge-warning">รอตรวจสอบเอกสาร</span>
+                                                    @elseif ($row->Status_informdetails === 'ตรวจสอบเอกสารแล้ว')
+                                                        <span class="badge badge-pill badge-success ">ตรวจสอบเอกสารแล้ว</span>
+                                                    @elseif ($row->Status_informdetails === 'ไม่ผ่าน')
+                                                        <span class="text-Danger ">ไม่ผ่าน&nbsp;&nbsp;{{$row->annotation}}</span>
+                                                    @else
+                                                        <span class="text-Secondary">ยังไม่ได้อัปโหลดเอกสาร (กรุณาให้อัปโหลดไฟล์)</span>
+                                                    @endif
+                                                @endforeach</H2>
+
+                                                <a href="/studenthome/addinformdetail"  class=" btn btn-outline-success">ลงทะเบียนเอกสารใหม่</a>
+
+                                                </span>
+
+
+                                            </div>
+                                            <div id="collapse1" class="collapse" aria-labelledby="heading1" data-parent="#accordion1" style="">
+                                              <div class="card-body">  <a href="/studenthome/addinformdetail"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> </div>
+                                              <br>
+
+                                              </div>
+
+                                            </div>
+                                          </div>
+                                      @endif
+                                      @endforeach
+                                      @endif
+
+
+
+
+
+                                      @if ($informdetails2->isEmpty())
                                       <div class="card shadow">
                                         <div class="card-header" id="heading1">
                                           {{-- <a role="button" href="#collapse2" data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="collapse2"> --}}
@@ -566,7 +726,7 @@
                                           @else
                                               <span class="text-Secondary">ยังไม่ได้อัปโหลดเอกสาร (กรุณาให้อัปโหลดไฟล์)</span>
                                           @endif
-                                      @endforeach</h2>
+                                      @endforeach <span class="badge badge-pill badge-danger">(กรุณาอัปโหลดไฟล์เอกสาร)</span></h2>
                                       <a href="/studenthome/addinformdetail1"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a>
                                         </div>
                                         <div id="collapse2" class="collapse" aria-labelledby="heading2" data-parent="#accordion1">
@@ -609,12 +769,136 @@
                                         </div>
 
                                     </div>
+                                    @else
+                                    @foreach ($informdetails2 as $row)
+ @if ($row->Status_informdetails === 'รอตรวจสอบ')
+
+ <div class="card shadow">
+    <div class="card-header" id="heading1">
+      {{-- <a role="button" href="#collapse2" data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="collapse2"> --}}
+        <span>  @foreach ($informdetails2 as $row)
+
+        @if ($row->Status_informdetails === 'รอตรวจสอบ')
+        <span class="circle circle-sm bg-warning-light"><i class="fe fe-16 fe-alert-triangle text-white "></i></span>
+    @elseif ($row->Status_informdetails === 'ตรวจสอบแล้ว')
+        <span class="circle circle-sm bg-success warning-light "><i class="fe fe-16 fe-check text-white "></i></span>
+    @elseif ($row->Status_informdetails === 'ไม่ผ่าน')
+        <span class="circle circle-sm bg-danger-light "><i class="fe fe-16 fe-x-circle text-white "></i></span>
+    @endif
+    @endforeach
+
+</span><h2><strong>แบบแจ้งแผนปฏิบัติงานสหกิจศึกษา(สก.08)</strong>
+      </a>
+      @foreach ($informdetails2 as $row)
+      @if ($row->Status_informdetails === 'รอตรวจสอบ')
+          <span class="badge badge-pill badge-warning">รอตรวจสอบเอกสาร</span>
+      @elseif ($row->Status_informdetails === 'ตรวจสอบแล้ว')
+          <span class="text-Success ">ตรวจสอบแล้ว</span>
+      @elseif ($row->Status_informdetails === 'ไม่ผ่าน')
+          <span class="text-Danger ">ไม่ผ่าน&nbsp;&nbsp;{{$row->annotation}}</span>
+      @else
+          <span class="text-Secondary">ยังไม่ได้อัปโหลดเอกสาร (กรุณาให้อัปโหลดไฟล์)</span>
+      @endif
+  @endforeach </h2>
+  {{-- <a href="/studenthome/addinformdetail1"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> --}}
+    </div>
+    <div id="collapse2" class="collapse" aria-labelledby="heading2" data-parent="#accordion1">
+      <div class="card-body"> <a href="/studenthome/addinformdetail1"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a></div>
+
+
+    </div>
+
+</div>
+
+
+                                    @elseif ($row->Status_informdetails === 'ตรวจสอบเอกสารแล้ว')
+
+                                    <div class="card shadow">
+                                        <div class="card-header" id="heading1">
+                                          {{-- <a role="button" href="#collapse2" data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="collapse2"> --}}
+                                            <span>  @foreach ($informdetails2 as $row)
+
+                                            @if ($row->Status_informdetails === 'รอตรวจสอบ')
+                                            <span class="circle circle-sm bg-warning-light"><i class="fe fe-16 fe-alert-triangle text-white "></i></span>
+                                        @elseif ($row->Status_informdetails === 'ตรวจสอบเอกสารแล้ว')
+                                            <span class="circle circle-sm bg-success warning-light "><i class="fe fe-16 fe-check text-white "></i></span>
+                                        @elseif ($row->Status_informdetails === 'ไม่ผ่าน')
+                                            <span class="circle circle-sm bg-danger-light "><i class="fe fe-16 fe-x-circle text-white "></i></span>
+                                        @endif
+                                        @endforeach
+
+                                    </span><h2><strong>แบบแจ้งแผนปฏิบัติงานสหกิจศึกษา(สก.08)</strong>
+                                          </a>
+                                          @foreach ($informdetails2 as $row)
+                                          @if ($row->Status_informdetails === 'รอตรวจสอบ')
+                                              <span class="badge badge-pill badge-warning">รอตรวจสอบเอกสาร</span>
+                                          @elseif ($row->Status_informdetails === 'ตรวจสอบเอกสารแล้ว')
+                                              <span class="badge badge-pill badge-Success ">ตรวจสอบแล้ว</span>
+                                          @elseif ($row->Status_informdetails === 'ไม่ผ่าน')
+                                              <span class="text-Danger ">ไม่ผ่าน&nbsp;&nbsp;{{$row->annotation}}</span>
+                                          @else
+                                              <span class="text-Secondary">ยังไม่ได้อัปโหลดเอกสาร (กรุณาให้อัปโหลดไฟล์)</span>
+                                          @endif
+                                      @endforeach </h2>
+                                      {{-- <a href="/studenthome/addinformdetail1"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> --}}
+                                        </div>
+                                        <div id="collapse2" class="collapse" aria-labelledby="heading2" data-parent="#accordion1">
+                                          <div class="card-body"> <a href="/studenthome/addinformdetail1"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a></div>
+
+
+                                        </div>
+
+                                    </div>
+
+
+                                    @elseif ($row->Status_informdetails === 'ไม่ผ่าน')
+
+                                    <div class="card shadow">
+                                        <div class="card-header" id="heading1">
+                                          {{-- <a role="button" href="#collapse2" data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="collapse2"> --}}
+                                            <span>  @foreach ($informdetails2 as $row)
+
+                                            @if ($row->Status_informdetails === 'รอตรวจสอบ')
+                                            <span class="circle circle-sm bg-warning-light"><i class="fe fe-16 fe-alert-triangle text-white "></i></span>
+                                        @elseif ($row->Status_informdetails === 'ตรวจสอบเอกสารแล้ว')
+                                            <span class="circle circle-sm bg-success warning-light "><i class="fe fe-16 fe-check text-white "></i></span>
+                                        @elseif ($row->Status_informdetails === 'ไม่ผ่าน')
+                                            <span class="circle circle-sm bg-danger-light "><i class="fe fe-16 fe-x-circle text-white "></i></span>
+                                        @endif
+                                        @endforeach
+
+                                    </span><h2><strong>แบบแจ้งแผนปฏิบัติงานสหกิจศึกษา(สก.08)</strong>
+                                          </a>
+                                          @foreach ($informdetails2 as $row)
+                                          @if ($row->Status_informdetails === 'รอตรวจสอบ')
+                                              <span class="badge badge-pill badge-warning">รอตรวจสอบเอกสาร</span>
+                                          @elseif ($row->Status_informdetails === 'ตรวจสอบเอกสารแล้ว')
+                                              <span class="badge badge-pill badge-Success ">ตรวจสอบแล้ว</span>
+                                          @elseif ($row->Status_informdetails === 'ไม่ผ่าน')
+                                              <span class="text-Danger ">ไม่ผ่าน&nbsp;&nbsp;{{$row->annotation}}</span>
+                                          @else
+                                              <span class="text-Secondary">ยังไม่ได้อัปโหลดเอกสาร (กรุณาให้อัปโหลดไฟล์)</span>
+                                          @endif
+                                      @endforeach </h2>
+                                      <a href="/studenthome/addinformdetail1"  class=" btn btn-outline-success">ลงทะเบียนเอกสารใหม่</a>
+                                        </div>
+                                        <div id="collapse2" class="collapse" aria-labelledby="heading2" data-parent="#accordion1">
+                                          <div class="card-body"> <a href="/studenthome/addinformdetail1"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a></div>
+
+
+                                        </div>
+
+                                    </div>
+
+                                    @endif
+                                    @endforeach
+                                    @endif
 
 
 
 
 
-
+                                    @if ($informdetails3->isEmpty())
                                       <div class="card shadow">
                                         <div class="card-header" id="heading1">
                                           {{-- <a role="button" href="#collapse3" data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="collapse3"> --}}
@@ -642,7 +926,7 @@
                                           @else
                                               <span class="text-Secondary">ยังไม่ได้อัปโหลดเอกสาร (กรุณาให้อัปโหลดไฟล์)</span>
                                           @endif
-                                      @endforeach</h2>
+                                      @endforeach<span class="badge badge-pill badge-danger">(กรุณาอัปโหลดไฟล์เอกสาร)</span></h2>
                                       <a href="/studenthome/addinformdetail2"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a>
                                         </div>
                                         <div id="collapse3" class="collapse" aria-labelledby="heading3" data-parent="#accordion1">
@@ -683,6 +967,128 @@
                                             </div>@endforeach
                                         </div>
                                       </div>
+                                      @else
+                                      @foreach ($informdetails3 as $row)
+   @if ($row->Status_informdetails === 'รอตรวจสอบ')
+
+   <div class="card shadow">
+   <div class="card-header" id="heading1">
+     {{-- <a role="button" href="#collapse3" data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="collapse3"> --}}
+       <span>  @foreach ($informdetails3 as $row)
+
+           @if ($row->Status_informdetails === 'รอตรวจสอบ')
+           <span class="circle circle-sm bg-warning-light"><i class="fe fe-16 fe-alert-triangle text-white "></i></span>
+       @elseif ($row->Status_informdetails === 'ตรวจสอบแล้ว')
+           <span class="circle circle-sm bg-success warning-light "><i class="fe fe-16 fe-check text-white "></i></span>
+       @elseif ($row->Status_informdetails === 'ไม่ผ่าน')
+           <span class="circle circle-sm bg-danger-light "><i class="fe fe-16 fe-x-circle text-white "></i></span>
+       @endif
+       @endforeach
+
+
+       </span> <h2><strong>แบบแจ้งโครงร่างรายงานการปฏิบัติงานสหกิจศึกษา(สก.09)</strong>
+     </a>
+     @foreach ($informdetails3 as $row)
+     @if ($row->Status_informdetails === 'รอตรวจสอบ')
+         <span class="badge badge-pill badge-warning">รอตรวจสอบเอกสาร</span>
+     @elseif ($row->Status_informdetails === 'ตรวจสอบแล้ว')
+         <span class="text-Success ">ตรวจสอบแล้ว</span>
+     @elseif ($row->Status_informdetails === 'ไม่ผ่าน')
+         <span class="text-Danger ">ไม่ผ่าน&nbsp;&nbsp;{{$row->annotation}}</span>
+     @else
+         <span class="text-Secondary">ยังไม่ได้อัปโหลดเอกสาร (กรุณาให้อัปโหลดไฟล์)</span>
+     @endif
+ @endforeach</h2>
+ {{-- <a href="/studenthome/addinformdetail2"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> --}}
+   </div>
+   <div id="collapse3" class="collapse" aria-labelledby="heading3" data-parent="#accordion1">
+     <div class="card-body"> <a href="/studenthome/addinformdetail2"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> </div>
+
+   </div>
+ </div>
+
+
+                                      @elseif ($row->Status_informdetails === 'ตรวจสอบเอกสารแล้ว')
+
+
+                                      <div class="card shadow">
+                                        <div class="card-header" id="heading1">
+                                          {{-- <a role="button" href="#collapse3" data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="collapse3"> --}}
+                                            <span>  @foreach ($informdetails3 as $row)
+
+                                                @if ($row->Status_informdetails === 'รอตรวจสอบ')
+                                                <span class="circle circle-sm bg-warning-light"><i class="fe fe-16 fe-alert-triangle text-white "></i></span>
+                                            @elseif ($row->Status_informdetails === 'ตรวจสอบเอกสารแล้ว')
+                                                <span class="circle circle-sm bg-success warning-light "><i class="fe fe-16 fe-check text-white "></i></span>
+                                            @elseif ($row->Status_informdetails === 'ไม่ผ่าน')
+                                                <span class="circle circle-sm bg-danger-light "><i class="fe fe-16 fe-x-circle text-white "></i></span>
+                                            @endif
+                                            @endforeach
+
+
+                                            </span> <h2><strong>แบบแจ้งโครงร่างรายงานการปฏิบัติงานสหกิจศึกษา(สก.09)</strong>
+                                          </a>
+                                          @foreach ($informdetails3 as $row)
+                                          @if ($row->Status_informdetails === 'รอตรวจสอบ')
+                                              <span class="badge badge-pill badge-warning">รอตรวจสอบเอกสาร</span>
+                                          @elseif ($row->Status_informdetails === 'ตรวจสอบเอกสารแล้ว')
+                                              <span class="badge badge-pill badge-Success ">ตรวจสอบแล้ว</span>
+                                          @elseif ($row->Status_informdetails === 'ไม่ผ่าน')
+                                              <span class="text-Danger ">ไม่ผ่าน&nbsp;&nbsp;{{$row->annotation}}</span>
+                                          @else
+                                              <span class="text-Secondary">ยังไม่ได้อัปโหลดเอกสาร (กรุณาให้อัปโหลดไฟล์)</span>
+                                          @endif
+                                      @endforeach</h2>
+                                      {{-- <a href="/studenthome/addinformdetail2"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> --}}
+                                        </div>
+                                        <div id="collapse3" class="collapse" aria-labelledby="heading3" data-parent="#accordion1">
+                                          <div class="card-body"> <a href="/studenthome/addinformdetail2"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> </div>
+
+                                        </div>
+                                      </div>
+                                      @elseif ($row->Status_informdetails === 'ไม่ผ่าน')
+
+
+
+
+                                      <div class="card shadow">
+                                        <div class="card-header" id="heading1">
+                                          {{-- <a role="button" href="#collapse3" data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="collapse3"> --}}
+                                            <span>  @foreach ($informdetails3 as $row)
+
+                                                @if ($row->Status_informdetails === 'รอตรวจสอบ')
+                                                <span class="circle circle-sm bg-warning-light"><i class="fe fe-16 fe-alert-triangle text-white "></i></span>
+                                            @elseif ($row->Status_informdetails === 'ตรวจสอบเอกสารแล้ว')
+                                                <span class="circle circle-sm bg-success warning-light "><i class="fe fe-16 fe-check text-white "></i></span>
+                                            @elseif ($row->Status_informdetails === 'ไม่ผ่าน')
+                                                <span class="circle circle-sm bg-danger-light "><i class="fe fe-16 fe-x-circle text-white "></i></span>
+                                            @endif
+                                            @endforeach
+
+
+                                            </span> <h2><strong>แบบแจ้งโครงร่างรายงานการปฏิบัติงานสหกิจศึกษา(สก.09)</strong>
+                                          </a>
+                                          @foreach ($informdetails3 as $row)
+                                          @if ($row->Status_informdetails === 'รอตรวจสอบ')
+                                              <span class="badge badge-pill badge-warning">รอตรวจสอบเอกสาร</span>
+                                          @elseif ($row->Status_informdetails === 'ตรวจสอบเอกสารแล้ว')
+                                              <span class="badge badge-pill badge-Success ">ตรวจสอบแล้ว</span>
+                                          @elseif ($row->Status_informdetails === 'ไม่ผ่าน')
+                                              <span class="text-Danger ">ไม่ผ่าน&nbsp;&nbsp;{{$row->annotation}}</span>
+                                          @else
+                                              <span class="text-Secondary">ยังไม่ได้อัปโหลดเอกสาร (กรุณาให้อัปโหลดไฟล์)</span>
+                                          @endif
+                                      @endforeach</h2>
+                                      <a href="/studenthome/addinformdetail2"  class=" btn btn-outline-success">ลงทะเบียนเอกสารใหม่</a>
+                                        </div>
+                                        <div id="collapse3" class="collapse" aria-labelledby="heading3" data-parent="#accordion1">
+                                          <div class="card-body"> <a href="/studenthome/addinformdetail2"  class=" btn btn-outline-success">เพิ่มเอกสารใหม่</a> </div>
+
+                                        </div>
+                                      </div>
+                                      @endif
+                                      @endforeach
+                                      @endif
 
                                       </div>
                                     </div>

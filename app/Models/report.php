@@ -19,6 +19,9 @@ class report extends Model
        'Status_report',
     //    'poster' ,
     //    'projectsummary',
-       'annotation'
+       'annotation',
+       'year',
+       'term',
+
     ];
 }

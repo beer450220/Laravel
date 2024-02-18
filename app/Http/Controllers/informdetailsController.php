@@ -64,15 +64,16 @@ class informdetailsController extends Controller
           ([
             // "user_id" => $request->user_id,
               "namefile" => $request->namefile,
-             'establishment' => $request->establishment,
+            //  'establishment' => $request->establishment,
               "files" =>$imageName,
-
+              "year" => $request->year,
+              "term" => $request->term,
 
           ]);// dd($request);dd($request->Status);
 
         $post->Status_informdetails ="รอตรวจสอบ";
         $post->annotation ="-";
-        $post->establishment ="-";
+        // $post->establishment ="-";
         $post->user_id = Auth::user()->id;
         $post->save();
         //  $data->save();
@@ -119,15 +120,16 @@ class informdetailsController extends Controller
       ([
         // "user_id" => $request->user_id,
           "namefile" => $request->namefile,
-         'establishment' => $request->establishment,
+        //  'establishment' => $request->establishment,
           "files" =>$imageName,
-
+          "year" => $request->year,
+          "term" => $request->term,
 
       ]);// dd($request);dd($request->Status);
 
     $post->Status_informdetails ="รอตรวจสอบ";
     $post->annotation ="-";
-    $post->establishment ="-";
+    // $post->establishment ="-";
     $post->user_id = Auth::user()->id;
     $post->save();
     //  $data->save();

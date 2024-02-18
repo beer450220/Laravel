@@ -272,7 +272,7 @@
 
                                 </div>
                                 <div class="col-4">
-                                    <h2 class="steps">ขั้นตอน 3 - 6</h2>
+                                    <h2 class="steps">ขั้นตอน 2 - 5</h2>
                                 </div>
                             </div><div class="col-6">
                                  <br>   <br>

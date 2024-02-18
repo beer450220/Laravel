@@ -23,6 +23,7 @@ class establishment extends Model
         "em_job",
         'status',
        ' major_id',
+
     ];
     public function Users(){
         return $this->hasOne(Users::class,'id','name');
