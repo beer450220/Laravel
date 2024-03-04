@@ -92,7 +92,7 @@ class LoginController extends Controller
         }
         else
         {
-            return redirect('/')
+            return redirect('/login')
             // ->route("login")
             ->with('error','ไม่ถูกต้อง username หรือ password');
         }

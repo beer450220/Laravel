@@ -42,6 +42,11 @@ Route::get("/establishment/edit02/{id}",[HomeController::class,'establishmentedi
 Route::get("/establishment/edit03/{category_id}",[HomeController::class,'establishmentedit03'])->name('establishmentedit03');
 
 Route::get('/cooperative', [HomeController::class,'cooperative'])->name('cooperative');
+
+Route::get('/cooperative1', [HomeController::class,'cooperative1'])->name('cooperative1');
+
+Route::get('/cooperative2', [HomeController::class,'cooperative2'])->name('cooperative2');
+
 Route::get('/search1',[HomeController::class,'search1'])->name('search1');
 
 Route::get('/test4', [HomeController::class,'changeStatus1'])->name('changeStatus1') ;

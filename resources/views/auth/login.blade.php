@@ -35,14 +35,20 @@
                 </a>
 
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                  {{-- <li><a href="/" class="nav-link px-2 text-secondary">หน้าแรก</a></li> --}}
-                  <li><a href="/establishment" class="nav-link px-2 text-white">สถานประกอบการ</a></li>
-                  <li><a href="/cooperative" class="nav-link px-2 text-white">แบบฟอร์มสหกิจ</a></li>
-                  <li><a href="/cooperative" class="nav-link px-2 text-white">คู่มือการใช้งาน</a></li>
-                  {{-- <li><a href="/test4" class="nav-link px-2 text-white">ทดสอบ</a></li>
-                  <li><a href="/test6" class="nav-link px-2 text-white">ทดสอบ2</a></li> --}}
-                  {{-- <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
-                  <li><a href="#" class="nav-link px-2 text-white">About</a></li> --}}
+                    {{-- <li><a href="/" class="nav-link px-2 text-secondary">หน้าแรก</a></li> --}}
+                    <li><a href="/establishment" class="nav-link px-2 text-white">สถานประกอบการ</a></li>
+                    <li><a href="/cooperative" class="nav-link px-2 text-white">แบบฟอร์มสหกิจ</a></li>
+                    <li><a href="/cooperative" class="nav-link px-2 text-white">คู่มือการใช้งาน</a></li>
+                    {{-- <li><a href="/cooperative1" class="nav-link px-2 text-white">ยื่นประสงค์ฝึกประสบการณ์</a></li> --}}
+                    <li> <div class="dropdown">
+                      <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                          ยื่นประสงค์ฝึกประสบการณ์
+                      </button>
+                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" href="/cooperative1">เพิ่มข้อมูลประสงค์ฝึกประสบการณ์</a></li>
+                        <li><a class="dropdown-item" href="/cooperative2">รายการสถานะยื่นประสงค์</a></li>
+                      </ul>
+                    </div></li>
                 </ul>
 
                 {{-- <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
@@ -54,7 +60,8 @@
                   {{-- <a type="button" href="" class="btn btn-outline-light me-2"data-bs-toggle="modal" data-bs-target="#exampleModal">Login</a> --}}
                   {{-- <a type="button" href="{{ route('register1') }}" class="btn btn-warning">Sign-up</a> --}}
 
-                  <a type="button" href="{{ route('register1') }}" class="btn btn-outline-warning me-2">สมัครสมาชิก</a>
+                  {{-- <a type="button" href="{{ route('register1') }}" class="btn btn-outline-warning me-2">สมัครสมาชิก</a> --}}
+                  <a type="button" href="/login" class="btn btn-outline-warning me-2">ล็อกอิน</a>
                   {{-- <a type="button" href="/login" class="btn btn-outline-warning me-2">ล็อกอิน</a> --}}
                 </div>
               </div>
@@ -185,82 +192,82 @@
 
                                         <h1 class="fs-4 card-title fw-bold mb-4 text-center">ระบบสารสนเทศสหกิจศึกษา</h1>
                                         <br>
-                                         <form method="POST" action="{{ route('login') }}"> @csrf
-                                          <div class=" input-group mb-3">
-                                            @if ($message = Session::get('success'))
-                                            <div class="alert alert-success">
-                                                <p>{{ $message }}</p>
-                                            </div>
-                                            @endif
-                                            @if ($message = Session::get('error'))
-
-                                            <div class=" alert alert-danger alert-dismissible fade show "  role="alert">
-
-                                              <p>{{ $message }}</p>
-                                              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                            </div>
-                                            @endif
-                                            <label class="mb-2 input-group" for="email">ผู้ใช้งาน</label> <br>
-                                                              <span class="input-group-text bg-warning"><i class="bi bi-person"></i></span>
-                                                              <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username">
-
-                                                              @error('username')
-                                                                  <span class="invalid-feedback" role="alert">
-                                                                      <strong>{{ $message }}</strong>
-                                                                  </span>
-                                                              @enderror
-                                            <!-- <div class="invalid-feedback">
-                                              Email is invalid
-                                            </div> -->
-                                          </div>
-
-
-
-
-
-                                                          <div class=" input-group mb-3">
-                                            <label class="mb-2 input-group" for="email">รหัสผ่าน</label> <br>
-                                                              <span class="input-group-text bg-warning"><i class=" bi bi-lock"></i></span>
-
-                                                              <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" value="{{ old('password') }}" required autocomplete="current-password">
-
-                                                              @error('password')
-                                                                  <span class="invalid-feedback" role="alert">
-                                                                      <strong>{{ $message }}</strong>
-                                                                  </span>
-                                                              @enderror
-
-                                              <div class="invalid-feedback">
-                                                Password is required
+                                        <form method="POST" action="{{ route('login') }}"> @csrf
+                                            <div class=" input-group mb-3">
+                                              @if ($message = Session::get('success'))
+                                              <div class="alert alert-success">
+                                                  <p>{{ $message }}</p>
                                               </div>
-                                          </div>
-                                          <div class="d-flex align-items-center">
-                                            <div class="form-check">
-                                              {{-- <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                              @endif
+                                              @if ($message = Session::get('error'))
 
-                                              <label class="form-check-label" for="remember">
-                                                  {{ __('Remember Me') }}
-                                              </label> --}}
+                                              <div class=" alert alert-danger alert-dismissible fade show "  role="alert">
+
+                                                <p>{{ $message }}</p>
+                                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                              </div>
+                                              @endif
+                                              <label class="mb-2 input-group" for="email">ผู้ใช้งาน</label> <br>
+                                                                <span class="input-group-text bg-warning"><i class="bi bi-person"></i></span>
+                                                                <input id="code_id" type="text" class="form-control @error('code_id') is-invalid @enderror" name="code_id" value="{{ old('code_id') }}" required autocomplete="code_id">
+
+                                                                @error('code_id')
+                                                                    <span class="invalid-feedback" role="alert">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                                @enderror
+                                              <!-- <div class="invalid-feedback">
+                                                Email is invalid
+                                              </div> -->
                                             </div>
 
 
-                                            <button type="submit"  class="btn btn-primary ms-auto text-white bg-dark">
-                                                              เข้าสู่ระบบ
-                                            </button>
-                                            {{-- name="submit" --}}
-                                          </div>
-                                                          {{-- <div class="d-flex align-items-center">
-
-                                                            @if (Route::has('password.request'))
-                                                            <a class="btn btn-link" href="{{ route('password.request') }}">
-                                                                {{ __('Forgot Your Password?') }}
-                                                            </a>
-                                                        @endif
-                                            </div> --}}
 
 
 
-                                        </form>
+                                                            <div class=" input-group mb-3">
+                                              <label class="mb-2 input-group" for="email">รหัสผ่าน</label> <br>
+                                                                <span class="input-group-text bg-warning"><i class=" bi bi-lock"></i></span>
+
+                                                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" value="{{ old('password') }}" required autocomplete="current-password">
+
+                                                                @error('password')
+                                                                    <span class="invalid-feedback" role="alert">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                                @enderror
+
+                                                <div class="invalid-feedback">
+                                                  Password is required
+                                                </div>
+                                            </div>
+                                            <div class="d-flex align-items-center">
+                                              <div class="form-check">
+                                                {{-- <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+
+                                                <label class="form-check-label" for="remember">
+                                                    {{ __('Remember Me') }}
+                                                </label> --}}
+                                              </div>
+
+
+                                              <button type="submit"  class="btn btn-primary ms-auto text-white bg-dark">
+                                                                เข้าสู่ระบบ
+                                              </button>
+                                              {{-- name="submit" --}}
+                                            </div>
+                                                            {{-- <div class="d-flex align-items-center">
+
+                                                              @if (Route::has('password.request'))
+                                                              <a class="btn btn-link" href="{{ route('password.request') }}">
+                                                                  {{ __('Forgot Your Password?') }}
+                                                              </a>
+                                                          @endif
+                                              </div> --}}
+
+
+
+                                          </form>
                                       </div>
                     </div>
 

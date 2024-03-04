@@ -1767,7 +1767,16 @@ public function category()
 
     }
 
+    public function cooperative1()
+    {
+        return view('cooperative.cooperative1',["msg"=>"I am Admin role"]);
 
+    }
+    public function cooperative2()
+    {
+        return view('cooperative.cooperative2',["msg"=>"I am Admin role"]);
+
+    }
     public function establishment()
     {
 

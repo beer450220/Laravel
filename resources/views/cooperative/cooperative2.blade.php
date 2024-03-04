@@ -10,27 +10,20 @@
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+        <link href="../admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 
 
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
          <!-- Bootstrap CSS-->
     {{-- <link rel="stylesheet" href="http://coop.uru.ac.th/vendor/bootstrap/css/bootstrap.min.css"> --}}
     <!-- Font Awesome CSS-->
 
-{{--
-<link rel="icon" type="image/png" href="images/icons/favicon.ico" />
 
-<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
-
-<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-
-<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
-
-<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
-
-<link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
-
-<link rel="stylesheet" type="text/css" href="css/util.css">
-<link rel="stylesheet" type="text/css" href="css/main.css"> --}}
 
 
 
@@ -52,36 +45,6 @@
             body {
                 font-family: 'Nunito', sans-serif;
             }
-
-            body {
-  background: #ffffff;
-}
-
-.card {
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-  transition: all 0.2s ease-in-out;
-  box-sizing: border-box;
-  margin-top:10px;
-  margin-bottom:10px;
-  background-color:#FFF;
-}
-
-.card:hover {
-  box-shadow: 0 5px 5px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-}
-.card > .card-inner {
-  padding:10px;
-}
-.card .header h2, h3 {
-  margin-bottom: 0px;
-  margin-top:0px;
-}
-.card .header {
-  margin-bottom:5px;
-}
-.card img{
-  width:100%;
-}
         </style>
     </head>
 
@@ -114,9 +77,9 @@
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                   <li><a class="dropdown-item" href="/cooperative1">เพิ่มข้อมูลประสงค์ฝึกประสบการณ์</a></li>
                   <li><a class="dropdown-item" href="/cooperative2">รายการสถานะยื่นประสงค์</a></li>
-
                 </ul>
               </div></li>
+
               {{-- <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
               <li><a href="#" class="nav-link px-2 text-white">About</a></li> --}}
             </ul>
@@ -137,157 +100,83 @@
         </div>
 
       </header>
+      <div class="container">
+        <div class="row   ">
+        <div class="col  ">
+        </div><br>
+        <div class="card ">
+          <div class="card-header">
+      <div class="container-fluid">
+
+        <div class="row justify-content-md-center">
+              <div class="col-10">
+                  <div class="card">
+                      <div class="card-header" style="background-color:#a3a8ac;">
+                         <center><b><h1 class="text-light">รายการสถานะยื่นประสงค์</h1></b></center>
+                      </div>
+                      <div class="card-body">
+                          <div class="tabs">
+
+                              <div id="tab01" class="tab-contents ">
+                                  <div class="tab-content table-responsive ">
+                                      <br>
+                                   <h2 class="mb-3"></h2>
+
+  <div id="example_filter" class="dataTables_filter"><label>ค้นหา:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="example"></label></div></div></div><div class="row"><div class="col-sm-12"><table id="example" class="table table-striped table-bordered dataTable" style="width: 100%;" aria-describedby="example_info">
+          <div class="card-body">
+            <div class="table-responsive">
+
+                <table class="table table-bordered table-light table-striped table-hover" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                    <tr>
+
+                        <th><i class="" aria-hidden="true"></i>ชื่อนักศึกษา</th>
+
+
+                             <th><i class="" aria-hidden="true"></i>ภาคเรียนที่ </th>
+
+
+                            {{-- <th ><i class="" aria-hidden="true"></i>เบอร์โทร</th> --}}
+
+                            <th><i class="" aria-hidden="true"></i>ปีการศึกษา </th>
+                            <th><i class="" aria-hidden="true"></i>สถานะ</th>
+
+
+                        </tr>
+                    </thead>
+                    <tbody>
+{{--
+@foreach ($users as $row) --}}
+
+
+                        <tr>
 
 
 
 
 
-   <div class="row">
-    <!-- Striped rows -->
-    <div class="col-md-12 my-4">
 
-      <div class="card shadow">
-        <div class="card-body">
-          <div class="toolbar row mb-3">
-            <div class="col">
-              {{-- <form class="form-inline"> --}}
 
-                    <div class="container ">
+                            <td class="">หห</td>
+                            <td>หห</td>
+                            <td>หห</td>
 
-                <div >
-                    <div >
-                        <div >
-                    <form action="{{ route('search1') }}" method="GET">
-                        <div class="form-group col-12">
-                            {{-- <label for="keyword">คำค้นหา:</label> --}}
-                            <input type="text" name="keyword" id="keyword" class="form-control" value="{{ request('keyword') }}">
-                        </div>
-                        {{-- <button type="submit" class="btn btn-primary">ค้นหา</button> --}}
-                        </form>
-                  </div>
-                  <div class="col-3">
-                  <div class="form-group col-auto ml-3">
-                    {{-- <label class="my-1 mr-2 sr-only" for="inlineFormCustomSelectPref">Status</label> --}}
-                    {{-- <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
-                      <option selected>Choose...</option>
-                      <option value="1">Processing</option>
-                      <option value="2">Success</option>
-                      <option value="3">Pending</option>
-                      <option value="3">Hold</option>
-                    </select> --}}
-                  </div>
-                </div>
-               </div>
+                            {{-- <td></td> --}}
+
+                            {{-- {{Carbon\Carbon::parse($row->created_at)->diffForHumans()}}
+                            {{$row['created_at']->diffForHumans()}} --}}
+                            {{-- <td></td> --}}
+
+                            <td><span class="badge rounded-pill bg-warning text-dark">รออนุมัติ</span></td>
+
+                        </tr>
+
+                     {{-- @endforeach --}}
+                    </tbody>
+                </table>
+                {{-- {!!$users->links('pagination::bootstrap-5')!!} --}}
             </div>
-
-          </div>  </div>  </div>
-<br>
-
-
-        {{-- หมวดหมู่ --}}
-
-
-        <div class="container ">
-            <div class="row gx-8">
-              <div class="col">
-               <div class="p-3 border bg-light">หมวดหมู่</div>
-
-               <br>
- <div >
-    <div >
-        <div >
-            <div >
-          {{-- <div class="shopee-header-section__header"><div class="shopee-header-section__header__title"><h3>หมวดหมู่</h3></div> --}}
-          <br>
-
-<div class="container ">
-    <div class="row ">
-
-@foreach ($registers1 as $row)
-<div  class="col-xs-20 col-sm-3 col-md-3 card  " style="margin-top:15px;  margin-left: 65px;">
-    <div class="img_thumbnail productlist"><br>
-        {{-- <img src="{{ asset('/image') }}/{{ $row->images }}" class="rounded mx-auto d-block" style="width:200px;height:200px; text-align:center;"> --}}
-
-        <div class="caption card-body">
-
-
-            <div class="avatar avatar-lg mt-4 "style="background-image: url(; background-size: contain; background-repeat: ">
-                <a href="/establishment/edit03/{{ $row->category_id }}">
-                    <img src="{{ asset('/หมวดหมู่') }}/{{ $row->images }}" class="rounded mx-auto d-block" style="width:100px;height:100px; text-align:center;">
-                </a>
-              </div><br>
-            <div class="card-footer">
-                <div class="row align-items-center justify-content-between">
-                  <div class="col-auto">
-                    <small>
-                      <span class="dot dot-lg bg-success mr-1"></span>{{ $row->name }}</small>
-                  </div>
-                  <div class="col-auto">
-
-                  </div>
-                </div>
-              </div> <!-- /.card-footer -->
         </div>
-    </div>
-</div>
-{{-- {{ $row->name }} --}}
-@endforeach
-{{-- <div class="text-center"style="margin-top:15px;   margin-right: 550px;">
-    {!!$registers1->links('pagination::bootstrap-5')!!}</div>
-</div>
-</div></div> --}}
 
 
-        <div class="container ">
-            <div class="row gx-8">
-              <div class="col">
-               <div class="p-3 border bg-light">สถานประกอบการ</div>
-
-               <br>
- <div >
-    <div >
-        <div >
-            <div >
-               <div class="container ">
-               <div class="row ">
-
-                @foreach ($establishments as $row)
-
-
-                    <div  class="col-xs-20 col-sm-3 col-md-3 card  " style="margin-top:15px;  margin-left: 65px;">
-                        <div class="img_thumbnail productlist"><br>
-                            <img src="{{ asset('/image') }}/{{ $row->images }}" class="rounded mx-auto d-block" style="width:200px;height:200px; text-align:center;">
-                            <hr>
-                            <div class="caption card-body">
-                                <h4 class="card-title">ชื่อ:{{ $row->em_name }}</h4>
-                                <p>ที่อยู่:{{ $row->em_address }}</p>
-                                <p  class="card-text"><strong>หลักสูตร: </strong>
-                                     {{-- @foreach ($registers2 as $row1) --}}
-                                    {{-- {{ $row->major_id}}</p>  @if($establishments->major_id =="รอตรวจสอบ") selected @endif --}}
-
-                                 {{-- {{$row->major_id }}{{$row->major_id==$supervisions->user_id ?'selected':''}}>{{$row->name_major}}
-                                    @endforeach --}}
-
-                                    @foreach ($registers2 as $row1)
-                                    @if ($row->major_id == $row1->major_id)
-                                        {{ $row1->name_major }}
-                                    @endif
-                                @endforeach
-
-                                <p class="btn-holder text-center"><a href="/establishment/edit/{{ $row->id }}" class="btn btn-primary btn-block text-center" role="button">ดูข้อมูล</a>
-                                 </p><br>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-
-                <br>
-
-        </div>
-    </div>
-</div>
-</div>
-          <div class="text-center"style="margin-top:15px;   margin-right: 550px;">
-                {!!$establishments->links('pagination::bootstrap-5')!!}</div>
-            </div>
 
