@@ -54,14 +54,14 @@ class registerController extends Controller
         //ตรวจสอบข้อมูล
           //dd($request);
          $request->validate([
-             'code_id' => 'required|unique:users',
+             'username' => 'required|unique:users',
               'email' => 'required',
             //  'username' => 'required',
             //  'password' => 'required'
 
              //'password' => Hash::make($request->password),
              ] ,[
-                'code_id.unique' => "รหัสประจำตัวซ้ำ",
+                'username.unique' => "รหัสประจำตัวซ้ำ",
 
             ]
         );
@@ -80,28 +80,91 @@ class registerController extends Controller
             ]);
          }
          $user = new Users;
-         $user->code_id = $request->code_id;
+        //  $user->code_id = $request->code_id;
          $user->major_id = $request->major_id;
-         $user->establishment_id = "ยังไม่มีสถานประกอบการ";
+
 
          $user->fname = $request->fname;
          $user->surname = $request->surname;
          $user->telephonenumber = $request->telephonenumber;
          $user->address = $request->address;
          $user->GPA = $request->GPA;
-         $user->Parent_name = $request->Parent_name;
-         $user->Parent_address = $request->Parent_address;
-         $user->Parent_phonenumber = $request->Parent_phonenumber;
-         $user->Relevance = $request->Relevance;
+         $user->em_name= $request->em_name;
+
+         $user->term = $request->term;
+         $user->year = $request->year;
          $user->images = $request->	images;
-        // $user->username = $request->username;
+        $user->username = $request->username;
+         $user->email = $request->email;
+
          $user->email = $request->email;
          $user->password = Hash::make($request->password);
-         $user->role = "student";
-         $user-> status = "ยังไม่ได้ยืนยันตัวตน";
+         $user->role = $request->role;
+         $user-> status = $request->status;
+         $user-> annotation = $request->annotation;
 
          $user->save();
          return redirect('/user')->with('error','success', 'สมัครสำเร็จ.');
          // return redirect("/welcome")->with('success', 'Company has been created successfully.');
      }
+
+
+     public function addcooperative1(Request $request) {
+        //ตรวจสอบข้อมูล
+          //dd($request);
+         $request->validate([
+            //  'code_id' => 'required|unique:users',
+              'email' => 'required',
+             'username' => 'required|unique:users',
+            //  'password' => 'required'
+
+             //'password' => Hash::make($request->password),
+             ] ,[
+                // 'code_id.unique' => "รหัสประจำตัวซ้ำ",
+                'username.unique' => "รหัสประจำตัวซ้ำ",
+            ]
+        );
+        if($request->hasFile("images")){
+            $file=$request->file("images");
+             $imageName=time().'_'.$file->getClientOriginalName();
+            $file->move(\public_path("/รูปโปรไฟล์"),$imageName);
+
+
+            $post =new Users([
+
+
+                "images" =>$imageName,
+
+
+            ]);
+         }
+         $user = new Users;
+        //  $user->code_id = $request->code_id;
+         $user->major_id = $request->major_id;
+        //  $user->establishment_id = "ยังไม่มีสถานประกอบการ";
+
+         $user->fname = $request->fname;
+         $user->surname = $request->surname;
+         $user->telephonenumber = $request->telephonenumber;
+         $user->address = $request->address;
+         $user->GPA = $request->GPA;
+         $user->em_name= $request->em_name;
+
+         $user->term = $request->term;
+         $user->year = $request->year;
+         $user->images = $request->	images;
+        $user->username = $request->username;
+         $user->email = $request->email;
+         $user->password = Hash::make($request->password);
+         $user->role = "0";
+        //  $user->code_id = "0";
+         $user-> status = "รออนุมัติ";
+         $user-> annotation = "-";
+
+         $user->save();
+         return redirect('/cooperative2')->with('error','success', 'ยื่นประสงค์สำเร็จ.');
+         // return redirect("/welcome")->with('success', 'Company has been created successfully.');
+     }
+
+
 }

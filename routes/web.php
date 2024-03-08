@@ -44,8 +44,12 @@ Route::get("/establishment/edit03/{category_id}",[HomeController::class,'establi
 Route::get('/cooperative', [HomeController::class,'cooperative'])->name('cooperative');
 
 Route::get('/cooperative1', [HomeController::class,'cooperative1'])->name('cooperative1');
+Route::post("/addcooperative1",[registerController::class,'addcooperative1'])->name('addcooperative1');
+
 
 Route::get('/cooperative2', [HomeController::class,'cooperative2'])->name('cooperative2');
+Route::get('/searchcooperative2',[HomeController::class,'searchcooperative2'])->name('searchcooperative2');
+
 
 Route::get('/search1',[HomeController::class,'search1'])->name('search1');
 
@@ -130,12 +134,12 @@ Route::middleware(['auth','user-role:student'])->group(function()
 
     Route::get("/studenthome/register",[HomeController::class,'registeruser'])->name('student.register');
     Route::get("/studenthome/edit9register/{id}",[Register2Controller::class,'edit9register'])->name('edit9register');
+Route::post("/studenthome/update/{id}",[EditController::class,'updateregisteruser'])->name('updateregisteruser');
     // แบบพิจารณาคุณสมบัตินักศึกษาสหกิจศึกษา(สก01)
-
     Route::get("/studenthome/addregister",[AddController::class,'addregister'])->name('addregister');
     Route::post("/studenthome/addregisteruser",[AddController::class,'addregisteruser'])->name('addregisteruser');
     // Route::get("/studenthome/edit2register/{id}",[EditController::class,'edit2register'])->name('edit2register');
-    Route::post("/studenthome/update/{id}",[EditController::class,'updateregisteruser'])->name('updateregisteruser');
+
 
     // ใบสมัครงานสหกิจศึกษา(สก03)
     Route::get("/studenthome/addregister2",[Register2Controller::class,'addregister2'])->name('addregister2');
@@ -530,7 +534,7 @@ Route::get('/teacher/deletes1/{id}', [EditController::class,'deles1'])->name('de
 Route::middleware(['auth','user-role:admin'])->group(function()
 {
     Route::get("/adminhome",[HomeController::class,'adminHome' ])->name('admin.adminhome');
-
+    Route::get('/searchadmin',[HomeController::class,'searchadmin'])->name('searchadmin');
     Route::get("/user",[HomeController::class,'user'])->name('admin.user');
     Route::get("/user/adduser",[registerController::class,'index2'])->name('adduser2');
     Route::post("/user/add",[registerController::class,'adduser'])->name('adduser');

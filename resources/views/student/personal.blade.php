@@ -297,7 +297,7 @@
                                 <div class="accordion-item">
                                   <h2 class="accordion-header" id="headingOne">
                                     <div class="col-7">
-                                            <h2 class="steps">ตรวจสอบข้อมูล
+                                            <h2 class="steps">
                                               @if(session("success"))
                                           <div class="alert alert-success col-4">{{session('success')}}
                               @endif
@@ -346,11 +346,11 @@
                                               {{-- <form method="POST" action="{{url('/studenthome/updateuser2/'.Auth::user()->id)}}" enctype="multipart/form-data">
                                                 @csrf --}}
                                                       <label for="simpleinput">ชื่อผู้ใช้งาน</label>
-                                                      <input type="text"value="{{ Auth::user()->code_id }}" disabled="" id="simpleinput" class="form-control">
+                                                      <input type="text"value="{{ Auth::user()->username }}" disabled="" id="simpleinput" class="form-control">
                                                     </div>
                                                     <div class="form-group mb-3">
                                                       <label for="example-email">ชื่อจริง นามสกุล</label>
-                                                      <input type="email" id="example-email"value="{{ Auth::user()->fname }}{{ Auth::user()->surname }}" disabled="" name="example-email" class="form-control" placeholder="Email">
+                                                      <input type="email" id="example-email"value="{{ Auth::user()->fname }}  {{ Auth::user()->surname }}" disabled="" name="example-email" class="form-control" placeholder="Email">
                                                     </div>
                                                     <div class="form-group mb-3">
                                                       <label for="example-password">อีเมล์</label>
@@ -364,9 +364,7 @@
                                                       <label for="example-palaceholder">เบอร์โทรศัพท์	</label>
                                                       <input type="text" id="example-palaceholder"value="{{ Auth::user()->telephonenumber}}" disabled="" class="form-control" placeholder="placeholder">
                                                     </div>
-                                                  <div class="text-primary">
-                                                    <input type="text"  readonly=""value="{{ Auth::user()->status}}" disabled="" class="form-control text-success" id="example-static" placeholder="ไม่ได้ยืนยันตัวตน" >
-                                                  </div>
+
                                                 </div> <!-- /.col -->
                                                   <div class="col-md-6">
                                                     <div class="form-group mb-3">
@@ -375,29 +373,23 @@
 
                                                     </div>
                                                     <div class="form-group mb-3">
-                                                      <label for="example-readonly">	ชื่อผู้ปกครอง	</label>
-                                                      <input type="text" id="example-readonly"value="{{ Auth::user()->postcode}}" disabled="" class="form-control" readonly="" value="Readonly value">
-                                                    </div>
-                                                    <div class="form-group mb-3">
-                                                      <label for="example-disable">เบอร์โทรผู้ปกครอง</label>
-                                                      <input type="text" class="form-control"value="{{ Auth::user()->faculty}}" disabled="" id="example-disable" disabled="" value="Disabled value">
+                                                      <label for="example-readonly">ชื่อสถานประกอบการ</label>
+                                                      <input type="text" id="example-readonly"value="{{ Auth::user()->em_name}}" disabled="" class="form-control" readonly="" value="Readonly value">
                                                     </div>
                                                     <div class="form-group mb-3">
                                                       <label for="example-static">หลักสูตร</label>
                                                       <input type="text" readonly=""value="{{ Auth::user()->course}}" disabled="" class="form-control" id="example-static" >
                                                     </div>
                                                     <div class="form-group mb-3">
-                                                      <label for="example-static">ความเกี่ยวข้อง</label>
-                                                      <input type="text" readonly=""value="{{ Auth::user()->telephonenumber}}" disabled="" class="form-control" id="example-static" >
+                                                      <label for="example-disable">ปีการศึกษา</label>
+                                                      <input type="text" class="form-control"value="{{ Auth::user()->year}}" disabled="" id="example-disable" disabled="" value="Disabled value">
                                                     </div>
-                                                    <div class="form-group mb-3">
-                                                        <label for="example-static">ที่อยู่ผู้ปกครอง</label>
-                                                        <input type="text" readonly=""value="{{ Auth::user()->telephonenumber}}" disabled="" class="form-control" id="example-static" >
-                                                      </div>
-                                                    <div class="form-group mb-3">
 
+                                                    <div class="form-group mb-3">
+                                                      <label for="example-static">ภาคเรียน</label>
+                                                      <input type="text" readonly=""value="{{ Auth::user()->term}}" disabled="" class="form-control" id="example-static" >
+                                                    </div>
 
-                                                  </div>
 {{-- /studenthome/updateuser2/{{Auth::user()->id}} --}}
 
 

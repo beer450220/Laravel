@@ -281,13 +281,13 @@ class AddController extends Controller
             //         $post->save();
 
 
-              return redirect('/studenthome/register')->with('success5', 'เพิ่มข้อมูลสำเร็จ.');
+              return redirect('/studenthome')->with('success5', 'เพิ่มข้อมูลสำเร็จ.');
 
-            return redirect('/studenthome/register')
-                ->with('error', 'ไม่สามารถเพิ่มข้อมูลได้');
+            // return redirect('/studenthome/register')
+            //     ->with('error', 'ไม่สามารถเพิ่มข้อมูลได้');
 
 
-            return redirect('/studenthome/register')->with('error', 'ไม่สามารถเพิ่มข้อมูลได้');
+            // return redirect('/studenthome/register')->with('error', 'ไม่สามารถเพิ่มข้อมูลได้');
     }
 }
 

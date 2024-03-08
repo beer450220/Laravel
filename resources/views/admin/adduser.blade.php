@@ -21,23 +21,23 @@
                         <form method="POST" action="{{ route('adduser') }}" enctype="multipart/form-data">
                         @csrf
 <h4 class="text-primary">ข้อมูลส่วนตัว</h4>
-{{-- @foreach ($errors->all() as $error)
+@foreach ($errors->all() as $error)
 <li>{{ $error }}</li>
 @endforeach
 </ul>
 
 @if(session("error"))
 <div class="alert alert-danger col-6">{{session('error')}}
-@endif --}}
+@endif
 
 
                         <div class="row mb-3">
-                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('รหัสประจำตัว') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('ชื่อผู้ใช้งาน') }}</label>
 
                             <div class="col-md-6">
-                                <input id="code_id" type="text" class="form-control @error('code_id') is-invalid @enderror" name="code_id" value="{{ old('code_id') }}" required autocomplete="code_id" autofocus>
+                                <input id="	username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
 
-                                @error('code_id')
+                                @error('username')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -104,7 +104,7 @@
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('เบอร์โทรศัพท์') }}</label>
 
                             <div class="col-md-6">
-                                <input id="telephonenumber" type="text" class="form-control" name="telephonenumber" required autocomplete="telephonenumber">
+                                <input id="telephonenumber" type="tel" class="form-control" name="telephonenumber"maxlength="10" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"placeholder="123-45-678" required autocomplete="telephonenumber">
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -134,33 +134,50 @@
 
 
                         <div class="row mb-3">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('ชื่อผู้ปกครอง') }}</label>
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('ชื่อสถานประกอบการ') }}</label>
 
                             <div class="col-md-6">
-                                <input id="telephonenumber" type="text" class="form-control" name="Parent_name" required autocomplete="Parent_name">
+                                <input id="em_name" type="text" class="form-control" name="em_name" required autocomplete="em_name">
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('เบอร์โทรผู้ปกครอง') }}</label>
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('ภาคเรียนที่') }}</label>
 
                             <div class="col-md-6">
-                                <input id="telephonenumber" type="text" class="form-control" name="Parent_phonenumber" required autocomplete="Parent_phonenumber">
+                                <select class="form-control "  name="term" required>
+                                    <option value="">กรุณาเลือกภาคเรียน</option>
+
+                                  <option value="ภาคเรียนที่1">ภาคเรียนที่:1 </option>
+                                    <option value="ภาคเรียนที่2">ภาคเรียนที่:2 </option>
+                                  </select>
                             </div>
+
+
                         </div>
                         <div class="row mb-3">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('ความเกี่ยวข้อง') }}</label>
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('ปีการศึกษา') }}</label>
 
                             <div class="col-md-6">
-                                <input id="telephonenumber" type="text" class="form-control" name="Relevance" required autocomplete="Relevance">
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('ที่อยู่ผู้ปกครอง') }}</label>
+                                <select class="form-control "  name="year"required >
+                                    {{-- @foreach(range(date('Y'), date('Y') + 100) as $year)
+                                    <option value="{{ $year }}">{{ $year }}</option>
+                                @endforeach --}}
+                                <option value="">กรุณาเลือกปีการศึกษา</option>
+                                @php
+                                $currentYear = date('Y') + 543; // ปีปัจจุบัน
+                                $startYear = 2566; // ปีเริ่มต้น
+                                $endYear = $currentYear + 50; // ปีสิ้นสุด
+                            @endphp
 
-                            <div class="col-md-6">
-                                <input id="telephonenumber" type="text" class="form-control" name="Parent_address" required autocomplete="Parent_address">
+                            @for ($i = $endYear; $i >= $startYear; $i--)
+                                @for ($j = 1; $j <= 1; $j++)
+                                    <option value="{{ $i }}">{{ $i }}</option>
+                                @endfor
+                            @endfor
+                            </select>
                             </div>
                         </div>
+
                         <div class="row mb-3">
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('รูปภาพผู้ใช้งาน') }}</label>
 
@@ -186,6 +203,34 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('สถานนะ') }}</label>
+
+                            <div class="col-md-6">
+
+                            <select class="form-control" aria-label="Default select example"@error('status') is-invalid @enderror name="status"value="{{ old('status') }}" required autocomplete="role">
+                            <option selected>เลือกสถานะ</option>
+                                <option value="รออนุมัติ">รออนุมัติ</option>
+                            <option value="ไม่อนุมัติ">ไม่อนุมัติ</option>
+                            <option value="ไม่ผ่าน">ไม่ผ่าน</option>
+                            </select>
+                                @error('role')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('หมายเหตุ') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="inputGroupFile02" type="text" class="form-control" name="annotation" required autocomplete="annotation">
+
+
                             </div>
                         </div>
                         <div class="row mb-0">

@@ -64,7 +64,7 @@
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                 <li><a href="/establishment" class="nav-link px-2 text-white">สถานประกอบการ</a></li>
                 <li><a href="/cooperative" class="nav-link px-2 text-white">แบบฟอร์มสหกิจ</a></li>
-                <li><a href="/cooperative" class="nav-link px-2 text-white">คู่มือการใช้งาน</a></li>
+                <li><a href="คู่มือการใช้งาน.pdf" target="_blank" class="nav-link px-2 text-white">คู่มือการใช้งาน</a></li>
                 {{-- <li><a href="/cooperative1" class="nav-link px-2 text-white">ยื่นประสงค์ฝึกประสบการณ์</a></li> --}}
                 <li> <div class="dropdown">
                   <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -72,7 +72,7 @@
                   </button>
                   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                     <li><a class="dropdown-item" href="/cooperative1">เพิ่มข้อมูลประสงค์ฝึกประสบการณ์</a></li>
-                    <li><a class="dropdown-item" href="#">รายการสถานะยื่นประสงค์</a></li>     </ul>
+                    <li><a class="dropdown-item" href="/cooperative2">รายการสถานะยื่นประสงค์</a></li>     </ul>
               {{-- <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
               <li><a href="#" class="nav-link px-2 text-white">About</a></li> --}}
             </ul>

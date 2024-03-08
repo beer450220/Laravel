@@ -139,8 +139,81 @@ class HomeController extends Controller
 
     public function studentHome()
     {
+        $registers=DB::table('registers')
+        ->join('users','registers.user_id','users.id')
+        ->select('registers.*','users.fname')->where('user_id', auth()->id())
+        ->paginate(5);
 
-        return view('student.studenthome',["msg"=>"ยินดีต้อนรับนักศึกษา><"]);
+        $registers1=DB::table('registers')
+        ->join('users','registers.user_id','users.id')
+        ->select('registers.*','users.fname')
+        ->where('registers.namefile', 'แบบพิจารณาคุณสมบัตินักศึกษาสหกิจศึกษา(สก01)','')
+        ->where('user_id', auth()->id())
+        ->paginate(5);
+
+        $registers2=DB::table('registers')
+        ->join('users','registers.user_id','users.id')
+        ->select('registers.*','users.fname')
+        ->where('registers.namefile', 'ใบสมัครงานสหกิจศึกษา(สก03)')
+        ->where('user_id', auth()->id())
+        ->paginate(5);
+
+        $registers3=DB::table('registers')
+        ->join('users','registers.user_id','users.id')
+        ->select('registers.*','users.fname')
+        ->where('registers.namefile', 'แบบคำรองขอหนังสือขอความอนุเคราะหรับนักศึกษาสหกิจศึกษา(สก04)')
+        ->where('user_id', auth()->id())
+        ->paginate(5);
+
+        $registers4=DB::table('registers')
+        ->join('users','registers.user_id','users.id')
+        ->select('registers.*','users.fname')
+        ->where('registers.namefile', 'บัตรประชาชน')
+        ->where('user_id', auth()->id())
+        ->paginate(5);
+
+        $registers5=DB::table('registers')
+        ->join('users','registers.user_id','users.id')
+        ->select('registers.*','users.fname')
+        ->where('registers.namefile', 'บัตรนักศึกษา')
+        ->where('user_id', auth()->id())
+        ->paginate(5);
+
+        $registers6=DB::table('registers')
+        ->join('users','registers.user_id','users.id')
+        ->select('registers.*','users.fname')
+        ->where('registers.namefile', 'ผลการเรียน')
+        ->where('user_id', auth()->id())
+        ->paginate(5);
+        $registers7=DB::table('registers')
+        ->join('users','registers.user_id','users.id')
+        ->select('registers.*','users.fname')
+        ->where('registers.namefile', 'ประวัติส่วนตัว(resume)')
+        ->where('user_id', auth()->id())
+        ->paginate(5);
+
+        $registers8=DB::table('acceptance')
+        ->join('users','acceptance.user_id','users.id')
+        ->select('acceptance.*','users.fname')
+        ->where('acceptance.namefile','แบบตอบรับและเสนองานนักศึกสหกิจศึกษา')
+        ->where('user_id', auth()->id())
+        ->paginate(5);
+
+
+
+        $activity=DB::table('schedule')
+        // ->join('users','registers.user_id','users.id')
+        // ->select('registers.*','users.name')->where('user_id', auth()->id())
+        ->paginate(5);
+
+        // return view('student.register',compact('registers','registers1'
+
+
+        // ,'registers2','registers3','registers4','registers5','registers6','registers7','registers8','activity'));
+        return view('student.studenthome',compact('registers','registers1'
+
+
+        ,'registers2','registers3','registers4','registers5','registers6','registers7','registers8','activity'));
     }
 
     public function personal()
@@ -230,6 +303,45 @@ class HomeController extends Controller
            // return view('student.establishmentuser',compact('establishments','search'));
 
     }
+    public function searchadmin(Request $request){
+
+// dd($request);
+        //$search = $request->input('search');
+
+        // $establishments =establishment::where(function($query) use ($search){
+
+        //     $query->where('name','like',"%$search%")
+        //     ->orWhere('address','like',"%$search%");
+
+        //     })
+
+        //     ->get();
+
+
+                // $establishments =establishment::where('name','like',"%$search%")
+                // ->orWhere('address','like',"%$search%")->get();
+
+
+                $keyword = $request->input('keyword');
+//dd($request);
+$users=DB::table('users')
+
+
+
+                    ->paginate(5);
+                // สร้างคำสั่งคิวรีเพื่อค้นหาข้อมูล
+                $users = users::query()
+                    ->where('username', 'LIKE', '%' . $keyword . '%')
+                    //->get();
+                    ->paginate(5);
+
+
+                    // return view('admin.user',compact('users'),["msg"=>"I am Admin role"]);
+                return view('admin.user', ['users' => $users]);
+
+           // return view('student.establishmentuser',compact('establishments','search'));
+
+    }
     public function search1(Request $request){
 
 
@@ -252,6 +364,7 @@ class HomeController extends Controller
                 $keyword = $request->input('keyword');
 //dd($request);
                 // สร้างคำสั่งคิวรีเพื่อค้นหาข้อมูล
+
                 $establishments = establishment::query()
                     ->where('em_name', 'LIKE', '%' . $keyword . '%')
                     //->get();
@@ -267,6 +380,40 @@ class HomeController extends Controller
            // return view('student.establishmentuser',compact('establishments','search'));
 
     }
+    public function searchcooperative2(Request $request){
+
+
+
+                $keyword = $request->input('keyword');
+//dd($request);
+                // สร้างคำสั่งคิวรีเพื่อค้นหาข้อมูล
+                $users=DB::table('users')
+
+                -> where('role','student')
+       ->orWhere('role', '=', '0')
+
+
+               ->paginate(5);
+                $users = users::query()
+                ->where(function($query) use ($keyword) {
+                    $query->where('role', 'student')
+                        ->orWhere('role', '0');
+                })
+                ->where(function($query) use ($keyword) {
+                    $query->where('username', 'LIKE', '%' . $keyword . '%')
+                        ->orWhere('year', 'LIKE', '%' . $keyword . '%')
+                        ->orWhere('term', 'LIKE', '%' . $keyword . '%');
+                })
+                    ->paginate(5);
+
+
+                return view('cooperative.cooperative2', ['users' => $users,]);
+
+           // return view('student.establishmentuser',compact('establishments','search'));
+
+    }
+
+
     public function searchestablishment(Request $request){
 //dd($request);
 
@@ -1769,12 +1916,30 @@ public function category()
 
     public function cooperative1()
     {
-        return view('cooperative.cooperative1',["msg"=>"I am Admin role"]);
+        $major=DB::table('major')
+
+        ->paginate(5);
+
+        return view('cooperative.cooperative1',["msg"=>"I am Admin role"],compact('major'));
 
     }
     public function cooperative2()
     {
-        return view('cooperative.cooperative2',["msg"=>"I am Admin role"]);
+        $users=DB::table('users')
+
+         -> where('role','student')
+->orWhere('role', '=', '0')
+
+        // ->orWhere('role', '=', 'test')
+        //-> where('role','1',)
+
+
+        ->paginate(5);
+        //->get();
+        #แสดงข้อมูลเฉพาะ
+        // $users = DB::table('users')->where('role', 'student')->get();
+        // $users=Users::get();
+        return view('cooperative.cooperative2',["msg"=>"I am Admin role"],compact('users'));
 
     }
     public function establishment()

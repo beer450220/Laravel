@@ -55,7 +55,7 @@ class LoginController extends Controller
         $this->validate($request,[
             // 'username'=>'required|email',
 
-            'code_id'=>'required',
+            'username'=>'required',
             //'username'=>'required',
              'password'=> ('required|min:5'),
 
@@ -66,7 +66,7 @@ class LoginController extends Controller
 
         // if (Hash::check($passwordToCheck, $hashedPasswordFromDatabase)){
 
-        if(auth()->attempt(['code_id'=>$input["code_id"], 'password'=>
+        if(auth()->attempt(['username'=>$input["username"], 'password'=>
         ($input['password'])]))
 
 

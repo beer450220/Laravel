@@ -254,9 +254,9 @@
                     <!-- progressbar -->
 
                     <ul id="progressbar">
-                      <a  href="/studenthome"><li class="active" id="account"><strong>ข้อมูลส่วนตัว</strong></li></a>
+                      {{-- <a  href="/studenthome"><li class="active" id="account"><strong>ข้อมูลส่วนตัว</strong></li></a> --}}
                       {{-- <a  href="/studenthome/establishmentuser">  <li class="active" id="personal"><strong>สถานประกอบการ</strong></li></a> --}}
-                        <a  href="/studenthome/register">  <li class="active" id="payment"><strong>ลงทะเบียน</strong></li></a>
+                        <a  href="/studenthome">  <li class="active" id="payment"><strong>ลงทะเบียน</strong></li></a>
                         <a  href="/studenthome/informdetails"> <li id="confirm"><strong>รายงานสถานะการเข้าปฏิบัติงาน</strong></li></a>
                         <a  href="/studenthome/calendar2confirm"> <li id="confirm"><strong>นิเทศงาน</strong></li></a>
                           <a  href="/studenthome/report"> <li id="payment"><strong>รายงานผลการปฏิบัติงาน</strong></li></a>
@@ -272,7 +272,7 @@
 
                                 </div>
                                 <div class="col-4">
-                                    <h2 class="steps">ขั้นตอน 2 - 5</h2>
+                                    <h2 class="steps">ขั้นตอน 1 - 4</h2>
                                 </div>
                             </div><div class="col-6">
                                  <br>   <br>
@@ -316,10 +316,10 @@
 <div class="alert alert-danger col-6">{{session('error')}}
 @endif
 
+    <strong class="card-title">ลงทะเบียน</strong>
 
     </div>
-                                   <strong class="card-title">ลงทะเบียน</strong>
-                                          </div>
+
 
                                           <div class="card-body">
                                             <div class="row">
@@ -402,7 +402,7 @@
                                                 </div><div class="modal-footer">
                                                     <button type="submit" class="btn mb-2 btn-primary">ตกลง</button>
                                                     <button type="reset" class="btn mb-2 btn-secondary" >ยกเลิก</button>
-                                                    <a href="/studenthome/register" type="submit" class="btn mb-2 btn-secondary" >ย้อนกลับ</a>
+                                                    <a href="/studenthome" type="submit" class="btn mb-2 btn-secondary" >ย้อนกลับ</a>
                                                   </div></form>
                                                 <div class="form-group mb-3">
 

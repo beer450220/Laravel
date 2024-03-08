@@ -83,15 +83,19 @@
                             <h6 class="m-0 font-weight-bold text-primary">จัดการผู้ใช้งาน</h6>
 
 <br>
-                         <form
+
+
+
+    <form action="{{ route('searchadmin') }}" method="GET"
                 class="d-none d-sm-inline-block form-inline  my-md-0 mw-100 navbar-search   " >
                 <div class="input-group">
-                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                        aria-label="Search" aria-describedby="basic-addon2">
+                    <input type="text"name="keyword" id="keyword" class="form-control bg-light border-0 small" placeholder="Search for..."
+                    value="{{ request('keyword') }}"  aria-label="Search" aria-describedby="basic-addon2">
+                        {{-- <input type="text" name="keyword" id="keyword" class="form-control" value="{{ request('keyword') }}"> --}}
                     <div class="input-group-append">
-                        <button class="btn btn-primary" type="button">
+                        {{-- <button class="btn btn-primary" type="button">
                             <i class="fas fa-search fa-sm"></i>
-                        </button>
+                        </button> --}}
                         &nbsp; &nbsp;
                     </div>
                     <div class="my-2 text-start"></div>
@@ -145,7 +149,7 @@
 
 
 
-                                            <td>{{$row->code_id}}</td>
+                                            <td>{{$row->username}}</td>
                                             <td>{{$row->fname}}</td>
                                             <td>{{$row->email}}</td>
 

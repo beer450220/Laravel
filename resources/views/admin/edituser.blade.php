@@ -108,14 +108,14 @@
 
                                                             <div class="row mb-3">
 
-                                                                <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('รหัสประจำตัว') }}</label>
+                                                                <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('ชื่อผู้ใช้งาน') }}</label>
 
                                                                 <div class="col-md-6">
-                                                                    <input id="code_id" type="text" class="form-control @error('code_id') is-invalid @enderror"
-                                                                     name="code_id" value="{{$users->code_id}}"
-                                                                     required autocomplete="Identification_code" autofocus>
+                                                                    <input id="username" type="text" class="form-control @error('username') is-invalid @enderror"
+                                                                     name="username" value="{{$users->username}}"
+                                                                     required autocomplete="" autofocus>
                                                                 {{-- disabled="" --}}
-                                                                    @error('code_id')
+                                                                    @error('	username')
                                                                         <span class="invalid-feedback" role="alert">
                                                                             <strong>{{ $message }}</strong>
                                                                         </span>
@@ -213,33 +213,48 @@
 
 
                                                             <div class="row mb-3">
-                                                                <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('ชื่อผู้ปกครอง') }}</label>
+                                                                <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('ชื่อสถานประกอบการ') }}</label>
 
                                                                 <div class="col-md-6">
-                                                                    <input id="telephonenumber"value="{{$users->Parent_name}}" type="text" class="form-control" name="Parent_name" required autocomplete="Parent_name">
+                                                                    <input id="em_name"value="{{$users->em_name}}" type="text" class="form-control" name="em_name" required autocomplete="em_name">
                                                                 </div>
                                                             </div>
                                                             <div class="row mb-3">
-                                                                <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('เบอร์โทรผู้ปกครอง') }}</label>
+                                                                <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('ภาคเรียนที่') }}</label>
 
                                                                 <div class="col-md-6">
-                                                                    <input id="telephonenumber"value="{{$users->Parent_phonenumber}}" type="text" class="form-control" name="Parent_phonenumber" required autocomplete="Parent_phonenumber">
+                                                                    <select class="form-select"  name="term" required>
+                                                                        <option value="">กรุณาเลือกภาคเรียน</option>
+
+                                                                      <option value="ภาคเรียนที่1"@if($users->term=="ภาคเรียนที่1") selected @endif>ภาคเรียนที่:1 </option>
+                                                                        <option value="ภาคเรียนที่2"@if($users->term=="ภาคเรียนที่1") selected @endif>ภาคเรียนที่:2 </option>
+                                                                      </select>
                                                                 </div>
                                                             </div>
                                                             <div class="row mb-3">
-                                                                <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('ความเกี่ยวข้อง') }}</label>
+                                                                <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('ปีการศึกษา') }}</label>
 
                                                                 <div class="col-md-6">
-                                                                    <input id="telephonenumber"value="{{$users->Relevance}}" type="text" class="form-control" name="Relevance" required autocomplete="Relevance">
-                                                                </div>
-                                                            </div>
-                                                            <div class="row mb-3">
-                                                                <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('ที่อยู่ผู้ปกครอง') }}</label>
+                                                                    <select class="form-select "  name="year"required >
+                                                                        {{-- @foreach(range(date('Y'), date('Y') + 100) as $year)
+                                                                        <option value="{{ $year }}">{{ $year }}</option>
+                                                                    @endforeach --}}
+                                                                    <option value="">กรุณาเลือกปีการศึกษา</option>
+                                                                    @php
+                                                                    $currentYear = date('Y') + 543; // ปีปัจจุบัน
+                                                                    $startYear = 2566; // ปีเริ่มต้น
+                                                                    $endYear = $currentYear + 50; // ปีสิ้นสุด
+                                                                @endphp
 
-                                                                <div class="col-md-6">
-                                                                    <input id="telephonenumber"value="{{$users->Parent_address}}" type="text" class="form-control" name="Parent_address" required autocomplete="Parent_address">
+                                                                @for ($i = $endYear; $i >= $startYear; $i--)
+                                                                    @for ($j = 1; $j <= 1; $j++)
+                                                                        <option value="{{ $i }}"@if($users->year==$i ) selected @endif>{{ $i }}</option>
+                                                                    @endfor
+                                                                @endfor
+                                                                </select>
                                                                 </div>
                                                             </div>
+
                                                             <div class="row mb-3">
                                                                 <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('รูปภาพผู้ใช้งาน') }}</label>
 
@@ -265,6 +280,33 @@
                                                                             <strong>{{ $message }}</strong>
                                                                         </span>
                                                                     @enderror
+                                                                </div>
+                                                            </div>
+                                                            <div class="row mb-3">
+                                                                <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('สถานนะ') }}</label>
+
+                                                                <div class="col-md-6">
+
+                                                                <select class="form-select" aria-label="Default select example"@error('status') is-invalid @enderror name="status"value="{{ old('status') }}" required autocomplete="role">
+                                                                <option selected>เลือกสถานะ</option>
+                                                                    <option value="รออนุมัติ"@if($users->status=="รออนุมัติ") selected @endif>รออนุมัติ</option>
+                                                                <option value="ไม่อนุมัติ"@if($users->status=="ไม่อนุมัติ") selected @endif>ไม่อนุมัติ</option>
+                                                                <option value="ไม่ผ่าน"@if($users->status=="ไม่ผ่าน") selected @endif>ไม่ผ่าน</option>
+                                                                </select>
+                                                                    @error('role')
+                                                                        <span class="invalid-feedback" role="alert">
+                                                                            <strong>{{ $message }}</strong>
+                                                                        </span>
+                                                                    @enderror
+                                                                </div>
+                                                            </div>
+                                                            <div class="row mb-3">
+                                                                <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('หมายเหตุ') }}</label>
+
+                                                                <div class="col-md-6">
+                                                                    <input id="inputGroupFile02" type="text" class="form-control" name="annotation"value="{{$users->annotation}}"  required autocomplete="annotation">
+
+
                                                                 </div>
                                                             </div>
                                                             <div class="row mb-0">

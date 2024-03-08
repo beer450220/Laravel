@@ -68,7 +68,7 @@
               {{-- <li><a href="/" class="nav-link px-2 text-secondary">หน้าแรก</a></li> --}}
               <li><a href="/establishment" class="nav-link px-2 text-white">สถานประกอบการ</a></li>
               <li><a href="/cooperative" class="nav-link px-2 text-white">แบบฟอร์มสหกิจ</a></li>
-              <li><a href="/cooperative" class="nav-link px-2 text-white">คู่มือการใช้งาน</a></li>
+              <li><a href="คู่มือการใช้งาน.pdf" target="_blank" class="nav-link px-2 text-white">คู่มือการใช้งาน</a></li>
               {{-- <li><a href="/cooperative1" class="nav-link px-2 text-white">ยื่นประสงค์ฝึกประสบการณ์</a></li> --}}
               <li> <div class="dropdown">
                 <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -122,8 +122,16 @@
                                       <br>
                                    <h2 class="mb-3"></h2>
 
-  <div id="example_filter" class="dataTables_filter"><label>ค้นหา:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="example"></label></div></div></div><div class="row"><div class="col-sm-12"><table id="example" class="table table-striped table-bordered dataTable" style="width: 100%;" aria-describedby="example_info">
-          <div class="card-body">
+  <div id="example_filter" class="dataTables_filter"><label>ค้นหา:
+    <form action="{{ route('searchcooperative2') }}" method="GET">
+    {{-- <input type="search" name="keyword" id="keyword" value="{{ request('keyword') }} "class="form-control " > --}}
+</label>
+    <input type="search" name="keyword" id="keyword" class="form-control" value="{{ request('keyword') }}"></form>
+</div></div></div>
+{{-- <div class="row"><div class="col-sm-12"><table id="example" class="table table-striped table-bordered dataTable" style="width: 100%;" aria-describedby="example_info"> --}}
+
+
+        <div class="card-body">
             <div class="table-responsive">
 
                 <table class="table table-bordered table-light table-striped table-hover" id="dataTable" width="100%" cellspacing="0">
@@ -145,8 +153,8 @@
                         </tr>
                     </thead>
                     <tbody>
-{{--
-@foreach ($users as $row) --}}
+
+@foreach ($users as $row)
 
 
                         <tr>
@@ -157,9 +165,9 @@
 
 
 
-                            <td class="">หห</td>
-                            <td>หห</td>
-                            <td>หห</td>
+                            <td class="">{{$row->username}}</td>
+                            <td>{{$row->term}}</td>
+                            <td>{{$row->year}}</td>
 
                             {{-- <td></td> --}}
 
@@ -167,14 +175,25 @@
                             {{$row['created_at']->diffForHumans()}} --}}
                             {{-- <td></td> --}}
 
-                            <td><span class="badge rounded-pill bg-warning text-dark">รออนุมัติ</span></td>
+                            <td>
+                                @if ($row->status === 'รออนุมัติ')
+                                <span class="badge rounded-pill bg-warning text-dark">{{ $row->status}}</span>
+                            @elseif ($row->status === 'อนุมัติแล้ว')
+                                <span class="badge rounded-pill bg-success ">{{ $row->status}}</span>
+                            @elseif ($row->status === 'ไม่อนุมัติ')
+                                <span class="badge rounded-pill bg-danger ">{{ $row->status}}</span>
+                            @endif
+
+
+                                {{-- <span class="badge rounded-pill bg-warning text-dark">รออนุมัติ</span> --}}
+                            </td>
 
                         </tr>
 
-                     {{-- @endforeach --}}
+                     @endforeach
                     </tbody>
                 </table>
-                {{-- {!!$users->links('pagination::bootstrap-5')!!} --}}
+                {!!$users->links('pagination::bootstrap-5')!!}
             </div>
         </div>
 

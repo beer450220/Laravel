@@ -16,24 +16,26 @@ class users extends Authenticatable
     public $primarykey="user_id";
     protected $fillable=[
         // 'username',
-        'code_id',
+        // 'code_id',
         'user_id',
         'GPA',
         'images',
         'Status',
-        'establishment_id',
+        'username',
+
         'major_id',
         'fname',
         'surname',
         'telephonenumber',
         'address',
-        'Parent_name',
-        'Parent_address',
-        'Parent_phonenumber',
-        'Relevance',
+        'em_name',
+
+        'year',
+        'term',
         'email',
         'password',
         'role',
+        'annotation',
 
 
 

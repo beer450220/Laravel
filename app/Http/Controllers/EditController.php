@@ -182,7 +182,7 @@ class EditController extends Controller
 public function   updateregisteruser(Request $request,$id) {
     //ตรวจสอบข้อมูล
 
-//dd($request);
+// dd($request);
 
     $request->validate([
 
@@ -230,11 +230,12 @@ public function   updateregisteruser(Request $request,$id) {
         // "filess"=>$request->filess,
         "filess"=>$post->filess,
         "namefile" => $request->namefile,
-
+        "year" => $request->year,
+        "term" => $request->term,
         // "filess" => $post->filess
     ]);
 
-    return redirect('/studenthome/register')->with('success6', 'แก้ไขข้อมูลสำเร็จ.');
+    return redirect('/studenthome')->with('success6', 'แก้ไขข้อมูลสำเร็จ.');
  }
 
 
@@ -2302,10 +2303,10 @@ $post->update
    }
     $post->update
     ([
-       //"username" =>$request->username,
+       "username" =>$request->username,
 
 
-       "code_id" =>$request->code_id,
+    //    "code_id" =>$request->code_id,
        "major_id" =>$request->major_id,
     //    "establishment_id" =>$request->establishment_id,
        "fname" =>$request->fname,
@@ -2313,17 +2314,17 @@ $post->update
        "telephonenumber" =>$request->telephonenumber,
        "address" =>$request->address,
        "GPA" =>$request->GPA,
-       "Parent_name" =>$request->Parent_name,
-       "Parent_address" =>$request->Parent_address,
-       "Parent_phonenumber" =>$request->Parent_phonenumber,
-       "Relevance" =>$request->Relevance,
+       "em_name" =>$request->em_name,
+       "year" =>$request->year,
+       "term" =>$request->term,
+
        "email" =>$request->email,
 
        "password" => Hash::make($request->password),
          "images"=>$post->images,
        "role" =>$request->role,
        "status" =>$request->status,
-
+    //    "username" =>$request->username,
         // $user->establishment_id = "ยังไม่มีสถานประกอบการ";
 
         // $user->username = $request->username;
@@ -2354,7 +2355,10 @@ $post->update
    // ->get();
     //dd($acceptances);
      // dd($Evaluationdocuments);
-     return view('student.Edit.edituser1',compact('users'));
+     $major=DB::table('major')
+
+     ->paginate(5);
+     return view('student.Edit.edituser1',compact('users','major'));
 
  }
 
@@ -2395,14 +2399,29 @@ $post->update
         //"establishment"=>$request->establishment,
        //  "term"=>$request->term,
        // "annotation"=>$request->annotation,
-         "images"=>$post->images
-        // "presentation"=>$post->presentation,
-        // "appointmenttime"=>$post->appointmenttime,
-       // "Status_acceptance"=>$request->Status_acceptance,
-       // "projects" =>$imageName,
-       // "presentation" =>$image,
-      //  "poster" =>$images,
-       // "projectsummary" =>$images1,
+         "images"=>$post->images,
+
+    //    "username" =>$request->username,
+
+
+    //    "code_id" =>$request->code_id,
+       "major_id" =>$request->major_id,
+    //    "establishment_id" =>$request->establishment_id,
+       "fname" =>$request->fname,
+       "surname" =>$request->surname,
+       "telephonenumber" =>$request->telephonenumber,
+       "address" =>$request->address,
+
+       "em_name" =>$request->em_name,
+       "year" =>$request->year,
+       "term" =>$request->term,
+
+       "email" =>$request->email,
+
+    //    "password" => Hash::make($request->password),
+
+    //    "role" =>$request->role,
+    //    "status" =>$request->status,
     ]);
 
 

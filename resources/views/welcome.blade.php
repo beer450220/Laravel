@@ -45,7 +45,7 @@
                     {{-- <li><a href="/" class="nav-link px-2 text-secondary">หน้าแรก</a></li> --}}
                     <li><a href="/establishment" class="nav-link px-2 text-white">สถานประกอบการ</a></li>
                     <li><a href="/cooperative" class="nav-link px-2 text-white">แบบฟอร์มสหกิจ</a></li>
-                    <li><a href="/cooperative" class="nav-link px-2 text-white">คู่มือการใช้งาน</a></li>
+                    <li><a href="คู่มือการใช้งาน.pdf" target="_blank" class="nav-link px-2 text-white">คู่มือการใช้งาน</a></li>
                     {{-- <li><a href="/cooperative1" class="nav-link px-2 text-white">ยื่นประสงค์ฝึกประสบการณ์</a></li> --}}
                     <li> <div class="dropdown">
                       <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -221,9 +221,9 @@
                                             @endif
                                             <label class="mb-2 input-group" for="email">ผู้ใช้งาน</label> <br>
                                                               <span class="input-group-text bg-warning"><i class="bi bi-person"></i></span>
-                                                              <input id="code_id" type="text" class="form-control @error('code_id') is-invalid @enderror" name="code_id" value="{{ old('code_id') }}" required autocomplete="code_id">
+                                                              <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username">
 
-                                                              @error('code_id')
+                                                              @error('username')
                                                                   <span class="invalid-feedback" role="alert">
                                                                       <strong>{{ $message }}</strong>
                                                                   </span>

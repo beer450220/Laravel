@@ -209,9 +209,9 @@
                                               @endif
                                               <label class="mb-2 input-group" for="email">ผู้ใช้งาน</label> <br>
                                                                 <span class="input-group-text bg-warning"><i class="bi bi-person"></i></span>
-                                                                <input id="code_id" type="text" class="form-control @error('code_id') is-invalid @enderror" name="code_id" value="{{ old('code_id') }}" required autocomplete="code_id">
+                                                                <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username">
 
-                                                                @error('code_id')
+                                                                @error('username')
                                                                     <span class="invalid-feedback" role="alert">
                                                                         <strong>{{ $message }}</strong>
                                                                     </span>

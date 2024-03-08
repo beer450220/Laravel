@@ -105,7 +105,7 @@
               {{-- <li><a href="/" class="nav-link px-2 text-secondary">หน้าแรก</a></li> --}}
               <li><a href="/establishment" class="nav-link px-2 text-white">สถานประกอบการ</a></li>
               <li><a href="/cooperative" class="nav-link px-2 text-white">แบบฟอร์มสหกิจ</a></li>
-              <li><a href="/cooperative" class="nav-link px-2 text-white">คู่มือการใช้งาน</a></li>
+              <li><a href="คู่มือการใช้งาน.pdf" target="_blank" class="nav-link px-2 text-white">คู่มือการใช้งาน</a></li>
               {{-- <li><a href="/cooperative1" class="nav-link px-2 text-white">ยื่นประสงค์ฝึกประสบการณ์</a></li> --}}
               <li> <div class="dropdown">
                 <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -157,10 +157,16 @@
                 <div >
                     <div >
                         <div >
+                            <div class="container ">
+                                <div class="row gx-8">
+                                  <div class="col">
+                                   <div class="p-3 border bg-light">ค้นหา</div>
+
+                                   <br>
                     <form action="{{ route('search1') }}" method="GET">
                         <div class="form-group col-12">
                             {{-- <label for="keyword">คำค้นหา:</label> --}}
-                            <input type="text" name="keyword" id="keyword" class="form-control" value="{{ request('keyword') }}">
+                            <div > <span>  <input type="text" name="keyword" id="keyword" class="form-control" value="{{ request('keyword') }}"></span>
                         </div>
                         {{-- <button type="submit" class="btn btn-primary">ค้นหา</button> --}}
                         </form>
