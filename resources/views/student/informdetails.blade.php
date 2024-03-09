@@ -282,9 +282,9 @@
                     <!-- progressbar -->
 
                     <ul id="progressbar">
-                      <a  href="/studenthome"><li class="active" id="account"><strong>ข้อมูลส่วนตัว</strong></li></a>
+                      {{-- <a  href="/studenthome"><li class="active" id="account"><strong>ข้อมูลส่วนตัว</strong></li></a> --}}
                       {{-- <a  href="/studenthome/establishmentuser">  <li class="active" id="personal"><strong>สถานประกอบการ</strong></li></a> --}}
-                        <a  href="/studenthome/register">  <li class="active" id="payment"><strong>ลงทะเบียน</strong></li></a>
+                        <a  href="/studenthome">  <li class="active" id="payment"><strong>ลงทะเบียน</strong></li></a>
                           <a  href="/studenthome/informdetails"> <li class="active" id="confirm"><strong>รายงานสถานะการเข้าปฏิบัติงาน</strong></li></a>
                             <a  href="/studenthome/calendar2confirm"> <li id="confirm"><strong>นิเทศงาน</strong></li></a>
                               <a  href="/studenthome/report"> <li id="payment"><strong>รายงานผลการปฏิบัติงาน</strong></li></a>
@@ -300,12 +300,12 @@
 
                                 </div>
                                 <div class="col-4">
-                                    <h2 class="steps">ขั้นตอน 3 - 5</h2>
+                                    <h2 class="steps">ขั้นตอน 2 - 4</h2>
                                 </div>
                             </div><div class="col-6">
                               <div class=" alert alert-primary  " role="alert">
 
-                                   <b> ขั้นตอนที่ 4 รายงานสถานะการเข้าปฏิบัติงาน:</b> ให้อัพโหลดไฟล์เอกสารให้เรียบร้อย
+                                   <b> ขั้นตอนที่ 2 รายงานสถานะการเข้าปฏิบัติงาน:</b> ให้อัพโหลดไฟล์เอกสารให้เรียบร้อย
                                       <br>แบบแจ้งรายละเอียดการปฏิบัติงาน(สก.07) <b>ภายในสัปดาห์แรก</b>
                                       <br>แบบแจ้งแผนปฏิบัติงานสหกิจศึกษา(สก.08) <b>ภายในสัปดาห์ที่สอง</b>
                                       <br>แบบแจ้งโครงร่างรายงานการปฏิบัติงานสหกิจศึกษา(สก.09)<b>ภายในสัปดาห์ที่สาม</b>
@@ -1091,35 +1091,36 @@
                                       @endif
 
                                       </div>
-                                    </div>
+
 
 
 {{----}} <main role="main" class="">
     <div class="container-fluid">
       <div class="row justify-content-center">
         <div class="col-12">
-          @if(session("success"))
+          {{-- @if(session("success"))
           <div class="alert alert-success col-4">{{session('success')}}
 @endif
  @if(session("success1"))
           <div class="alert alert-danger col-4">{{session('success1')}}
-@endif
+@endif--}}
 </div>
 </div>
 <div class="col-md-12 my-4">
-    <div class="card shadow">
-      <div class="card-body">
-        <h5 class="card-title">รายการแจ้งรายละเอียดการปฎิบัติงาน</h5>
+    <div class="card shadow  ">
+        <div class="card-body">
+          <h5 class="card-title p-3 mb-2 bg-dark text-white">รายการแจ้งรายละเอียดการปฎิบัติงาน</h5>
+          <div class="container">
+              <div class="row">
+                <div class="col-9">
+                  <p class="card-text"> <tbody>
+                  </p>
+                </div>
 
         {{-- @foreach ($informdetails as $row)    @endforeach --}}
         {{-- <td><a href="/fileinformdetails/{{ $row->files }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td>
         <td><a href="/studenthome/editinformdetails/{{ $row->informdetails_id}}" type="button" class="btn btn-outline-secondary fe fe-edit fe-16"></a></td> --}}
-        <div class="container">
-            <div class="row">
-              <div class="col-9">
-                <p class="card-text"> <tbody>
-                </p>
-              </div>
+
               {{-- <div class="d-grid gap-2 d-md-block">
                 <a href="/studenthome/documents1" type="button" class="btn btn-outline-primary"data-bs-toggle="modal" data-bs-target="#exampleModal">ดาวน์โหลดไฟล์เอกสาร</a>
 
@@ -1141,13 +1142,23 @@
 
 
          <div  class="col-xs-20 col-sm-3 col-md-3 card  " style="margin-top:15px;  margin-left: 65px;">
-             <div class="img_thumbnail productlist"><br>
+            <div class="card mb-4 shadow">
+            <div class="img_thumbnail productlist"><br>
                  {{-- <img src="{{ asset('/image') }}/" class="rounded mx-auto d-block" style="width:200px;height:200px; text-align:center;"> --}}
-                 <h4 class="card-title text-center">ชื่อเอกสาร </h4>
+                 <h4 class="card-title text-center">ชื่อเอกสาร </h4>  <p class="text-center">{{ $row->namefile }}</p>
                  <hr>
                  <div class="caption card-body">
+                    <p> สถานะ::   @if ($row->Status_informdetails === 'รอตรวจสอบ')
+                        <span class="badge rounded-pill bg-warning text-dark">{{ $row->Status_informdetails}}</span>
+                    @elseif ($row->Status_informdetails === 'ตรวจสอบเอกสารแล้ว')
+                        <span class="badge rounded-pill bg-success text-dark ">{{ $row->Status_informdetails}}</span>
+                    @elseif ($row->Status_informdetails === 'ไม่ผ่าน')
+                        <span class="badge rounded-pill bg-danger ">{{ $row->Status_informdetails}}</span>
+                    @endif
+                </p>
+                หมายเหตุ ::   {{ $row->annotation}}
                      {{-- <h4 class="card-title">:{{ $row->namefile }}</h4> --}}
-                     <p>{{ $row->namefile }}</p>
+
                      {{-- <p  class="card-text"><strong>หลักสูตร --}}
                          {{-- @foreach ($registers2 as $row1)
                          @if ($row->major_id == $row1->major_id)
@@ -1158,7 +1169,14 @@
                     <div class="card-footer">
                     <div class="d-grid gap-2 d-md-block">
                         <p class="">
+                            @if ($row->Status_informdetails === 'รอตรวจสอบ')
+
+                            @elseif ($row->Status_informdetails === 'ตรวจสอบเอกสารแล้ว')
+
+                            @elseif ($row->Status_informdetails === 'ไม่ผ่าน')
                             <a href="/studenthome/editinformdetails0/{{$row->informdetails_id}}" type="button" class="btn btn-outline-secondary fa-regular fe fe-edit "> </a>
+                            @endif
+
 
                             {{-- @foreach ($registers as $row)
                             @if ($row->namefile === 'แบบพิจารณาคุณสมบัตินักศึกษาสหกิจศึกษา(สก01)')
@@ -1180,26 +1198,25 @@
                         </p><br> --}}
                  </div>    </div>
              </div>
-         </div>
+         </div>   </div>
      @endforeach
     </div>
 </div>
 <br>
-<main role="main" class="">
+<main role="main" class="text-center">
     <div class="container-fluid">
   <div class="row justify-content-center">
     <div class="col-md-12 my-4 " >
    </div>
 
+  </div></div></div></div>  <br>
+<div class="d-grid gap-2 text-center" >
 
-  </div></div></div></div><br> <div class="d-grid gap-2">
-
-    <h2>ขั้นตอนต่อไป</h2>
-    </div>   <a href="/studenthome/calendar2confirm"  id="show-alert" class="btn btn-outline-warning " type="button">>คลิกที่นี่<</a>
-</div>
+    <h4>ขั้นตอนต่อไป</h4><a href="/studenthome/calendar2confirm"   class="btn btn-outline-warning " type="button">>คลิกที่นี่<</a>
+    </div>
+    {{-- id="show-alert" --}}
+  <br>
 <br>
-<br>
-
 {{-- เพิ่มข้อมูล --}}
 <div class="col-md-4 mb-4">
 

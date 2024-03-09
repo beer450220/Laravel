@@ -325,11 +325,11 @@
                                                     </div>
                                                     <div class="form-group mb-3">
                                                       <label for="example-email">ชื่อจริง </label>
-                                                      <input type="text" id="example-email"value="{{ Auth::user()->fname }}"  name="fname" class="form-control" placeholder="">
+                                                      <input type="text" id="example-email"value="{{ Auth::user()->fname }}"  name="fname" class="form-control"required placeholder="">
                                                     </div>
                                                     <div class="form-group mb-3">
                                                         <label for="example-email">นามสกุล</label>
-                                                        <input type="text" id="example-email"value="{{ Auth::user()->surname}}"  name="surname" class="form-control" placeholder="">
+                                                        <input type="text" id="example-email"value="{{ Auth::user()->surname}}"  name="surname" class="form-control"required placeholder="">
                                                       </div>
                                                     {{-- <div class="form-group mb-3">
                                                       <label for="example-password">Password</label>
@@ -337,33 +337,33 @@
                                                     </div> --}}
                                                     <div class="form-group mb-3">
                                                       <label for="example-palaceholder">อีเมล์</label>
-                                                      <input type="email" id="example-palaceholder"value="{{ Auth::user()->email}}"name="email"  class="form-control" placeholder="">
+                                                      <input type="email" id="example-palaceholder"value="{{ Auth::user()->email}}"name="email"  class="form-control"required placeholder="">
                                                     </div>
                                                     <div class="form-group mb-3">
                                                       <label for="example-palaceholder">เกรดเฉลี่ย(GPA)	</label>
-                                                      <input type="text" id="example-palaceholder"value="{{ Auth::user()->GPA }}" name="GPA"  class="form-control" placeholder="">
+                                                      <input type="text" id="example-palaceholder"value="{{ Auth::user()->GPA }}" name="GPA"  class="form-control"required placeholder="">
 
                                                     </div>
                                                     <div class="form-group mb-3">
                                                         <label for="example-palaceholder">เบอร์โทรศัพท์	</label>
-                                                        <input type="text" id="example-palaceholder"value="{{ Auth::user()->telephonenumber}}"name="telephonenumber"  class="form-control" placeholder="">
+                                                        <input type="text" id="example-palaceholder"value="{{ Auth::user()->telephonenumber}}"name="telephonenumber"  class="form-control" placeholder=""required>
                                                       </div>
 
                                                   </div> <!-- /.col -->
                                                   <div class="col-md-6">
                                                     <div class="form-group mb-3">
                                                       <label for="example-helping">ที่อยู่</label>
-                                                      <input type="text" id="example-helping"value="{{ Auth::user()->address}}" name="address" class="form-control" placeholder="">
+                                                      <input type="text" id="example-helping"value="{{ Auth::user()->address}}" name="address" class="form-control"required placeholder="">
 
                                                     </div>
                                                     <div class="form-group mb-3">
                                                       <label for="example-readonly">ชื่อสถานประกอบการ</label>
-                                                      <input type="text" id="example-palaceholder"value="{{ Auth::user()->em_name}}"name="em_name"  class="form-control" placeholder="">
+                                                      <input type="text" id="example-palaceholder"value="{{ Auth::user()->em_name}}"name="em_name"  class="form-control"required placeholder="">
                                                     </div>
 
                                                     <div class="form-group mb-3">
                                                       <label for="example-static">หลักสูตร</label>
-                                                      <select class="form-control" id="validationSelect1" name="major_id" >
+                                                      <select class="form-control" id="validationSelect1" name="major_id" required>
                                                         <option value="">กรุณาเลือกหลักสูตร</option>
                                                         <option value="-"@if($users->major_id=="-") selected @endif required>-</option>
                                                         @foreach ($major as $row)

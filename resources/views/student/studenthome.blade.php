@@ -1938,7 +1938,7 @@ $(document).ready(function () {
 <div class="col-md-12 my-4">
     <div class="card shadow  ">
       <div class="card-body">
-        <h5 class="card-title p-3 mb-2 bg-dark text-white">รายการการอนุมัติลงทะเบียน</h5>
+        <h5 class="card-title p-3 mb-2 bg-dark text-white">รายการอนุมัติลงทะเบียน</h5>
         <div class="container">
             <div class="row">
               <div class="col-9">
@@ -2001,22 +2001,24 @@ $(document).ready(function () {
 
 
                  <div  class="col-xs-20 col-sm-3 col-md-3 card  " style="margin-top:15px;  margin-left: 65px;">
-                     <div class="img_thumbnail productlist"><br>
+                    <div class="card mb-4 shadow">
+
+                    <div class="img_thumbnail productlist"><br>
                          {{-- <img src="{{ asset('/image') }}/" class="rounded mx-auto d-block" style="width:200px;height:200px; text-align:center;"> --}}
-                         <h4 class="card-title text-center">ชื่อเอกสาร </h4>
+                         <h4 class="card-title text-center">ชื่อเอกสาร </h4>    <p class="text-center">{{ $row->namefile }}</p>
                          <hr>
                          <div class="caption card-body">
                              {{-- <h4 class="card-title">:{{ $row->namefile }}</h4> --}}
-                             <p>{{ $row->namefile }}</p>
 
-                            สถานะ::   @if ($row->Status_registers === 'รอตรวจสอบ')
+
+                             <p> สถานะ::   @if ($row->Status_registers === 'รอตรวจสอบ')
                             <span class="badge rounded-pill bg-warning text-dark">{{ $row->Status_registers}}</span>
                         @elseif ($row->Status_registers === 'ตรวจสอบเอกสารแล้ว')
                             <span class="badge rounded-pill bg-success text-dark ">{{ $row->Status_registers}}</span>
                         @elseif ($row->Status_registers === 'ไม่ผ่าน')
                             <span class="badge rounded-pill bg-danger ">{{ $row->Status_registers}}</span>
                         @endif
-
+                    </p>
 
                             <span class="text- "> </span>
                              {{-- <p  class="card-text"><strong>หลักสูตร --}}
@@ -2025,11 +2027,18 @@ $(document).ready(function () {
                                      {{ $row1->name_major }}
                                  @endif
                              @endforeach --}}
-                            {{-- </strong> </p> --}}
+                            {{-- </strong> </p> --}} หมายเหตุ ::   {{ $row->annotation}}
                             <div class="card-footer">
                             <div class="d-grid gap-2 d-md-block">
                                 <p class="">
+                                    @if ($row->Status_registers === 'รอตรวจสอบ')
+
+                                @elseif ($row->Status_registers === 'ตรวจสอบเอกสารแล้ว')
+
+                                @elseif ($row->Status_registers === 'ไม่ผ่าน')
                                     <a href="/studenthome/edit9register/{{$row->id}}" type="button" class="btn btn-outline-secondary fa-regular fe fe-edit "> </a>
+                                @endif
+
 
                                     {{-- @foreach ($registers as $row)
                                     @if ($row->namefile === 'แบบพิจารณาคุณสมบัตินักศึกษาสหกิจศึกษา(สก01)')
@@ -2051,7 +2060,7 @@ $(document).ready(function () {
                                 </p><br> --}}
                          </div>    </div>
                      </div>
-                 </div>
+                 </div> </div>
              @endforeach
  <div class="text-center"style="margin-top:15px;   margin-right: 190px;">
                 {!!$registers->links('pagination::bootstrap-5')!!}</div>

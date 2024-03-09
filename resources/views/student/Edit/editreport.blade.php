@@ -254,9 +254,9 @@
                     <!-- progressbar -->
 
                     <ul id="progressbar">
-                      <a  href="/studenthome"><li class="active" id="account"><strong>ข้อมูลส่วนตัว</strong></li></a>
-                      <a  href="/studenthome/establishmentuser">  <li class="active" id="personal"><strong>สถานประกอบการ</strong></li></a>
-                        <a  href="/studenthome/register">  <li class="active" id="payment"><strong>ลงทะเบียน</strong></li></a>
+                      {{-- <a  href="/studenthome"><li class="active" id="account"><strong>ข้อมูลส่วนตัว</strong></li></a>
+                      <a  href="/studenthome/establishmentuser">  <li class="active" id="personal"><strong>สถานประกอบการ</strong></li></a> --}}
+                        <a  href="/studenthome">  <li class="active" id="payment"><strong>ลงทะเบียน</strong></li></a>
                           <a  href="/studenthome"> <li class="active" id="confirm"><strong>รายงานสถานะการเข้าปฏิบัติงาน</strong></li></a>
                             <a  href="/studenthome"> <li class="active" id="confirm"><strong>นิเทศงาน</strong></li></a>
                               <a  href="/studenthome"> <li class="active" id="payment"><strong>รายงานผลการปฏิบัติงาน</strong></li></a>
@@ -272,7 +272,7 @@
 
                                 </div>
                                 <div class="col-4">
-                                    <h2 class="steps">ขั้นตอน 6 - 6</h2>
+                                    <h2 class="steps">ขั้นตอน 4 - 4</h2>
                                 </div>
                             </div><div class="col-6">
                                  <br>   <br>
@@ -314,7 +314,7 @@
         </ul>
     </div>
 @endif
-                                            <strong class="card-title">รายงานผลการฝึกประสบการณ์</strong>
+                                            <strong class="card-title">แก้ไขรายงานผลการฝึกประสบการณ์</strong>
                                           </div>
 
                                           <div class="card-body">
@@ -354,14 +354,48 @@
                                                         <div class="custom-file">
                                                             <input type="file" name="filess" value="{{$report->filess}}" class="custom-file-input " id="customFile">
                                                             <label class="custom-file-label" for="customFile">เลือกไฟล์รูป</label>
-                                                            <img src="/ไฟล์เอกสารฝึกประสบการณ์/{{ $report->filess }}" class="img-responsive" style="max-height: 100px; max-width: 100px;" alt="" srcset="">
+
 
                                                         </div>
 
                                                       </div>
                                                   </div>
                                                 </div>
+                                                <div class="form-group mb-3">
+                                                    <label for="inputAddress"class="col-form-label ">ปีการศึกษา</label>
+      <select class="form-control "  name="year"required >
+        {{-- @foreach(range(date('Y'), date('Y') + 100) as $year)
+        <option value="{{ $year }}">{{ $year }}</option>
+    @endforeach --}}
+    <option value="">กรุณาเลือกปีการศึกษา</option>
+    @php
+    $currentYear = date('Y') + 543; // ปีปัจจุบัน
+    $startYear = 2566; // ปีเริ่มต้น
+    $endYear = $currentYear + 50; // ปีสิ้นสุด
+@endphp
 
+@for ($i = $endYear; $i >= $startYear; $i--)
+    @for ($j = 1; $j <= 1; $j++)
+        <option value="{{ $i }}"@if($report->year==$i ) selected @endif>{{ $i }}</option>
+    @endfor
+@endfor
+</select>    </div>
+
+
+                                                      {{-- <input type="text"  name="namefile" class="form-control" id="example-static" > --}}
+
+
+
+                                                  <div class="form-group mb-3">
+                                                      <label for="inputAddress"class="col-form-label ">ภาคเรียน</label>
+                                                      <select class="form-control "  name="term"required>
+                                                        <option value="">กรุณาเลือกภาคเรียน</option>
+
+                                                      <option value="ภาคเรียนที่1"@if($report->term=="ภาคเรียนที่1") selected @endif>ภาคเรียนที่:1 </option>
+                                                        <option value="ภาคเรียนที่2"@if($report->term=="ภาคเรียนที่2") selected @endif>ภาคเรียนที่:2 </option>
+                                                      </select>
+                                                  </div>
+                                            </div>
                                             </div> <!-- /.col -->
                                               {{-- <div class="col-md-6">
                                                 <div class="form-group mb-3">
@@ -370,7 +404,7 @@
                                                     <input type="file" class="custom-file-input" id="customFile">
                                                     <label class="custom-file-label" for="customFile">Choose file</label>
                                                   </div> --}}
-
+                                                  <img src="/ไฟล์เอกสารฝึกประสบการณ์/{{ $report->filess }}" class="img-responsive" style="max-height: 100px; max-width: 100px;" alt="" srcset="">
                                                 </div><div class="modal-footer">
                                                     <button type="submit" class="btn mb-2 btn-primary">ตกลง</button>
                                                     <button type="reset" class="btn mb-2 btn-secondary" >ยกเลิก</button>

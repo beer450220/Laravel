@@ -254,9 +254,9 @@
                     <!-- progressbar -->
 
                     <ul id="progressbar">
-                      <a  href="/studenthome"><li class="active" id="account"><strong>ข้อมูลส่วนตัว</strong></li></a>
+                      {{-- <a  href="/studenthome"><li class="active" id="account"><strong>ข้อมูลส่วนตัว</strong></li></a> --}}
                       {{-- <a  href="/studenthome/establishmentuser">  <li class="active" id="personal"><strong>สถานประกอบการ</strong></li></a> --}}
-                        <a  href="/studenthome/register">  <li class="active" id="payment"><strong>ลงทะเบียน</strong></li></a>
+                        <a  href="/studenthome">  <li class="active" id="payment"><strong>ลงทะเบียน</strong></li></a>
                         <a  href="/studenthome/informdetails"> <li class="active" id="confirm"><strong>รายงานสถานะการเข้าปฏิบัติงาน</strong></li></a>
                         <a  href="/studenthome/calendar2confirm"> <li class="active" id="confirm"><strong>นิเทศงาน</strong></li></a>
                           <a  href="/studenthome/report"> <li class="active" id="payment"><strong>รายงานผลการปฏิบัติงาน</strong></li></a>
@@ -272,7 +272,7 @@
 
                                 </div>
                                 <div class="col-4">
-                                    <h2 class="steps">ขั้นตอน 5 - 5</h2>
+                                    <h2 class="steps">ขั้นตอน 4 - 4</h2>
                                 </div>
                             </div><div class="col-6">
                                  <br>   <br>
@@ -314,7 +314,7 @@
         </ul>
     </div>
 @endif
-                                            <strong class="card-title">รายงานผลการฝึกประสบการณ์</strong>
+                                            <strong class="card-title">เพิ่มข้อมูลรายงานผลการฝึกประสบการณ์</strong>
                                           </div>
 
                                           <div class="card-body">
@@ -343,7 +343,7 @@
                                                   </div> --}}
                                                   <div class="form-group mb-3">
                                                     <div class="custom-file">
-                                                        <input type="file" name="filess" class="custom-file-input" id="customFile">
+                                                        <input type="file" name="filess" class="custom-file-input" id="customFile"required>
                                                         <label class="custom-file-label" for="customFile">เลือกไฟล์รูป</label>
 
                                                       </div>
@@ -353,7 +353,7 @@
 
                                                 <div class="form-group mb-3">
                                                     <label for="inputAddress"class="col-form-label ">ปีการศึกษา</label>
-      <select class="form-control "  name="year" >
+      <select class="form-control "  name="year"required >
         {{-- @foreach(range(date('Y'), date('Y') + 100) as $year)
         <option value="{{ $year }}">{{ $year }}</option>
     @endforeach --}}
@@ -378,7 +378,7 @@
 
                                                   <div class="form-group mb-3">
                                                       <label for="inputAddress"class="col-form-label ">ภาคเรียน</label>
-                                                      <select class="form-control "  name="term">
+                                                      <select class="form-control "  name="term"required>
                                                         <option value="">กรุณาเลือกภาคเรียน</option>
 
                                                       <option value="ภาคเรียนที่1">ภาคเรียนที่:1 </option>

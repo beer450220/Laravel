@@ -282,9 +282,9 @@
                     <!-- progressbar -->
 
                     <ul id="progressbar">
-                      <a  href="/studenthome"><li class="active" id="account"><strong>ข้อมูลส่วนตัว</strong></li></a>
+                      {{-- <a  href="/studenthome"><li class="active" id="account"><strong>ข้อมูลส่วนตัว</strong></li></a> --}}
                       {{-- <a  href="/studenthome/establishmentuser">  <li class="active" id="personal"><strong>สถานประกอบการ</strong></li></a> --}}
-                        <a  href="/studenthome/register">  <li class="active" id="payment"><strong>ลงทะเบียน</strong></li></a>
+                        <a  href="/studenthome">  <li class="active" id="payment"><strong>ลงทะเบียน</strong></li></a>
                           <a  href="/studenthome/informdetails"> <li class="active" id="confirm"><strong>รายงานสถานะการเข้าปฏิบัติงาน</strong></li></a>
                             <a  href="/studenthome/calendar2confirm"> <li class="active" id="confirm"><strong>นิเทศงาน</strong></li></a>
                               <a  href="/studenthome/report"> <li id="payment"><strong>รายงานผลการปฏิบัติงาน</strong></li></a>
@@ -300,7 +300,7 @@
 
                                 </div>
                                 <div class="col-4">
-                                    <h2 class="steps">ขั้นตอน 5 - 6</h2>
+                                    <h2 class="steps">ขั้นตอน 3 - 4</h2>
                                 </div>
                             </div><div class="col-6">
                               <div class=" alert alert-primary  " role="alert">
@@ -370,7 +370,8 @@
                                         <div class="card shadow">
                                           <div class="card-body">
                                         </span>
-                                       <h5 class="card-title"> <span> @foreach ($events as $row)
+                                       <h5 class="card-title p-3 mb-2 bg-dark text-white"> <span>
+                                         {{-- @foreach ($events as $row)
 
                                             @if ($row->Status_events === 'ยังไม่ได้รับทราบและยืนยันเวลานัดนิเทศ')
                                             <span class="circle circle-sm bg-warning-light"><i class="fe fe-16 fe-alert-triangle text-white "></i></span>
@@ -379,7 +380,8 @@
                                         @elseif ($row->Status_events === 'ไม่ผ่าน')
                                             <span class="badge badge-pill badge-danger">{{ $row->Status_events }}
                                         @endif
-                                        @endforeach
+                                        @endforeach --}}
+
                                         ตารางการนิเทศนักศึกษาฝึกปฏิบัติงานสหกิจศึกษา</span></h5>
                                         {{-- <h5 class="card-title">นิเทศงาน</h5> --}}
 
@@ -388,28 +390,31 @@
                                  <!-- end section -->
                             </div> <!-- end section -->
                             <br>
+                            <div class="container ">
+                                <div class="row ">
                             @foreach ($events as $row)
-                            <div class="col-md-6">
-                                <div class="card shadow mb-4">
-                                  <div class="card-body text-center">
-                                    <div class="avatar avatar-lg mt-4">
+                            <div  class="col-xs-20 col-sm-3 col-md-6 card  " style="margin-top:15px;  margin-left: 65px;">
+                                <div class="card mb-4 shadow">
+                                <div class="img_thumbnail productlist"><br>
                                       {{-- <a href="">
                                         <img src="./assets/avatars/face-4.jpg" alt="..." class="avatar-img rounded-circle">
                                       </a> --}}
-
-                                    </div>
+                                      <h4 class="card-title text-center">สถานประกอบการ::  {{ $row->establishment_name }}</h4>  <p class="text-center"></p>
+                                      <hr>
+                                      <div class="caption card-body">
                                     <div class="card-text my-2">
-                                      <strong class="card-title my-0">วันเวลาการนิเทศ: {{ $row->start}} </strong>
-                                      <p class="small text-muted mb-0">สถานประกอบการ: {{ $row->establishment_name }}</p>
-                                      <p class="small"><span class="badge badge-light text-muted">อาจารย์นิเทศ:{{ $row->teacher_name }}</span></p>
-                                      <p class="small text-muted mb-0">รับทราบและยืนยันเวลานัดนิเทศ:@if ($row->Status_events === 'รอรับทราบและยืนยันเวลานัดนิเทศ')
-                                        <span class="badge badge-pill badge-warning">{{ $row->Status_events }}ss</span>
+
+                                      <p class=" text mb-0 ">วันเวลาการนิเทศ: {{ $row->start}}</p>
+                                      <p class=""><span class=" text-muted">อาจารย์นิเทศ: {{ $row->teacher_name }}</span></p>
+                                      <hr>
+                                      <p class=" text-muted mb-0">รับทราบและยืนยันเวลานัดนิเทศ:@if ($row->Status_events === 'รอรับทราบและยืนยันเวลานัดนิเทศ')
+                                        <span class="badge badge-pill badge-warning">{{ $row->Status_events }}</span>
                                     @elseif ($row->Status_events === 'รับทราบและยืนยันเวลานัดนิเทศแล้ว')
                                         <span class="badge badge-pill badge-success">{{ $row->Status_events}}</span>
                                     @elseif ($row->Status_events === 'ไม่ผ่าน')
                                         <span class="badge badge-pill badge-danger">{{ $row->Status_events}}</span>
                                     @endif</p>
-                                      <p class="small text-muted mb-0">ขอเปลี่ยนเวลานัดนิเทศ:{{ $row->appointment_time}}</p>
+                                      <p class=" text-muted mb-0">ขอเปลี่ยนเวลานัดนิเทศ:{{ $row->appointment_time}}</p>
 
                                     </div>
                                   </div> <!-- ./card-text -->
@@ -419,8 +424,17 @@
                                       <div class="col-auto">
                                         <small>
                                        {{-- <span class="dot dot-lg bg-success mr-1"></span> Online </small> --}}
-                                         <td><a href="/studenthome/updateconfirm/{{$row->id}}" type="button"onclick="return confirm('ยืนยันข้อมูล !!');" class="btn btn-outline-success  fa-solid fa-check fe-16"></a></td>
-                                          <td><a href="/studenthome/calendar2confirmedit/{{$row->id}}" type="button" class="btn btn-outline-warning fa-solid fa-pen-to-square fe-16"></a></td>
+                                         <td>
+                                            @if ($row->Status_events === 'รอรับทราบและยืนยันเวลานัดนิเทศ')
+                                            <a href="/studenthome/updateconfirm/{{$row->id}}" type="button"onclick="return confirm('ยืนยันข้อมูล !!');" class="btn btn-outline-success  fa-solid fa-check fe-16">ยืนยันวันนิเทศ</a></td>
+                                            @elseif ($row->Status_events === 'รับทราบและยืนยันเวลานัดนิเทศแล้ว')
+
+
+
+                                            @endif
+
+
+                                          <td><a href="/studenthome/calendar2confirmedit/{{$row->id}}" type="button" class="btn btn-outline-warning fa-solid fa-pen-to-square fe-16">ขอเปลี่ยนเวลานัดนิเทศ</a></td>
                                         </div>
 
                                       <div class="col-auto">
@@ -428,7 +442,7 @@
                                       </div>
                                     </div>
                                   </div> <!-- /.card-footer -->
-                                </div>
+
                               </div>@endforeach
 
 
@@ -438,7 +452,7 @@
 
 
 
-
+                            </div>      </div>
 
 
                                         </div>
@@ -448,17 +462,17 @@
 
                                       </div>
                                     </div>
-                                    <main role="main" class="">
+                                    <main role="main" class="text-center">
                                         <div class="container-fluid">
                                       <div class="row justify-content-center">
                                         <div class="col-md-12 my-4 " >
                                        </div>
 
+                                      </div></div></div></div>  <br>
+                                    <div class="d-grid gap-2 text-center" >
 
-                                      </div></div></div></div> <div class="d-grid gap-2">
-
-                                        <h2>ขั้นตอนต่อไป</h2>
-                                        </div>   <a href="/studenthome/report"  id="show-alert" class="btn btn-outline-warning " type="button">>คลิกที่นี่<</a>
+                                        <h4>ขั้นตอนต่อไป</h4><a href="/studenthome/report"   class="btn btn-outline-warning " type="button">>คลิกที่นี่<</a>
+                                        </div>
                                   </div>
                                 <br>
                                 <br>

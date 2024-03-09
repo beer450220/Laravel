@@ -186,7 +186,7 @@ public function   updateregisteruser(Request $request,$id) {
 
     $request->validate([
 
-        'filess' => 'mimes:jpeg,jpg,png',
+        // 'filess' => 'mimes:jpeg,jpg,png',
         //'filess' => 'sometimes|required|mimes:jpeg,jpg,png',
         // 'name' => ['required'],
         'namefile' => 'required',
@@ -571,7 +571,7 @@ public function editreport($report_id) {
 public function   calendar2confirmupdate(Request $request,$id) {
     //ตรวจสอบข้อมูล
 
-   dd($request);
+   //dd($request);
 
     $request->validate([
         // 'images' => ['required','mimes:jpg,jpeg,png'],

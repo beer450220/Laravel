@@ -282,9 +282,9 @@
                     <!-- progressbar -->
 
                     <ul id="progressbar">
-                      <a  href="/studenthome"><li class="active" id="account"><strong>ข้อมูลส่วนตัว</strong></li></a>
+                      {{-- <a  href="/studenthome"><li class="active" id="account"><strong>ข้อมูลส่วนตัว</strong></li></a> --}}
                       {{-- <a  href="/studenthome/establishmentuser">  <li class="active" id="personal"><strong>สถานประกอบการ</strong></li></a> --}}
-                        <a  href="/studenthome/register">  <li class="active" id="payment"><strong>ลงทะเบียน</strong></li></a>
+                        <a  href="/studenthome">  <li class="active" id="payment"><strong>ลงทะเบียน</strong></li></a>
                           <a  href="/studenthome/informdetails"> <li class="active" id="confirm"><strong>รายงานสถานะการเข้าปฏิบัติงาน</strong></li></a>
                             <a  href="/studenthome/calendar2confirm"> <li class="active" id="confirm"><strong>นิเทศงาน</strong></li></a>
                               <a  href="/studenthome/report"> <li class="active" id="payment"><strong>รายงานผลการปฏิบัติงาน</strong></li></a>
@@ -300,12 +300,12 @@
 
                                 </div>
                                 <div class="col-4">
-                                    <h2 class="steps">ขั้นตอน 5 - 5</h2>
+                                    <h2 class="steps">ขั้นตอน 4 - 4</h2>
                                 </div>
                             </div><div class="col-6">
                               <div class=" alert alert-primary  " role="alert">
 
-                                <b> ขั้นตอนที่ 6 รายงานผลการปฏิบัติงาน:</b>
+                                <b> ขั้นตอนที่ 4 รายงานผลการปฏิบัติงาน:</b>
                                 <br>อัพโหลดเอกสารฝึกประสบการณ์
                                 <br>    -รายงานโครงการ
                                 <br>    -PowerPoint การนำเสนอ
@@ -343,7 +343,7 @@
                             <div class="col-md-12 my-4">
                                 <div class="card shadow">
                                   <div class="card-body">
-                                    <h5 class="card-title">รายงานผลการฝึกประสบการณ์</h5>
+                                    <h5 class="card-title">เพิ่มข้อมูลรายงานผลการฝึกประสบการณ์</h5>
                                     <div class="container">
                                         <div class="row">
                                           <div class="col-9">
@@ -1222,7 +1222,8 @@
 <div class="col-md-12 my-4">
     <div class="card shadow">
       <div class="card-body">
-        <h5 class="card-title">รายการผลการฝึกประสบการณ์</h5>
+
+        <h5 class="card-title p-3 mb-2 bg-dark text-white">รายการผลการฝึกประสบการณ์</h5>
         <div class="container">
             <div class="row">
               <div class="col-10">
@@ -1246,13 +1247,23 @@
 
 
                  <div  class="col-xs-20 col-sm-3 col-md-3 card  " style="margin-top:15px;  margin-left: 65px;">
-                     <div class="img_thumbnail productlist"><br>
+                    <div class="card mb-4 shadow">
+                    <div class="img_thumbnail productlist"><br>
                          {{-- <img src="{{ asset('/image') }}/" class="rounded mx-auto d-block" style="width:200px;height:200px; text-align:center;"> --}}
-                         <h4 class="card-title text-center">ชื่อเอกสาร </h4>
+                         <h4 class="card-title text-center">ชื่อเอกสาร </h4><p class="text-center">{{ $row->namefile }}</p>
                          <hr>
                          <div class="caption card-body">
+                            <p> สถานะ::   @if ($row->Status_report === 'รอตรวจสอบ')
+                                <span class="badge rounded-pill bg-warning text-dark">{{ $row->Status_report}}</span>
+                            @elseif ($row->Status_report === 'ตรวจสอบเอกสารแล้ว')
+                                <span class="badge rounded-pill bg-success text-dark ">{{ $row->Status_report}}</span>
+                            @elseif ($row->Status_report === 'ไม่ผ่าน')
+                                <span class="badge rounded-pill bg-danger ">{{ $row->Status_report}}</span>
+                            @endif
+                        </p>
+                        หมายเหตุ ::   {{ $row->annotation}}
                              {{-- <h4 class="card-title">:{{ $row->namefile }}</h4> --}}
-                             <p>{{ $row->namefile }}</p>
+
                              {{-- <p  class="card-text"><strong>หลักสูตร --}}
                                  {{-- @foreach ($registers2 as $row1)
                                  @if ($row->major_id == $row1->major_id)
@@ -1263,7 +1274,14 @@
                             <div class="card-footer">
                             <div class="d-grid gap-2 d-md-block">
                                 <p class="">
+                                    @if ($row->Status_report=== 'รอตรวจสอบ')
+
+                                    @elseif ($row->Status_report === 'ตรวจสอบเอกสารแล้ว')
+
+                                    @elseif ($row->Status_report=== 'ไม่ผ่าน')
                                     <a href="/studenthome/editreport6/{{$row->report_id}}" type="button" class="btn btn-outline-secondary fa-regular fe fe-edit "> </a>
+                                    @endif
+
 
                                     {{-- @foreach ($registers as $row)
                                     @if ($row->namefile === 'แบบพิจารณาคุณสมบัตินักศึกษาสหกิจศึกษา(สก01)')
@@ -1285,7 +1303,7 @@
                                 </p><br> --}}
                          </div>    </div>
                      </div>
-                 </div>
+                 </div>    </div>
              @endforeach
 
 

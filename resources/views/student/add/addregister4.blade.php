@@ -358,7 +358,7 @@
                                                 </div>
                                                 <div class="form-group mb-3">
                                                     <label for="inputAddress"class="col-form-label ">ปีการศึกษา</label>
-      <select class="form-control "  name="year" >
+      <select class="form-control "  name="year"required >
         {{-- @foreach(range(date('Y'), date('Y') + 100) as $year)
         <option value="{{ $year }}">{{ $year }}</option>
     @endforeach --}}
@@ -383,7 +383,7 @@
 
                                                   <div class="form-group mb-3">
                                                       <label for="inputAddress"class="col-form-label ">ภาคเรียน</label>
-                                                      <select class="form-control "  name="term">
+                                                      <select class="form-control "  name="term"required>
                                                         <option value="">กรุณาเลือกภาคเรียน</option>
 
                                                       <option value="ภาคเรียนที่1">ภาคเรียนที่:1 </option>

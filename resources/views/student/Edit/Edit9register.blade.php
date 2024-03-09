@@ -314,7 +314,7 @@
         </ul>
     </div>
 @endif
-                                            <strong class="card-title">ลงทะเบียน</strong>
+                                            <strong class="card-title">แก้ไขลงทะเบียน</strong>
                                           </div>
 
                                           <div class="card-body">
@@ -366,7 +366,7 @@
                                                 </div>
                                                 <div class="form-group mb-3">
                                                     <label for="inputAddress"class="col-form-label ">ปีการศึกษา</label>
-      <select class="form-control "  name="year" >
+      <select class="form-control "  name="year"required >
         {{-- @foreach(range(date('Y'), date('Y') + 100) as $year)
         <option value="{{ $year }}">{{ $year }}</option>
     @endforeach --}}
@@ -391,7 +391,7 @@
 
                                                   <div class="form-group mb-3">
                                                       <label for="inputAddress"class="col-form-label ">ภาคเรียน</label>
-                                                      <select class="form-control "  name="term">
+                                                      <select class="form-control "  name="term"required>
                                                         <option value="">กรุณาเลือกภาคเรียน</option>
 
                                                       <option value="ภาคเรียนที่1"@if($establishments->term=="ภาคเรียนที่1") selected @endif>ภาคเรียนที่:1 </option>
