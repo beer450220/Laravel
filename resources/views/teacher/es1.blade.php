@@ -49,7 +49,7 @@
 
 
 
-
+                <th>สถานะ</th>
               <th>ไฟล์เอกสาร</th>
               <th>แก้ไข</th>
               <th>ลบ</th>
@@ -60,7 +60,16 @@
             <tr>
               <td>{{$supervision->firstItem()+$loop->index}}</td>
               <td>{{$row->namefile}}</td>
+              <td>
+                @if ($row->status === 'รออนุมัติ')
+                <span class="badge rounded-pill bg-warning text-dark">{{ $row->status}}</span>
+            @elseif ($row->status === 'อนุมัติแล้ว')
+                <span class="badge rounded-pill bg-success ">{{ $row->status}}</span>
+            @elseif ($row->status === 'ไม่อนุมัติ')
+                <span class="badge rounded-pill bg-danger ">{{ $row->status}}</span>
+            @endif
 
+                </td>
 
 
               <td><a href="/ไฟล์เอกสารขออนุญาตนิเทศงาน/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td>

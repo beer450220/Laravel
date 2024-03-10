@@ -137,14 +137,14 @@
 
         <div class="col-md-2">
           <label for="inputAddress"class="col-form-label ">ชื่ออาจารย์</label>
-          <input type="text" class="form-control" @error('score') is-invalid @enderror name="name" value="{{ $major->name }}"  autofocus placeholder="score" placeholder="Last name" aria-label="Last name">
+          <input type="text" class="form-control" @error('score') is-invalid @enderror name="name" value="{{ $major->name }}"  autofocus placeholder="score" placeholder="Last name" aria-label="Last name"required>
 
       </div>
 
       </div>
       <br>
           <div class="modal-footer">
-            <a href="/teacher/estimate1" type="submit" class="btn mb-2 btn-success" >ย้อนกลับ</a>
+            <a href="/teacher/teacher01" type="submit" class="btn mb-2 btn-success" >ย้อนกลับ</a>
             <button type="reset" class="btn mb-2 btn-danger" >ยกเลิก</button>
             <button type="submit" class="btn mb-2 btn-primary">ตกลง</button>
           </div>

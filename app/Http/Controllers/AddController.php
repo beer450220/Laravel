@@ -852,7 +852,7 @@ if($request->hasFile("filess"))
   ]);
 
   $post->annotation ="-";
-  $post->status ="รอตรวจสอบ";
+  $post->status ="รออนุมัติ";
   $post->save();
     //  $data =array();
     //  $data["test"]= $request->test;
@@ -868,12 +868,14 @@ public function addteacher(Request $request) {
     //ตรวจสอบข้อมูล
      //dd($request);
 
+
      $request->validate([
+          'name' => 'required|unique:teacher',
       //  'name' => 'required|unique:name',
       //  'test' => 'required|unique:test',
   ]
 ,[
-
+ 'name.unique' => "ขื่อซ้ำ",
   // 'name.required'=>"กรุณากรอกชื่อ",
   // 'test.required'=>"กรุณาเทส",
 ]
@@ -897,7 +899,7 @@ public function addteacher(Request $request) {
     //  $data["test"]= $request->test;
   //    $data["test"]= $request->test;
   // DB::table('test')->insert($data);
-     return redirect('/teacher/teacher01')->with('success', 'สมัครสำเร็จ.');
+     return redirect('/teacher/teacher01')->with('success', 'สมัครสำเร็จ.','error');
      // return redirect("/welcome")->with('success', 'Company has been created successfully.');
   }
 
@@ -1118,13 +1120,13 @@ public function addsupervision()
       //->join('establishment','establishment.id',"=",'users.id')
       //->select('users.*','establishment.*')
       ->get();
-      $establishment=DB::table('establishment')
-      //->where('role',"student")
-      ->get();
+    //   $establishment=DB::table('establishment')
+    //   //->where('role',"student")
+    //   ->get();
      // dd($users);
      // ->paginate(5);
      $major=DB::table('users')->paginate(5);
-        return view('teacher.add.addsupervision',compact('users','users2'),compact('establishment','major'));
+        return view('teacher.add.addsupervision',compact('users','users2'),compact('major'));
     }
 
     public function addsupervision1(Request $request) {

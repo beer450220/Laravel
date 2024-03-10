@@ -60,7 +60,7 @@
                               <div class="mb-3">
                                 <label for="recipient-name" class="col-form-label">ขอเปลี่ยนเวลานัดนิเทศ</label>
                                 {{-- <input type="datetime-local" class="form-control" id="recipient-name" name="appointment_time" value="{{ \Carbon\Carbon::parse($events->appointment_time)->format('Y-m-d\TH:i') }}"> --}}
-                                <input type="text" class="form-control" id="recipient-name" name="appointment_time" value="">
+                                <input type="text" class="form-control" id="recipient-name" name="appointment_time" value="{{$events->appointment_time}}">
                                 {{-- <input class="form-control" id="example-date" type="datetime-local" name="appointment_time"value="{{ \Carbon\Carbon::parse($events->appointment_time)->format('Y-m-d\TH:i') }}"  autofocus placeholder="title"> --}}
                                 <br>
                               {{-- <label for="recipient-name" class="col-form-label">วันที่</label> --}}

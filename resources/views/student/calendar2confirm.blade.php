@@ -413,6 +413,8 @@
                                         <span class="badge badge-pill badge-success">{{ $row->Status_events}}</span>
                                     @elseif ($row->Status_events === 'ไม่ผ่าน')
                                         <span class="badge badge-pill badge-danger">{{ $row->Status_events}}</span>
+                                        @elseif ($row->Status_events === 'ขอเปลี่ยนเวลานัดนิเทศ')
+                                        <span class="badge badge-pill badge-danger">{{ $row->Status_events}}</span>
                                     @endif</p>
                                       <p class=" text-muted mb-0">ขอเปลี่ยนเวลานัดนิเทศ:{{ $row->appointment_time}}</p>
 

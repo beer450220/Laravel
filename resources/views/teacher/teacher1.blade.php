@@ -24,6 +24,16 @@
 
         </div>
         <br>
+        @if ($errors->any())
+        <div class="alert alert-danger col-md-4">
+
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $success1 }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
         <table class="table table-hover">
           <thead class="thead-dark">
             <tr>
@@ -48,7 +58,7 @@
 
 
               <td><a href="/teacher/editteacher1/{{$row->id}} "type="button" class="btn btn-outline-secondary fe fe-edit fe-16"></a></td>
-              <td><a href="/teacher/delteacher/{{$row->id}} "type="button" class="btn btn-outline-danger fe fe-trash-2 fe-16"onclick="return confirm('ยืนยันการลบข้อมูล !!');"></a></td>
+              <td><a href="/teacher/deletteacher/{{$row->id}} "type="button" class="btn btn-outline-danger fe fe-trash-2 fe-16"onclick="return confirm('ยืนยันการลบข้อมูล !!');"></a></td>
             </tr>
 
             @endforeach

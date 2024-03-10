@@ -154,7 +154,9 @@
             <label for="inputAddress" >  ขอเปลี่ยนเวลานัดนิเทศ</label>
             {{-- <input type="text" class="form-control" @error('test') is-invalid @enderror name="test" value="{{ old('test') }}"  autofocus placeholder="test" placeholder="Last name" aria-label="Last name"> --}}
 
-            <input class="form-control" id="example-date" type="datetime-local" name="appointment_time"value="{{ \Carbon\Carbon::parse($supervisions->appointment_time)->format('Y-m-d\TH:i') }}"  autofocus placeholder="title">
+            {{-- <input class="form-control" id="example-date" type="datetime-local" name="appointment_time"value="{{ \Carbon\Carbon::parse($supervisions->appointment_time)->format('Y-m-d\TH:i') }}"  autofocus placeholder="title"> --}}
+            <input class="form-control" id="example-date" type="text" name="appointment_time"value="{{$supervisions->appointment_time}}"  autofocus placeholder="">
+
             @error('test')
             <span class="invalid-feedback" >
                 {{ $message }}
@@ -201,7 +203,7 @@
                 @php
                 $selectedIds = explode(',', $supervisions->student_name);
             @endphp
-            <option value="{{ $row->fname }}" {{ in_array($row->fname, $selectedIds) ? 'selected' : '' }}>
+            <option value="{{ $row->id }}" {{ in_array($row->id, $selectedIds) ? 'selected' : '' }}>
                 {{ $row->fname }}
             </option>
 
@@ -333,6 +335,7 @@ $( '#multiple-select-clear-field' ).select2( {
             {{-- <optgroup label="Mountain Time Zone"> --}}
               <option value="รอรับทราบและยืนยันเวลานัดนิเทศ"@if($supervisions->Status_events=="รอรับทราบและยืนยันเวลานัดนิเทศ") selected @endif required>รอรับทราบและยืนยันเวลานัดนิเทศ</option>
               <option value="รับทราบและยืนยันเวลานัดแล้ว"@if($supervisions->Status_events=="รับทราบและยืนยันเวลานัดแล้ว") selected @endif required>รับทราบและยืนยันเวลานัดแล้ว</option>
+              <option value="ขอเปลี่ยนเวลานัดนิเทศ"@if($supervisions->Status_events=="ขอเปลี่ยนเวลานัดนิเทศ") selected @endif required>รับทราบและยืนยันเวลานัดแล้ว</option>
             </optgroup>
 
 

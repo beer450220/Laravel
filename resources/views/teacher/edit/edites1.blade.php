@@ -189,7 +189,7 @@
       </div>
       <br>
           <div class="modal-footer">
-            <a href="/teacher/estimate1" type="submit" class="btn mb-2 btn-success" >ย้อนกลับ</a>
+            <a href="/teacher/es1" type="submit" class="btn mb-2 btn-success" >ย้อนกลับ</a>
             <button type="reset" class="btn mb-2 btn-danger" >ยกเลิก</button>
             <button type="submit" class="btn mb-2 btn-primary">ตกลง</button>
           </div>

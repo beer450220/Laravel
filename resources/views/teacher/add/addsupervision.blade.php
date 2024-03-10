@@ -135,7 +135,7 @@
            <div class="row">
             <div class="form-group col-md-4">
               <label for="inputAddress">วันเวลาการนิเทศงาน</label>
-       <input class="form-control" id="example-date" type="datetime-local" name="start"  autofocus placeholder="title">
+       <input class="form-control" id="example-date" type="datetime-local" name="start"  autofocus placeholder="title"required>
 
 
               @error('name')
@@ -169,17 +169,18 @@
 
           <div class="col-md-4">
             <label for="inputAddress" >ชื่อสถานประกอบการ</label>
+            <input class="form-control" id="example-date" type="text" name="establishment_name"  autofocus placeholder=""required>
             {{-- <input type="text" class="form-control" @error('test') is-invalid @enderror name="test" value="{{ old('test') }}"  autofocus placeholder="test" placeholder="Last name" aria-label="Last name"> --}}
-            <select class="form-control select2" id="multiple-select-optgroup-field"data-placeholder="เลือกสถานประกอบการ"  multiple name="establishment_name" >
+            {{-- <select class="form-control select2" id="multiple-select-optgroup-field"data-placeholder="เลือกสถานประกอบการ"  multiple name="establishment_name" >
               <option value="">Select state</option>
               @foreach ($establishment as $row)
-              {{-- <optgroup label="Mountain Time Zone"> --}}
+
                 <option value="{{$row->em_name}}">{{$row->em_name}}</option>
 
               </optgroup>
 
               @endforeach
-            </select>
+            </select> --}}
 
             @error('test')
             <span class="invalid-feedback" >
@@ -188,16 +189,17 @@
         @enderror
           </div>
           <div class="col-md-4">
+            {{-- id="multiple-select-field" --}}
             <label for="inputAddress" >ชื่อนักศึกษา</label>
             {{-- <input type="text" class="form-control" @error('test') is-invalid @enderror name="test" value="{{ old('test') }}"  autofocus placeholder="test" placeholder="Last name" aria-label="Last name"> --}}
-            <select class="form-control select2" id="multiple-select-field" data-placeholder="เลือกรายชื่อ" multiple name="student_name[]" >
+            <select class="form-control select2" id="multiple-select-optgroup-field" data-placeholder="เลือกรายชื่อ" multiple name="student_name[]"required >
               <option value="">เลือกรายชื่อ</option>
               {{-- @foreach ($users as $row) --}}
               {{-- <optgroup label="Mountain Time Zone"> --}}
                 {{-- <option value="{{$row->id}}">{{$row->name}}</option> --}}
                 @foreach ($users as $row)
                 {{-- <optgroup label="Mountain Time Zone"> --}}
-                  <option value="{{$row->fname}} ">{{$row->fname}} </option>
+                  <option value="{{$row->id}} ">{{$row->fname}} </option>
                   {{-- <option value="{{$row->major_id}}">{{$row->major}}</option> --}}
 
 
@@ -260,7 +262,7 @@ $( '#multiple-select-field1' ).select2( {
           <div class="col-md-4">
             <label for="inputAddress" >ชื่ออาจารย์นิเทศ</label>
             {{-- <input type="text" class="form-control" @error('test') is-invalid @enderror name="test" value="{{ old('test') }}"  autofocus placeholder="test" placeholder="Last name" aria-label="Last name"> --}}
-            <select class="form-control select2" id="multiple-select-optgroup-field1"data-placeholder="เลือกรายชื่อ" multiple name="teacher_name" >
+            <select class="form-control select2" id="multiple-select-optgroup-field1"data-placeholder="เลือกรายชื่อ" multiple name="teacher_name" required>
               <option value="">Select state</option>
               @foreach ($users2 as $row)
               {{-- <optgroup label="Mountain Time Zone"> --}}
@@ -280,8 +282,8 @@ $( '#multiple-select-field1' ).select2( {
           <div class="col-md-4">
             <label for="inputAddress" >  ขอเปลี่ยนเวลานัดนิเทศ</label>
             {{-- <input type="text" class="form-control" @error('test') is-invalid @enderror name="test" value="{{ old('test') }}"  autofocus placeholder="test" placeholder="Last name" aria-label="Last name"> --}}
-            <input class="form-control" id="example-date" type="datetime-local" name="appointment_time"  autofocus placeholder="title">
-
+            {{-- <input class="form-control" id="example-date" type="datetime-local" name="appointment_time"  autofocus placeholder="title"> --}}
+            <input class="form-control" id="example-date" type="text" name="appointment_time"  autofocus placeholder=""required>
             @error('test')
             <span class="invalid-feedback" >
                 {{ $message }}
@@ -296,12 +298,13 @@ $( '#multiple-select-field1' ).select2( {
 
         <div class="col-md-3">
           <label for="inputAddress"class="col-form-label ">รับทราบและยืนยันเวลานัดนิเทศ</label>
-          <select class="form-control select" id="validationSelect2" name="Status_events" >
+          <select class="form-control select" id="validationSelect2" name="Status_events" required>
             <option value="">กรุณาเลือก</option>
             {{-- @foreach ($users as $row) --}}
             {{-- <optgroup label="Mountain Time Zone"> --}}
               <option value="รอรับทราบและยืนยันเวลานัดนิเทศ">รอรับทราบและยืนยันเวลานัดนิเทศ</option>
               <option value="รับทราบและยืนยันเวลานัดแล้ว">รับทราบและยืนยันเวลานัดแล้ว</option>
+              <option value="ขอเปลี่ยนเวลานัดนิเทศ">ขอเปลี่ยนเวลานัดนิเทศ</option>
             </optgroup>
 
 
@@ -310,7 +313,7 @@ $( '#multiple-select-field1' ).select2( {
       </div>
       <div class="col-md-2">
         <label for="inputAddress"class="col-form-label ">ภาคเรียน</label>
-        <select class="form-control "  name="term">
+        <select class="form-control "  name="term"required>
           <option value="">กรุณาเลือกภาคเรียน</option>
 
         <option value="ภาคเรียนที่1">ภาคเรียนที่:1 </option>
@@ -323,7 +326,7 @@ $( '#multiple-select-field1' ).select2( {
     </div>
     <div class="col-md-2">
       <label for="inputAddress"class="col-form-label ">ปีการศึกษา</label>
-      <select class="form-control "  name="year" >
+      <select class="form-control "  name="year"required >
         {{-- @foreach(range(date('Y'), date('Y') + 100) as $year)
         <option value="{{ $year }}">{{ $year }}</option>
     @endforeach --}}
@@ -359,7 +362,7 @@ $( '#multiple-select-field1' ).select2( {
         <label for="inputAddress"class="col-form-label ">ชื่อผู้บริหาร</label>
 
         {{-- <input type="text" class="form-control" @error('test') is-invalid @enderror name="test" value="{{ old('test') }}"  autofocus placeholder="" placeholder="Last name" aria-label="Last name"> --}}
-        <textarea rows="4" cols="50" name="executive_name"  >
+        <textarea rows="4" cols="50" name="executive_name" required >
         </textarea>
 
         @error('test')
@@ -372,7 +375,7 @@ $( '#multiple-select-field1' ).select2( {
         {{-- <label for="inputAddress" >ชื่อผู้ติดต่อ</label> --}}
         <label for="inputAddress"class="col-form-label ">ชื่อผู้ติดต่อ</label>
         {{-- <input type="text" class="form-control" @error('test') is-invalid @enderror name="test" value="{{ old('test') }}"  autofocus placeholder="" placeholder="Last name" aria-label="Last name"> --}}
-        <textarea rows="4" cols="50" name="contact_person"  >
+        <textarea rows="4" cols="50" name="contact_person"required  >
         </textarea>
 
         @error('test')

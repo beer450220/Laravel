@@ -588,6 +588,7 @@ public function   calendar2confirmupdate(Request $request,$id) {
      //$post->Statustime ="รับทราบและยืนยันเวลานัดนิเทศ";
     // $post->Status ="รอตรวจสอบ";
    //dd($request->Status);
+   $post->Status_events ="ขอเปลี่ยนเวลานัดนิเทศ";
 $post->update
 
     ([
@@ -892,7 +893,28 @@ $post->update
      return view('teacher.edit.editteacher1', compact('major'));
 
  }
+ public function view1($id) {
+    //ตรวจสอบข้อมูล
 
+    $users=users::find($id);
+    $major=DB::table('major')
+
+    ->paginate(5);
+     return view('teacher.viwe.view1',compact('users','major'));
+    //
+
+ }
+ public function editconfirm1($id) {
+    //ตรวจสอบข้อมูล
+
+    $users=users::find($id);
+    $major=DB::table('major')
+
+    ->paginate(5);
+     return view('teacher.edit.editconfirm1',compact('users','major'));
+    //
+
+ }
  public function   updateSuperviseteacheruser(Request $request,$id) {
     //ตรวจสอบข้อมูล
 
@@ -1101,6 +1123,7 @@ $post->update
         $request['filess']=$post->filess;
      // dd($post);
    }
+   $post->status ="รออนุมัติ";
     $post->update
     ([
         "namefile" =>$request->namefile,
@@ -1410,7 +1433,7 @@ public function editcategory($category_id) {
 
  public function delteacher($id) {
     //ตรวจสอบข้อมูล
-    dd($id);
+   // dd($id);
     // $establishments=establishment::find($id);
     // DB::table('establishment')->where('id',$id)->delete();
 
@@ -2467,6 +2490,89 @@ $post->update
 
     return redirect('/studenthome')->with('success', 'ยืนยันตัวตนสำเร็จ.');
  }
+
+ public function   confirm(Request $request,$id) {
+    //ตรวจสอบข้อมูล
+
+   //dd($request);
+
+    $request->validate([
+        // 'images' => ['required','mimes:jpg,jpeg,png'],
+        // 'name' => ['required','min:5'],
+        // 'filess' => 'required|mimes:pdf',
+        // 'establishment' => 'required',
+    ],[
+            //'establishment.required' => "กรุณา",
+
+        ]
+    );
+
+   //dd($request->Status);
+   $post=users::findOrFail($id);
+
+//    if($request->hasFile("images")){
+//        if (File::exists("รูปโปรไฟล์/".$post->images)) {
+//            File::delete("รูปโปรไฟล์/".$post->images);
+//        }
+//        $file=$request->file("images");
+//         $post->images=time()."_".$file->getClientOriginalName();
+//         $file->move(\public_path("/รูปโปรไฟล์"),$post->images);
+//         $request['images']=$post->images;
+//      // dd($post);
+//    }
+    $post->Status ="อนุมัติแล้ว";
+    $post->role ="student";
+    $post->update
+    ([
+    //    "status" =>$request->"",
+
+    ]);
+
+
+    return redirect('/teacher/request')->with('success', 'ยืนยันตัวตนสำเร็จ.');
+ }
+ public function   confirm1(Request $request,$id) {
+    //ตรวจสอบข้อมูล
+
+   //dd($request);
+
+    $request->validate([
+        // 'images' => ['required','mimes:jpg,jpeg,png'],
+        // 'name' => ['required','min:5'],
+        // 'filess' => 'required|mimes:pdf',
+        // 'establishment' => 'required',
+    ],[
+            //'establishment.required' => "กรุณา",
+
+        ]
+    );
+
+   //dd($request->Status);
+   $post=users::findOrFail($id);
+
+//    if($request->hasFile("images")){
+//        if (File::exists("รูปโปรไฟล์/".$post->images)) {
+//            File::delete("รูปโปรไฟล์/".$post->images);
+//        }
+//        $file=$request->file("images");
+//         $post->images=time()."_".$file->getClientOriginalName();
+//         $file->move(\public_path("/รูปโปรไฟล์"),$post->images);
+//         $request['images']=$post->images;
+//      // dd($post);
+//    }
+    $post->Status ="ไม่อนุมัติ";
+    $post->role ="0";
+    $post->update
+    ([
+       "annotation" =>$request->annotation,
+
+    ]);
+
+
+    return redirect('/teacher/request')->with('success', 'ยืนยันตัวตนสำเร็จ.');
+ }
+
+
  public function   establishmentstatusupdate(Request $request,$id) {
     //ตรวจสอบข้อมูล
 

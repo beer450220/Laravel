@@ -96,7 +96,16 @@
       </li>
     </ul> --}}
 
+    <ul class="navbar-nav flex-fill w-100 mb-2">
+        <li class="nav-item ">
+          <a href="/teacher/request"  class=" nav-link">
+            <i class="fe fe-box fe-16"></i>
+            <span class="ml-3 item-text">ยื่นประสงค์ฝึกประสบการณ์</span>
+          </a>
 
+
+        </li>
+      </ul>
     <ul class="navbar-nav flex-fill w-100 mb-2">
       <li class="nav-item ">
         <a href="/teacher/informdetails1"  class=" nav-link">

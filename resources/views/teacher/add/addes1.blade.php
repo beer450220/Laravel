@@ -136,7 +136,7 @@
           <div class="form-group col-md-4">
             <label for="inputAddress">ชื่อเอกสาร</label>
             {{-- <input type="text" class="form-control" @error('name') is-invalid @enderror name="name" value="{{ old('name') }}"  autofocus placeholder="name"> --}}
-            <select class="form-control select" id="validationSelect1" name="namefile" >
+            <select class="form-control select" id="validationSelect1" name="namefile" required>
               <option value="">เลือกชื่อเอกสาร</option>
               {{-- @foreach ($establishment as $row) --}}
               {{-- <optgroup label="Mountain Time Zone"> --}}
@@ -182,7 +182,7 @@
           <div class=" col-md-4">
             <label for="recipient-name" class="col-form-label">ไฟล์เอกสารประเมิน </label>
                 <div class="custom-file mb-6">
-                  <input type="file" class="custom-file-input" name="filess" id="validatedCustomFile" >
+                  <input type="file" class="custom-file-input" name="filess" id="validatedCustomFile"required >
                   <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
                   <div class="invalid-feedback">Example invalid custom file feedback</div>
 

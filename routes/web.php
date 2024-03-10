@@ -431,6 +431,21 @@ Route::middleware(['auth','user-role:teacher'])->group(function()
 {
     Route::get("/teacher/home",[HomeController::class,'teacherHome'])->name('teacher.teacherhome');
 
+
+    //ยื่นประสงค์ฝึกประสบการณ์
+    //ค้นหา
+Route::get('/teacher/search8',[HomeController::class,'searchrequest'])->name('searchrequest');
+    Route::get("/teacher/request",[HomeController::class,'request'])->name('request');
+    // Route::get("/teacher/addteacher1",[addController::class,'addteacher1'])->name('addteacher1');
+    // Route::post("/teacher/addteacher",[addController::class,'addteacher'])->name('addteacher');
+    Route::get("/teacher/view1/{id}",[EditController::class,'view1'])->name('view1');
+    Route::get("/teacher/confirm/{id}",[EditController::class,'confirm'])->name('confirm');
+    Route::post("/teacher/confirm1/{id}",[EditController::class,'confirm1'])->name('confirm1');
+
+    Route::get("/teacher/editconfirm1/{id}",[EditController::class,'editconfirm1'])->name('editconfirm1');
+    // Route::post("/teacher/updateteacher1/{id}",[EditController::class,'updateteacher1'])->name('updateteacher1');
+    // Route::get('/teacher/deletteacher/{id}', [EditController::class,'delteacher'])->name('delteacher');
+
     // Route::get("/teacher/edituser2/{id}",[EditController::class,'edituser2'])->name('edituser2');
 
     // Route::post("/teacher/updateuser4/{id}",[EditController::class,'updateuser4'])->name('updateuser4');
@@ -485,6 +500,7 @@ Route::get('/teacher/search3',[HomeController::class,'searchestimate1'])->name('
     Route::get('/teacher/deletteacher/{id}', [EditController::class,'delteacher'])->name('delteacher');
 
 
+
     Route::get("/teacher/calendar2",[HomeController::class,'calendar3'])->name('calendar3');
 
     Route::get("/teacher/calendar",[HomeController::class,'calendar4'])->name('calendar4');
@@ -504,7 +520,7 @@ Route::get('/teacher/search1',[HomeController::class,'searchsupervision0'])->nam
     Route::get("/teacher/supervision",[HomeController::class,'supervision1']);
     // Route::get('/officer/pdf', [FileController::class, 'createPDF'])->name('createPDF');
      //Route::get('/teacher/Excel', [FileController::class, 'export1'])->name('export1');
-     Route::get('/teacher/Excel', [FileController::class, 'exportUsers'])->name(' exportUsers');
+    //  Route::get('/teacher/Excel', [FileController::class, 'exportUsers'])->name(' exportUsers');
 
     Route::get("/teacher/addsupervision",[addController::class,'addsupervision01'])->name('addsupervision01');
     Route::post("/teacher/addsupervision02",[addController::class,'addsupervision02'])->name('addsupervision02');

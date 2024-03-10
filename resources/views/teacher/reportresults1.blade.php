@@ -46,6 +46,8 @@
               <th>ลำดับ</th>
               <th style="">ชื่อนักศึกษา</th>
               <th style="">ชื่อเอกสาร</th>
+              <th>ปีการศึกษา</th>
+              <th>ภาคเรียนที่</th>
               {{-- <th style="">สถานะ</th> --}}
               <th style="width:10%">ดูข้อมูล</th>
               {{-- <th>ลบ</th> --}}
@@ -55,8 +57,10 @@
             @foreach ($report as $row)
             <tr>
               <td>{{$report->firstItem()+$loop->index}}</td>
-              <td>{{$row->fname}} </td>
+              <td>{{$row->fname}} {{$row->surname}}</td>
               <td>{{$row->namefile}} </td>
+              <td>{{$row->year}}</td>
+                <td>{{$row->term}}</td>
               {{-- <td>{{$row->Status_report}}</td> --}}
               <td><a href="/ไฟล์เอกสารฝึกประสบการณ์/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td>
               {{-- <td><a href="/studenthome/editreport/{{$row->report_id}}" type="button" class="btn btn-outline-secondary fa-regular fa-eye fe-16"></a></td> --}}

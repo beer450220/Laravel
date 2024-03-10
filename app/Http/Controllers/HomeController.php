@@ -647,18 +647,66 @@ $users=DB::table('users')
     $keyword = $request->input('keyword');
                                             //dd($request);
             // สร้างคำสั่งคิวรีเพื่อค้นหาข้อมูล
-    $informdetails = informdetails::query()
-// ->where('namefile', 'LIKE', '%' . $keyword . '%')
-    ->where(function($query) use ($keyword) {
-     $query->where('namefile', 'LIKE', '%' . $keyword . '%')
- ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
-->orWhere('year', 'LIKE', '%' . $keyword . '%');
-                 })
-    ->join('users','informdetails.user_id','users.id')
-  ->select('informdetails.*','users.fname')
-                                                               // ->get();
-->paginate(10);
+            $informdetails = Informdetails::query()
+            ->join('users', 'informdetails.user_id', '=', 'users.id')
+            ->where(function ($query) use ($keyword) {
+                $query->where('informdetails.namefile', 'LIKE', '%' . $keyword . '%')
+                      ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
+                      ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%')
+                      ->orWhere('informdetails.term', 'LIKE', '%' . $keyword . '%')
+                      ->orWhere('informdetails.year', 'LIKE', '%' . $keyword . '%');
+            })
+            ->select('informdetails.*', 'users.fname', 'users.surname')
+            ->paginate(10);
+
+// $users=DB::table('users')
+
+// -> where('role','student')
+// ->orWhere('role', '=', '0')
+
+
+// ->paginate(5);
+// $users = users::query()
+// ->where(function($query) use ($keyword) {
+//     $query->where('role', 'student')
+//         ->orWhere('role', '0');
+// })
+// ->where(function($query) use ($keyword) {
+//     $query->where('username', 'LIKE', '%' . $keyword . '%')
+//     ->orWhere('fname', 'LIKE', '%' . $keyword . '%')
+//     ->orWhere('surname', 'LIKE', '%' . $keyword . '%')
+//         ->orWhere('year', 'LIKE', '%' . $keyword . '%')
+//         ->orWhere('term', 'LIKE', '%' . $keyword . '%');
+// })
+//     ->paginate(5);
 return view('teacher.informdetails1',  ['informdetails' => $informdetails,]);
+}
+public function searchrequest(Request $request){
+    //dd($request);
+    $keyword = $request->input('keyword');
+                                            //dd($request);
+            // สร้างคำสั่งคิวรีเพื่อค้นหาข้อมูล
+            $users=DB::table('users')
+
+            -> where('role','student')
+   ->orWhere('role', '=', '0')
+
+
+           ->paginate(5);
+            $users = users::query()
+            ->where(function($query) use ($keyword) {
+                $query->where('role', 'student')
+                    ->orWhere('role', '0');
+            })
+            ->where(function($query) use ($keyword) {
+                $query->where('username', 'LIKE', '%' . $keyword . '%')
+                ->orWhere('fname', 'LIKE', '%' . $keyword . '%')
+                ->orWhere('surname', 'LIKE', '%' . $keyword . '%')
+                    ->orWhere('year', 'LIKE', '%' . $keyword . '%')
+                    ->orWhere('term', 'LIKE', '%' . $keyword . '%');
+            })
+                ->paginate(5);
+return view('teacher.request',  ['users' => $users,]);
 }
 
 public function searchsupervision0(Request $request){
@@ -666,18 +714,31 @@ public function searchsupervision0(Request $request){
     $keyword = $request->input('keyword');
                                             //dd($request);
             // สร้างคำสั่งคิวรีเพื่อค้นหาข้อมูล
-    $events = Event::query()
-// ->where('namefile', 'LIKE', '%' . $keyword . '%')
-    ->where(function($query) use ($keyword) {
-     $query->where('student_name', 'LIKE', '%' . $keyword . '%')
-//  ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
-->orWhere('year', 'LIKE', '%' . $keyword . '%');
-                 })
-//     ->join('users','events.student_name','users.id')
-//   ->select('events.*','users.fname')
-                                                               // ->get();
-->paginate(10);
+//     $events = Event::query()
+// // ->where('namefile', 'LIKE', '%' . $keyword . '%')
+//     ->where(function($query) use ($keyword) {
+//      $query->where('student_name', 'LIKE', '%' . $keyword . '%')
+// //  ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
+// ->orWhere('year', 'LIKE', '%' . $keyword . '%');
+//                  })
+// //     ->join('users','events.student_name','users.id')
+// //   ->select('events.*','users.fname')
+//                                                                // ->get();
+// ->paginate(10);
 //dd($events);
+
+$events = Event::query()
+->join('users', 'events.student_name', '=', 'users.id')
+->where(function ($query) use ($keyword) {
+    $query->Where('events.term', 'LIKE', '%' . $keyword . '%')
+          ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
+          ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%')
+
+          ->orWhere('events.year', 'LIKE', '%' . $keyword . '%');
+})
+->select('events.*', 'users.fname', 'users.surname')
+->paginate(10);
+
 return view('teacher.supervision',  ['events' => $events,]);
 }
 
@@ -705,18 +766,32 @@ public function searchestimate1(Request $request){
     $keyword = $request->input('keyword');
                                             //dd($request);
             // สร้างคำสั่งคิวรีเพื่อค้นหาข้อมูล
-    $supervision = supervision::query()
-// ->where('namefile', 'LIKE', '%' . $keyword . '%')
-    ->where(function($query) use ($keyword) {
-     $query->where('namefile', 'LIKE', '%' . $keyword . '%')
-  ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
-->orWhere('year', 'LIKE', '%' . $keyword . '%');
-                 })
+//     $supervision = supervision::query()
 
-     ->join('users','supervision.user_id','users.id')
-   ->select('supervision.*','users.fname')
-                                                               // ->get();
+//     ->where(function($query) use ($keyword) {
+//      $query->where('namefile', 'LIKE', '%' . $keyword . '%')
+//   ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
+// ->orWhere('year', 'LIKE', '%' . $keyword . '%');
+//                  })
+
+//      ->join('users','supervision.user_id','users.id')
+//    ->select('supervision.*','users.fname')
+//                                                                // ->get();
+// ->paginate(10);
+
+$supervision = supervision::query()
+->join('users', 'supervision.user_id', '=', 'users.id')
+->where(function ($query) use ($keyword) {
+    $query->where('supervision.namefile', 'LIKE', '%' . $keyword . '%')
+          ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
+          ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%')
+          ->orWhere('supervision.term', 'LIKE', '%' . $keyword . '%')
+          ->orWhere('supervision.year', 'LIKE', '%' . $keyword . '%');
+})
+->select('supervision.*', 'users.fname', 'users.surname')
 ->paginate(10);
+
+
 //dd($events);
 return view('teacher.estimate1',  ['supervision' => $supervision,]);
 }
@@ -727,17 +802,28 @@ public function searchreportresults(Request $request){
     $keyword = $request->input('keyword');
                                             //dd($request);
             // สร้างคำสั่งคิวรีเพื่อค้นหาข้อมูล
-    $report = report::query()
-// ->where('namefile', 'LIKE', '%' . $keyword . '%')
-    ->where(function($query) use ($keyword) {
-     $query->where('namefile', 'LIKE', '%' . $keyword . '%')
-  ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
-->orWhere('year', 'LIKE', '%' . $keyword . '%');
-                 })
+//     $report = report::query()
+// // ->where('namefile', 'LIKE', '%' . $keyword . '%')
+//     ->where(function($query) use ($keyword) {
+//      $query->where('namefile', 'LIKE', '%' . $keyword . '%')
+//   ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
+// ->orWhere('year', 'LIKE', '%' . $keyword . '%');
+//                  })
 
-     ->join('users','report.user_id','users.id')
-   ->select('report.*','users.fname')
-                                                               // ->get();
+//      ->join('users','report.user_id','users.id')
+//    ->select('report.*','users.fname')
+//                                                                // ->get();
+// ->paginate(10);
+$report = report::query()
+->join('users', 'report.user_id', '=', 'users.id')
+->where(function ($query) use ($keyword) {
+    $query->where('report.namefile', 'LIKE', '%' . $keyword . '%')
+          ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
+          ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%')
+          ->orWhere('report.term', 'LIKE', '%' . $keyword . '%')
+          ->orWhere('report.year', 'LIKE', '%' . $keyword . '%');
+})
+->select('report.*', 'users.fname', 'users.surname')
 ->paginate(10);
 //dd($events);
 return view('teacher.reportresults1',  ['report' => $report,]);
@@ -1319,8 +1405,10 @@ public function category()
     public function supervision1()
     {
         $events=DB::table('events')
-        // ->join('users', 'events.student_name', '=', 'users.id')
+        // ->join('users', 'events.student_name', 'users.id')
         //  ->select('events.*', 'users.fname', 'users.surname')
+         ->join('users','events.student_name','users.id')
+         ->select('events.*','users.fname','users.surname')
         ->paginate(5);
     //     $users=DB::table('users')
     //   ->where('role',"student")->paginate(5);
@@ -1445,7 +1533,21 @@ public function category()
     //เอกสารแจ้งรายละเอียด
     $users5 = report::select(DB::raw("COUNT(DISTINCT report_id) as count"))
     ->get();
-        return view('teacher.teacherhome',compact('users1','users2','users3','users4','users5'),["msg"=>"I am teacher role"]);
+
+ //ยื่นประสงค์
+ $users6 = users::select(DB::raw("COUNT(*) as count"))
+ ->where('status', 'รออนุมัติ')
+ ->get();
+ $users7 = users::select(DB::raw("COUNT(*) as count"))
+ ->where('status', 'อนุมัติแล้ว')
+ ->get();
+ $users8 = users::select(DB::raw("COUNT(*) as count"))
+ ->where('role', '0')
+ ->get();
+ $users9 = users::select(DB::raw("COUNT(*) as count"))
+ ->where('status', 'ไม่อนุมัติ')
+ ->get();
+        return view('teacher.teacherhome',compact('users1','users2','users3','users4','users5','users6','users7','users8','users9'),["msg"=>"I am teacher role"]);
     }
     public function documents1()
     {
@@ -1466,10 +1568,16 @@ public function category()
     }
     public function informdetails1()
     {
+        // $users=DB::table('users')
+
+        // -> where('role','student')
+        // ->orWhere('role', '=', '0')
+        // ->paginate(10);
         $informdetails=DB::table('informdetails')
+
         ->join('users','informdetails.user_id','users.id')
-        ->select('informdetails.*','users.fname')
-        ->paginate(5);
+        ->select('informdetails.*','users.fname','users.surname')
+        ->paginate(10);
 
         //return view('student.informdetails',compact('informdetails'));
 
@@ -1489,7 +1597,7 @@ public function category()
        // ->join('users','users.id','=','users.id')
         ->join('users','supervision.user_id','users.id')
         // ->join('establishment','establishment.id','=','establishment_id')
-        ->select('supervision.*','users.fname')
+        ->select('supervision.*','users.fname','users.surname')
         //->select('supervision.*')
        // ->where('establishment.establishment_id')
         ->paginate(10);
@@ -1536,6 +1644,24 @@ public function category()
     }
 
 
+    public function request()
+    {
+        $users=DB::table('users')
+
+        -> where('role','student')
+        ->orWhere('role', '=', '0')
+       // ->join('users','users.id','=','users.id')
+        // ->join('users','supervision.user_id','users.id')
+        // ->join('establishment','establishment.id','=','establishment_id')
+        // ->select('supervision.*','users.fname')
+        //->select('supervision.*')
+       // ->where('establishment.establishment_id')
+        ->paginate(5);
+        return view('teacher.request',compact('users'));
+    }
+
+
+
     public function advisor1()
     {
         return view('teacher.advisor1');
@@ -1544,7 +1670,7 @@ public function category()
     {
         $report=DB::table('report')
         ->join('users','report.user_id','users.id')
-        ->select('report.*','users.fname')
+        ->select('report.*','users.fname','users.surname')
         ->paginate(5);
         return view('teacher.reportresults1',compact('report'));
     }
