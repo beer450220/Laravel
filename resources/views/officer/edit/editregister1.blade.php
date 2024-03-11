@@ -49,7 +49,7 @@
                     <div class="row">
                       <div class="col-md-4">
                         <label for="recipient-name" class="col-form-label">หมายเหตุ</label>
-                         <input type="text" class="form-control" name="annotation" value="{{$registers->annotation}}" >
+                         <input type="text" class="form-control" name="annotation" value="{{$registers->annotation}}" required>
 
                         @error('annotation')
                         <span class="invalid-feedback" role="alert">
@@ -61,11 +61,11 @@
                       <div class="col-md-4">
                         <label for="recipient-name" class="col-form-label">สถานะตรวจสอบเอกสาร</label>
 
-                        <select class="form-select " aria-label=".form-select-sm example" name="Status_registers">
+                        <select class="form-select " aria-label=".form-select-sm example" name="Status_registers"required>
                           <option selected>กรุณาเลือก</option>
                           <option value="ตรวจสอบเอกสารแล้ว"@if($registers->Status_registers=="ตรวจสอบเอกสารแล้ว") selected @endif required>ตรวจสอบเอกสารแล้ว</option>
-                          <option value="ไม่ผ่านตรวจสอบเอกสาร"@if($registers->Status_registers=="ไม่ผ่านตรวจสอบเอกสาร") selected @endif required>ไม่ผ่านตรวจสอบเอกสาร</option>
-                          <option value="รอตรวจสอบเอกสาร"@if($registers->Status_registers=="รอตรวจสอบเอกสาร") selected @endif required >รอตรวจสอบเอกสาร</option>
+                          <option value="ไม่ผ่าน"@if($registers->Status_registers=="ไม่ผ่าน") selected @endif required>ไม่ผ่านตรวจสอบเอกสาร</option>
+                          <option value="รอตรวจสอบ"@if($registers->Status_registers=="รอตรวจสอบ") selected @endif required >รอตรวจสอบเอกสาร</option>
 
                         </select>
                         @error('Status_registers')

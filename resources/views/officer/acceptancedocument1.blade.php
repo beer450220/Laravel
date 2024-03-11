@@ -36,7 +36,7 @@
             </div>
 
             <div class="">
-              <a href="" name="keyword" value="{{ request('keyword') }}"  type="submit"  class=" btn btn-outline-warning">ค้นหาข้อมูล</a>
+              {{-- <a href="" name="keyword" value="{{ request('keyword') }}"  type="submit"  class=" btn btn-outline-warning">ค้นหาข้อมูล</a> --}}
 
 
               <a href="/officer/addacceptancedocument1" type="button" class=" btn btn-outline-success">เพิ่มข้อมูล</a>
@@ -54,7 +54,7 @@
             </div>
 
         </div>
-        <br>
+        <br>    <br>
         <table class="table table-hover">
           <thead class="thead-dark">
             <tr>
@@ -77,13 +77,13 @@
             <tr>
               @foreach ($acceptances as $row)
               <td>{{$acceptances->firstItem()+$loop->index}}</td>
-              <td>{{$row->fname}}</td>
+              <td>{{$row->fname}}  {{$row->surname}}</td>
               <td>{{$row->namefile}}</td>
               <td>{{ $row->year}}</td>
               <td>{{ $row->term}}</td>
               <td>{{$row->Status_acceptance	}}</td>
               <td>{{$row->annotation}}</td>
-              <td><a href="/ไฟล์เอกสารตอบรับนักศึกษา(สก.02)/{{ $row->filess }}" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td>
+              <td><a href="/ไฟล์เอกสารตอบรับนักศึกษา(สก.02)/{{ $row->filess }}"target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td>
 
 
               <td><a href="/officer/editacceptancedocument1/{{$row->acceptance_id}}" type="button" class="btn btn-outline-secondary fa-solid fa-pen-to-square fe-16"></a></td>

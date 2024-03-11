@@ -50,7 +50,7 @@
                       <div class="col-md-4">
                         <label for="recipient-name" class="col-form-label">ชื่อนักศึกษา</label>
 
-                        <select class="form-select select2" id="validationSelect1" name="user_id" >
+                        <select class="form-select select2" id="validationSelect1" name="user_id"  required>
                             <option value="">กรุณาเลือกชื่อ</option>
                             <option value="-"@if($acceptances->user_id=="-") selected @endif required>-</option>
                             @foreach ($user as $row)
@@ -123,7 +123,7 @@
         </div>
                       <div class="col-md-4">
                         <label for="recipient-name" class="col-form-label">หมายเหตุ</label>
-                         <input type="text" class="form-control" name="annotation" value="{{$acceptances->annotation}}" >
+                         <input type="text" class="form-control" name="annotation" value="{{$acceptances->annotation}}" required >
 
                         @error('annotation')
                         <span class="invalid-feedback" role="alert">
@@ -135,7 +135,7 @@
                       <div class="col-md-4">
                         <label for="recipient-name" class="col-form-label">สถานะตรวจสอบเอกสาร</label>
 
-                        <select class="form-select " aria-label=".form-select-sm example" name="Status_acceptance">
+                        <select class="form-select " aria-label=".form-select-sm example" name="Status_acceptance" required>
                           <option selected>กรุณาเลือก</option>
 
                           <option value="ตอบรับนักศึกษาแล้ว"@if($acceptances->Status_acceptance=="ตอบรับนักศึกษาแล้ว") selected @endif required>ตอบรับนักศึกษาแล้ว</option>
@@ -157,6 +157,7 @@
                 <div class="modal-footer">
 
                   <a href="/officer/acceptancedocument1"  class="btn mb-2 btn-secondary" data-dismiss="modal">ย้อนกลับ</a>
+
                   <button type="submit" class="btn mb-2 btn-primary"onclick="return confirm('ยืนยันการแก้ไขข้อมูล !!');">อัพเดท</button>
                 </div></form>
               </div>

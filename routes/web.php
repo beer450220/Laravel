@@ -312,6 +312,7 @@ Route::middleware(['auth','user-role:officer'])->group(function()
     Route::get("/officer/editregister1/{id}",[EditController::class,'editregister1'])->name('editregister1');
     Route::post("/officer/updateregister1/{id}",[EditController::class,'updateregister1'])->name('updateregister1');
 
+    Route::get("/officer/confirm2/{id}",[EditController::class,'confirm2'])->name('confirm2');
 
 
     // Route::get("/officer/timeline2",[HomeController::class,'timeline2']);

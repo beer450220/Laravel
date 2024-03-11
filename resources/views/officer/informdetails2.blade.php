@@ -36,7 +36,7 @@
             </div>
 
             <div class="">
-              <a href="" name="keyword" value="{{ request('keyword') }}"  type="submit"  class=" btn btn-outline-warning">ค้นหาข้อมูล</a>
+              {{-- <a href="" name="keyword" value="{{ request('keyword') }}"  type="submit"  class=" btn btn-outline-warning">ค้นหาข้อมูล</a> --}}
 
 
  {{-- <a href="/officer/addestimate2" type="button" class=" btn btn-outline-success">เพิ่มข้อมูล</a> --}}
@@ -90,11 +90,11 @@
                 <td>{{ $row->term }}</td>
 
                 <td>
-                    @if ($row->Status_informdetails === 'รอตรวจสอบเอกสาร')
+                    @if ($row->Status_informdetails === 'รอตรวจสอบ')
                         <span class="badge badge-pill badge-warning">{{ $row->Status_informdetails }}</span>
                     @elseif ($row->Status_informdetails === 'ตรวจสอบเอกสารแล้ว')
                         <span class="badge badge-pill badge-success">{{ $row->Status_informdetails}}</span>
-                    @elseif ($row->Status_informdetails === 'เอกสารไม่ผ่าน')
+                    @elseif ($row->Status_informdetails === 'ไม่ผ่าน')
                         <span class="badge badge-pill badge-danger">{{ $row->Status_informdetails}}</span>
                     @endif
                 </td>

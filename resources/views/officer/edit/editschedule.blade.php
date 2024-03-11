@@ -106,7 +106,7 @@
   <div class="modal-dialog modal-xl" role="document">
     <div class="modal-content ">
       <div class="modal-header bg-dark text-white ">
-        <h5 class="modal-title text center " id="varyModalLabel">ข้อมูลนิเทศงาน</h5>
+        <h5 class="modal-title text center " id="varyModalLabel">แก้ไขข้อมูล</h5>
         {{-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button> --}}
@@ -140,7 +140,7 @@
            <div class="row">
             <div class="form-group col-md-4">
               <label for="inputAddress">หัวเรื่อง</label>
-       <input type="text" class="form-control" @error('title') is-invalid @enderror name="title" value="{{$schedules->title}} "  autofocus placeholder="title">
+       <input type="text" class="form-control" @error('title') is-invalid @enderror name="title" value="{{$schedules->title}} "  autofocus placeholder="title"required>
 
 
               @error('name')
@@ -151,7 +151,7 @@
             </div>
           <div class="form-group col-md-4">
             <label for="inputAddress">กำหนดการปฏิทินสหกิจ</label>
-            <input type="file" class="form-control" @error('start') is-invalid @enderror name="filess" value="{{$schedules->start}}"  autofocus placeholder="">
+            <input type="file" class="form-control" @error('start') is-invalid @enderror name="filess" value="{{$schedules->start}}"  autofocus placeholder=""required>
 
 
             @error('name')
@@ -172,7 +172,7 @@
       <div class="row">
       <div class="col-md-2">
         <label for="inputAddress"class="col-form-label ">ภาคเรียน</label>
-        <select class="form-select "  name="term">
+        <select class="form-select "  name="term"required>
           <option value="">กรุณาเลือกภาคเรียน</option>
 
 
@@ -185,7 +185,7 @@
     </div>
     <div class="col-md-2">
       <label for="inputAddress"class="col-form-label ">ปีการศึกษา</label>
-      <select class="form-select "  name="year" >
+      <select class="form-select "  name="year" required>
         {{-- @foreach(range(date('Y'), date('Y') + 100) as $year)
         <option value="{{ $year }}">{{ $year }}</option>
     @endforeach --}}

@@ -36,7 +36,7 @@
             </div>
 
             <div class="">
-              <a href="" name="keyword" value="{{ request('keyword') }}"  type="submit"  class=" btn btn-outline-warning">ค้นหาข้อมูล</a>
+              {{-- <a href="" name="keyword" value="{{ request('keyword') }}"  type="submit"  class=" btn btn-outline-warning">ค้นหาข้อมูล</a> --}}
 
 
               <a href="/officer/addschedule" type="button" class=" btn btn-outline-success">เพิ่มข้อมูล</a>
@@ -54,7 +54,7 @@
             </div>
 
         </div>
-        <br>
+        <br><br>
         <table class="table table-hover">
           <thead class="thead-dark">
             <tr>

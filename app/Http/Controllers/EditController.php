@@ -2531,6 +2531,48 @@ $post->update
 
     return redirect('/teacher/request')->with('success', 'ยืนยันตัวตนสำเร็จ.');
  }
+
+ public function   confirm2(Request $request,$id) {
+    //ตรวจสอบข้อมูล
+
+   //dd($request);
+
+    $request->validate([
+        // 'images' => ['required','mimes:jpg,jpeg,png'],
+        // 'name' => ['required','min:5'],
+        // 'filess' => 'required|mimes:pdf',
+        // 'establishment' => 'required',
+    ],[
+            //'establishment.required' => "กรุณา",
+
+        ]
+    );
+
+   //dd($request->Status);
+   $post=registers::findOrFail($id);
+
+//    if($request->hasFile("images")){
+//        if (File::exists("รูปโปรไฟล์/".$post->images)) {
+//            File::delete("รูปโปรไฟล์/".$post->images);
+//        }
+//        $file=$request->file("images");
+//         $post->images=time()."_".$file->getClientOriginalName();
+//         $file->move(\public_path("/รูปโปรไฟล์"),$post->images);
+//         $request['images']=$post->images;
+//      // dd($post);
+//    }
+    $post->Status_registers ="ตรวจสอบเอกสารแล้ว";
+    // $post->role ="student";
+    $post->update
+    ([
+    //    "status" =>$request->"",
+
+    ]);
+
+
+    return redirect('/officer/register1')->with('success', 'ยืนยันตัวตนสำเร็จ.');
+ }
+
  public function   confirm1(Request $request,$id) {
     //ตรวจสอบข้อมูล
 

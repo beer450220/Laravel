@@ -486,33 +486,29 @@ $users=DB::table('users')
                         $keyword = $request->input('keyword');
         //dd($request);
                         // สร้างคำสั่งคิวรีเพื่อค้นหาข้อมูล
-                        $registers = registers::query()
-                            // ->where('namefile', 'LIKE', '%' . $keyword . '%')
-                            ->where(function($query) use ($keyword) {
-                                $query->where('namefile', 'LIKE', '%' . $keyword . '%')
+                        // $registers = registers::query()
+                        //     // ->where('namefile', 'LIKE', '%' . $keyword . '%')
+                        //     ->where(function($query) use ($keyword) {
+                        //         $query->where('namefile', 'LIKE', '%' . $keyword . '%')
+                        //               ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
+                        //               ->orWhere('year', 'LIKE', '%' . $keyword . '%');
+                        //     })
+                        //     ->join('users','registers.user_id','users.id')
+                        //      ->select('registers.*','users.fname')
+                        //    // ->get();
+                        //     ->paginate(10);
+
+                            $registers = registers::query()
+                            ->join('users', 'registers.user_id', '=', 'users.id')
+                            ->where(function ($query) use ($keyword) {
+                                $query->where('registers.namefile', 'LIKE', '%' . $keyword . '%')
                                       ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
-                                      ->orWhere('year', 'LIKE', '%' . $keyword . '%');
+                                      ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%')
+                                      ->orWhere('registers.term', 'LIKE', '%' . $keyword . '%')
+                                      ->orWhere('registers.year', 'LIKE', '%' . $keyword . '%');
                             })
-                            ->join('users','registers.user_id','users.id')
-                             ->select('registers.*','users.fname')
-                           // ->get();
+                            ->select('registers.*', 'users.fname', 'users.surname')
                             ->paginate(10);
-
-                            // $registers1=DB::table('establishment')
-                            //  ->join('category','establishment.id','category.category_id')
-                            //  ->select('establishment.*','category.name')
-                            //  ->paginate(5);
-                            //  $registers1=DB::table('category')
-                            //  ->paginate(5);
-
-                            //  $searchTerm = $request->input('search');
-
- // dd($registers);
-
-                            //  $registers=DB::table('registers')
-                            //  ->join('users','registers.user_id','users.id')
-                            //  ->select('registers.*','users.fname')
-                            //  ->paginate(5);
                         return view('officer.register1',  ['registers' => $registers,]);
 // compact('registers'),
                    // return view('student.establishmentuser',compact('establishments','search'));
@@ -552,18 +548,28 @@ $users=DB::table('users')
                                         $keyword = $request->input('keyword');
                         //dd($request);
                                         // สร้างคำสั่งคิวรีเพื่อค้นหาข้อมูล
-                                        $acceptances = acceptance::query()
-                                            // ->where('namefile', 'LIKE', '%' . $keyword . '%')
-                                            ->where(function($query) use ($keyword) {
-                                                $query->where('namefile', 'LIKE', '%' . $keyword . '%')
-                                                      ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
-                                                      ->orWhere('year', 'LIKE', '%' . $keyword . '%');
-                                            })
-                                            ->join('users','acceptance.user_id','users.id')
-                                             ->select('acceptance.*','users.fname')
+                                        // $acceptances = acceptance::query()
+                                        //     // ->where('namefile', 'LIKE', '%' . $keyword . '%')
+                                        //     ->where(function($query) use ($keyword) {
+                                        //         $query->where('namefile', 'LIKE', '%' . $keyword . '%')
+                                        //               ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
+                                        //               ->orWhere('year', 'LIKE', '%' . $keyword . '%');
+                                        //     })
+                                        //     ->join('users','acceptance.user_id','users.id')
+                                        //      ->select('acceptance.*','users.fname')
                                            // ->get();
+                                            // ->paginate(10);
+                                            $acceptances = acceptance::query()
+                                            ->join('users', 'acceptance.user_id', '=', 'users.id')
+                                            ->where(function ($query) use ($keyword) {
+                                                $query->where('acceptance.namefile', 'LIKE', '%' . $keyword . '%')
+                                                      ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
+                                                      ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%')
+                                                      ->orWhere('acceptance.term', 'LIKE', '%' . $keyword . '%')
+                                                      ->orWhere('acceptance.year', 'LIKE', '%' . $keyword . '%');
+                                            })
+                                            ->select('acceptance.*', 'users.fname', 'users.surname')
                                             ->paginate(10);
-
 
                                         return view('officer.acceptancedocument1',  ['acceptances' => $acceptances,]);
 
@@ -1288,7 +1294,7 @@ return view('teacher.reportresults1',  ['report' => $report,]);
         $registers=DB::table('registers')
 
         ->join('users','registers.user_id','users.id')
-        ->select('registers.*','users.fname')
+        ->select('registers.*','users.fname','users.surname')
         ->paginate(10);
 //dd($registers);
         return view('officer.register1',compact('registers'));
@@ -1328,7 +1334,7 @@ public function category()
         $acceptances=DB::table('acceptance')
         ->join('users','acceptance.user_id','users.id')
        // ->join('establishment','acceptance.establishment_id','establishment.id')
-        ->select('acceptance.*','users.fname')
+        ->select('acceptance.*','users.fname','users.surname')
         ->paginate(5);
         return view('officer.acceptancedocument1',compact('acceptances'));
     }

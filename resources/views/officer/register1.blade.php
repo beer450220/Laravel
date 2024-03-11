@@ -24,7 +24,7 @@
             </div>
 
             <div class="">
-              <a href="" name="keyword" value="{{ request('keyword') }}"  type="submit"  class=" btn btn-outline-warning">ค้นหาข้อมูล</a>
+              {{-- <a href="" name="keyword" value="{{ request('keyword') }}"  type="submit"  class=" btn btn-outline-warning">ค้นหาข้อมูล</a> --}}
             </form>
             </div>
 
@@ -54,38 +54,50 @@
                <th>หมายเหตุ</th>
                 <th style="width:10%">ดูไฟล์เอกสาร</th>
 
-                <th style="width:10%">แก้ไขข้อมูล</th>
+                <th style="width:10%">ยืนยันข้อมูล</th>
               {{-- <th style="width:10%">ลบ</th> --}}
             </tr>
           </thead>
           <tbody>
             @foreach ($registers as $row)
             <tr class="{{
-                $row->Status_registers === 'รอตรวจสอบเอกสาร' ? 'table-warning' : (
+                $row->Status_registers === 'รอตรวจสอบ' ? 'table-warning' : (
                     $row->Status_registers=== 'ตรวจสอบเอกสารแล้ว' ? 'table-success' : (
-                        $row->Status_registers === 'เอกสารไม่ผ่าน' ? 'table-danger' : ''
+                        $row->Status_registers === 'ไม่ผ่าน' ? 'table-danger' : ''
                     )
                 )
             }}">
               <td class="col-1 text center">{{$registers->firstItem()+$loop->index}}</td>
-              <td>{{ $row->fname }}</td>
+              <td>{{ $row->fname }}  {{ $row->surname }}</td>
               <td>{{ $row->namefile }}</td>
               {{-- <td><img src="/file/{{ $row->filess }}" class="img-responsive" style="max-height: 100px; max-width: 100px;" alt="" srcset=""></td> --}}
               <td>{{ $row->year}}</td>
               <td>{{ $row->term}}</td>
               <td>
-                  @if ($row->Status_registers === 'รอตรวจสอบเอกสาร')
+                  @if ($row->Status_registers === 'รอตรวจสอบ')
                       <span class="badge badge-pill badge-warning">{{ $row->Status_registers }}</span>
                   @elseif ($row->Status_registers === 'ตรวจสอบเอกสารแล้ว')
                       <span class="badge badge-pill badge-success">{{ $row->Status_registers }}</span>
-                  @elseif ($row->Status_registers === 'เอกสารไม่ผ่าน')
+                  @elseif ($row->Status_registers === 'ไม่ผ่าน')
                       <span class="badge badge-pill badge-danger">{{ $row->Status_registers }}</span>
                   @endif
               </td>
               <td>{{ $row->annotation }}</td>
               <td><a href="../file/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td>
 {{-- download --}}
-              <td><a href="/officer/editregister1/{{$row->id}}"  class="btn btn-outline-secondary fa-solid fa-pen-to-square fe-16"></a></td>
+              <td>
+                @if ($row->Status_registers === 'รอตรวจสอบ')
+                <div class="d-grid gap-2 d-md-block">
+                <a href="/officer/confirm2/{{$row->id}} " onclick="return confirm('ยืนยันข้อมูล !!');" class="btn btn-outline-success fa-solid fa-check fe-16">อนุมัติ</a><br>
+                <a href="/officer/editregister1/{{$row->id}}"type="button"  class="btn btn-outline-danger fa-solid fa-xmark fe-16">ไม่อนุมัติ</a></td>
+            </div>
+                @elseif ($row->Status_registers === 'ตรวจสอบเอกสารแล้ว')
+
+            @elseif ($row->Status_registers === 'ไม่ผ่าน')
+
+            @endif
+
+
              {{--  <td><a  href="/studenthome/delete/{{$row->id}}" class="btn btn-outline-danger fe fe-trash-2 fe-16"onclick="return confirm('ยืนยันการลบข้อมูล !!');"></a></td> --}}
             </tr>
 

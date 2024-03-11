@@ -178,7 +178,7 @@
           <div class=" col-md-4">
             <label for="recipient-name" class="col-form-label">ไฟล์เอกสารตอบรับ (สก.02)</label>
                 <div class="custom-file mb-6">
-                  <input type="file" class="custom-file-input" name="filess" id="validatedCustomFile" >
+                  <input type="file" class="custom-file-input" name="filess" id="validatedCustomFile"required >
                   <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
                   <div class="invalid-feedback">Example invalid custom file feedback</div>
 
@@ -239,7 +239,7 @@
   </div>
   <div class="col-md-2">
     <label for="inputAddress"class="col-form-label ">หมายเหตุ</label>
-     <input type="text" class="form-control" @error('annotation') is-invalid @enderror name="annotation" value="{{ old('annotation') }}"  autofocus placeholder="annotation" placeholder="Last name" aria-label="Last name">
+     <input type="text" class="form-control" @error('annotation') is-invalid @enderror name="annotation" value="{{ old('annotation') }}"  autofocus placeholder="annotation" placeholder="Last name" aria-label="Last name"required>
 </div>
       </div>
       <br>

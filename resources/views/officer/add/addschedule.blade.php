@@ -135,7 +135,7 @@
            <div class="row">
             <div class="form-group col-md-4">
               <label for="inputAddress">หัวเรื่อง</label>
-       <input type="text" class="form-control" @error('title') is-invalid @enderror name="title" value="{{ old('title') }}"  autofocus placeholder="">
+       <input type="text" class="form-control" @error('title') is-invalid @enderror name="title" value="{{ old('title') }}"  autofocus placeholder=""required>
 
 
               @error('name')
@@ -146,7 +146,7 @@
             </div>
             <div class="form-group col-md-4">
                 <label for="inputAddress">กำหนดการปฏิทินสหกิจ</label>
-         <input type="file" class="form-control" @error('files') is-invalid @enderror name="filess" value=""  autofocus placeholder="">
+         <input type="file" class="form-control" @error('files') is-invalid @enderror name="filess" value=""  autofocus placeholder=""required>
 
 
                 @error('start')
@@ -167,7 +167,7 @@
           <div class="row">
       <div class="col-md-3">
         <label for="inputAddress"class="col-form-label ">ภาคเรียน</label>
-        <select class="form-control "  name="term">
+        <select class="form-control "  name="term"required>
           <option value="">กรุณาเลือกภาคเรียน</option>
 
         <option value="ภาคเรียนที่1">ภาคเรียนที่:1 </option>
@@ -176,7 +176,7 @@
     </div>
     <div class="col-md-3">
       <label for="inputAddress"class="col-form-label ">ปีการศึกษา</label>
-      <select class="form-control "  name="year" >
+      <select class="form-control "  name="year"required >
         {{-- @foreach(range(date('Y'), date('Y') + 100) as $year)
         <option value="{{ $year }}">{{ $year }}</option>
     @endforeach --}}
