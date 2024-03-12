@@ -137,6 +137,7 @@
                 <table class="table table-bordered table-light table-striped table-hover" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                     <tr>
+                        <th>ลำดับ</th>
                         <th><i class="" aria-hidden="true"></i>รหัสนักศึกษา</th>
                         <th><i class="" aria-hidden="true"></i>ชื่อนักศึกษา</th>
 
@@ -163,7 +164,7 @@
 
 
 
-
+                            <td>{{$users->firstItem()+$loop->index}}</td>
                             <td class="">{{$row->username}}</td>
                             <td class="">{{$row->fname}} {{$row->surname}}</td>
                             <td>{{$row->term}}</td>

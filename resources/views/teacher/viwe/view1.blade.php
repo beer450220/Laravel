@@ -70,6 +70,16 @@
           </div>
       @endif
       <div class="row mb-3">
+        <label for="fname" class="col-md-4 col-form-label text-md-end"></label>
+      <div class="col-md-6">
+        <img src="/รูปโปรไฟล์/{{$users->images }}" class="rounded" style="max-height: 100px; max-width: 100px;" alt="" srcset="">
+
+    </div></div>
+
+
+      <div class="row mb-3">
+
+
         <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('รหัสประจำตัว') }}</label>
 
         <div class="col-md-6">

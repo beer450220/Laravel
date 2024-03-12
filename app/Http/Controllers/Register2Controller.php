@@ -79,7 +79,7 @@ class Register2Controller extends Controller
               $request->validate([
                   // 'filess' => 'required|mimes:pdf',
                   // 'filess' => 'required|mimes:jpeg,jpg,png',
-                  'filess' => 'mimes:jpeg,jpg,png',
+                //   'filess' => 'mimes:jpeg,jpg,png',
 
                   // 'namefile' => 'required|unique:namefile',
                   // 'user_id' => 'required|unique:user_id',
@@ -173,7 +173,7 @@ public function addregisteruser3(Request $request) {
           $request->validate([
               // 'filess' => 'required|mimes:pdf',
               // 'filess' => 'required|mimes:jpeg,jpg,png',
-              'filess' => 'mimes:jpeg,jpg,png',
+            //   'filess' => 'mimes:jpeg,jpg,png',
 
               // 'namefile' => 'required|unique:namefile',
               // 'user_id' => 'required|unique:user_id',
@@ -258,7 +258,7 @@ public function addregisteruser3(Request $request) {
               $request->validate([
                   // 'filess' => 'required|mimes:pdf',
                   // 'filess' => 'required|mimes:jpeg,jpg,png',
-                  'filess' => 'mimes:jpeg,jpg,png',
+                //   'filess' => 'mimes:jpeg,jpg,png',
 
                   // 'namefile' => 'required|unique:namefile',
                   // 'user_id' => 'required|unique:user_id',
@@ -343,7 +343,7 @@ public function addregisteruser3(Request $request) {
                   $request->validate([
                       // 'filess' => 'required|mimes:pdf',
                       // 'filess' => 'required|mimes:jpeg,jpg,png',
-                      'filess' => 'mimes:jpeg,jpg,png',
+                    //   'filess' => 'mimes:jpeg,jpg,png',
 
                       // 'namefile' => 'required|unique:namefile',
                       // 'user_id' => 'required|unique:user_id',
@@ -428,7 +428,7 @@ public function addregisteruser3(Request $request) {
                       $request->validate([
                           // 'filess' => 'required|mimes:pdf',
                           // 'filess' => 'required|mimes:jpeg,jpg,png',
-                          'filess' => 'mimes:jpeg,jpg,png',
+                        //   'filess' => 'mimes:jpeg,jpg,png',
 
                           // 'namefile' => 'required|unique:namefile',
                           // 'user_id' => 'required|unique:user_id',
@@ -513,7 +513,7 @@ public function addregisteruser3(Request $request) {
                           $request->validate([
                               // 'filess' => 'required|mimes:pdf',
                               // 'filess' => 'required|mimes:jpeg,jpg,png',
-                              'filess' => 'mimes:jpeg,jpg,png',
+                            //   'filess' => 'mimes:jpeg,jpg,png',
 
                               // 'namefile' => 'required|unique:namefile',
                               // 'user_id' => 'required|unique:user_id',

@@ -218,7 +218,7 @@ class AddController extends Controller
             $request->validate([
                 // 'filess' => 'required|mimes:pdf',
                 // 'filess' => 'required|mimes:jpeg,jpg,png',
-                'filess' => 'mimes:jpeg,jpg,png',
+                // 'filess' => 'mimes:jpeg,jpg,png',
 
                 // 'namefile' => 'required|unique:namefile',
                 // 'user_id' => 'required|unique:user_id',
@@ -325,7 +325,7 @@ class AddController extends Controller
       $request->validate([
         // 'filess' => 'required|mimes:pdf',
         // 'user_id' => 'required|unique:user_id',
-        'files' => 'mimes:jpeg,jpg,png',
+        // 'files' => 'mimes:jpeg,jpg,png',
 
         'namefile' => 'required',
       ],[

@@ -567,15 +567,15 @@ Route::middleware(['auth','user-role:admin'])->group(function()
 Route::middleware(['auth','user-role:0'])->group(function()
 {
     Route::get("/testhome",[HomeController::class,'testhome' ])->name('test1.home');
-    Route::get('/searchadmin',[HomeController::class,'searchadmin'])->name('searchadmin');
-    Route::get("/user",[HomeController::class,'user'])->name('admin.user');
-    Route::get("/user/adduser",[registerController::class,'index2'])->name('adduser2');
-    Route::post("/user/add",[registerController::class,'adduser'])->name('adduser');
+    // Route::get('/searchadmin',[HomeController::class,'searchadmin'])->name('searchadmin');
+    // Route::get("/user",[HomeController::class,'user'])->name('admin.user');
+    // Route::get("/user/adduser",[registerController::class,'index2'])->name('adduser2');
+    // Route::post("/user/add",[registerController::class,'adduser'])->name('adduser');
 
-    Route::get("/user/edituser/{id}",[HomeController::class,'edituser'])->name('admin.edituser');
-    Route::post("/user/updateuser/{id}",[EditController::class,'updateuser'])->name('updateuser');
+    // Route::get("/user/edituser/{id}",[HomeController::class,'edituser'])->name('admin.edituser');
+    // Route::post("/user/updateuser/{id}",[EditController::class,'updateuser'])->name('updateuser');
 
-    Route::get("/user1",[HomeController::class,'changeStatus'])->name('changeStatus');
+    // Route::get("/user1",[HomeController::class,'changeStatus'])->name('changeStatus');
    // Route::get('/status/update', [HomeController::class, 'updateStatus'])->name('update.status');
 });
 

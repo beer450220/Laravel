@@ -138,6 +138,7 @@ class registerController extends Controller
 
             ]);
          }
+
          $user = new Users;
         //  $user->code_id = $request->code_id;
          $user->major_id = $request->major_id;
