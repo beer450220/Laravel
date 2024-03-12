@@ -29,7 +29,7 @@
   <div class="modal-dialog modal-xl" role="document">
     <div class="modal-content ">
       <div class="modal-header bg-dark text-white ">
-        <h5 class="modal-title text center " id="varyModalLabel">แก้ไขข้อมูล</h5>
+        <h5 class="modal-title text center " id="varyModalLabel">ข้อมูล</h5>
         {{-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button> --}}
@@ -140,9 +140,9 @@
         <select class="form-control "  name="status" required>
           <option value="">กรุณาเลือก</option>
 
-        <option value="รอตรวจสอบ"@if($supervisions->status=="รอตรวจสอบ") selected @endif>รอตรวจสอบ </option>
-          <option value="ตรวจสอบแล้ว"@if($supervisions->status=="ตรวจสอบแล้ว") selected @endif>ตรวจสอบแล้ว </option>
-
+        <option value="รออนุมัติ"@if($supervisions->status=="รออนุมัติ") selected @endif>รออนุมัติ </option>
+          <option value="อนุมัติแล้ว"@if($supervisions->status=="อนุมัติแล้ว") selected @endif>อนุมัติแล้ว </option>
+          <option value="ไม่อนุมัติ"@if($supervisions->status=="ไม่อนุมัติ") selected @endif>ไม่อนุมัติ </option>
 
 
 
@@ -150,7 +150,7 @@
     </div>
     <div class="col-md-2">
       <label for="inputAddress"class="col-form-label ">หมายเหตุ</label>
-      <input type="text" class="form-control" @error('score') is-invalid @enderror name="annotation" value="{{$supervisions->annotation}}"  autofocus placeholder="score" placeholder="Last name" aria-label="Last name">
+      <input type="text" class="form-control" @error('score') is-invalid @enderror name="annotation" value="{{$supervisions->annotation}}"  autofocus placeholder="" placeholder="Last name" aria-label="Last name"required>
 
   </div>
       </div>

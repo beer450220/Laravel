@@ -401,6 +401,8 @@ $users=DB::table('users')
                 })
                 ->where(function($query) use ($keyword) {
                     $query->where('username', 'LIKE', '%' . $keyword . '%')
+                        ->orWhere('fname', 'LIKE', '%' . $keyword . '%')
+                        ->orWhere('surname', 'LIKE', '%' . $keyword . '%')
                         ->orWhere('year', 'LIKE', '%' . $keyword . '%')
                         ->orWhere('term', 'LIKE', '%' . $keyword . '%');
                 })
@@ -520,22 +522,32 @@ $users=DB::table('users')
                                 $keyword = $request->input('keyword');
                 //dd($request);
                                 // สร้างคำสั่งคิวรีเพื่อค้นหาข้อมูล
-                                $supervision= supervision::query()
-                                    // ->where('namefile', 'LIKE', '%' . $keyword . '%',)
-                                    // ->where('users_id', 'LIKE', '%' . $keyword . '%')
-                                    //->get();
-                                    ->where(function($query) use ($keyword) {
-                                        $query->where('namefile', 'LIKE', '%' . $keyword . '%')
+                                // $supervision= supervision::query()
+                                //     // ->where('namefile', 'LIKE', '%' . $keyword . '%',)
+                                //     // ->where('users_id', 'LIKE', '%' . $keyword . '%')
+                                //     //->get();
+                                //     ->where(function($query) use ($keyword) {
+                                //         $query->where('namefile', 'LIKE', '%' . $keyword . '%')
+                                //               ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
+                                //               ->orWhere('year', 'LIKE', '%' . $keyword . '%');
+                                //     })
+                                //     ->join('users','supervision.user_id','users.id')
+                                //      ->select('supervision.*','users.fname')
+
+
+
+                                //     ->paginate(5);
+                                    $supervision = supervision::query()
+                                    ->join('users', 'supervision.user_id', '=', 'users.id')
+                                    ->where(function ($query) use ($keyword) {
+                                        $query->where('supervision.namefile', 'LIKE', '%' . $keyword . '%')
                                               ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
-                                              ->orWhere('year', 'LIKE', '%' . $keyword . '%');
+                                              ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%')
+                                              ->orWhere('supervision.term', 'LIKE', '%' . $keyword . '%')
+                                              ->orWhere('supervision.year', 'LIKE', '%' . $keyword . '%');
                                     })
-                                    ->join('users','supervision.user_id','users.id')
-                                     ->select('supervision.*','users.fname')
-
-
-
-                                    ->paginate(5);
-
+                                    ->select('supervision.*', 'users.fname', 'users.surname')
+                                    ->paginate(10);
 
                                        // dd($request,$establishments,$supervision);
                                 return view('officer.Evaluate',  ['supervision' => $supervision,]);
@@ -580,17 +592,31 @@ $users=DB::table('users')
                                                 $keyword = $request->input('keyword');
                                 //dd($request);
                                                 // สร้างคำสั่งคิวรีเพื่อค้นหาข้อมูล
-                                                $informdetails = informdetails::query()
-                                                    // ->where('namefile', 'LIKE', '%' . $keyword . '%')
-                                                    ->where(function($query) use ($keyword) {
-                                                        $query->where('namefile', 'LIKE', '%' . $keyword . '%')
-                                                              ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
-                                                              ->orWhere('year', 'LIKE', '%' . $keyword . '%');
-                                                    })
-                                                    ->join('users','informdetails.user_id','users.id')
-                                                     ->select('informdetails.*','users.fname')
-                                                   // ->get();
-                                                    ->paginate(10);
+                                                // $informdetails = informdetails::query()
+                                                //     // ->where('namefile', 'LIKE', '%' . $keyword . '%')
+                                                //     ->where(function($query) use ($keyword) {
+                                                //         $query->where('namefile', 'LIKE', '%' . $keyword . '%')
+                                                //               ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
+                                                //               ->orWhere('year', 'LIKE', '%' . $keyword . '%');
+                                                //     })
+                                                //     ->join('users','informdetails.user_id','users.id')
+                                                //      ->select('informdetails.*','users.fname')
+                                                //    // ->get();
+                                                //     ->paginate(10);
+
+                                                    $informdetails = informdetails::query()
+                                            ->join('users', 'informdetails.user_id', '=', 'users.id')
+                                            ->where(function ($query) use ($keyword) {
+                                                $query->where('informdetails.namefile', 'LIKE', '%' . $keyword . '%')
+                                                      ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
+                                                      ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%')
+                                                      ->orWhere('informdetails.term', 'LIKE', '%' . $keyword . '%')
+                                                      ->orWhere('informdetails.year', 'LIKE', '%' . $keyword . '%');
+                                            })
+                                            ->select('informdetails.*', 'users.fname', 'users.surname')
+                                            ->paginate(10);
+
+
                                                 return view('officer.informdetails2',  ['informdetails' => $informdetails,]);
                                     }
                                     public function searches(Request $request){
@@ -616,17 +642,30 @@ $users=DB::table('users')
                                                                 $keyword = $request->input('keyword');
                                                 //dd($request);
                                                                 // สร้างคำสั่งคิวรีเพื่อค้นหาข้อมูล
-                                                                $report = report::query()
-                                                                    // ->where('namefile', 'LIKE', '%' . $keyword . '%')
-                                                                    ->where(function($query) use ($keyword) {
-                                                                        $query->where('namefile', 'LIKE', '%' . $keyword . '%')
+                                                                // $report = report::query()
+                                                                //     // ->where('namefile', 'LIKE', '%' . $keyword . '%')
+                                                                //     ->where(function($query) use ($keyword) {
+                                                                //         $query->where('namefile', 'LIKE', '%' . $keyword . '%')
+                                                                //               ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
+                                                                //               ->orWhere('year', 'LIKE', '%' . $keyword . '%');
+                                                                //     })
+                                                                //     ->join('users','report.user_id','users.id')
+                                                                //      ->select('report.*','users.fname')
+                                                                //    // ->get();
+                                                                //     ->paginate(10);
+
+                                                                    $report = report::query()
+                                                                    ->join('users', 'report.user_id', '=', 'users.id')
+                                                                    ->where(function ($query) use ($keyword) {
+                                                                        $query->where('report.namefile', 'LIKE', '%' . $keyword . '%')
                                                                               ->orWhere('users.fname', 'LIKE', '%' . $keyword . '%')
-                                                                              ->orWhere('year', 'LIKE', '%' . $keyword . '%');
+                                                                              ->orWhere('users.surname', 'LIKE', '%' . $keyword . '%')
+                                                                              ->orWhere('report.term', 'LIKE', '%' . $keyword . '%')
+                                                                              ->orWhere('report.year', 'LIKE', '%' . $keyword . '%');
                                                                     })
-                                                                    ->join('users','report.user_id','users.id')
-                                                                     ->select('report.*','users.fname')
-                                                                   // ->get();
+                                                                    ->select('report.*', 'users.fname', 'users.surname')
                                                                     ->paginate(10);
+
                                                                 return view('officer.experiencereport2',  ['report' => $report,]);
                                                     }
      public function searchschedule(Request $request){
@@ -1342,7 +1381,7 @@ public function category()
     {
         $informdetails=DB::table('informdetails')
         ->join('users','informdetails.user_id','users.id')
-        ->select('informdetails.*','users.fname')
+        ->select('informdetails.*','users.fname','users.surname')
         ->paginate(5);
         return view('officer.informdetails2',compact('informdetails'));
     }
@@ -1355,7 +1394,7 @@ public function category()
     {
         $report=DB::table('report')
         ->join('users','report.user_id','users.id')
-        ->select('report.*','users.fname')
+        ->select('report.*','users.fname','users.surname')
         ->paginate(5);
 
         return view('officer.experiencereport2',compact('report'));
@@ -1385,7 +1424,7 @@ public function category()
         //->select('supervision.*')
        // ->where('establishment.establishment_id')
        ->join('users','supervision.user_id','users.id')
-                        ->select('supervision.*','users.fname')
+                        ->select('supervision.*','users.fname','users.surname')
         ->paginate(5);
         return view('officer.Evaluate',compact('supervision'));
     }
@@ -1771,7 +1810,12 @@ public function category()
         return view('teacher.calendar2confirm',compact('events','report_results','report_results1'));
     }
 
+    public function testhome()
+    {
 
+        return view('test1.testhome',);
+
+    }
 
 
 

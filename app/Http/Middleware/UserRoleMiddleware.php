@@ -17,11 +17,15 @@ class UserRoleMiddleware
      */
     public function handle(Request $request, Closure $next, $role)
     {
-       // dd($request);
+       //dd($request);
         if(Auth::check() && Auth::user()->role == $role)
         {
             return $next($request);
         }
-        return response()->json(["You don't have permission to access this page"]);
+        // return redirect('/login')->with('success', 'ยืนยันตัวตนสำเร็จ.');
+        // return response()->json(["/login"]);
+        // return response()->json(["url" => "/login"]);
+
+         return response()->json(["You don't have permission to access this page"]);
     }
 }

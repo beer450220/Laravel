@@ -36,7 +36,7 @@
             </div>
 
             <div class="">
-              <a href="" name="keyword" value="{{ request('keyword') }}"  type="submit"  class=" btn btn-outline-warning">ค้นหาข้อมูล</a>
+              {{-- <a href="" name="keyword" value="{{ request('keyword') }}"  type="submit"  class=" btn btn-outline-warning">ค้นหาข้อมูล</a> --}}
 
 
  {{-- <a href="/officer/addestimate2" type="button" class=" btn btn-outline-success">เพิ่มข้อมูล</a> --}}
@@ -73,7 +73,7 @@
             @foreach ($report as $row)
             <tr>
               <td>{{$report->firstItem()+$loop->index}}</td>
-              <td>{{$row->fname}} </td>
+              <td>{{$row->fname}}  {{$row->surname}} </td>
               <td  >{{$row->namefile}}</td>
               <td  >{{$row->term}}</td>
               <td  >{{$row->year}}</td>

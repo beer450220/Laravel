@@ -23,7 +23,7 @@
             <div class="modal-dialog modal-xl" role="document">
               <div class="modal-content ">
                 <div class="modal-header bg-dark text-white ">
-                  <h5 class="modal-title text center " id="varyModalLabel">ข้อมูลตรวจสอบเอกสาร</h5>
+                  <h5 class="modal-title text center " id="varyModalLabel">ข้อมูล</h5>
                   {{-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button> --}}
@@ -52,7 +52,7 @@
             <div class="form-group col-md-4">
               <label for="inputAddress">ชื่อเอกสาร</label>
               {{-- <input type="text" class="form-control" @error('name') is-invalid @enderror name="name" value="{{ old('name') }}"  autofocus placeholder="name"> --}}
-              <select class="form-select" id="validationSelect1" name="namefile" >
+              <select class="form-select" id="validationSelect1" name="namefile" required>
                 <option value="">เลือกชื่อเอกสาร</option>
                 {{-- @foreach ($establishment as $row) --}}
                 {{-- <optgroup label="Mountain Time Zone"> --}}
@@ -98,7 +98,7 @@
                     <div class="row">
                       <div class="col-md-4">
                         <label for="recipient-name" class="col-form-label">หมายเหตุ</label>
-                         <input type="text" class="form-control" name="annotation" value="{{$supervisions->annotation}}" >
+                         <input type="text" class="form-control" name="annotation" value="{{$supervisions->annotation}}" required>
 
                         @error('annotation')
                         <span class="invalid-feedback" role="alert">
@@ -110,7 +110,7 @@
                       <div class="col-md-4">
                         <label for="recipient-name" class="col-form-label">สถานะตรวจสอบเอกสาร</label>
 
-                        <select class="form-select " aria-label=".form-select-sm example" name="Status_supervision">
+                        <select class="form-select " aria-label=".form-select-sm example" name="Status_supervision"required>
                           <option selected>กรุณาเลือก</option>
                           <option value="ตรวจสอบเอกสารแล้ว"@if($supervisions->Status_supervision=="ตรวจสอบเอกสารแล้ว") selected @endif required>ตรวจสอบเอกสารแล้ว</option>
                           <option value="ไม่ผ่านตรวจสอบเอกสาร"@if($supervisions->Status_supervision=="ไม่ผ่านตรวจสอบเอกสาร") selected @endif required>ไม่ผ่านตรวจสอบเอกสาร</option>
@@ -138,7 +138,7 @@
                                 <div class="col-md-2">
                             <label for="inputAddress"class="col-form-label ">คะแนน</label>
 
-                            <input type="text" class="form-control" @error('score') is-invalid @enderror name="score" value="{{$supervisions->score}}"  autofocus placeholder="score" placeholder="Last name" aria-label="Last name">
+                            <input type="text" class="form-control" @error('score') is-invalid @enderror name="score" value="{{$supervisions->score}}"  autofocus placeholder="score" placeholder="Last name" aria-label="Last name"required>
 
                         </div>
                         <div class="col-md-2">
@@ -179,6 +179,7 @@
                 <div class="modal-footer">
 
                   <a href="/officer/Evaluate"  class="btn mb-2 btn-secondary" data-dismiss="modal">ย้อนกลับ</a>
+                  <button type="reset" class="btn mb-2 btn-danger">ยกเลิก</button>
                   <button type="submit" class="btn mb-2 btn-primary"onclick="return confirm('ยืนยันการแก้ไขข้อมูล !!');">อัพเดท</button>
                 </div></form>
               </div>

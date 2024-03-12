@@ -335,7 +335,7 @@ Route::middleware(['auth','user-role:officer'])->group(function()
     Route::get("/officer/editinformdetails2/{informdetails_id}",[EditController::class,'editinformdetails2'])->name('editinformdetails2');
     Route::post("/officer/updateinformdetails2/{informdetails_id}",[EditController::class,'updateinformdetails2'])->name('updateinformdetails2');
 
-
+    Route::get("/officer/confirm3/{id}",[EditController::class,'confirm3'])->name('confirm3');
     // Route::get("/officer/record2",[HomeController::class,'record2']);
 
 //เอกสารฝึกประสบการณ์
@@ -423,7 +423,7 @@ Route::get("/officer/edites1/{id}",[EditController::class,'edites2'])->name('edi
 Route::post("officer/updatees2/{id}",[EditController::class,'updatees2'])->name('updatees2');
 Route::get('/teacher/deletes1/{id}', [EditController::class,'deles1'])->name('deles1');
 
-
+Route::get("/officer/confirm4/{id}",[EditController::class,'confirm4'])->name('confirm4');
 });
 
 
@@ -551,6 +551,22 @@ Route::get('/teacher/deletes1/{id}', [EditController::class,'deles1'])->name('de
 Route::middleware(['auth','user-role:admin'])->group(function()
 {
     Route::get("/adminhome",[HomeController::class,'adminHome' ])->name('admin.adminhome');
+    Route::get('/searchadmin',[HomeController::class,'searchadmin'])->name('searchadmin');
+    Route::get("/user",[HomeController::class,'user'])->name('admin.user');
+    Route::get("/user/adduser",[registerController::class,'index2'])->name('adduser2');
+    Route::post("/user/add",[registerController::class,'adduser'])->name('adduser');
+
+    Route::get("/user/edituser/{id}",[HomeController::class,'edituser'])->name('admin.edituser');
+    Route::post("/user/updateuser/{id}",[EditController::class,'updateuser'])->name('updateuser');
+
+    Route::get("/user1",[HomeController::class,'changeStatus'])->name('changeStatus');
+   // Route::get('/status/update', [HomeController::class, 'updateStatus'])->name('update.status');
+});
+
+// test1 Route
+Route::middleware(['auth','user-role:0'])->group(function()
+{
+    Route::get("/testhome",[HomeController::class,'testhome' ])->name('test1.home');
     Route::get('/searchadmin',[HomeController::class,'searchadmin'])->name('searchadmin');
     Route::get("/user",[HomeController::class,'user'])->name('admin.user');
     Route::get("/user/adduser",[registerController::class,'index2'])->name('adduser2');

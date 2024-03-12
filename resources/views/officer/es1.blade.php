@@ -36,7 +36,7 @@
             </div>
 
             <div class="">
-              <a href="" name="keyword" value="{{ request('keyword') }}"  type="submit"  class=" btn btn-outline-warning">ค้นหาข้อมูล</a>
+              {{-- <a href="" name="keyword" value="{{ request('keyword') }}"  type="submit"  class=" btn btn-outline-warning">ค้นหาข้อมูล</a> --}}
 
 
  {{-- <a href="/officer/addestimate2" type="button" class=" btn btn-outline-success">เพิ่มข้อมูล</a> --}}
@@ -64,9 +64,9 @@
                 <th>ปีการศึกษา</th>
                 <th>ภาคเรียน</th>
 
-
+                <th>สถานะ</th>
               <th>ไฟล์เอกสาร</th>
-              <th>แก้ไข</th>
+              <th>ยืนยันข้อมูล</th>
               {{-- <th>ลบ</th> --}}
             </tr>
           </thead>
@@ -77,11 +77,32 @@
               <td>{{$row->namefile}}</td>
               <td>{{$row->year}}</td>
               <td>{{$row->term}}</td>
-
+              <td>  @if ($row->status === 'รออนุมัติ')
+                <span class="badge badge-pill badge-warning">{{ $row->status }}</span>
+            @elseif ($row->status === 'อนุมัติแล้ว')
+                <span class="badge badge-pill badge-success">{{ $row->status}}</span>
+            @elseif ($row->status === 'ไม่อนุมัติ')
+                <span class="badge badge-pill badge-danger">{{ $row->status}}</span>
+            @endif</td>
 
 
               <td><a href="/ไฟล์เอกสารขออนุญาตนิเทศงาน/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td>
-              <td><a href="/officer/edites1/{{$row->id}} "type="button" class="btn btn-outline-secondary fe fe-edit fe-16"></a></td>
+              <td>
+                @if ($row->status=== 'รออนุมัติ')
+                <div class="d-grid gap-2 d-md-block">
+                <a href="/officer/confirm4/{{$row->id}} " onclick="return confirm('ยืนยันข้อมูล !!');" class="btn btn-outline-success fa-solid fa-check fe-16">อนุมัติ</a><br>
+                <a href="/officer/edites1/{{$row->id}}"  class="btn btn-outline-danger fa-solid fa-xmark fe-16">ไม่อนุมัติ</a></td>
+                {{-- <a href="/officer/editinformdetails2/{{$row->informdetails_id}}" type="button" class="btn btn-outline-secondary fa-solid fa-pen-to-square fe-16"></a> --}}
+            </td>
+            </div>
+                @elseif ($row->status === 'อนุมัติแล้ว')
+
+            @elseif ($row->status === 'ไม่อนุมัติ')
+
+            @endif
+
+
+                {{-- <a href="/officer/edites1/{{$row->id}} "type="button" class="btn btn-outline-secondary fe fe-edit fe-16"></a></td> --}}
               {{-- <td><a href="/teacher/deletes1/{{$row->id}} "type="button" class="btn btn-outline-danger fe fe-trash-2 fe-16"onclick="return confirm('ยืนยันการลบข้อมูล !!');"></td> --}}
             </tr>
 

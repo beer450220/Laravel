@@ -36,7 +36,7 @@
             </div>
 
             <div class="">
-              <a href="" name="keyword" value="{{ request('keyword') }}"  type="submit"  class=" btn btn-outline-warning">ค้นหาข้อมูล</a>
+              {{-- <a href="" name="keyword" value="{{ request('keyword') }}"  type="submit"  class=" btn btn-outline-warning">ค้นหาข้อมูล</a> --}}
 
 
  <a href="/officer/addestimate2" type="button" class=" btn btn-outline-success">เพิ่มข้อมูล</a>
@@ -69,8 +69,9 @@
                 <th>ปีการศึกษา</th>
               <th>คะแนน</th>
               <th>หมายเหตุ</th>
+                 <th>ไฟล์เอกสาร</th>
               <th>แก้ไข</th>
-              <th>ไฟล์เอกสาร</th>
+
 
             </tr>
           </thead>
@@ -79,15 +80,16 @@
             <tr>
               <td>{{$supervision->firstItem()+$loop->index}}</td>
               <td>
-                {{$row->fname}}</td>
+                {{$row->fname}}  {{$row->surname}}</td>
                 <td>{{$row->namefile}}</td>
               <td>{{$row->term}}</td>
               <td>{{$row->year}}</td>
               <td>{{$row->score}}</td>
 
               <td>{{$row->annotation}}</td>
-              <td><a href="/officer/editEvaluate/{{$row->supervision_id}} "type="button" class="btn btn-outline-secondary fe fe-edit fe-16"></a></td>
               <td><a href="../ไฟล์เอกสารประเมิน/{{ $row->filess }}" target="_BLANK" class="btn btn-outline-primary fa-regular fa-circle-down"></a></td>
+              <td><a href="/officer/editEvaluate/{{$row->supervision_id}} "type="button" class="btn btn-outline-secondary fa-solid  fa-pen-to-square fe-16"></a></td>
+
 
             </tr>
 
